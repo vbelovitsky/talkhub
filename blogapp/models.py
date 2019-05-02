@@ -9,7 +9,6 @@ from django.utils.text import slugify
 class Post(models.Model):
     body = models.TextField()
     title = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=100)
     author = models.ForeignKey(to=User,
                                on_delete=models.SET_NULL,
                                null=True)
@@ -26,19 +25,13 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('blogapp:chat_page', args=[self.id, self.slug])
+        return reverse('blogapp:chat_page', args=[self.id])
 
     def total_likes(self):
         return self.likes.count()
 
     class Meta:
         ordering = ['-created']
-
-
-@receiver(pre_save, sender=Post)
-def pre_save_slug(sender, **kwargs):
-    slug = slugify(kwargs['instance'].title)
-    kwargs['instance'].slug = slug
 
 
 class Comment(models.Model):
