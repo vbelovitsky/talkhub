@@ -18,7 +18,7 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     tag = models.ManyToManyField(to='Tag',
-                                 related_name = 'tags',
+                                 related_name='tags',
                                  blank=True)
 
     def __str__(self):
