@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^register/$', views.register, name='register'),
     url(r'^edit-profile/$', views.edit_profile, name='edit_profile'),
     url(r'^like/$', views.like_post, name='like_post'),
+    url(r'^comment-delete/(?P<id>\d+)/(?P<comid>\d+)/$', views.comment_delete, name='comment_delete'),
 
     url(r'^password-reset/$', PasswordResetView.as_view(template_name='registration/password_reset_form.html'), name='password_reset'),
     url(r'^password-reset/done/$', PasswordResetView.as_view(template_name='registration/password_reset_done.html'), name='password_reset_done'),
