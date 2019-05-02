@@ -3,34 +3,6 @@
 <button type="button" id="refresh-button" name="{% url 'blogapp:comment_refresh' id=post.id %}" value="{{ post.id }}" class="btn btn-secondary">Refresh</button>
 
 <div class="comments">
-    {% if comments.count == 0%}
-        No Comment's
-    {% else %}
-    {{ comments.count }} Comment {{ comments|pluralize }}
-    {% endif %}
-    {% for comment in comments %}
-    <div class="replied-comments container mt-2">
-        <div class="form-group row" id="reply-form{{comment.id}}" style="display: none">
-            <form method="POST" class="reply-form" action=".">
-                {% csrf_token %}
-                <input type="hidden" name="comment_id" value="{{comment.id}}">
-                {{ comment_form.as_p }}
-            </form>
-        </div>
-    </div>
-    <blockquote class="blockquote">
-        <p class="mb-0">{{ comment.content }}</p>
-        <footer class="blockquote-footer">by <cite title="Source Title">{{ comment.user|capfirst }}, {{ comment.timestap }}</cite>
-            <button type="button" name="button" value="reply-form{{comment.id}}"
-                    class="reply-btn btn btn-outline-dark btn-sm ml-1">
-            </button>
-        </footer>
-
-        {% if request.user == comment.user %}
-            <button type="button" id="comment-delete" name="{% url 'blogapp:comment_delete' id=post.id comid=comment.id %}" value="{{ post.id }}/{{ comment.id }}" class="btn btn-danger btn-sm ml-1">del</button>
-        {% endif %}
-
-    </blockquote>
 
     <div class="replied-comments container mt-2">
         {% for reply in comment.replies.all %}
@@ -60,6 +32,37 @@
         </div>
 
     </div>
+
+    {% if comments.count == 0%}
+        No Comment's
+    {% else %}
+    {{ comments.count }} Comment {{ comments|pluralize }}
+    {% endif %}
+    {% for comment in comments %}
+    <div class="replied-comments container mt-2">
+        <div class="form-group row" id="reply-form{{comment.id}}" style="display: none">
+            <form method="POST" class="reply-form" action=".">
+                {% csrf_token %}
+                <input type="hidden" name="comment_id" value="{{comment.id}}">
+                {{ comment_form.as_p }}
+            </form>
+        </div>
+    </div>
+    <blockquote class="blockquote">
+        <p class="mb-0">{{ comment.content }}</p>
+        <footer class="blockquote-footer">by <cite title="Source Title">{{ comment.user|capfirst }}, {{ comment.timestap }}</cite>
+            <button type="button" name="button" value="reply-form{{comment.id}}"
+                    class="reply-btn btn btn-outline-dark btn-sm ml-1">
+            </button>
+        </footer>
+
+        {% if request.user == comment.user %}
+            <button type="button" id="comment-delete" name="{% url 'blogapp:comment_delete' id=post.id comid=comment.id %}" value="{{ post.id }}/{{ comment.id }}" class="btn btn-danger btn-sm ml-1">del</button>
+        {% endif %}
+
+    </blockquote>
+
+    
     {% endfor %}
 </div>
 
