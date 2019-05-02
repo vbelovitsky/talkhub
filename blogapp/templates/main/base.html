@@ -90,13 +90,15 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 
         $(document).on('click', '#comment-delete', function (event) {
             event.preventDefault();
+            var arr = $(this).attr('value').split('/');
+            var id = arr[0];
+            var comid = arr[1];
             $.ajax({
                 type: 'POST',
-                url: '{% url "blogapp:comment_delete" id=post.id comid=comment.id %}',
+                url: 'chat/'+id+'/comment-delete/'+comid+'/',
                 data: {
-                    'id': {{ post.id }},
-                    'comid': {{ comment.id }},
-                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    'id': id,
+                    'comid': comid,
                 },
                 dataType: 'json',
                 success: function (response) {
@@ -110,13 +112,15 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 
         $(document).on('click', '#reply-delete', function (event) {
             event.preventDefault();
+            var arr = $(this).attr('value').split('/');
+            var id = arr[0];
+            var comid = arr[1];
             $.ajax({
                 type: 'POST',
-                url: '{% url "blogapp:comment_delete" id=post.id comid=reply.id %}',
+                url: 'chat/'+id+'/comment-delete/'+comid+'/',
                 data: {
-                    'id': {{ post.id }},
-                    'comid': {{ reply.id }},
-                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    'id': id,
+                    'comid': comid,
                 },
                 dataType: 'json',
                 success: function (response) {
