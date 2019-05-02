@@ -59,6 +59,35 @@
         {% endif %}
 
     </blockquote>
+
+    <div class="replied-comments container mt-2">
+        {% for reply in comment.replies.all %}
+        <blockquote class="blockquote">
+            <p class="mb-0">{{ reply.content }}</p>
+            <footer class="blockquote-footer">replied by <cite title="Source Title">{{ reply.user|capfirst }}, {{ reply.timestap }}</cite>
+            </footer>
+
+            {% if request.user == comment.user %}
+                <button type="button" id="reply-delete" name="{% url 'blogapp:comment_delete' id=post.id comid=reply.id %}" value="{{ post.id }}/{{ reply.id }}" class="btn btn-danger btn-sm ml-1">del</button>
+            {% endif %}
+
+        </blockquote>
+        {% endfor %}
+
+        <div class="form-group row" id="reply-form{{comment.id}}" style="display: none">
+            <form method="POST" class="reply-form" action=".">
+                {% csrf_token %}
+                <input type="hidden" name="comment_id" value="{{comment.id}}">
+                {{ comment_form.as_p }}
+                {% if request.user.is_authenticated %}
+                <input type="submit" value="Submit" class="btn btn-outline-success">
+                {% else %}
+                <input type="submit" value="Submit" class="btn btn-outline-success" disabled>
+                {% endif %}
+            </form>
+        </div>
+
+    </div>
     {% endfor %}
 </div>
 
