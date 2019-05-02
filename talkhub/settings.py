@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
 'talkhub.herokuapp.com',
 ]
 
+SECURE_SSL_REDIRECT = True
 
 # Application definition
 
