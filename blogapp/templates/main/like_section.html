@@ -1,0 +1,15 @@
+<div class="flex-box" style="justify-content: space-between; margin-left: 1.7vw; align-items: center;">
+<form action="{% url 'like_post' %}" method="POST">
+        {% csrf_token %}
+        {% if is_liked %}
+            <button type="submit" id="like" value="{{ post.id }}" class="btn btn-danger">Dislike</button>
+        {% else %}
+            {% if request.user.is_authenticated %}
+                <button type="submit" id="like" value="{{ post.id }}" class="btn btn-primary">Like</button>
+            {% else %}
+                <button type="submit" id="like" value="{{ post.id }}" class="btn btn-primary" disabled>Like</button>
+            {% endif %}
+        {% endif %}
+</form>
+<div style="margin-right: 19.2vw;"><strong>Likes:</strong> {{ total_likes }}</div>
+</div>

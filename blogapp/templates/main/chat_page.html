@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{post.title}} | {{post.author}}</title>
+
+    {% include "main/base.html" %}
+</head>
+
+<body>
+    <div class="jumbotron" style="margin-bottom: 0;">
+        <div class="flex-box" style="justify-content: space-between;">
+            <div class="flex-box-column" style="justify-content: flex-start;">
+                <div class="left-nav iframe_chat"><iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true"
+                        width="400px" height="280px" scrolling="auto" allow="microphone; camera"></iframe></div>
+                <div id="like-section">
+                    {% include 'main/like_section.html' %}
+                </div>
+                <div style="margin-left: 1.8vw;">
+                    <h1 class="display-3"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h1>
+                    <p class="lead">{{ post.body }}</p>
+                    <p>Author: {{ post.author }}</p>
+                    <p><small>{{ post.created }}</small></p>
+
+                    {% if request.user == post.author %}
+                    <p class="lead">
+                        <div id="edit-section">
+                            <a href="{% url 'blogapp:post_edit' id=post.id %}">
+                                <button type="button" class="btn btn-outline-success">Edit</button>
+                            </a>
+                            <a href="{% url 'blogapp:post_delete' id=post.id %}" id="delete">
+                                <button type="button" class="btn btn-danger">Delete</button>
+                            </a>
+                        </div>
+                    </p>
+                    {% endif %}
+                </div>
+
+            </div>
+                <div class="flex-box-column">
+
+                <div class="main-comment-section">
+                    {% include 'main/comment_section.html' %}
+                </div>
+                </div>
+        </div>
+    </div>
+</body>
+<style>
+    .navigation{
+        margin-bottom: 0 !important; 
+    }
+</style>
+</html>
