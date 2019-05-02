@@ -29,7 +29,7 @@ def main_page(request):
 
 def chat_page(request, id, slug):
     post = get_object_or_404(Post, id=id, slug=slug)
-    comments = Comment.objects.filter(post=post, reply=None).order_by('-id')
+    comments = Comment.objects.filter(post=post, reply=None).order_by('-timestap')
 
     is_liked = False
     if post.likes.filter(id=request.user.id).exists():
@@ -192,7 +192,7 @@ def comment_delete(request, id, comid):
 
     comment.delete()
     post = Post.objects.get(id=id)
-    comments = Comment.objects.filter(post=post)
+    comments = Comment.objects.filter(post=post).order_by('-timestap')
     comment_form = CommentForm()
 
     context = {'post': post,
@@ -207,7 +207,7 @@ def comment_delete(request, id, comid):
 
 def comment_refresh(request, id):
     post = get_object_or_404(Post, id=id)
-    comments = Comment.objects.filter(post=post, reply=None)
+    comments = Comment.objects.filter(post=post, reply=None).order_by('-timestap')
     comment_form = CommentForm()
 
     context = {'post': post,

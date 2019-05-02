@@ -20,7 +20,7 @@
     </div>
     <blockquote class="blockquote">
         <p class="mb-0">{{ comment.content }}</p>
-        <footer class="blockquote-footer">by <cite title="Source Title">{{ comment.user|capfirst }}</cite>
+        <footer class="blockquote-footer">by <cite title="Source Title">{{ comment.user|capfirst }}, {{ comment.timestap }}</cite>
             <button type="button" name="button" value="reply-form{{comment.id}}"
                     class="reply-btn btn btn-outline-dark btn-sm ml-1">
             </button>
@@ -36,7 +36,7 @@
         {% for reply in comment.replies.all %}
         <blockquote class="blockquote">
             <p class="mb-0">{{ reply.content }}</p>
-            <footer class="blockquote-footer">replied by <cite title="Source Title">{{ reply.user|capfirst }}</cite>
+            <footer class="blockquote-footer">replied by <cite title="Source Title">{{ reply.user|capfirst }}, {{ reply.timestap }}</cite>
             </footer>
 
             {% if request.user == comment.user %}
