@@ -26,8 +26,8 @@ SECRET_KEY = 'wm=7wki2$see5%1jq4()=51e0=o)-0m511^-6%!n_xbq_556!r'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-'talkhub2.herokuapp.com',
-'talkhub.herokuapp.com',
+    'talkhub2.herokuapp.com',
+    'talkhub.herokuapp.com',
 ]
 
 SECURE_SSL_REDIRECT = True
