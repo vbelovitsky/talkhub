@@ -27,12 +27,12 @@ class UserLoginForm(forms.Form):
 
 
 class UserRegistrationForm(forms.ModelForm):
-    username = forms.CharField(max_length=20)
-    first_name = forms.CharField(max_length=20)
-    last_name = forms.CharField(max_length=20)
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Enter password here'}))
-    confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirm password'}))
+    username = forms.CharField(max_length=20, label='', attrs={'placeholder': 'Username'})
+    first_name = forms.CharField(max_length=20, label='', attrs={'placeholder': 'First name'})
+    last_name = forms.CharField(max_length=20, label='', attrs={'placeholder': 'Last name'})
+    email = forms.EmailField(label='', attrs={'placeholder': 'Email'})
+    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Enter password here'}))
+    confirm_password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Confirm password'}))
 
     class Meta:
         model = User
