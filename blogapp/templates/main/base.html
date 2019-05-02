@@ -103,7 +103,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
                 },
                 dataType: 'json',
                 success: function (response) {
-                    $('#comment-section').html(response['form']);
+                    $('.main-comment-section').html(response['form']);
                 },
                 error: function (rs, e) {
                     console.log(rs.responseText)
@@ -126,7 +126,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
                 },
                 dataType: 'json',
                 success: function (response) {
-                    $('#comment-section').html(response['form']);
+                    $('.main-comment-section').html(response['form']);
                 },
                 error: function (rs, e) {
                     console.log(rs.responseText)
