@@ -95,7 +95,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
             var comid = arr[1];
             $.ajax({
                 type: 'POST',
-                url: 'chat/'+id+'/comment-delete/'+comid+'/',
+                url: $(this).attr('name'),
                 data: {
                     'id': id,
                     'comid': comid,
@@ -118,7 +118,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
             var comid = arr[1];
             $.ajax({
                 type: 'POST',
-                url: 'chat/'+id+'/comment-delete/'+comid+'/',
+                url: $(this).attr('name'),
                 data: {
                     'id': id,
                     'comid': comid,
