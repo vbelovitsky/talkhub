@@ -3,7 +3,11 @@
 <button type="button" id="refresh-button" name="{% url 'blogapp:comment_refresh' id=post.id %}" value="{{ post.id }}" class="btn btn-secondary">Refresh</button>
 
 <div class="comments">
-
+    {% if comments.count == 0%}
+        No Comment's
+    {% else %}
+    {{ comments.count }} Comment {{ comments|pluralize }}
+    {% endif %}
     <div class="replied-comments container mt-2">
         {% for reply in comment.replies.all %}
         <blockquote class="blockquote">
@@ -32,12 +36,6 @@
         </div>
 
     </div>
-
-    {% if comments.count == 0%}
-        No Comment's
-    {% else %}
-    {{ comments.count }} Comment {{ comments|pluralize }}
-    {% endif %}
     {% for comment in comments %}
     <div class="replied-comments container mt-2">
         <div class="form-group row" id="reply-form{{comment.id}}" style="display: none">
@@ -61,8 +59,6 @@
         {% endif %}
 
     </blockquote>
-
-    
     {% endfor %}
 </div>
 
