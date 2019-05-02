@@ -24,7 +24,7 @@
             <div class="comment-title">
                 <p class="mb-0">{{ reply.content }}</p>
                 {% if request.user == reply.user %}
-                    <button type="button" id="reply-delete" name="{% url 'blogapp:comment_delete' id=post.id comid=reply.id %}" value="{{ post.id }}/{{ reply.id }}" class="btn btn-danger btn-sm ml-1">del</button>
+                    <button type="button" id="reply-delete" name="{% url 'comment_delete' id=post.id comid=reply.id %}" value="{{ post.id }}/{{ reply.id }}" class="btn btn-danger btn-sm ml-1">del</button>
                 {% endif %}
             </div>
             <footer class="blockquote-footer">replied by <cite title="Source Title">{{ reply.user|capfirst }}, {{ comment.timestap }}</cite>
