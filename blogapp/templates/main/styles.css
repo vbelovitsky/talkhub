@@ -90,3 +90,11 @@ body a:hover{
     justify-content: space-between;
     width: 100%;
 }
+.jumbotron{
+    padding-bottom: 1vh !important;
+    padding-top: 1vh !important;
+    margin-bottom: 2vh;
+}
+.display-3{
+    font-size: 5rem;
+}

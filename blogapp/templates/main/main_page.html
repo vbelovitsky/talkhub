@@ -16,12 +16,6 @@
         {% for post in posts %}
         <div class="jumbotron">
             <h1 class="display-3"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h1>
-            <p class="lead">{{ post.body }}</p>
-            <br/>
-
-            {% for tag in post.tag.all %}
-                #{{ tag.tag_name }}
-            {% endfor %}
             <hr class="m-y-2">
             <p>Author: {{ post.author }}</p> 
             <p><small>{{ post.created }}</small></p>
@@ -34,11 +28,6 @@
                 <strong>Sorry!</strong> No post found with "{{ query }}"
             </div>
         {% endfor %}
-        <div class="categories ">
-            {% for tag in tags %}
-                <h2>{{ tag.tag_name }}</h2>
-            {% endfor %}
-        </div>
     </div>
 </body>
 </html>

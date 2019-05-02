@@ -9,10 +9,6 @@
     <form method="POST" style="margin: 10px">
         {% csrf_token %}
         {{ form.as_p }}
-        {% for tag in tags %}
-           <input type="checkbox" name="tags" value="{{tag.id}}">{{tag.tag_name}}<br/>
-        {% endfor %}
-
         <input type="submit" value="Create" class = "btn btn-outline-success">
     </form>
 </body>
