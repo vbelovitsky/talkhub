@@ -1,5 +1,7 @@
 <div class="flex-box-column">
 
+<button type="button" id="refresh-button" name="{% url 'blogapp:comment_refresh' id=post.id %}" value="{{ post.id }}" class="btn btn-secondary">Refresh</button>
+
 <div class="comments">
     {% if comments.count == 0%}
         No Comment's
@@ -70,7 +72,5 @@
         <input type="submit" value="Submit" class="btn btn-outline-success" disabled>
     {% endif %}
 </form>
-
-<button type="button" id="refresh-button" name="{% url 'blogapp:comment_refresh' id=post.id %}" value="{{ post.id }}" class="btn btn-secondary">Refresh</button>
 
 </div>
