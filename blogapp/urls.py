@@ -21,4 +21,6 @@ urlpatterns = [
     url(r'(?P<id>\d+)/post_delete/$', views.post_delete, name='post_delete'),
     url(r'(?P<id>\d+)/(?P<slug>[\w-]+)/$', views.chat_page, name='chat_page'),
     url(r'post_create/$', views.post_create, name='post_create'),
+
+    url(r'(?P<id>\d+)/comment-delete/(?P<comid>\d+)/$', views.comment_delete, name='comment_delete'),
 ]

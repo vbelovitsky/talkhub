@@ -184,24 +184,23 @@ def post_delete(request, id):
     return redirect('main_page')
 
 
-#@login_required()
-#def comment_delete(request, id):
-#    comment = get_object_or_404(Comment, id=id)
-#    if request.user != comment.author:
-#        raise Http404
-#    comment.delete()
-#
-#    if request.is_ajax():
-#        html = render_to_string('main/comment_section.html', context, request=request)
-#        return JsonResponse({'form': html})
-#
-#
-#@login_required()
-#def reply_delete(request, id):
-#    reply = get_object_or_404(Comment, id=id)
-#    if request.user != reply.author:
-#        raise Http404
-#    reply.delete()
-#
-#    print('rep del')
+@login_required()
+def comment_delete(request, id, comid):
+    comment = get_object_or_404(Comment, id=comid)
+    if request.user != comment.author:
+        raise Http404
+
+    comment.delete()
+    post = Post.objects.get(id=id)
+    comments = Comment.objects.filter(post=post)
+    comment_form = CommentForm()
+
+    context = {'post': post,
+               'comments': comments,
+               'comment_form': comment_form
+               }
+
+    if request.is_ajax():
+        html = render_to_string('main/comment_section.html', context, request=request)
+        return JsonResponse({'form': html})
 

@@ -88,6 +88,46 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
             });
         });
 
+        $(document).on('click', '#comment-delete', function (event) {
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "blogapp:comment_delete" id=post.id comid=comment.id %}',
+                data: {
+                    'id': {{ post.id }},
+                    'comid': {{ comment.id }},
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                dataType: 'json',
+                success: function (response) {
+                    $('#comment-section').html(response['form']);
+                },
+                error: function (rs, e) {
+                    console.log(rs.responseText)
+                },
+            });
+        });
+
+        $(document).on('click', '#reply-delete', function (event) {
+            event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '{% url "blogapp:comment_delete" id=post.id comid=reply.id %}',
+                data: {
+                    'id': {{ post.id }},
+                    'comid': {{ reply.id }},
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                dataType: 'json',
+                success: function (response) {
+                    $('#comment-section').html(response['form']);
+                },
+                error: function (rs, e) {
+                    console.log(rs.responseText)
+                },
+            });
+        });
+
     });
 </script>
 </body>

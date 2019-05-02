@@ -23,11 +23,11 @@
                     class="reply-btn btn btn-outline-dark btn-sm ml-1">
             </button>
         </footer>
-        <!--{% if request.user == comment.user %}-->
-        <!--<a href="" id="comment_delete">-->
-            <!--<input type="submit" value="Delete" id="comment-delete" class="btn btn-danger btn-sm">-->
-        <!--</a>-->
-        <!--{% endif %}-->
+
+        {% if request.user == comment.user %}
+            <input type="button" value="Delete" id="comment-delete" class="btn btn-danger btn-sm ml-1">
+        {% endif %}
+
     </blockquote>
 
     <div class="replied-comments container mt-2">
@@ -36,11 +36,11 @@
             <p class="mb-0">{{ reply.content }}</p>
             <footer class="blockquote-footer">replied by <cite title="Source Title">{{ reply.user|capfirst }}</cite>
             </footer>
-            <!--{% if request.user == comment.user %}-->
-                <!--<a href="" id="reply_delete">-->
-                <!--<input type="submit" value="Delete" id="reply-delete" class="btn btn-danger btn-sm">-->
-                <!--</a>-->
-            <!--{% endif %}-->
+
+            {% if request.user == comment.user %}
+                <input type="button" value="Delete" id="reply-delete" class="btn btn-danger btn-sm ml-1">
+            {% endif %}
+
         </blockquote>
         {% endfor %}
 
