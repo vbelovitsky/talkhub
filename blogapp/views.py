@@ -27,8 +27,8 @@ def main_page(request):
     return render(request, 'main/main_page.html', context)
 
 
-def chat_page(request, id, slug):
-    post = get_object_or_404(Post, id=id, slug=slug)
+def chat_page(request, id):
+    post = get_object_or_404(Post, id=id)
     comments = Comment.objects.filter(post=post, reply=None).order_by('-timestap')
 
     is_liked = False

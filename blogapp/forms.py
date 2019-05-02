@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 
 
 class PostCreateForm(forms.ModelForm):
+    title = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Title'}))
+    body = forms.CharField(label='', widget=forms.Textarea(attrs={'placeholder': 'Body'}))
+
     class Meta:
         model = Post
         fields = (
@@ -13,6 +16,9 @@ class PostCreateForm(forms.ModelForm):
 
 
 class PostEditForm(forms.ModelForm):
+    title = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Title'}))
+    body = forms.CharField(label='', widget=forms.Textarea(attrs={'placeholder': 'Body'}))
+
     class Meta:
         model = Post
         fields = (
@@ -22,13 +28,17 @@ class PostEditForm(forms.ModelForm):
 
 
 class UserLoginForm(forms.Form):
-    username = forms.CharField(label="Username")
-    password = forms.CharField(label="Password", widget=forms.PasswordInput)
+    username = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
 
 
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Enter password here'}))
-    confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirm password'}))
+    username = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+    first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'First name'}))
+    last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'Last name'}))
+    email = forms.EmailField(label='', widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
+    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Enter password here'}))
+    confirm_password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Confirm password'}))
 
     class Meta:
         model = User
@@ -48,6 +58,11 @@ class UserRegistrationForm(forms.ModelForm):
 
 
 class UserEditForm(forms.ModelForm):
+    username = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+    first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'First name'}))
+    last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'Last name'}))
+    email = forms.EmailField(label='', widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
+
     class Meta:
         model = User
         fields = (
