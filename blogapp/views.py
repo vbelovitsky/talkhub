@@ -206,7 +206,7 @@ def comment_delete(request, id, comid):
 
 
 def comment_refresh(request, id):
-    post = Post.objects.get(id=id)
+    post = get_object_or_404(Post, id=id)
     comments = Comment.objects.filter(post=post)
     comment_form = CommentForm()
 
