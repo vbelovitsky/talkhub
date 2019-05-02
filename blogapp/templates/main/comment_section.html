@@ -21,28 +21,32 @@
     <div class="replied-comments container mt-2">
         {% for reply in comment.replies.all %}
         <blockquote class="blockquote">
-            <p class="mb-0">{{ reply.content }}</p>
+            <div class="comment-title">
+                <p class="mb-0">{{ reply.content }}</p>
+                {% if request.user == comment.user %}
+                    <button type="button" id="reply-delete" name="{% url 'blogapp:comment_delete' id=post.id comid=reply.id %}" value="{{ post.id }}/{{ reply.id }}" class="btn btn-danger btn-sm ml-1">del</button>
+                {% endif %}
+            </div>
             <footer class="blockquote-footer">replied by <cite title="Source Title">{{ reply.user|capfirst }}</cite>
             </footer>
 
-            {% if request.user == comment.user %}
-                <button type="button" id="reply-delete" name="{% url 'blogapp:comment_delete' id=post.id comid=reply.id %}" value="{{ post.id }}/{{ reply.id }}" class="btn btn-danger btn-sm ml-1">del</button>
-            {% endif %}
+            
 
         </blockquote>
         {% endfor %}
     </div>
     <blockquote class="blockquote">
-        <p class="mb-0">{{ comment.content }}</p>
+        <div class="comment-title">
+            <p class="mb-0">{{ comment.content }}</p>
+            {% if request.user == comment.user %}
+                <button type="button" id="comment-delete" name="{% url 'blogapp:comment_delete' id=post.id comid=comment.id %}" value="{{ post.id }}/{{ comment.id }}" class="btn btn-danger btn-sm ml-1">del</button>
+            {% endif %}
+        </div>
         <footer class="blockquote-footer">by <cite title="Source Title">{{ comment.user|capfirst }}</cite>
             <button type="button" name="button" value="reply-form{{comment.id}}"
                     class="reply-btn btn btn-outline-dark btn-sm ml-1">
             </button>
         </footer>
-
-        {% if request.user == comment.user %}
-            <button type="button" id="comment-delete" name="{% url 'blogapp:comment_delete' id=post.id comid=comment.id %}" value="{{ post.id }}/{{ comment.id }}" class="btn btn-danger btn-sm ml-1">del</button>
-        {% endif %}
     </blockquote>
 
 
