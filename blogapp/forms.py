@@ -28,9 +28,9 @@ class UserLoginForm(forms.Form):
 
 class UserRegistrationForm(forms.ModelForm):
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'Username'}))
-    first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'Username'}))
-    last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'Username'}))
-    email = forms.EmailField(label='', widget=forms.EmailInput(attrs={'placeholder': 'Username'}))
+    first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'First name'}))
+    last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'Last name'}))
+    email = forms.EmailField(label='', widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
     password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Enter password here'}))
     confirm_password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Confirm password'}))
 
