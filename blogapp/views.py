@@ -204,3 +204,17 @@ def comment_delete(request, id, comid):
         html = render_to_string('main/comment_section.html', context, request=request)
         return JsonResponse({'form': html})
 
+
+def comment_refresh(request, id):
+    post = Post.objects.get(id=id)
+    comments = Comment.objects.filter(post=post)
+    comment_form = CommentForm()
+
+    context = {'post': post,
+               'comments': comments,
+               'comment_form': comment_form
+               }
+
+    if request.is_ajax():
+        html = render_to_string('main/comment_section.html', context, request=request)
+        return JsonResponse({'form': html})

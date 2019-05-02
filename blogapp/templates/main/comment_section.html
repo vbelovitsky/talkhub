@@ -71,4 +71,6 @@
     {% endif %}
 </form>
 
+<button type="button" id="refresh-button" name="{% url 'blogapp:comment_refresh' id=post.id %}" value="{{ post.id }}" class="btn btn-secondary">Refresh</button>
+
 </div>
