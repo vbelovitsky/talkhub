@@ -12,6 +12,7 @@
     {{ form.as_p }}
 
     <input type="submit" value="Login" class="btn btn-outline-success"><br>
+    <p>{{ error }}</p>
     <small>
         <a href="{% url 'register' %}">Doesn't have an account?</a><br>
         <a href="{% url 'password_reset' %}">Forgotten your password?</a>

@@ -112,7 +112,11 @@ def user_login(request):
                 else:
                     return HttpResponse('User is not active')
             else:
-                return HttpResponse('User is None')
+                context = {
+                    'form': form,
+                    'error': 'User with this login is not exist, or password is incorrect.'
+                }
+                return render(request, 'main/login.html', context)
     else:
         form = UserLoginForm()
 
