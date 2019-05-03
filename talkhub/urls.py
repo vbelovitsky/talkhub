@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.contrib.auth.views import PasswordResetView
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.conf.urls import url, include
 from blogapp import views
 
@@ -31,8 +31,8 @@ urlpatterns = [
     url(r'^comment-delete/(?P<id>\d+)/(?P<comid>\d+)/$', views.comment_delete, name='comment_delete'),
 
     url(r'^password-reset/$', PasswordResetView.as_view(template_name='registration/password_reset_form.html'), name='password_reset'),
-    url(r'^password-reset/done/$', PasswordResetView.as_view(template_name='registration/password_reset_done.html'), name='password_reset_done'),
-    url(r'^password-reset/confirm/(?P<uid64>[\w-]+)/(?P<token>[\w-]+)/$', PasswordResetView.as_view(template_name='registration/password_reset_confirm.html'), name='password_reset_confirm'),
-    url(r'^password-reset/complete/$', PasswordResetView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
+    url(r'^password-reset/done/$', PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html'), name='password_reset_done'),
+    url(r'^password-reset/confirm/(?P<uid64>[\w-]+)/(?P<token>[\w-]+)/$', PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'), name='password_reset_confirm'),
+    url(r'^password-reset/complete/$', PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
 
 ]
