@@ -131,10 +131,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
 EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = 465
+EMAIL_PORT = 587
 EMAIL_HOST_USER = "talkhub@yandex.ru"
 EMAIL_HOST_PASSWORD = "talk321hub"
-EMAIL_USE_SSL = True
+EMAIL_USE_TLS = True
 
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
