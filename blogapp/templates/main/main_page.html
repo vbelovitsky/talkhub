@@ -40,12 +40,8 @@
         {% endfor %}
     </div>
 
-    <div class="tag-category">
-    {% for tag in tags %}
-        <form action="{% url "main_page" %}">
-            <button type="submit" value="{{ tag }}" name="searchtag">{{ tag }}</button>
-        </form>
-    {% endfor %}
+    <div class="tag-section">
+        {% include 'main/tag_section.html' %}
     </div>
 
 </body>

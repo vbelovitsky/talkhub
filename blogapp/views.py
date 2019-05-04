@@ -12,8 +12,9 @@ from django.template.loader import render_to_string
 
 def main_page(request):
     posts = Post.objects.all()
-    query = request.GET.get('q')
     tags = Tag.objects.all()
+
+    query = request.GET.get('q')
     if query:
         posts = Post.objects.filter(
             Q(title__icontains=query) |
@@ -25,10 +26,18 @@ def main_page(request):
     if tag:
         posts = Post.objects.filter(tag__tag_name=tag)
 
+    qtag = request.GET.get('qtag')
+    if qtag:
+        tags = Tag.objects.filter(tag_name__icontains=qtag)
+    
     context = {'posts': posts,
                'query': query,
                'tags': tags,
                'searchtag': tag}
+
+    if request.is_ajax():
+        html = render_to_string('main/tag_section.html', context, request=request)
+        return JsonResponse({'form': html})
 
     return render(request, 'main/main_page.html', context)
 

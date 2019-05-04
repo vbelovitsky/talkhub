@@ -61,7 +61,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
                     $('.textinputclass').val('');
                 },
                 error: function (rs, e) {
-                    console.log(rs, responseText);
+                    console.log(rs.responseText);
                 },
             });
         });
@@ -139,6 +139,25 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
                 },
                 error: function (rs, e) {
                     console.log(rs.responseText)
+                },
+            });
+        });
+
+        $(document).on('submit', '.tag-search-form', function (event) {
+            event.preventDefault();
+            qtag = $('#qtag').val();
+            $.ajax({
+                type: 'GET',
+                url: $(this).attr('action'),
+                data: {
+                    'qtag': qtag
+                },
+                dataType: 'json',
+                success: function (response) {
+                    $('.tag-section').html(response['form']);
+                },
+                error: function (rs, e) {
+                    console.log(rs.responseText);
                 },
             });
         });
