@@ -14,7 +14,7 @@
                 <div class="left-nav iframe_chat"><iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true"
                         width="400px" height="280px" scrolling="auto" allow="microphone; camera"></iframe></div>
                 <div id="like-section">
-                    {% include 'main/like_section.html' %}
+                    {% include 'sections/like_section.html' %}
                 </div>
                 <div style="margin-left: 1.8vw;">
                     <h1 class="display-3"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h1>
@@ -40,7 +40,7 @@
                 <div class="flex-box-column">
 
                 <div class="main-comment-section">
-                    {% include 'main/comment_section.html' %}
+                    {% include 'sections/comment_section.html' %}
                 </div>
                 </div>
         </div>

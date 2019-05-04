@@ -28,6 +28,7 @@
             {% for tag in post.tag.all %}
                 #{{ tag }}
             {% endfor %}
+            {{ post.likes.count }} Likes {{ post.likes.count |pluralize }}
             <p><small>{{ post.created }}</small></p>
             <p class="lead">
                 <a class="btn btn-primary btn-lg" href="{{post.get_absolute_url}}" role="button">Learn more</a>
@@ -41,7 +42,7 @@
     </div>
 
     <div class="tag-section">
-        {% include 'main/tag_section.html' %}
+        {% include 'sections/tag_section.html' %}
     </div>
 
 </body>

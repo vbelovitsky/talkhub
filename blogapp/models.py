@@ -24,9 +24,6 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blogapp:chat_page', args=[self.id])
 
-    def total_likes(self):
-        return self.likes.count()
-
     class Meta:
         ordering = ['-created']
 

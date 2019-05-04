@@ -11,7 +11,7 @@
     {% for comment in comments %}
     <div class="replied-comments container mt-2">
         <div class="form-group row" id="reply-form{{comment.id}}" style="display: none">
-            <form method="POST" class="reply-form" action=".">
+            <form method="POST" class="reply-form" action="../main">
                 {% csrf_token %}
                 <input type="hidden" name="comment_id" value="{{comment.id}}">
                 {{ comment_form.as_p }}
@@ -51,7 +51,7 @@
     {% endfor %}
 </div>
 
-<form method="POST" class="comment-form" action=".">
+<form method="POST" class="comment-form" action="../main">
     {% csrf_token %}
     {{ comment_form.as_p}}
     {% if request.user.is_authenticated %}
