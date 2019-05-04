@@ -19,9 +19,6 @@
         </div>
     {% endif %}
     <div class="main-body">
-        <div class="flex-box-column jumbotron">
-            {% include 'main/tag_section.html' %}
-        </div>
         <div class="container-fluid">
             {% for post in posts %}
             <div class="jumbotron">
@@ -42,6 +39,9 @@
                     <strong>Sorry!</strong> No post found
                 </div>
             {% endfor %}
+        </div>
+        <div class="tag-section jumbotron">
+            {% include 'main/tag_section.html' %}
         </div>
     </div>
 </body>

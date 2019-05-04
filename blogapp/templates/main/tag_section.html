@@ -2,7 +2,7 @@
             <input type="search" placeholder="Search tag" aria-label="Search" id="qtag">
             <button class="btn btn-outline-success" type="submit">Search</button>
 </form>
-<div class="tag-category">
+<div class="tag-category flex-box-column">
     {% for tag in tags %}
         <form action="{% url "main_page" %}">
             <button type="submit" value="{{ tag }}" name="searchtag" class="btn btn-primary">{{ tag }}</button>
