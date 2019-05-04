@@ -52,6 +52,9 @@ urlpatterns = [
          ),
          name='password_reset_complete'),
 
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
+
+
     # url(r'^password-reset/$', PasswordResetView.as_view(template_name='registration/password_reset_form.html'), name='password_reset'),
     # url(r'^password-reset/done/$', PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html'), name='password_reset_done'),
     # url(r'^password-reset/confirm/(?P<uid64>[\w-]+)/(?P<token>[\w-]+)/$', PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'), name='password_reset_confirm'),
