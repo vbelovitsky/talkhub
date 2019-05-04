@@ -84,8 +84,7 @@ def like_post(request):
         post.likes.add(request.user)
         is_liked = True
     context = {'post': post,
-               'is_liked': is_liked,
-               'total_likes': post.total_likes()}
+               'is_liked': is_liked,}
     if request.is_ajax():
         html = render_to_string('main/like_section.html', context, request=request)
         return JsonResponse({'form': html})
