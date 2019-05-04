@@ -10,6 +10,9 @@
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Create" class = "btn btn-outline-success">
+        {% for tag in tags %}
+           <input type="checkbox" name="tags" value="{{tag.id}}">{{tag.tag_name}}<br/>
+        {% endfor %}
     </form>
 </body>
 </html>
