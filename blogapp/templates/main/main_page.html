@@ -18,32 +18,29 @@
             <p>You are searching for: {{ searchtag }}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a>
         </div>
     {% endif %}
-
-    <div class="container-fluid">
-        {% for post in posts %}
-        <div class="jumbotron">
-            <h1 class="display-3"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h1>
-            <hr class="m-y-2">
-            <p>Author: {{ post.author }}</p>
-            {% for tag in post.tag.all %}
-                #{{ tag }}
-            {% endfor %}
-            {{ post.likes.count }} Likes
-            <p><small>{{ post.created }}</small></p>
-            <p class="lead">
-                <a class="btn btn-primary btn-lg" href="{{post.get_absolute_url}}" role="button">Learn more</a>
-            </p>
+        <div class="tag-section jumbotron">
+            {% include 'main/tag_section.html' %}
         </div>
-        {% empty %}
-            <div class="alert alert-danger" role="alert">
-                <strong>Sorry!</strong> No post found
+        <div class="container-fluid">
+            {% for post in posts %}
+            <div class="jumbotron">
+                <h1 class="display-3"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h1>
+                <hr class="m-y-2">
+                <p>Author: {{ post.author }}</p>
+                {% for tag in post.tag.all %}
+                    #{{ tag }}
+                {% endfor %}
+                {{ post.likes.count }} Likes
+                <p><small>{{ post.created }}</small></p>
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="{{post.get_absolute_url}}" role="button">Learn more</a>
+                </p>
             </div>
-        {% endfor %}
-    </div>
-
-    <div class="tag-section">
-        {% include 'main/tag_section.html' %}
-    </div>
-
+            {% empty %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Sorry!</strong> No post found
+                </div>
+            {% endfor %}
+        </div>
 </body>
 </html>
