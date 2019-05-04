@@ -36,7 +36,7 @@ def main_page(request):
                'searchtag': tag}
 
     if request.is_ajax():
-        html = render_to_string('sections/tag_section.html', context, request=request)
+        html = render_to_string('main/tag_section.html', context, request=request)
         return JsonResponse({'form': html})
 
     return render(request, 'main/main_page.html', context)
@@ -69,7 +69,7 @@ def chat_page(request, id):
                'comment_form': comment_form
                }
     if request.is_ajax():
-        html = render_to_string('sections/comment_section.html', context, request=request)
+        html = render_to_string('main/comment_section.html', context, request=request)
         return JsonResponse({'form': html})
     return render(request, 'main/chat_page.html', context)
 
@@ -87,7 +87,7 @@ def like_post(request):
                'is_liked': is_liked,
                'total_likes': post.total_likes()}
     if request.is_ajax():
-        html = render_to_string('sections/like_section.html', context, request=request)
+        html = render_to_string('main/like_section.html', context, request=request)
         return JsonResponse({'form': html})
 
 
@@ -219,7 +219,7 @@ def comment_delete(request, id, comid):
                }
 
     if request.is_ajax():
-        html = render_to_string('sections/comment_section.html', context, request=request)
+        html = render_to_string('main/comment_section.html', context, request=request)
         return JsonResponse({'form': html})
 
 
@@ -234,5 +234,5 @@ def comment_refresh(request, id):
                }
 
     if request.is_ajax():
-        html = render_to_string('sections/comment_section.html', context, request=request)
+        html = render_to_string('main/comment_section.html', context, request=request)
         return JsonResponse({'form': html})
