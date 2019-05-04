@@ -155,6 +155,7 @@ SOCIAL_AUTH_GITHUB_SECRET = '7c3d446300df1369dc6b1e153e4b07573f607167'
 
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.linkedin.LinkedinOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
