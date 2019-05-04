@@ -18,14 +18,14 @@
         <button type="button" name="button" class="btn btn-primary">Github</button>
     </a>
 
-    <a href="{% url 'social:begin' 'linkedin-oauth2' %}">
+    <a href="{% url 'social:begin' 'linkedin' %}">
         <button type="button" name="button" class="btn btn-primary">Linkedin</button>
     </a>
 
-    <a href="{% url 'social:begin' 'facebook-oauth2' %}">
+    <a href="{% url 'social:begin' 'facebook' %}">
         <button type="button" name="button" class="btn btn-primary">Facebook</button>
     </a>
-
+    <br>
     <small>
         <a href="{% url 'register' %}">Don't have an account?</a><br>
         <a href="{% url 'password_reset' %}">Forgotten your password?</a>
