@@ -132,6 +132,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+                os.path.join(BASE_DIR, "static"),
+]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -159,17 +162,6 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '7e50daf7964f1be08a9c5708211c7674'
 
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
-AUTHENTICATION_BACKENDS = [
-    'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.linkedin.LinkedinOAuth2',
-    'social_core.backends.facebook.FacebookOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-
-    'social_auth.backends.contrib.yandex.YandexOAuth2Backend',
-    'social_auth.backends.contrib.vkontakte.VKOAuth2Backend',
-]
-
 YANDEX_OAUTH2_CLIENT_KEY = '8ba891f2113345ffbf19a4c069bd42d2'
 YANDEX_OAUTH2_CLIENT_SECRET = '00c164b261d14668b6d6dd58c0670a4e'
 
@@ -179,6 +171,18 @@ YANDEX_OAUTH2_API_URL = 'https://api-yaru.yandex.ru/me/'
 
 VK_APP_ID = '6971869'
 VK_API_SECRET = 'Kn4bB7aJSm1Ac3SVimc5'
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'social_auth.backends.contrib.yandex.YandexOAuth2Backend',
+    'social_auth.backends.contrib.vkontakte.VKOAuth2Backend',
+
+    'django.contrib.auth.backends.ModelBackend',
+]
 
 
 import dj_database_url
