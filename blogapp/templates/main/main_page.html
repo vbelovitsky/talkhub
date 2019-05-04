@@ -27,7 +27,7 @@
             <p>Author: {{ post.author }}</p>
             {% for tag in post.tag.all %}
                 #{{ tag }}
-            {% endfor %}
+            {% endfor %}<br>
             {{ post.likes.count }} Likes
             <p><small>{{ post.created }}</small></p>
             <p class="lead">
