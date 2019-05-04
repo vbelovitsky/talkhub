@@ -21,9 +21,9 @@ def main_page(request):
             Q(body__icontains=query)
         )
 
-    tag = request.GET.get('tag')
+    tag = request.GET.get('searchtag')
     if tag:
-        posts = Post.objects.filter(tag=tag)
+        posts = Post.objects.filter(tag__tag_name=tag)
 
     context = {'posts': posts,
                'query': query,

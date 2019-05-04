@@ -26,7 +26,7 @@
             <hr class="m-y-2">
             <p>Author: {{ post.author }}</p>
             {% for tag in post.tag.all %}
-                #{{ tag.tag_name }}
+                #{{ tag }}
             {% endfor %}
             <p><small>{{ post.created }}</small></p>
             <p class="lead">
@@ -43,7 +43,7 @@
     <div class="tag-category">
     {% for tag in tags %}
         <form action="{% url "main_page" %}">
-            <button type="submit" value="{{ tag.id }}" id="tag">{{ tag.tag_name }}</button>
+            <button type="submit" value="{{ tag }}" name="searchtag">{{ tag }}</button>
         </form>
     {% endfor %}
     </div>
