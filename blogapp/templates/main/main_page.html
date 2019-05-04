@@ -18,8 +18,8 @@
             <h1 class="display-3"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h1>
             <hr class="m-y-2">
             <p>Author: {{ post.author }}</p>
-            {% for tag in post.tags %}
-                #{{ tag }}
+            {% for tag in post.tag.all %}
+                #{{ tag.tag_name }}
             {% endfor %}
             <p><small>{{ post.created }}</small></p>
             <p class="lead">
@@ -33,7 +33,7 @@
         {% endfor %}
     </div>
     {% for tag in tags %}
-        <p>{{ tag }}</p>
+        <p>{{ tag.tag_name }}</p>
     {% endfor %}
 </body>
 </html>
