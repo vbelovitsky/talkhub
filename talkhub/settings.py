@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blogapp',
     'social_django',
-    'social_auth',
+    #'social_auth',
 ]
 
 MIDDLEWARE = [
@@ -132,9 +132,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [
-                os.path.join(BASE_DIR, "static"),
-]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -178,8 +175,8 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.linkedin.LinkedinOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
 
-    'social_auth.backends.contrib.yandex.YandexOAuth2Backend',
-    'social_auth.backends.contrib.vkontakte.VKOAuth2Backend',
+    #'social_auth.backends.contrib.yandex.YandexOAuth2Backend',
+    #'social_auth.backends.contrib.vkontakte.VKOAuth2Backend',
 
     'django.contrib.auth.backends.ModelBackend',
 ]
@@ -189,4 +186,4 @@ import dj_database_url
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+

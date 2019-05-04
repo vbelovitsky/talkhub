@@ -53,7 +53,7 @@ urlpatterns = [
          name='password_reset_complete'),
 
     url(r'^oauth/', include('social_django.urls', namespace='social')),
-    url(r'^social/', include('social_auth.urls')),
+    #url(r'^social/', include('social_auth.urls')),
 
 
     # url(r'^password-reset/$', PasswordResetView.as_view(template_name='registration/password_reset_form.html'), name='password_reset'),
