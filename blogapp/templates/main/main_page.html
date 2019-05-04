@@ -18,9 +18,7 @@
             <p>You are searching for: {{ searchtag }}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a>
         </div>
     {% endif %}
-        <div class="tag-section jumbotron">
-            {% include 'main/tag_section.html' %}
-        </div>
+    <div class="main-body">
         <div class="container-fluid">
             {% for post in posts %}
             <div class="jumbotron">
@@ -42,5 +40,9 @@
                 </div>
             {% endfor %}
         </div>
+        <div class="tag-section jumbotron">
+            {% include 'main/tag_section.html' %}
+        </div>
+    </div>
 </body>
 </html>
