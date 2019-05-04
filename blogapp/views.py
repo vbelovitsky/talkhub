@@ -204,7 +204,7 @@ def post_delete(request, id):
 @login_required()
 def comment_delete(request, id, comid):
     comment = get_object_or_404(Comment, id=comid)
-    if request.user != comment.user:
+    if request.user != comment.user or not request.user.is_staff:
         raise Http404
 
     comment.delete()
