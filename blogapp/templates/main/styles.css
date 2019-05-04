@@ -115,4 +115,5 @@ body a:hover{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-right: 1vw;
 }
