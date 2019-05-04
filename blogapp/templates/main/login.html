@@ -29,6 +29,15 @@
     <a href="{% url 'social:begin' 'facebook' %}">
         <button type="button" name="button" class="btn btn-primary">Facebook</button>
     </a>
+
+    <a href="{% url 'socialauth_begin' 'yandex-oauth2' %}">>
+        <button type="button" name="button" class="btn btn-primary">Yandex</button>
+    </a>
+
+    <a href="{% url 'socialauth_begin' 'vkontakte-oauth2' %}">
+        <button type="button" name="button" class="btn btn-primary">Vkontakte</button>
+    </a>
+
     <br>
     <small>
         <a href="{% url 'register' %}">Don't have an account?</a><br>

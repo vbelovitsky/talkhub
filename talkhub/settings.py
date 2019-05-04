@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blogapp',
     'social_django',
+    'social_auth',
 ]
 
 MIDDLEWARE = [
@@ -164,7 +165,20 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.linkedin.LinkedinOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+
+    'social_auth.backends.contrib.yandex.YandexOAuth2Backend',
+    'social_auth.backends.contrib.vkontakte.VKOAuth2Backend',
 ]
+
+YANDEX_OAUTH2_CLIENT_KEY = '8ba891f2113345ffbf19a4c069bd42d2'
+YANDEX_OAUTH2_CLIENT_SECRET = '00c164b261d14668b6d6dd58c0670a4e'
+
+YANDEX_APP_ID = YANDEX_OAUTH2_CLIENT_KEY
+YANDEX_API_SECRET = YANDEX_OAUTH2_CLIENT_SECRET
+YANDEX_OAUTH2_API_URL = 'https://api-yaru.yandex.ru/me/'
+
+VK_APP_ID = '6971869'
+VK_API_SECRET = 'Kn4bB7aJSm1Ac3SVimc5'
 
 
 import dj_database_url
