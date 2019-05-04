@@ -21,9 +21,19 @@ def main_page(request):
             Q(body__icontains=query)
         )
 
+    tag = request.POST.get('tagid')
+
+    if tag:
+        posts = Post.objects.filter(tag=tag)
+
     context = {'posts': posts,
                'query': query,
                'tags': tags}
+
+    if request.is_ajax():
+        html = render_to_string('main/main_page.html', context, request=request)
+        return JsonResponse({'form': html})
+
     return render(request, 'main/main_page.html', context)
 
 
@@ -162,7 +172,7 @@ def edit_profile(request):
     return render(request, 'main/edit_profile.html', context)
 
 
-@login_required
+@login_required()
 def post_edit(request, id):
     post = get_object_or_404(Post, id=id)
     if request.user != post.author:

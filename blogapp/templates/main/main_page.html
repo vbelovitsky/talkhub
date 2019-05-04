@@ -12,7 +12,7 @@
         <p>You are searching for: {{query}}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a>
     </div>
     {% endif %}
-    <div class="container-fluid">
+    <div class="posts container-fluid">
         {% for post in posts %}
         <div class="jumbotron">
             <h1 class="display-3"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h1>
@@ -32,8 +32,11 @@
             </div>
         {% endfor %}
     </div>
+    <div class="tag-category">
     {% for tag in tags %}
-        <p>{{ tag.tag_name }}</p>
+        <button value="{{ tag.id }}" id="tag" name="{% url 'main_page' %}">{{ tag.tag_name }}</button>
     {% endfor %}
+    </div>
+
 </body>
 </html>

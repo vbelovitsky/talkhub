@@ -90,15 +90,10 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 
         $(document).on('click', '#comment-delete', function (event) {
             event.preventDefault();
-            var arr = $(this).attr('value').split('/');
-            var id = arr[0];
-            var comid = arr[1];
             $.ajax({
                 type: 'POST',
                 url: $(this).attr('name'),
                 data: {
-                    'id': id,
-                    'comid': comid,
                     'csrfmiddlewaretoken': '{{csrf_token}}'
                 },
                 dataType: 'json',
@@ -113,15 +108,10 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 
         $(document).on('click', '#reply-delete', function (event) {
             event.preventDefault();
-            var arr = $(this).attr('value').split('/');
-            var id = arr[0];
-            var comid = arr[1];
             $.ajax({
                 type: 'POST',
                 url: $(this).attr('name'),
                 data: {
-                    'id': id,
-                    'comid': comid,
                     'csrfmiddlewaretoken': '{{csrf_token}}'
                 },
                 dataType: 'json',
@@ -146,6 +136,25 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
                 dataType: 'json',
                 success: function (response) {
                     $('.main-comment-section').html(response['form']);
+                },
+                error: function (rs, e) {
+                    console.log(rs.responseText)
+                },
+            });
+        });
+
+        $(document).on('click', '#tag', function (event) {
+            event.preventDefault();
+            var id = $(this).attr('value');
+            $.ajax({
+                type: 'GET',
+                url: $(this).attr('name'),
+                data: {
+                    'tagid': id,
+                },
+                dataType: 'json',
+                success: function (response) {
+                    $('.posts').html(response['form']);
                 },
                 error: function (rs, e) {
                     console.log(rs.responseText)
