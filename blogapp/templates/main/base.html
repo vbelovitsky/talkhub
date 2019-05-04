@@ -143,25 +143,6 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
             });
         });
 
-        $(document).on('click', '#tag', function (event) {
-            event.preventDefault();
-            var id = $(this).attr('value');
-            $.ajax({
-                type: 'GET',
-                url: $(this).attr('name'),
-                data: {
-                    'tagid': id,
-                },
-                dataType: 'json',
-                success: function (response) {
-                    $('.posts').html(response['form']);
-                },
-                error: function (rs, e) {
-                    console.log(rs.responseText)
-                },
-            });
-        });
-
 
     });
 </script>

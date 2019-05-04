@@ -16,23 +16,19 @@ def main_page(request):
     tags = Tag.objects.all()
     if query:
         posts = Post.objects.filter(
-            Q(title__icontains=query)|
-            Q(author__username__icontains=query)|
+            Q(title__icontains=query) |
+            Q(author__username__icontains=query) |
             Q(body__icontains=query)
         )
 
-    tag = request.POST.get('tagid')
-
+    tag = request.GET.get('tag')
     if tag:
         posts = Post.objects.filter(tag=tag)
 
     context = {'posts': posts,
                'query': query,
-               'tags': tags}
-
-    if request.is_ajax():
-        html = render_to_string('main/main_page.html', context, request=request)
-        return JsonResponse({'form': html})
+               'tags': tags,
+               'searchtag': tag}
 
     return render(request, 'main/main_page.html', context)
 
