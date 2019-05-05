@@ -1,6 +1,7 @@
 <div class="flex-box-column">
 
-<button type="button" id="refresh-button" name="{% url 'blogapp:comment_refresh' id=post.id %}" value="{{ post.id }}" class="btn btn-secondary">Refresh</button>
+<button type="button" id="refresh-button" name="{% url 'blogapp:comment_refresh' id=post.id %}"
+        value="{{ post.id }}" class="btn btn-secondary" style="width: 40vw;">Refresh</button>
 
 <div class="comments">
     {% if comments.count == 0%}
