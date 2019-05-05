@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import importlib
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -43,8 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blogapp',
-    # 'social_django',
-    'social_auth',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -74,8 +72,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                # 'social_django.context_processors.backends',
-                # 'social_django.context_processors.login_redirect',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -171,16 +169,10 @@ VK_APP_ID = '6971869'
 VK_API_SECRET = 'Kn4bB7aJSm1Ac3SVimc5'
 
 AUTHENTICATION_BACKENDS = [
-    # 'social_core.backends.github.GithubOAuth2',
-    # 'social_core.backends.google.GoogleOAuth2',
-    # 'social_core.backends.linkedin.LinkedinOAuth2',
-    # 'social_core.backends.facebook.FacebookOAuth2',
-
-    'social_auth.backends.contrib.github.GithubBackend',
-    'social_auth.backends.contrib.vkontakte.VKOAuth2Backend',
-    'social_auth.backends.facebook.FacebookBackend',
-    'social_auth.backends.google.GoogleOAuth2Backend',
-    'social_auth.backends.contrib.yandex.YandexOAuth2Backend',
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
 
     'django.contrib.auth.backends.ModelBackend',
 ]
