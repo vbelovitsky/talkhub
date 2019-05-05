@@ -10,11 +10,11 @@
 <body>
     <div class="jumbotron chat_jumb" style="margin-bottom: 0;">
         <div style="text-align: left; display: flex; flex-direction: row-reverse; justify-content: space-between; align-items: center; margin-left: 6.8vw;">
-            <div style="width: 12vw;">
+            <div style="width: 10vw; margin-right: 1.5vw;">
                 <p>Author: {{ post.author }}</p>
                 <p><small>{{ post.created }}</small></p>
             </div>
-            <div style="width: 75vw;"><h1 class="display-3"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h1></div>
+            <div style="width: 70vw;"><h1 class="display-3"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h1></div>
         </div>
         <div class="flex-box" style="justify-content: space-between;">
             <div class="flex-box-column" style="justify-content: flex-start;">
