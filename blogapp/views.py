@@ -144,6 +144,7 @@ def user_logout(request):
     return redirect('main_page')
 
 
+
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST or None)
@@ -174,6 +175,15 @@ def edit_profile(request):
     }
     return render(request, 'main/edit_profile.html', context)
 
+@login_required
+def profile(request, id):
+    user = User.objects.get(id=id)
+    posts_count = Post.objects.filter(author=user).count()
+    context = {
+        'posts_count': posts_count,
+        'user': user,
+    }
+    return render(request, 'main/profile.html', context)
 
 @login_required()
 def post_edit(request, id):

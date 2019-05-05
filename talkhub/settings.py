@@ -25,12 +25,8 @@ SECRET_KEY = 'wm=7wki2$see5%1jq4()=51e0=o)-0m511^-6%!n_xbq_556!r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'talkhub2.herokuapp.com',
-    'talkhub.herokuapp.com',
-]
+ALLOWED_HOSTS = []
 
-SECURE_SSL_REDIRECT = True
 
 # Application definition
 
@@ -53,7 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+     #'whitenoise.middleware.WhiteNoiseMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
@@ -156,7 +152,7 @@ SOCIAL_AUTH_GITHUB_SECRET = '7c3d446300df1369dc6b1e153e4b07573f607167'
 SOCIAL_AUTH_FACEBOOK_KEY = '434046574022186'
 SOCIAL_AUTH_FACEBOOK_SECRET = '7e50daf7964f1be08a9c5708211c7674'
 
-SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+#SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 YANDEX_OAUTH2_CLIENT_KEY = '8ba891f2113345ffbf19a4c069bd42d2'
 YANDEX_OAUTH2_CLIENT_SECRET = '00c164b261d14668b6d6dd58c0670a4e'
@@ -179,8 +175,8 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-import dj_database_url
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
+#import dj_database_url
+#db_from_env = dj_database_url.config()
+#DATABASES['default'].update(db_from_env)
 
 
