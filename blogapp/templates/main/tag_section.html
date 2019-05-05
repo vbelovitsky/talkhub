@@ -1,12 +1,12 @@
 <div  class="flex-box-column">
     <form class="tag-search-form" action="{% url 'main_page' %}">
-                <input type="search" placeholder="Search tag" aria-label="Search" id="qtag">
-                <button class="btn btn-primary" type="submit" style="width: 100%;">Search</button>
+                <input type="search" placeholder="Search tag" aria-label="Search" id="qtag" class="form-control mr-sm-2">
+                <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: 1.5vh;">Search</button>
     </form>
     <div class="tag-category">
         {% for tag in tags %}
             <form action="{% url "main_page" %}">
-                <button type="submit" value="{{ tag }}" name="searchtag" class="btn btn-info">{{ tag }}</button>
+                <button type="submit" value="{{ tag }}" name="searchtag" class="btn btn-info tag-btn">{{ tag }}</button>
             </form>
         {% endfor %}
     </div>
