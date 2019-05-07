@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 body{
     margin: 0;
-    font-family: 'Source+Sans+Pro';
+    font-family: 'Roboto+Slab';
     background-image: url("https://coolbackgrounds.io/images/backgrounds/index/sea-edge-79ab30e2.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -22,7 +22,7 @@ body a:hover{
     width: 100%;
     background: white;
     height: 9vh;
-    padding: 0.2%;
+    padding: 1vmax;
     margin-bottom: 4vh;
 }
 .navigation a{
