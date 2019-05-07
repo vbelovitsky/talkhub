@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 body{
     margin: 0;
-    font-family: Merriweather;
+    font-family: 'Source+Sans+Pro';
     background-image: url("https://coolbackgrounds.io/images/backgrounds/index/sea-edge-79ab30e2.png");
     background-repeat: no-repeat;
     background-size: cover;
