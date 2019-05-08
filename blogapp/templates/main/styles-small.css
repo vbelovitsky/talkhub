@@ -126,7 +126,6 @@ body a:hover{
     flex-direction: column-reverse;
     justify-content: space-between; 
     align-items: center;
-    margin-left: 6.8vw;
 }
 .chat-page-title-date{
     display: flex;
