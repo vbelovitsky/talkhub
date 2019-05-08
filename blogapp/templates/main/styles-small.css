@@ -50,7 +50,7 @@ body a:hover{
 }
 .flex-box{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     margin-left: 5vw;
     margin-right: 5vw;
