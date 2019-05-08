@@ -136,7 +136,5 @@ body a:hover{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-left: 5vw;
-    margin-right: 5vw;
-    margin-bottom: 3vh;
+    align-items: center;
 }
