@@ -131,3 +131,15 @@ body a:hover{
     align-items: center;
     margin-left: 6.8vw;
 }
+.chat-page-title-date{
+    display: flex;
+    justify-content: space-around;
+}
+.flex-box-likes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-bottom: 3vh;
+}
