@@ -74,8 +74,8 @@ body a:hover{
 .comments{
     margin-top: 2vh;
     overflow-y: scroll;
-    height: 60vh;
-    width: 40vw;
+    height: 30vh;
+    width: 100%;
     padding: 1%;
     display: flex;
     flex-direction: column-reverse;
@@ -122,4 +122,12 @@ body a:hover{
 }
 .login-registration-form{
 
+}
+.chat-page-title{
+    text-align: left; 
+    display: flex; 
+    flex-direction: column-reverse;
+    justify-content: space-between; 
+    align-items: center;
+    margin-left: 6.8vw;
 }

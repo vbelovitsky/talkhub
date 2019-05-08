@@ -129,3 +129,11 @@ body a:hover{
 .login-registration-form{
 
 }
+.chat-page-title{
+    text-align: left; 
+    display: flex; 
+    flex-direction: row-reverse;
+     justify-content: space-between; 
+     align-items: center;
+      margin-left: 6.8vw;
+}
