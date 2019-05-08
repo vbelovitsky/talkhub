@@ -54,7 +54,7 @@ body a:hover{
 .flex-box-likes{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 .iframe_chat{
@@ -76,7 +76,7 @@ body a:hover{
     margin-top: 2vh;
     overflow-y: scroll;
     height: 60vh;
-    width: 40vw;
+    width: 100%;
     padding: 1%;
     display: flex;
     flex-direction: column-reverse;
