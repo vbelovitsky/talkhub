@@ -112,12 +112,6 @@ body a:hover{
 .mb-0{
     margin-right: 0.3vw;
 }
-.main-body{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-right: 1vw;
-}
 .tag-btn{
     margin-top: 1.5vh;
     text-align: center;
