@@ -23,7 +23,7 @@ body a:hover{
     background: white;
     height: 9vh;
     padding: 1vmax;
-    margin-bottom: 4vh;
+    margin-bottom: 2vh;
 }
 .navigation a{
     transition: 0.7s;
