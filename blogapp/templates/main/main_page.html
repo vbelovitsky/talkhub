@@ -26,7 +26,7 @@
                 <hr class="m-y-2">
                 <p>Author: {{ post.author }}</p>
                 <p>{% for tag in post.tag.all %}
-                    <span class="tag tag-info">#{{ tag }}</span>
+                    <span class="badge badge-success">#{{ tag }}</span>
                 {% endfor %}</p>
                 <p>{{ post.likes.count }} Likes</p>
                 <p><small>{{ post.created }}</small></p>
