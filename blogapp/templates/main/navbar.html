@@ -44,7 +44,9 @@
         Logo.style.color = 'white';
         navigation.style.background = '#333';
       }
-      elements = getElementsByClassName("jumbotron")
+
+      var tableElem = document.getElementById('mainbody')
+      var elements = tableElem.getElementsByClassName("jumbotron")
           for (var i = 0; i < elements.length; i++) {
             var el = elements[i];
               if (Logo.style.color == 'white'){
