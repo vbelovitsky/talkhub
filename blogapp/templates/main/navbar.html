@@ -36,7 +36,8 @@
 <script>
     function ToggleTheme() {
       var Toggled = localStorage.getItem('Toggled');
-      searchbtn.classList.toggle("btn-outline-success","btn-outline-light")
+      searchbtn.classList.toggle('btn-outline-success')
+      searchbtn.classList.toggle('btn-outline-light')
       if (Toggled == '1'){
         Logo.style.color = 'black';
         navigation.style.background = 'white'
@@ -55,7 +56,7 @@
                 el.style.color = 'white';
               }
               else{
-                el.style.background = 'white';
+                el.style.background = '#e9ecef';
                 el.style.color = 'black';
               }
           } 
@@ -71,5 +72,8 @@
           }
       Toggled = -Toggled
       localStorage.setItem('Toggled', Toggled)
+    }
+    if (localStorage.getItem('Toggled') == '-1'){
+      ToggleTheme();
     }
 </script>
