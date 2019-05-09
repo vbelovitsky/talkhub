@@ -78,7 +78,7 @@ class CommentForm(forms.ModelForm):
                               label="",
                               widget=forms.TextInput(attrs={'placeholder': 'Comment here',
                                                             'id': 'textinput',
-                                                            'class': 'textinputclass'}))
+                                                            'class': 'textinputclass form-control mr-sm-2'}))
 
     class Meta:
         model = Comment
