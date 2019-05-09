@@ -1,6 +1,6 @@
 <div class="navigation">
   <div class="left-nav">
-    <div class="logo-brand"><a href="{% url 'main_page' %}" style="color: white;">TalkHub</a></div>
+    <div class="logo-brand"><a href="{% url 'main_page' %}" style="color: white;" id="Logo">TalkHub</a></div>
   </div>
   
   <form class="form-inline my-2 my-lg-0" action="{% url 'main_page' %}">
@@ -21,7 +21,7 @@
           <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit profile</a>
           <div class="btn-group-toggle dropdown-item" data-toggle="buttons">
             <label class="btn active">
-              <input type="checkbox" checked autocomplete="off"> Checked
+              <input type="checkbox" checked autocomplete="off" onclick=""> Checked
             </label>
           </div>
           <div class="dropdown-divider"></div>
@@ -30,10 +30,15 @@
         
             <a class="dropdown-item" style="color: green;" href="{% url 'user_login' %}">Login</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" style="color: firebrick;" href="{% url 'registration' %}">Sign Up</a>
+            <a class="dropdown-item" style="color: firebrick;" href="{% url 'register' %}">Sign Up</a>
 
         {% endif %}
       </div>
     </div>
   </div>
 </div>
+<script>
+    function TogglePhone(){
+
+    }
+</script>
