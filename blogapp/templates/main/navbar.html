@@ -19,7 +19,7 @@
         
           <a class="dropdown-item" href={% url 'blogapp:post_create' %}>Create</a>
           <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit profile</a>
-          <a class="dropdown-item">Toggle theme</a>
+          <a class="dropdown-item" onclick="ToggleTheme()">Toggle theme</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" style="color: firebrick;" href="{% url 'user_logout' %}">Logout</a>
         {% else %}
@@ -34,7 +34,7 @@
   </div>
 </div>
 <script>
-    function TogglePhone(){
+    function ToggleTheme() {
 
     }
 </script>
