@@ -34,24 +34,11 @@
   </div>
 </div>
 <script>
-    function Func_once(check_once){
-      if (check_once == 0){
-          localStorage.setItem('Toggled', 1)
-      }
-      localStorage.setItem('check_once', 1)
-    }
-    function Func_checked(){
-      checked = 1;
-      if (checked == localStorage.getItem('check_once')){
-        console.log('Lol. NO!');
-      }
-      else {Func_once(localStorage.getItem('check_once'))}
-    }
     function ToggleTheme() {
       var Toggled = localStorage.getItem('Toggled');
       searchbtn.classList.toggle('btn-outline-success')
       searchbtn.classList.toggle('btn-outline-light')
-      if (Toggled == '1'){
+      if (Toggled == '-1'){
         Logo.style.color = 'black';
         navigation.style.background = 'white'
       }
