@@ -37,7 +37,7 @@
     function ToggleTheme() {
       var Toggled = localStorage.getItem('Toggled');
       searchbtn.classList.toggle("btn-outline-success","btn-outline-light")
-      if (Toggled == 'False'){
+      if (Toggled == 'True'){
         Logo.style.color = 'black';
         navigation.style.background = 'white'
       }
@@ -46,8 +46,8 @@
         navigation.style.background = '#333';
       }
 
-      var tableElem = document.getElementById('mainbody')
-      var elements = tableElem.getElementsByClassName("jumbotron")
+      var tableElem = document.getElementById('body')
+      var elements = body.getElementsByClassName("jumbotron")
           for (var i = 0; i < elements.length; i++) {
             var el = elements[i];
               if (Toggled == 'False'){
@@ -69,6 +69,7 @@
                 el.style.color = 'black';
               }
           }
+      Toggled = -Toggled
       localStorage.setItem('Toggled', Toggled)
     }
 </script>
