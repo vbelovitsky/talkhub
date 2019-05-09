@@ -9,6 +9,7 @@ body{
 body a{
     text-decoration: none;
     color: black;
+    transition: 1.5s;
 }
 body a:hover{
     text-decoration: none;
@@ -24,6 +25,7 @@ body a:hover{
     height: 9vh;
     padding: 1vmax;
     margin-bottom: 2vh;
+    transition: 1.5s;
 }
 .navigation a{
     transition: 0.7s;
