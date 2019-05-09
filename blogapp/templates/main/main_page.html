@@ -22,7 +22,7 @@
         <div class="container-fluid">
             {% for post in posts %}
             <div class="jumbotron">
-                <h1 class="display-3"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h1>
+                <h1 class="display-3"><a href="{{post.get_absolute_url}}" class="tag_a_main">{{ post.title }}</a></h1>
                 <hr class="m-y-2">
                 <p>Author: {{ post.author }}</p>
                 <p>{% for tag in post.tag.all %}

@@ -34,10 +34,10 @@
   </div>
 </div>
 <script>
-  global var Toggled = false;
     function ToggleTheme() {
+      var Toggled = localStorage.getItem('Toggled');
       searchbtn.classList.toggle("btn-outline-success","btn-outline-light")
-      if (Toggled){
+      if (Toggled == False){
         Logo.style.color = 'black';
         navigation.style.background = 'white'
       }
@@ -50,7 +50,7 @@
       var elements = tableElem.getElementsByClassName("jumbotron")
           for (var i = 0; i < elements.length; i++) {
             var el = elements[i];
-              if (Toggled){
+              if (Toggled == False){
                 el.style.background = '#333';
                 el.style.color = 'white';
               }
@@ -62,12 +62,13 @@
       var elements = tableElem.getElementsByClassName("tag_a_main")
           for (var i = 0; i < elements.length; i++) {
             var el = elements[i];
-              if (Toggled){
+              if (Toggled == False){
                 el.style.color = 'white';
               }
               else{
                 el.style.color = 'black';
               }
-          }   
+          }
+      localStorage.setItem('Toggled', Toggled)
     }
 </script>
