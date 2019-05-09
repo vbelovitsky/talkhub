@@ -5,7 +5,7 @@
   
   <form class="form-inline my-2 my-lg-0" action="{% url 'main_page' %}">
             <input maxlength="25" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-btn">Search</button>
   </form>
 
   <div class="rigth-nav">
@@ -35,6 +35,7 @@
 </div>
 <script>
     function ToggleTheme() {
+      search-btn.classList.toggle("btn-outline-success","btn-outline-light")
       if (Logo.style.color == 'white'){
         Logo.style.color = 'black';
         navigation.style.background = 'white'
