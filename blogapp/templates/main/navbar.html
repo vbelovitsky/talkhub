@@ -1,4 +1,4 @@
-<div class="navigation">
+<div class="navigation" id="navigation">
   <div class="left-nav">
     <div class="logo-brand"><a href="{% url 'main_page' %}" style="color: white;" id="Logo">TalkHub</a></div>
   </div>
@@ -35,6 +35,13 @@
 </div>
 <script>
     function ToggleTheme() {
+      if (Logo.style.color == 'white'){
         Logo.style.color = 'black';
+        navigation.style.background = 'white'
+      }
+      else {
+        Logo.style.color = 'white';
+        navigation.style.background = '#333';
+      }
     }
 </script>
