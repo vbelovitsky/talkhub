@@ -52,6 +52,7 @@ body a:hover{
     margin-bottom: 3vh;
 }
 .iframe_chat{
+    margin-right: 7vw;
     margin-bottom: 2vh;
 }
 .right-nav{
@@ -98,9 +99,6 @@ body a:hover{
     height: 100%;
     padding-left: 6.8vw;
     padding-right: 6.8vw;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
 }
 .comment-title{
     display: flex;
