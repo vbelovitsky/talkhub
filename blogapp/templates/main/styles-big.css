@@ -20,7 +20,7 @@ body a:hover{
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background: white;
+    background: #333;
     height: 9vh;
     padding: 1vmax;
     margin-bottom: 2vh;
@@ -33,6 +33,7 @@ body a:hover{
 }
 .logo-brand{
     font-size: 2em;
+    color: white !important;
 }
 .alert-success{
     display: flex;
