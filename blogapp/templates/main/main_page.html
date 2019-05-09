@@ -28,7 +28,7 @@
                 <p>{% for tag in post.tag.all %}
                     <span class="badge badge-success">#{{ tag }}</span>
                 {% endfor %}</p>
-                <p>{{ post.likes.count }} Likes</p>
+                <p><small>{{ post.likes.count }} Likes</small></p>
                 <p><small>{{ post.created }}</small></p>
                 <p class="lead">
                     <a class="btn btn-primary btn-lg" href="{{post.get_absolute_url}}" role="button">Learn more</a>
