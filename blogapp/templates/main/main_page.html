@@ -18,7 +18,7 @@
             <p>You are searching for: {{ searchtag }}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a>
         </div>
     {% endif %}
-    <div class="main-body">
+    <div class="main-body" id="mainbody">
         <div class="container-fluid">
             {% for post in posts %}
             <div class="jumbotron">
