@@ -34,9 +34,10 @@
   </div>
 </div>
 <script>
+  global var Toggled = false;
     function ToggleTheme() {
       searchbtn.classList.toggle("btn-outline-success","btn-outline-light")
-      if (Logo.style.color == 'white'){
+      if (Toggled){
         Logo.style.color = 'black';
         navigation.style.background = 'white'
       }
@@ -49,12 +50,22 @@
       var elements = tableElem.getElementsByClassName("jumbotron")
           for (var i = 0; i < elements.length; i++) {
             var el = elements[i];
-              if (Logo.style.color == 'white'){
+              if (Toggled){
                 el.style.background = '#333';
                 el.style.color = 'white';
               }
               else{
                 el.style.background = 'white';
+                el.style.color = 'black';
+              }
+          } 
+      var elements = tableElem.getElementsByClassName("tag_a_main")
+          for (var i = 0; i < elements.length; i++) {
+            var el = elements[i];
+              if (Toggled){
+                el.style.color = 'white';
+              }
+              else{
                 el.style.color = 'black';
               }
           }   
