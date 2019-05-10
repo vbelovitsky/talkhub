@@ -47,28 +47,13 @@
         navigation.style.background = '#333';
       }
 
-      var elements = document.body.getElementsByClassName("jumbotron")
+      var elements = document.body.getElementsByClassName("")
           for (var i = 0; i < elements.length; i++) {
             var el = elements[i];
-              if (Toggled == '1'){
-                el.style.background = '#606060';
-                el.style.color = 'white';
-              }
-              else{
-                el.style.background = '#e9ecef';
-                el.style.color = 'black';
-              }
+              el.classList.toggle('bg-light')
+              el.classList.toggle('text-white')  
+              el.classList.toggle('bg-dark')
           } 
-      var elements = document.body.getElementsByClassName("tag_a_main")
-          for (var i = 0; i < elements.length; i++) {
-            var el = elements[i];
-              if (Toggled == '1'){
-                el.style.color = 'white';
-              }
-              else{
-                el.style.color = 'black';
-              }
-          }
       Toggled = -Toggled
       localStorage.setItem('Toggled', Toggled)
     }
