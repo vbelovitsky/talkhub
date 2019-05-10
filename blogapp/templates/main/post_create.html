@@ -5,7 +5,7 @@
     <title>Create</title>
     {% include "main/base.html" %}
 </head>
-<body id="body">
+<body>
     <form method="POST" style="margin: 10px">
         {% csrf_token %}
         {{ form.as_p }}

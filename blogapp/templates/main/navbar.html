@@ -47,12 +47,11 @@
         navigation.style.background = '#333';
       }
 
-      var tableElem = document.getElementById('body')
-      var elements = body.getElementsByClassName("jumbotron")
+      var elements = document.body.getElementsByClassName("jumbotron")
           for (var i = 0; i < elements.length; i++) {
             var el = elements[i];
               if (Toggled == '1'){
-                el.style.background = '606060';
+                el.style.background = '#606060';
                 el.style.color = 'white';
               }
               else{
@@ -60,7 +59,7 @@
                 el.style.color = 'black';
               }
           } 
-      var elements = tableElem.getElementsByClassName("tag_a_main")
+      var elements = document.body.getElementsByClassName("tag_a_main")
           for (var i = 0; i < elements.length; i++) {
             var el = elements[i];
               if (Toggled == '1'){
