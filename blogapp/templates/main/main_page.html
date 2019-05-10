@@ -21,18 +21,18 @@
     <div class="main-body" id="mainbody">
         <div class="container-fluid">
             {% for post in posts %}
-            <div class="jumbotron">
-                <h1 class="display-3"><a href="{{post.get_absolute_url}}" class="tag_a_main">{{ post.title }}</a></h1>
-                <hr class="m-y-2">
-                <p>Author: {{ post.author }}</p>
-                <p>{% for tag in post.tag.all %}
-                    <span class="badge badge-success">#{{ tag }}</span>
-                {% endfor %}</p>
-                <p><small>{{ post.likes.count }} Likes</small></p>
-                <p><small>{{ post.created }}</small></p>
-                <p class="lead">
-                    <a class="btn btn-primary btn-lg" href="{{post.get_absolute_url}}" role="button">Learn more</a>
-                </p>
+            <div class="card text-center">
+                <div class="card-header">
+                    {{ post.title }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Author: {{ post.author }</h5>
+                    <p class="card-text">{{ post.likes.count }} Likes</p>
+                    <a href="{{post.get_absolute_url}}" class="btn btn-primary">Переход куда-нибудь</a>
+                </div>
+                <div class="card-footer text-muted">
+                    {{ post.created }}
+                </div>
             </div>
             {% empty %}
                 <div class="alert alert-danger" role="alert">
