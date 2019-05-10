@@ -54,7 +54,7 @@
               el.classList.toggle('text-white')  
               el.classList.toggle('bg-dark')
           } 
-      Toggled = (Toggled + 1)%2;
+      Toggled = Math.abs((Toggled - 1)%2);
       localStorage.setItem('Toggled', Toggled)
     }
     function ToggleThemeOnLoad(){
