@@ -174,3 +174,52 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
         {% include 'main/styles-small.css' %}
 }
 </style>
+<script>
+    function ToggleTheme() {
+      var Toggled = localStorage.getItem('Toggled');
+      searchbtn.classList.toggle('btn-outline-success')
+      searchbtn.classList.toggle('btn-outline-light')
+      if (Toggled == 0){
+        Logo.style.color = 'black';
+        navigation.style.background = 'white'
+      }
+      else {
+        Logo.style.color = 'white';
+        navigation.style.background = '#333';
+      }
+
+      var elements = document.body.getElementsByClassName("card")
+          for (var i = 0; i < elements.length; i++) {
+            var el = elements[i];
+              el.classList.toggle('bg-light')
+              el.classList.toggle('text-white')  
+              el.classList.toggle('bg-dark')
+          } 
+      Toggled = Math.abs((Toggled - 1)%2);
+      localStorage.setItem('Toggled', Toggled)
+    }
+    function ToggleThemeOnLoad(){
+      var Toggled = localStorage.getItem('Toggled');
+      
+      if (Toggled == 1){
+        Logo.style.color = 'black';
+        navigation.style.background = 'white'
+      }
+      else {
+        Logo.style.color = 'white';
+        navigation.style.background = '#333';
+      }
+
+      if (Toggled == 1){
+        searchbtn.classList.toggle('btn-outline-success')
+        searchbtn.classList.toggle('btn-outline-light')
+        var elements = document.body.getElementsByClassName("card")
+          for (var i = 0; i < elements.length; i++) {
+            var el = elements[i];
+              el.classList.toggle('bg-light')
+              el.classList.toggle('text-white')  
+              el.classList.toggle('bg-dark')
+          } 
+      }
+    }
+</script>
