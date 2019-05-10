@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 2vh;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 2vh;" id="navigation">
   <a class="navbar-brand" href="{% url 'main_page' %}"><big>TalkHub</big></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -44,3 +44,58 @@
     </form>
   </div>
 </nav>
+<script>
+    function ToggleTheme() {
+      //Loading key 'Toggled'
+      var Toggled = localStorage.getItem('Toggled');
+
+      //Navigation button change
+
+      searchbtn.classList.toggle('btn-outline-success')
+      searchbtn.classList.toggle('btn-outline-light')
+      
+      //Navigation change
+      navigation.classList.toggle('navbar-dark')
+      navigation.classList.toggle('bg-dark')
+      navigation.classList.toggle('navbar-light')
+      navigation.classList.toggle('bg-light')
+
+      //All cards change
+      var elements = document.body.getElementsByClassName("card")
+          for (var i = 0; i < elements.length; i++) {
+            var el = elements[i];
+              el.classList.toggle('bg-light')
+              el.classList.toggle('text-white')  
+              el.classList.toggle('bg-dark')
+          }
+          
+      //Change value of key 'Toggled'
+      Toggled = Math.abs((Toggled - 1)%2);
+      //Set new value of key 'Toggled'
+      localStorage.setItem('Toggled', Toggled)
+    }
+    function ToggleThemeOnLoad(){
+      var Toggled = localStorage.getItem('Toggled');
+      
+      if (Toggled == 1){
+        Logo.style.color = 'black';
+        navigation.style.background = 'white'
+      }
+      else {
+        Logo.style.color = 'white';
+        navigation.style.background = '#333';
+      }
+
+      if (Toggled == 1){
+        searchbtn.classList.toggle('btn-outline-success')
+        searchbtn.classList.toggle('btn-outline-light')
+        var elements = document.body.getElementsByClassName("card")
+          for (var i = 0; i < elements.length; i++) {
+            var el = elements[i];
+              el.classList.toggle('bg-light')
+              el.classList.toggle('text-white')  
+              el.classList.toggle('bg-dark')
+          } 
+      }
+    }
+</script>
