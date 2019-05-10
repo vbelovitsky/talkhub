@@ -14,26 +14,6 @@ body a:hover{
     text-decoration: none;
     color: black;
 }
-.navigation{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    background: white;
-    height: 9vh;
-    padding: 1vmax;
-    margin-bottom: 2vh;
-}
-.navigation a{
-    transition: 0.7s;
-}
-.navigation a:hover{
-    transform: scale(1.2);
-}
-.logo-brand{
-    font-size: 2em;
-}
 .alert-success{
     display: flex;
     justify-content: space-between;
