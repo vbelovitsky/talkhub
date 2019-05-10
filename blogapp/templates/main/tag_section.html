@@ -1,13 +1,15 @@
-<div  class="flex-box-column">
+<div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
     <form class="tag-search-form" action="{% url 'main_page' %}">
                 <input maxlength="25" type="search" placeholder="Search tag" aria-label="Search" id="qtag" class="form-control mr-sm-2" style="margin-top: 1.5vh;">
                 <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: 1.5vh;">Search</button>
     </form>
-    <div class="tag-category">
-        {% for tag in tags %}
-            <form action="{% url "main_page" %}">
+    {% for tag in tags %}
+    <li class="list-group-item">
+        <form action="{% url "main_page" %}">
                 <button type="submit" value="{{ tag }}" name="searchtag" class="btn btn-info tag-btn">{{ tag }}</button>
-            </form>
-        {% endfor %}
-    </div>
-</div
+        </form>
+    </li>
+    {% endfor %}
+  </ul>
+  </div>
