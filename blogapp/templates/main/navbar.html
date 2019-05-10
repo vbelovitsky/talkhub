@@ -57,4 +57,28 @@
       Toggled = -Toggled
       localStorage.setItem('Toggled', Toggled)
     }
+    function ToggleThemeOnLoad(){
+      var Toggled = localStorage.getItem('Toggled');
+      
+      if (Toggled == '1'){
+        Logo.style.color = 'black';
+        navigation.style.background = 'white'
+      }
+      else {
+        Logo.style.color = 'white';
+        navigation.style.background = '#333';
+      }
+
+      if (Toggled == '1'){
+        searchbtn.classList.toggle('btn-outline-success')
+        searchbtn.classList.toggle('btn-outline-light')
+        var elements = document.body.getElementsByClassName("card")
+          for (var i = 0; i < elements.length; i++) {
+            var el = elements[i];
+              el.classList.toggle('bg-light')
+              el.classList.toggle('text-white')  
+              el.classList.toggle('bg-dark')
+          } 
+      }
+    }
 </script>
