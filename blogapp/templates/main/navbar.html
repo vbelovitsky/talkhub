@@ -70,6 +70,14 @@
               el.classList.toggle('text-white')  
               el.classList.toggle('bg-dark')
           }
+
+      //All tags change
+      var elements = document.body.getElementsByClassName("badge")
+          for (var i = 0; i < elements.length; i++) {
+            var el = elements[i];
+              el.classList.toggle('badge-success')
+              el.classList.toggle('badge-light')  
+          }
           
       //Change value of key 'Toggled'
       Toggled = Math.abs((Toggled - 1)%2);
