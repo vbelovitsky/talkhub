@@ -109,9 +109,6 @@ body a:hover{
 .display-3{
     font-size: 2.5rem;
 }
-.login-registration-form{
-
-}
 .chat-page-title{
     text-align: left; 
     display: flex; 
@@ -122,4 +119,10 @@ body a:hover{
 .iframe-main{
     width: 100%;
     height: 39vh;
+}
+.login-registration-form{
+    width: 50%; 
+    margin-top: 30vh; 
+    padding-bottom: 4vh !important; 
+    padding-top: 4vh !important;
 }
