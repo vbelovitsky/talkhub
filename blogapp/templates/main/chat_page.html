@@ -23,15 +23,17 @@
                         class="iframe-main" scrolling="auto" allow="microphone; camera"></iframe></div>
                 {% else %}
                     <div class="iframe-no-rights">
-                    <div class="card card-no-rigths">
-                        <div class="card-body">
-                            <h5 class="card-title">Sorry! You have no rights</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Access denied</h6>
-                            <p class="card-text">To use video chat, you need to sign up or sign in, if there is one</p>
-                            <a href="{% url 'user_login' %}">Sign</a>
-                            <a href="{% url 'register' %}">Sign up</a>
+                        <div class="card card-no-rights">
+                            <div class="card-header">
+                                Access denied
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Sorry! You have no rights!</h5>
+                                <p class="card-text">To use video chat, you need to sign up or sign in, if there is one</p>
+                                <a href="{% url 'user_login' %}" class="btn btn-primary">Sign in</a>
+                                <a href="{% url 'register' %}" class="btn btn-primary">Sign up</a>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 {% endif %}
                 <div id="like-section">
