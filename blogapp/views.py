@@ -36,11 +36,20 @@ def main_page(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
 
+    if page is None:
+        start_index = 0
+        end_index = 7
+    else:
+        (start_index, end_index) = proper_pagination(posts, index=4)
+
+    page_range = list(paginator.page_range)[start_index:end_index]
+
     qtag = request.GET.get('qtag')
     if qtag:
         tags = Tag.objects.filter(tag_name__icontains=qtag)
 
     context = {'posts': posts,
+               'page_range': page_range,
                'query': query,
                'tags': tags,
                'searchtag': tag}
@@ -50,6 +59,15 @@ def main_page(request):
         return JsonResponse({'form': html})
 
     return render(request, 'main/main_page.html', context)
+
+
+def proper_pagination(posts, index):
+    start_index = 0
+    end_index = 7
+    if posts.number > index:
+        start_index = posts.number - index
+        end_index = start_index + end_index
+    return start_index, end_index
 
 
 def chat_page(request, id):
@@ -184,7 +202,6 @@ def profile(request, id):
         raise Http404()
 
 
-
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
@@ -233,6 +250,7 @@ def comment_delete(request, id, comid):
         raise Http404
 
     comment.delete()
+
     post = Post.objects.get(id=id)
     comments = Comment.objects.filter(post=post, reply=None).order_by('-timestap')
     comment_form = CommentForm()
