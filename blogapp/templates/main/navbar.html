@@ -77,7 +77,6 @@
       var Toggled = localStorage.getItem('Toggled');
 
       //Navigation button change
-
       searchbtn.classList.toggle('btn-outline-success')
       searchbtn.classList.toggle('btn-outline-light')
       
@@ -109,7 +108,7 @@
               el.classList.toggle('badge-light')  
           }
       
-      //All profiles link at top of card change
+      //All links change
       var elements = document.body.getElementsByClassName("links")
           for (var i = 0; i < elements.length; i++) {
             var el = elements[i];
@@ -131,16 +130,16 @@
           searchbtn.classList.toggle('btn-outline-success')
           searchbtn.classList.toggle('btn-outline-light')
           
-          //Tag-section change
-          var el = document.body.getElementsByClassName("jumbotron")
-          el[0].classList.toggle('bg-dark') 
-          el[0].classList.toggle('text-white')
-
           //Navigation change
           navigation.classList.toggle('navbar-dark')
           navigation.classList.toggle('bg-dark')
           navigation.classList.toggle('navbar-light')
           navigation.classList.toggle('bg-light')
+
+          //Tag-section change
+          var el = document.body.getElementsByClassName("jumbotron")
+              el[0].classList.toggle('bg-dark') 
+              el[0].classList.toggle('text-white')
 
           //All cards change
           var elements = document.body.getElementsByClassName("card")
@@ -159,14 +158,14 @@
                   el.classList.toggle('badge-light')  
               }
           
-          //All profiles link at top of card change
-          var elements = document.body.getElementsByClassName("profile-link")
+          //All links change
+          var elements = document.body.getElementsByClassName("links")
               for (var i = 0; i < elements.length; i++) {
                 var el = elements[i];
                   el.classList.toggle('text-light')
                   el.classList.toggle('text-dark')  
               }
-      }
+        }
     }
     document.addEventListener('DOMContentLoaded', function() {
       ToggleThemeOnLoad()
