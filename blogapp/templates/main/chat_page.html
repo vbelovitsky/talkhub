@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div class="jumbotron chat_jumb">
+    <div class="jumbotron chat_jumb mx-auto">
         <div class="chat-page-title">
             <div style="chat-page-title-date">
                 <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p>
@@ -22,7 +22,9 @@
                 <div class="iframe_chat"><iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true"
                         class="iframe-main" scrolling="auto" allow="microphone; camera"></iframe></div>
                 {% else %}
+                    <div class="iframe-main">
                     To use chat please <a href="{% url 'user_login' %}">login</a> or <a href="{% url 'register' %}">sign up</a>
+                    </div>
                 {% endif %}
                 <div id="like-section">
                     {% include 'main/like_section.html' %}
