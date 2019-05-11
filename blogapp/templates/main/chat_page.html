@@ -14,7 +14,7 @@
                 <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p>
                 <p><small>{{ post.created }}</small></p>
             </div>
-            <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links">{{ post.title }}</a></h1></div>
+            <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>
         </div>
         <div class="grid-box">
             <div class="flex-box-column" style="justify-content: flex-start;">

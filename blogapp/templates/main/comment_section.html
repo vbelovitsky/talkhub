@@ -24,7 +24,7 @@
         {% for reply in comment.replies.all %}
         <blockquote class="blockquote">
             <div class="comment-title">
-                <p class="mb-0">{{ reply.content }}</p>
+                <p class="mb-0 text-dark links">{{ reply.content }}</p>
                 {% if request.user == reply.user or request.user.is_staff %}
                     <button type="button" id="reply-delete" name="{% url 'comment_delete' id=post.id comid=reply.id %}" class="btn btn-danger btn-sm ml-1">del</button>
                 {% endif %}
@@ -37,7 +37,7 @@
     </div>
     <blockquote class="blockquote">
         <div class="comment-title">
-            <p class="mb-0">{{ comment.content }}</p>
+            <p class="mb-0 text-dark links">{{ comment.content }}</p>
             {% if request.user == comment.user or request.user.is_staff %}
                 <button type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" class="btn btn-danger btn-sm ml-1">del</button>
             {% endif %}
