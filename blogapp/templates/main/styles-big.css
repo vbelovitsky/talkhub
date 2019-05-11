@@ -84,13 +84,12 @@ body a:hover{
     height: 100%;
     padding-left: 6.8vw;
     padding-right: 6.8vw;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: 1fr 5fr;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
-    justify-items: stretch;
-    align-items: stretch;
+}
+.grid-box{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        justify-items: stretch;
+        align-items: stretch;
 }
 .comment-title{
     display: flex;
