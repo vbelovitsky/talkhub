@@ -39,8 +39,8 @@
       <li class="nav-item">
         <a class="nav-link disabled" href="#"><small>© TalkHub</small></a>
       </li>
-      <li class="nav-item">
-        <ul class="pagination">
+    </ul>
+    <ul class="pagination">
             {% if posts.has_previous %}
                 <li class="page-item">
                     <a href="?page={{ posts.previous_page_number }}" class="page-link">&laquo;</a>
@@ -64,8 +64,6 @@
                     <a href="?page={{ posts.next_page_number }}" class="page-link">&raquo;</a>
                 </li>
             {% endif %}
-        </ul>
-      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0" action="{% url 'main_page' %}">
             <input maxlength="25" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
