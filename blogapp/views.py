@@ -8,15 +8,16 @@ from blogapp.models import *
 from django.db.models import Q
 from .forms import *
 from django.template.loader import render_to_string
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def main_page(request):
-    posts = Post.objects.all()
+    post_list = Post.objects.all()
     tags = Tag.objects.all()
 
     query = request.GET.get('q')
     if query:
-        posts = Post.objects.filter(
+        post_list = Post.objects.filter(
             Q(title__icontains=query) |
             Q(author__username__icontains=query) |
             Q(body__icontains=query)
@@ -24,7 +25,16 @@ def main_page(request):
 
     tag = request.GET.get('searchtag')
     if tag:
-        posts = Post.objects.filter(tag__tag_name=tag)
+        post_list = Post.objects.filter(tag__tag_name=tag)
+
+    paginator = Paginator(post_list, 8)
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
 
     qtag = request.GET.get('qtag')
     if qtag:
@@ -162,13 +172,17 @@ def register(request):
 
 @login_required
 def profile(request, id):
-    user = User.objects.get(id=id)
-    posts_count = Post.objects.filter(author=user).count()
-    context = {
-        'posts_count': posts_count,
-        'user': user,
-    }
-    return render(request, 'main/profile.html', context)
+    if User.objects.get(id=id) is not None:
+        user = User.objects.get(id=id)
+        posts_count = Post.objects.filter(author=user).count()
+        context = {
+            'posts_count': posts_count,
+            'user': user,
+        }
+        return render(request, 'main/profile.html', context)
+    else:
+        raise Http404()
+
 
 
 @login_required
