@@ -161,5 +161,7 @@
               }
       }
     }
-    window.onload = ToggleThemeOnLoad()
+    document.addEventListener('DOMContentLoaded', function() {
+      ToggleThemeOnLoad()
+    }, false);
 </script>
