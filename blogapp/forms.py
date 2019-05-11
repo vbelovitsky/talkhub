@@ -17,7 +17,7 @@ class PostCreateForm(forms.ModelForm):
 
 class PostEditForm(forms.ModelForm):
     title = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Title'}))
-    body = forms.CharField(label='', widget=forms.Textarea(attrs={'placeholder': 'Body', 'style': 'color: red'}))
+    body = forms.CharField(label='', widget=forms.Textarea(attrs={'placeholder': 'Body'}))
 
     class Meta:
         model = Post

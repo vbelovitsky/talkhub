@@ -28,7 +28,6 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'talkhub2.herokuapp.com',
     'talkhub.herokuapp.com',
-
 ]
 
 SECURE_SSL_REDIRECT = True

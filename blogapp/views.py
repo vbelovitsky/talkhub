@@ -13,7 +13,7 @@ from django.template.loader import render_to_string
 def main_page(request):
     posts = Post.objects.all()
     tags = Tag.objects.all()
-    
+
     query = request.GET.get('q')
     if query:
         posts = Post.objects.filter(
