@@ -6,7 +6,7 @@
 
     {% include "main/base.html" %}
 </head>
-<body class="d-flex flex-column body-light">
+<body class="d-flex flex-column">
     {% if query %}
         <div class="alert alert-success" role="alert">
             <p>You are searching for: {{ query }}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a>

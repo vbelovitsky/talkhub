@@ -2,14 +2,9 @@
 body{
     margin: 0;
     font-family: 'Roboto';
+    background-image: url("https://cdn1.savepice.ru/uploads/2019/5/9/48f4f98e9c3e781c79b7bcef3b705b7a-full.png");
     background-repeat: no-repeat;
     background-size: cover;
-}
-.body-dark{
-    background-image: url("https://cdn1.savepice.ru/uploads/2019/5/11/90d7dbba0b48817f7c4d14ae32d4d82e-full.png")
-}
-.body-light{
-    background-image: url("https://cdn1.savepice.ru/uploads/2019/5/9/48f4f98e9c3e781c79b7bcef3b705b7a-full.png");
 }
 body a{
     text-decoration: none;
