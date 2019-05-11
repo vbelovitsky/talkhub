@@ -6,9 +6,9 @@
 
 <div class="comments">
     {% if comments.count == 0%}
-        No Comment's
+        <p class="text-dark links">No Comment's<p>
     {% else %}
-    {{ comments.count }} Comment {{ comments|pluralize }}
+    <p class="text-dark links">{{ comments.count }} Comment {{ comments|pluralize }}<p>
     {% endif %}
     {% for comment in comments %}
     <div class="replied-comments container mt-2">
