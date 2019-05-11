@@ -89,8 +89,8 @@
 
       //Tag-section change
       var el = document.body.getElementsByClassName("jumbotron")
-          el.classList.toggle('bg-dark') 
-          el.classList.toggle('text-white')
+          el[0].classList.toggle('bg-dark') 
+          el[0].classList.toggle('text-white')
 
       //All cards change
       var elements = document.body.getElementsByClassName("card")
@@ -133,8 +133,8 @@
           
           //Tag-section change
           var el = document.body.getElementsByClassName("jumbotron")
-          el.classList.toggle('bg-dark') 
-          el.classList.toggle('text-white')
+          el[0].classList.toggle('bg-dark') 
+          el[0].classList.toggle('text-white')
 
           //Navigation change
           navigation.classList.toggle('navbar-dark')
