@@ -8,23 +8,23 @@
 </head>
 
 <body>
-    <div class="card">
-        <div class="card-img-top">
-            <iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true" class="iframe-main" 
-                scrolling="auto" allow="microphone; camera"></iframe>
-        </div>
-        <div class="card-body">
-            <h5 class="card-title"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h5>
-            <p class="card-text">{{ post.body }}</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">{% include 'main/comment_section.html' %}</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">{% include 'main/like_section.html' %}</li>
-        </ul>
-        <div class="card-body">
-            <a href="{% url 'profile' id=post.author.id %}" class="card-link">{{ post.author }}</a>
-            <a class="card-link">{{ post.created }}</a>
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <div class="card-img">
+                <iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true" class="iframe-main" 
+                    scrolling="auto" allow="microphone; camera"></iframe>
+                </div>
+            </div>
+            <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h5>
+                <p class="card-text">{% include 'main/comment_section.html' %}</p>
+                <p class="card-text"><small class="text-muted"><a href="{% url 'profile' id=post.author.id %}" class="card-link">{{ post.author }}</a></small></p>
+                <p class="card-text"><small class="text-muted"><a class="card-link">{{ post.created }}</a></small></p>
+                <p class="card-text">{% include 'main/like_section.html' %}</p>
+            </div>
+            </div>
         </div>
     </div>
 </body>
