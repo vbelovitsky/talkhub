@@ -6,9 +6,9 @@
 
 <div class="comments">
     {% if comments.count == 0%}
-        <p class="text-dark links">No Comment's<p>
+        <p class="text-dark">No Comment's<p>
     {% else %}
-    <p class="text-dark links">{{ comments.count }} Comment {{ comments|pluralize }}<p>
+    <p class="text-dark">{{ comments.count }} Comment {{ comments|pluralize }}<p>
     {% endif %}
     {% for comment in comments %}
     <div class="replied-comments container mt-2">
@@ -24,7 +24,7 @@
         {% for reply in comment.replies.all %}
         <blockquote class="blockquote">
             <div class="comment-title">
-                <p class="mb-0 text-dark links">{{ reply.content }}</p>
+                <p class="mb-0 text-dark">{{ reply.content }}</p>
                 {% if request.user == reply.user or request.user.is_staff %}
                     <button type="button" id="reply-delete" name="{% url 'comment_delete' id=post.id comid=reply.id %}" class="btn btn-danger btn-sm ml-1">del</button>
                 {% endif %}
@@ -37,7 +37,7 @@
     </div>
     <blockquote class="blockquote">
         <div class="comment-title">
-            <p class="mb-0 text-dark links">{{ comment.content }}</p>
+            <p class="mb-0 text-dark">{{ comment.content }}</p>
             {% if request.user == comment.user or request.user.is_staff %}
                 <button type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" class="btn btn-danger btn-sm ml-1">del</button>
             {% endif %}
