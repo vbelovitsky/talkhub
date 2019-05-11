@@ -25,31 +25,6 @@
               <a class="dropdown-item" href={% url 'blogapp:post_create' %}>Create</a>
               <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit profile</a>
               <a class="dropdown-item" onclick="ToggleTheme()">Toggle theme</a>
-              <ul class="pagination">
-                  {% if posts.has_previous %}
-                      <li class="page-item">
-                          <a href="?page={{ posts.previous_page_number }}" class="page-link">&laquo;</a>
-                      </li>
-                  {% endif %}
-
-                  {% for p in posts.paginator.page_range %}
-                      {% if posts.number == p %}
-                          <li class="page-item active">
-                              <a href="?page={{ p }}" class="page-link">{{ p }}</a>
-                          </li>
-                      {% else %}
-                          <li class="page-item">
-                              <a href="?page={{ p }}" class="page-link">{{ p }}</a>
-                          </li>
-                      {% endif %}
-                  {% endfor %}
-
-                  {% if posts.has_next %}
-                      <li class="page-item">
-                          <a href="?page={{ posts.next_page_number }}" class="page-link">&raquo;</a>
-                      </li>
-                  {% endif %}
-              </ul>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" style="color: firebrick;" href="{% url 'user_logout' %}">Logout</a>
             {% else %}
@@ -63,6 +38,33 @@
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#"><small>© TalkHub</small></a>
+      </li>
+      <li class="nav-item">
+        <ul class="pagination">
+            {% if posts.has_previous %}
+                <li class="page-item">
+                    <a href="?page={{ posts.previous_page_number }}" class="page-link">&laquo;</a>
+                </li>
+            {% endif %}
+
+            {% for p in posts.paginator.page_range %}
+                {% if posts.number == p %}
+                    <li class="page-item active">
+                        <a href="?page={{ p }}" class="page-link">{{ p }}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a href="?page={{ p }}" class="page-link">{{ p }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if posts.has_next %}
+                <li class="page-item">
+                    <a href="?page={{ posts.next_page_number }}" class="page-link">&raquo;</a>
+                </li>
+            {% endif %}
+        </ul>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0" action="{% url 'main_page' %}">
