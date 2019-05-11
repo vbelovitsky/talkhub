@@ -28,7 +28,7 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" style="color: firebrick;" href="{% url 'user_logout' %}">Logout</a>
             {% else %}
-            
+                <a class="dropdown-item" onclick="ToggleTheme()">Toggle theme</a>
                 <a class="dropdown-item" style="color: green;" href="{% url 'user_login' %}">Login</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" style="color: firebrick;" href="{% url 'register' %}">Sign Up</a>
