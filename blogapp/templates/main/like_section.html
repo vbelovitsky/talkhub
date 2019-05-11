@@ -7,7 +7,7 @@
             {% if request.user.is_authenticated %}
                 <button type="submit" id="like" value="{{ post.id }}" class="btn btn-primary">Like</button>
             {% else %}
-                <button type="submit" id="like" value="{{ post.id }}" class="btn btn-primary" disabled>Like</button>
+                <a href="{% url 'user_login' %}"><input type="button" value="Like" class="btn btn-primary"></a>
             {% endif %}
         {% endif %}
 </form>

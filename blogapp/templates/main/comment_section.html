@@ -1,6 +1,6 @@
 <div class="flex-box-column">
 
-<button type="button" id="refresh-button" name="{% url 'blogapp:comment_refresh' id=post.id %}" value="{{ post.id }}" class="btn btn-secondary" type="button" style="width: 100%;">
+<button type="button" id="refresh-button" name="{% url 'blogapp:comment_refresh' id=post.id %}" class="btn btn-secondary" style="width: 100%;">
   <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
   Refresh
 </button>
@@ -60,7 +60,7 @@
     {% if request.user.is_authenticated %}
         <input type="submit" value="Submit" class="btn btn-outline-success">
     {% else %}
-        <input type="submit" value="Submit" class="btn btn-outline-success" disabled>
+        <a href="{% url 'user_login' %}"><input type="button" value="Submit" class="btn btn-outline-success"></a>
     {% endif %}
 </form>
 </div>
