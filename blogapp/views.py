@@ -27,7 +27,7 @@ def main_page(request):
     if tag:
         post_list = Post.objects.filter(tag__tag_name=tag)
 
-    paginator = Paginator(post_list, 8)
+    paginator = Paginator(post_list, 1)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
