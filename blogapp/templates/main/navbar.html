@@ -76,45 +76,76 @@
       //Loading key 'Toggled'
       var Toggled = localStorage.getItem('Toggled');
 
-      //Navigation button change
-      searchbtn.classList.toggle('btn-outline-success')
-      searchbtn.classList.toggle('btn-outline-light')
-      
-      //Navigation change
-      navigation.classList.toggle('navbar-dark')
-      navigation.classList.toggle('bg-dark')
-      navigation.classList.toggle('navbar-light')
-      navigation.classList.toggle('bg-light')
+      try {
+        //Navigation button change
+        searchbtn.classList.toggle('btn-outline-success')
+        searchbtn.classList.toggle('btn-outline-light')
 
-      //All cards change
-      var elements = document.body.getElementsByClassName("card")
-          for (var i = 0; i < elements.length; i++) {
-            var el = elements[i];
-              el.classList.toggle('bg-light')
-              el.classList.toggle('text-white')  
-              el.classList.toggle('bg-dark')
-          }
+        //Navigation change
+        navigation.classList.toggle('navbar-dark')
+        navigation.classList.toggle('bg-dark')
+        navigation.classList.toggle('navbar-light')
+        navigation.classList.toggle('bg-light')
+      }
+      catch(err){
+        console.log('--navigation')
+        console.log(err)
+      }
 
-      //All tags change
-      var elements = document.body.getElementsByClassName("badge")
-          for (var i = 0; i < elements.length; i++) {
-            var el = elements[i];
-              el.classList.toggle('badge-success')
-              el.classList.toggle('badge-light')  
-          }
-      
-      //All links change
-      var elements = document.body.getElementsByClassName("links")
-          for (var i = 0; i < elements.length; i++) {
-            var el = elements[i];
-              el.classList.toggle('text-light')
-              el.classList.toggle('text-dark')  
-          }
-      //Tag-section or Chat-page change
-      var el = document.body.getElementsByClassName("jumbotron")
-          el[0].classList.toggle('bg-dark') 
-          el[0].classList.toggle('text-white')
+      try{
+        //All cards change
+        var elements = document.body.getElementsByClassName("card")
+            for (var i = 0; i < elements.length; i++) {
+              var el = elements[i];
+                el.classList.toggle('bg-light')
+                el.classList.toggle('text-white')  
+                el.classList.toggle('bg-dark')
+            }
+      }
+      catch(err){
+        console.log('--cards')
+        console.log(err)
+      }
 
+      try{
+        //All tags change
+        var elements = document.body.getElementsByClassName("badge")
+            for (var i = 0; i < elements.length; i++) {
+              var el = elements[i];
+                el.classList.toggle('badge-success')
+                el.classList.toggle('badge-light')  
+            }
+      }
+      catch(err){
+        console.log('--tags')
+        console.log(err)
+      }
+
+      try{
+        //All links change
+        var elements = document.body.getElementsByClassName("links")
+            for (var i = 0; i < elements.length; i++) {
+              var el = elements[i];
+                el.classList.toggle('text-light')
+                el.classList.toggle('text-dark')  
+            }
+      }
+      catch(err){
+        console.log('--links')
+        console.log(err)
+      }
+
+      try{
+        //Tag-section or Chat-page change
+        var el = document.body.getElementsByClassName("jumbotron")
+            el[0].classList.toggle('bg-dark') 
+            el[0].classList.toggle('text-white')
+      }
+      catch(err){
+        console.log('--tags or chat-page')
+        console.log(err)
+      }
+  
       //Change value of key 'Toggled'
       Toggled = Math.abs((Toggled - 1)%2);
       //Set new value of key 'Toggled'
@@ -125,45 +156,77 @@
         
         if (Toggled == "1"){
           
-          //Navigation button change
-          searchbtn.classList.toggle('btn-outline-success')
-          searchbtn.classList.toggle('btn-outline-light')
-          
           //Navigation change
-          navigation.classList.toggle('navbar-dark')
-          navigation.classList.toggle('bg-dark')
-          navigation.classList.toggle('navbar-light')
-          navigation.classList.toggle('bg-light')
+          try {
+            //Navigation button change
+            searchbtn.classList.toggle('btn-outline-success')
+            searchbtn.classList.toggle('btn-outline-light')
+
+            //Navigation change
+            navigation.classList.toggle('navbar-dark')
+            navigation.classList.toggle('bg-dark')
+            navigation.classList.toggle('navbar-light')
+            navigation.classList.toggle('bg-light')
+          }
+          catch(err){
+            console.log('--navigation')
+            console.log(err)
+          }
 
           //All cards change
-          var elements = document.body.getElementsByClassName("card")
-              for (var i = 0; i < elements.length; i++) {
-                var el = elements[i];
-                  el.classList.toggle('bg-light')
-                  el.classList.toggle('text-white')  
-                  el.classList.toggle('bg-dark')
-              }
+          try{
+            var elements = document.body.getElementsByClassName("card")
+                for (var i = 0; i < elements.length; i++) {
+                  var el = elements[i];
+                    el.classList.toggle('bg-light')
+                    el.classList.toggle('text-white')  
+                    el.classList.toggle('bg-dark')
+                }
+          }
+          catch(err){
+            console.log('--cards')
+            console.log(err)
+          }
 
           //All tags change
-          var elements = document.body.getElementsByClassName("badge")
-              for (var i = 0; i < elements.length; i++) {
-                var el = elements[i];
-                  el.classList.toggle('badge-success')
-                  el.classList.toggle('badge-light')  
-              }
-          
-          //All links change
-          var elements = document.body.getElementsByClassName("links")
-              for (var i = 0; i < elements.length; i++) {
-                var el = elements[i];
-                  el.classList.toggle('text-light')
-                  el.classList.toggle('text-dark')  
-              }
+          try{
+            var elements = document.body.getElementsByClassName("badge")
+                for (var i = 0; i < elements.length; i++) {
+                  var el = elements[i];
+                    el.classList.toggle('badge-success')
+                    el.classList.toggle('badge-light')  
+                }
+          }
+          catch(err){
+            console.log('--tags')
+            console.log(err)
+          }
 
-          //Tag-section change
-          var el = document.body.getElementsByClassName("jumbotron")
-              el[0].classList.toggle('bg-dark') 
-              el[0].classList.toggle('text-white')
+          //All links change
+          try{
+            var elements = document.body.getElementsByClassName("links")
+                for (var i = 0; i < elements.length; i++) {
+                  var el = elements[i];
+                    el.classList.toggle('text-light')
+                    el.classList.toggle('text-dark')  
+                }
+          }
+          catch(err){
+            console.log('--links')
+            console.log(err)
+          }
+
+          //Tag-section or Chat-page change
+          try{
+            
+            var el = document.body.getElementsByClassName("jumbotron")
+                el[0].classList.toggle('bg-dark') 
+                el[0].classList.toggle('text-white')
+          }
+          catch(err){
+            console.log('--tags or chat-page')
+            console.log(err)
+          }
         }
     }
     document.addEventListener('DOMContentLoaded', function() {
