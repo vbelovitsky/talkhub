@@ -70,7 +70,6 @@ body a:hover{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
 }
 .jumbotron{
     padding-bottom: 1vh !important;
