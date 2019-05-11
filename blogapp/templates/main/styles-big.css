@@ -130,3 +130,11 @@ body a:hover{
     padding-bottom: 4vh !important; 
     padding-top: 4vh !important;
 }
+.iframe-no-rights{
+    margin-bottom: 2vh;
+    width: 100%;
+    height: 48vh;
+}
+.card-no-rights{
+    margin-right: 2vw;
+}
