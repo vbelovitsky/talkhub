@@ -11,7 +11,7 @@
     <div class="jumbotron chat_jumb" style="margin-bottom: 0;">
         <div class="chat-page-title">
             <div style="chat-page-title-date">
-                <p>Author: {{ post.author }}</p>
+                <p>Author: <a href="{% url 'profile' id=post.author.id %}">{{ post.author }}</a></p>
                 <p><small>{{ post.created }}</small></p>
             </div>
             <div><h1 class="display-3"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h1></div>

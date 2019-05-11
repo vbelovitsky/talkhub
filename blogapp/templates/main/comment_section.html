@@ -30,7 +30,7 @@
                     <button type="button" id="reply-delete" name="{% url 'comment_delete' id=post.id comid=reply.id %}" value="{{ post.id }}/{{ reply.id }}" class="btn btn-danger btn-sm ml-1">del</button>
                 {% endif %}
             </div>
-            <footer class="blockquote-footer">replied by <cite title="Source Title">{{ reply.user|capfirst }}, {{ comment.timestap }}</cite>
+            <footer class="blockquote-footer">replied by <cite title="Source Title"><a href="{% url 'profile' id=reply.user.id %}">{{ reply.user|capfirst }}</a>, {{ comment.timestap }}</cite>
             </footer>
 
         </blockquote>
@@ -43,7 +43,7 @@
                 <button type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" value="{{ post.id }}/{{ comment.id }}" class="btn btn-danger btn-sm ml-1">del</button>
             {% endif %}
         </div>
-        <footer class="blockquote-footer">by <cite title="Source Title">{{ comment.user|capfirst }}, {{ comment.timestap }}</cite>
+        <footer class="blockquote-footer">by <cite title="Source Title"><a href="{% url 'profile' id=comment.user.id %}">{{ comment.user|capfirst }}</a>, {{ comment.timestap }}</cite>
             <button type="button" name="button" value="reply-form{{comment.id}}"
                     class="reply-btn btn btn-outline-dark btn-sm ml-1">
             </button>
