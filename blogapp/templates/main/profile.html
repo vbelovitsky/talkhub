@@ -6,9 +6,28 @@
     {% include "main/base.html" %}
 </head>
 <body>
-    <div class="jumbotron login-registration-form mx-auto">
-        <h3>@{{user.username}}</h3>
-        <h3> posts count = {{ posts_count }}</h3>
+    <div class="card text-white bg-primary" style="width: 18rem;">
+        <img src="http://st-zamok.ru/upload/content/medium/f605e8a8cff57e1fe865ac6ec6e364b1.jpg" class="card-img-top" alt="No Photo">
+        <div class="card-body">
+            <h5 class="card-title">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                </div>
+                <input type="text" class="form-control" placeholder={{user.username}} aria-label="Имя пользователя" aria-describedby="basic-addon1">
+            </div>
+            </h5>
+            <p class="card-text"> posts count = {{ posts_count }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Cras justo odio</li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+        <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
     </div>
 </body>
 </html>
