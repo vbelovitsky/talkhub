@@ -234,7 +234,7 @@ def comment_delete(request, id, comid):
 
     comment.delete()
     post = Post.objects.get(id=id)
-    comments = Comment.objects.filter(post=post).order_by('-timestap')
+    comments = Comment.objects.filter(post=post, reply=None).order_by('-timestap')
     comment_form = CommentForm()
 
     context = {'post': post,
