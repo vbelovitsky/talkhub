@@ -5,14 +5,17 @@
     <title>Login</title>
     {% include "main/base.html" %}
 </head>
-<body id="body">
-<h5 style="margin: 10px">Login</h5>
+<body>
 <form method="POST" class="jumbotron login-registration-form mx-auto">
+    <h5>Login</h5>
+
     {% csrf_token %}
     {{ form.as_p }}
 
-    <input type="submit" value="Login" class="btn btn-outline-success"><br>
-    <p>{{ error }}</p>
+    <input type="submit" value="Login" class="btn btn-outline-success mx-auto">
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
 
     <a href="{% url 'social:begin' 'github' %}">
         <button type="button" class="btn btn-secondary">Github</button>
