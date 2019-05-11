@@ -6,7 +6,9 @@
     {% include "main/base.html" %}
 </head>
 <body>
-    <h3>@{{user.username}}</h3>
-    <h3> posts count = {{ posts_count }}</h3>
+    <div class="jumbotron login-registration-form mx-auto">
+        <h3>@{{user.username}}</h3>
+        <h3> posts count = {{ posts_count }}</h3>
+    </div>
 </body>
 </html>
