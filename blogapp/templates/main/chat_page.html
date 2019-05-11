@@ -11,10 +11,10 @@
     <div class="jumbotron chat_jumb" style="margin-bottom: 0; padding-bottom: 0 !important; padding-top: 0 !important;">
         <div class="chat-page-title">
             <div style="chat-page-title-date">
-                <p>Author: <a href="{% url 'profile' id=post.author.id %}">{{ post.author }}</a></p>
+                <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p>
                 <p><small>{{ post.created }}</small></p>
             </div>
-            <div><h1 class="display-3"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h1></div>
+            <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links">{{ post.title }}</a></h1></div>
         </div>
         <div class="grid-box">
             <div class="flex-box-column" style="justify-content: flex-start;">
@@ -54,9 +54,4 @@
         </div>
     </div>
 </body>
-<style>
-    .navbar{
-        margin-bottom: 0 !important; 
-    }
-</style>
 </html>
