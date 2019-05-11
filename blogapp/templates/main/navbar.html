@@ -120,12 +120,9 @@
     function ToggleThemeOnLoad(){
         var Toggled = localStorage.getItem('Toggled');
         
-        if (Toggled = "1"){
-          //Loading key 'Toggled'
-          var Toggled = localStorage.getItem('Toggled');
-
+        if (Toggled == "1"){
+          
           //Navigation button change
-
           searchbtn.classList.toggle('btn-outline-success')
           searchbtn.classList.toggle('btn-outline-light')
           
