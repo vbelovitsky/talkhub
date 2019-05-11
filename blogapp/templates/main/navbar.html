@@ -87,6 +87,10 @@
       navigation.classList.toggle('navbar-light')
       navigation.classList.toggle('bg-light')
 
+      //Tag-section change
+      var el = document.body.getElementsByClassName("tag-section")
+      el.classList.toggle('bg-dark') 
+
       //All cards change
       var elements = document.body.getElementsByClassName("card")
           for (var i = 0; i < elements.length; i++) {
@@ -126,6 +130,11 @@
           searchbtn.classList.toggle('btn-outline-success')
           searchbtn.classList.toggle('btn-outline-light')
           
+          //Tag-section change
+          var el = document.body.getElementsByClassName("jumbotron")
+          el.classList.toggle('bg-dark') 
+          el.classList.toggle('text-white')
+
           //Navigation change
           navigation.classList.toggle('navbar-dark')
           navigation.classList.toggle('bg-dark')
