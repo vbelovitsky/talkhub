@@ -27,7 +27,7 @@
                     <h5 class="card-title">{{ post.title }}</h5>
                     <p class="card-text">
                         {% for tag in post.tag.all %}
-                            <span class="badge badge-success">#{{ tag }}</span>
+                            <button type="submit" value="{{ tag }}" name="searchtag" class="badge badge-success">{{ tag }}</button>
                         {% endfor %}</p>
                     <p class="card-text">
                         <small>{{ post.likes.count }} Likes</small>
