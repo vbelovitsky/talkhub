@@ -161,6 +161,17 @@ def register(request):
 
 
 @login_required
+def profile(request, id):
+    user = User.objects.get(id=id)
+    posts_count = Post.objects.filter(author=user).count()
+    context = {
+        'posts_count': posts_count,
+        'user': user,
+    }
+    return render(request, 'main/profile.html', context)
+
+
+@login_required
 def edit_profile(request):
     if request.method == 'POST':
         edit_form = UserEditForm(request.POST or None, instance=request.user)
