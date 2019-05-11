@@ -6,13 +6,17 @@
     {% include "main/base.html" %}
 </head>
 <body>
-    <form method="POST" style="margin: 10px">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Create" class = "btn btn-outline-success">
-        {% for tag in tags %}
-           <input type="checkbox" name="tags" value="{{tag.id}}">{{tag.tag_name}}<br/>
-        {% endfor %}
-    </form>
+    <div class="jumbotron main-body">
+        <form method="POST" style="margin: 10px">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Create" class = "btn btn-outline-success">
+        </form>
+        <div class="tag-section">
+            {% for tag in tags %}
+                <input type="checkbox" name="tags" value="{{tag.id}}"><span class="badge badge-success">{{tag.tag_name}}</span>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 </html>

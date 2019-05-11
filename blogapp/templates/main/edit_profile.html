@@ -5,7 +5,7 @@
     <title>Edit</title>
     {% include "main/base.html" %}
 </head>
-<body>
+<body id="body">
 <form action="." method="POST" enctype="multipart/form-data" style="margin: 10px">
     {% csrf_token %}
     {{ form.as_p }}

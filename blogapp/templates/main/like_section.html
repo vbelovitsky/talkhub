@@ -1,4 +1,4 @@
-<div class="flex-box" style="justify-content: space-between; margin-left: 1.7vw; align-items: center;">
+<div class="flex-box-likes">
 <form action="{% url 'like_post' %}" method="POST">
         {% csrf_token %}
         {% if is_liked %}
