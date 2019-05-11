@@ -27,9 +27,7 @@
                     <h5 class="card-title">{{ post.title }}</h5>
                     <p class="card-text">
                         {% for tag in post.tag.all %}
-                        <form action="{% url "main_page" %}">
-                            <button type="submit" value="{{ tag }}" name="searchtag" class="btn badge badge-success">{{ tag }}</button>
-                        </form>
+                        <form action="{% url "main_page" %}"><button type="submit" value="{{ tag }}" name="searchtag" class="btn badge badge-success">{{ tag }}</button></form>
                         {% endfor %}</p>
                     <p class="card-text">
                         <small>{{ post.likes.count }} Likes</small>
