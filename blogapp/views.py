@@ -127,9 +127,11 @@ def post_create(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            for item in request.POST.getlist('tags[]'):
+            items = request.POST.getlist('tags')
+            for item in items:
                 post.tag.add(item)
-            return redirect('main_page')
+            return HttpResponse(items)
+            #return redirect('main_page')
     else:
         form = PostCreateForm()
 
