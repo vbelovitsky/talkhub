@@ -96,6 +96,7 @@ def chat_page(request, id):
                'comments': comments,
                'comment_form': comment_form
                }
+
     if request.is_ajax():
         html = render_to_string('main/comment_section.html', context, request=request)
         return JsonResponse({'form': html})
@@ -112,7 +113,7 @@ def like_post(request):
         post.likes.add(request.user)
         is_liked = True
     context = {'post': post,
-               'is_liked': is_liked,}
+               'is_liked': is_liked}
     if request.is_ajax():
         html = render_to_string('main/like_section.html', context, request=request)
         return JsonResponse({'form': html})
@@ -126,15 +127,13 @@ def post_create(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            for item in request.POST.getlist('tags'):
+            for item in request.POST.getlist('tags[]'):
                 post.tag.add(item)
-
             return redirect('main_page')
     else:
         form = PostCreateForm()
 
     tags = Tag.objects.all()
-
     qtag = request.GET.get('qtag')
     if qtag:
         tags = Tag.objects.filter(tag_name__icontains=qtag)

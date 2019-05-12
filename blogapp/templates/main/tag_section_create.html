@@ -6,7 +6,7 @@
     <div class="tag-category">
         {% for tag in tags %}
             <input type="checkbox" name="tags" value="{{tag.id}}">
-            <button type="button" value="{{ tag }}" name="searchtag" class="btn btn-info tag-btn">{{ tag }}</button>
+            <button type="button" class="btn btn-info tag-btn">{{ tag }}</button>
         {% endfor %}
     </div>
 </div>
