@@ -12,10 +12,8 @@
             {{ form.as_p }}
             <input type="submit" value="Create" class = "btn btn-outline-success">
         </form>
-        <div class="tag-section">
-            {% for tag in tags %}
-                <input type="checkbox" name="tags" value="{{tag.id}}"><span class="badge badge-success">{{tag.tag_name}}</span>
-            {% endfor %}
+        <div class="tag-section jumbotron">
+            {% include 'main/tag_section_create.html' %}
         </div>
     </div>
 </body>

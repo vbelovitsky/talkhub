@@ -136,6 +136,11 @@ def post_create(request):
         'form': form,
         'tags': Tag.objects.all()
     }
+
+    if request.is_ajax():
+        html = render_to_string('main/tag_section_create.html', context, request=request)
+        return JsonResponse({'form': html})
+    
     return render(request, 'main/post_create.html', context)
 
 
