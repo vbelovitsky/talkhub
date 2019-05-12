@@ -144,3 +144,8 @@ body a:hover{
     margin-left: auto;
     margin-right: auto;
 }
+.create-tags{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
