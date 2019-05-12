@@ -132,9 +132,16 @@ def post_create(request):
             return redirect('main_page')
     else:
         form = PostCreateForm()
+
+    tags = Tag.objects.all()
+
+    qtag = request.GET.get('qtag')
+    if qtag:
+        tags = Tag.objects.filter(tag_name__icontains=qtag)
+
     context = {
-        'form': form,
-        'tags': Tag.objects.all()
+        'postform': form,
+        'tags': tags,
     }
 
     if request.is_ajax():
