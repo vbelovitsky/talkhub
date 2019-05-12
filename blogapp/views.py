@@ -182,7 +182,8 @@ def post_delete(request, id):
 @login_required()
 def post_recommend(request, id):
     post = get_object_or_404(Post, id=id)
-    query = "site:stackoverflow.com" + post.title + post.body
+    query = "site:stackoverflow.com " + post.title + " " + post.body
+
     recommend_array = []
     for url in search(query, tld="com", num=5, stop=5, pause=2):
         recommend_array.append(url)
