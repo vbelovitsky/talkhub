@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+    {% include "main/base.html" %}
+</head>
+<body>
+Maybe this links could help you to solve your problem:
+{% for link in links %}
+    <a href="{{ link }}">{{ link }}</a>
+{% endfor %}
+<a href="{% url 'main_page' %}"><button class="btn btn-outline-success">Continue in TalkHub</button></a>
+</body>
+</html>
