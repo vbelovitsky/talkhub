@@ -44,9 +44,9 @@ def main_page(request):
 
     page_range = list(paginator.page_range)[start_index:end_index]
 
-    qtag = request.GET.get('qtag')
-    if qtag:
-        tags = Tag.objects.filter(tag_name__icontains=qtag)
+    q_tag = request.GET.get('qtag')
+    if q_tag:
+        tags = Tag.objects.filter(tag_name__icontains=q_tag)
 
     context = {'posts': posts,
                'page_range': page_range,
@@ -127,18 +127,17 @@ def post_create(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            items = request.POST.getlist('tags')
-            for item in items:
-                post.tag.add(item)
-            return HttpResponse(items)
-            #return redirect('main_page')
+            post_tags = request.POST.getlist('tags')
+            for post_tag in post_tags:
+                post.tag.add(post_tag)
+            return redirect('main_page')
     else:
         form = PostCreateForm()
 
     tags = Tag.objects.all()
-    qtag = request.GET.get('qtag')
-    if qtag:
-        tags = Tag.objects.filter(tag_name__icontains=qtag)
+    q_tag = request.GET.get('qtag')
+    if q_tag:
+        tags = Tag.objects.filter(tag_name__icontains=q_tag)
 
     context = {
         'postform': form,
