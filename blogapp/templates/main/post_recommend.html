@@ -6,9 +6,9 @@
     {% include "main/base.html" %}
 </head>
 <body>
-Maybe this links could help you to solve your problem:
+Maybe this links could help you to solve your problem:<br>
 {% for link in links %}
-    <a href="{{ link }}">{{ link }}</a>
+    <a href="{{ link }}">{{ link }}</a><br>
 {% endfor %}
 <a href="{% url 'main_page' %}"><button class="btn btn-outline-success">Continue in TalkHub</button></a>
 </body>
