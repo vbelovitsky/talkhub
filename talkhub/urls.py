@@ -18,6 +18,8 @@ from django.conf.urls import url, include
 from blogapp import views
 from django.contrib.auth import views as auth_views
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -63,3 +65,7 @@ urlpatterns = [
     # url(r'^password-reset/complete/$', PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
 
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

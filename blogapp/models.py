@@ -49,14 +49,15 @@ class Tag(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.ForeignKey(to=User,
-                             on_delete=models.CASCADE)
-    country = models.CharField(max_length=32, blank=Truegit )
-    skype = models.CharField(max_length=32, blank=True)
+    user = models.OneToOneField(to=User,
+                             on_delete=models.SET_NULL,
+                             null=True)
+    country = models.CharField(max_length=32, blank=True)
+    contacts = models.CharField(max_length=64, blank=True)
 
     #rating =
 
     image = models.ImageField(upload_to='images', blank=True)
     bio = models.TextField(blank=True)
     def __str__(self):
-        return self.user + "Profile"
+        return self.user.username + " Profile"

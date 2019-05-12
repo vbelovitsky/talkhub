@@ -152,6 +152,7 @@ def register(request):
             new_user = form.save(commit=False)
             new_user.set_password(form.cleaned_data['password'])
             new_user.save()
+            UserProfile.objects.create(user=new_user)
             return redirect('main_page')
     else:
         form = UserRegistrationForm()
@@ -165,13 +166,17 @@ def register(request):
 def edit_profile(request):
     if request.method == 'POST':
         edit_form = UserEditForm(request.POST or None, instance=request.user)
+        profile_form = UserProfileForm(request.POST or None, instance=request.user.userprofile, files=request.FILES)
         if edit_form.is_valid():
             edit_form.save()
+            profile_form.save()
             return redirect('main_page')
     else:
         edit_form = UserEditForm(instance=request.user)
+        profile_form = UserProfileForm(instance=request.user.userprofile)
     context = {
-        'form': edit_form
+        'form': edit_form,
+        'profile': profile_form,
     }
     return render(request, 'main/edit_profile.html', context)
 

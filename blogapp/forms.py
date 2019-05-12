@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Comment
+from .models import *
 from django.contrib.auth.models import User
 
 
@@ -13,6 +13,12 @@ class PostCreateForm(forms.ModelForm):
             'title',
             'body',
         )
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        exclude = ('user', )
+
 
 
 class PostEditForm(forms.ModelForm):
