@@ -11,10 +11,10 @@
             {% csrf_token %}
             {{ postform.as_p }}
             <input type="submit" value="Create" class = "btn btn-outline-success">
-        </form>
-        <div class="tag-section jumbotron">
+            <div class="tag-section jumbotron">
             {% include 'main/tag_section_create.html' %}
-        </div>
+            </div>
+        </form>
     </div>
 </body>
 </html>
