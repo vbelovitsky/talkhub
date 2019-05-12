@@ -46,3 +46,10 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.tag_name
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(to=User,
+                                on_delete=models.CASCADE)
+    image = models.FileField(null=True, blank=True)
+
