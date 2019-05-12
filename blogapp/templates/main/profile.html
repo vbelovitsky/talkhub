@@ -6,7 +6,31 @@
     {% include "main/base.html" %}
 </head>
 <body>
-    <h3>@{{user.username}}</h3>
-    <h3> posts count = {{ posts_count }}</h3>
+    <div class="card text-black bg-light profile-card">
+        <img src="http://st-zamok.ru/upload/content/medium/f605e8a8cff57e1fe865ac6ec6e364b1.jpg" class="card-img-top" alt="No Photo">
+        <div class="card-body">
+            <h5 class="card-title">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                </div>
+                <input type="text" class="form-control" placeholder={{user.username}} readonly aria-label="Имя пользователя" aria-describedby="basic-addon1">
+            </div>
+            </h5>
+            <p class="card-text">
+                <div class="form-group row">
+                    <label for="url_profile" class="col-sm-2 col-form-label">URL:</label>
+                    <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext links text-dark" id="url_profile" value="https://talkhub.herokuapp.com/profile/{{user.id}}">
+                    </div>
+                </div>
+            </P>
+            <p class="card-text"> posts count = {{ posts_count }}</p>
+        </div>
+        <div class="card-body">
+            <a class="card-link links">Card link</a>
+            <a class="card-link links">Another link</a>
+        </div>
+    </div>
 </body>
 </html>

@@ -22,12 +22,12 @@
         <div class="container-fluid">
             {% for post in posts %}
             <div class="card bg-light mb-3">
-                <div class="card-header">Author: <a href="{% url 'profile' id=post.author.id %}" class="profile-link text-dark">{{ post.author }}</a></div>
+                <div class="card-header">Author: <a href="{% url 'profile' id=post.author.id %}" class="links text-dark">{{ post.author }}</a></div>
                 <div class="card-body">
                     <h5 class="card-title">{{ post.title }}</h5>
                     <p class="card-text">
                         {% for tag in post.tag.all %}
-                            <span class="badge badge-success">#{{ tag }}</span>
+                        <form action="{% url "main_page" %}" style="display: inline-block;"><button type="submit" value="{{ tag }}" name="searchtag" class="btn badge badge-success">{{ tag }}</button></form>
                         {% endfor %}
                     </p>
                     <p class="card-text">

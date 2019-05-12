@@ -8,21 +8,33 @@
 </head>
 
 <body>
-    <div class="jumbotron chat_jumb" style="margin-bottom: 0;">
+    <div class="jumbotron chat_jumb mx-auto">
         <div class="chat-page-title">
             <div style="chat-page-title-date">
-                <p>Author: <a href="{% url 'profile' id=post.author.id %}">{{ post.author }}</a></p>
+                <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p>
                 <p><small>{{ post.created }}</small></p>
             </div>
-            <div><h1 class="display-3"><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h1></div>
+            <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>
         </div>
-        <div class="flex-box" style="justify-content: space-between;">
+        <div class="grid-box">
             <div class="flex-box-column" style="justify-content: flex-start;">
                 {% if request.user.is_authenticated %}
-                <div class="left-nav iframe_chat"><iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true"
+                <div class="iframe_chat"><iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true"
                         class="iframe-main" scrolling="auto" allow="microphone; camera"></iframe></div>
                 {% else %}
-                    To use chat please <a href="{% url 'user_login' %}">login</a> or <a href="{% url 'register' %}">sign up</a>
+                    <div class="iframe-no-rights">
+                        <div class="card card-no-rights">
+                            <div class="card-header">
+                                Access denied
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Sorry! You have no rights!</h5>
+                                <p class="card-text">To use video chat, you need to sign up or sign in, if there is one</p>
+                                <a href="{% url 'user_login' %}" class="btn btn-primary">Sign in</a>
+                                <a href="{% url 'register' %}" class="btn btn-primary">Sign up</a>
+                            </div>
+                        </div>
+                    </div>
                 {% endif %}
                 <div id="like-section">
                     {% include 'main/like_section.html' %}
@@ -45,18 +57,13 @@
                 </div>
 
             </div>
-                <div class="flex-box-column">
+            <div class="flex-box-column">
 
                 <div class="main-comment-section">
                     {% include 'main/comment_section.html' %}
                 </div>
-                </div>
+            </div>
         </div>
     </div>
 </body>
-<style>
-    .navbar{
-        margin-bottom: 0 !important; 
-    }
-</style>
 </html>

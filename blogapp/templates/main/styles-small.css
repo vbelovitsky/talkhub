@@ -41,8 +41,8 @@ body a:hover{
     justify-content: space-between;
 }
 .btn-cancel{
-    width: 1vw; 
-    height: 1vw; 
+    width: 5vw; 
+    height: 5vw; 
     background-image: url("https://cdn1.iconfinder.com/data/icons/basic-ui-elements-coloricon/21/19-512.png");
     background-repeat: no-repeat;
     background-size: cover;
