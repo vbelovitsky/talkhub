@@ -14,7 +14,10 @@
         </form>
         <div class="tag-section">
             {% for tag in tags %}
-                <input type="checkbox" name="tags" value="{{tag.id}}"><span class="badge badge-success">{{tag.tag_name}}</span>
+                <div>
+                    <input type="checkbox" name="tags" value="{{tag.id}}">
+                    <span class="badge badge-success">{{tag.tag_name}}</span>
+                </div>
             {% endfor %}
         </div>
     </div>
