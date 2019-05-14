@@ -154,8 +154,8 @@ body a:hover{
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   }
   .card{
-      margin-left: 1%;
+      margin-left: 2%;
   }
-  .containter-fluid{
+  .container-fluid{
       padding-left: 0 !important;
   }
