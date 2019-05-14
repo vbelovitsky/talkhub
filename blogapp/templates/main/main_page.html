@@ -19,7 +19,7 @@
         </div>
     {% endif %}
     <div class="main-body" id="mainbody">
-        <div class="container-fluid">
+        <div class="container-fluid grid-container">
             {% for post in posts %}
             <div class="card bg-light mb-3">
                 <div class="card-header">Author: <a href="{% url 'profile' id=post.author.id %}" class="links text-dark">{{ post.author }}</a></div>
