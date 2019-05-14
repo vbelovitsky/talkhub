@@ -9,6 +9,7 @@ from django.db.models import Q
 from .forms import *
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from googlesearch import search
 
 
 def main_page(request):
@@ -119,6 +120,7 @@ def like_post(request):
         return JsonResponse({'form': html})
 
 
+# region Post
 @login_required
 def post_create(request):
     if request.method == "POST":
@@ -130,7 +132,7 @@ def post_create(request):
             post_tags = request.POST.getlist('tags')
             for post_tag in post_tags:
                 post.tag.add(post_tag)
-            return redirect('main_page')
+            return redirect('blogapp:post_recommend', id=post.id)
     else:
         form = PostCreateForm()
 
@@ -151,6 +153,48 @@ def post_create(request):
     return render(request, 'main/post_create.html', context)
 
 
+@login_required()
+def post_edit(request, id):
+    post = get_object_or_404(Post, id=id)
+    if request.user != post.author:
+        raise Http404()
+    if request.method == 'POST':
+        form = PostEditForm(request.POST or None, instance=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(post.get_absolute_url())
+    else:
+        form = PostEditForm(instance=post)
+    context = {'form': form,
+               'post': post}
+    return render(request, 'main/post_edit.html', context)
+
+
+@login_required()
+def post_delete(request, id):
+    post = get_object_or_404(Post, id=id)
+    if request.user != post.author:
+        raise Http404
+    post.delete()
+    return redirect('main_page')
+
+
+@login_required()
+def post_recommend(request, id):
+    post = get_object_or_404(Post, id=id)
+    query = "site:stackoverflow.com " + post.title + " " + post.body
+
+    recommend_array = []
+    for url in search(query, tld="com", num=5, stop=5, pause=2):
+        recommend_array.append(url)
+    context = {
+        'links': recommend_array
+    }
+    return render(request, 'main/post_recommend.html', context)
+# endregion
+
+
+# region Authentication
 def user_login(request):
     if request.method == "POST":
         form = UserLoginForm(request.POST)
@@ -198,8 +242,10 @@ def register(request):
         'form': form
     }
     return render(request, 'registration/register.html', context)
+# endregion
 
 
+# region Profile
 @login_required
 def profile(request, id):
     if User.objects.get(id=id) is not None:
@@ -227,34 +273,10 @@ def edit_profile(request):
         'form': edit_form
     }
     return render(request, 'main/edit_profile.html', context)
+# endregion
 
 
-@login_required()
-def post_edit(request, id):
-    post = get_object_or_404(Post, id=id)
-    if request.user != post.author:
-        raise Http404()
-    if request.method == 'POST':
-        form = PostEditForm(request.POST or None, instance=post)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(post.get_absolute_url())
-    else:
-        form = PostEditForm(instance=post)
-    context = {'form': form,
-               'post': post}
-    return render(request, 'main/post_edit.html', context)
-
-
-@login_required()
-def post_delete(request, id):
-    post = get_object_or_404(Post, id=id)
-    if request.user != post.author:
-        raise Http404
-    post.delete()
-    return redirect('main_page')
-
-
+# region Comment
 @login_required()
 def comment_delete(request, id, comid):
     comment = get_object_or_404(Comment, id=comid)
@@ -290,3 +312,4 @@ def comment_refresh(request, id):
     if request.is_ajax():
         html = render_to_string('main/comment_section.html', context, request=request)
         return JsonResponse({'form': html})
+# endregion
