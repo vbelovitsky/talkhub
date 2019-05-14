@@ -153,3 +153,9 @@ body a:hover{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   }
+  .card{
+      margin-left: 1vw;
+  }
+  .containter-fluid{
+      padding-left: 0 !important;
+  }
