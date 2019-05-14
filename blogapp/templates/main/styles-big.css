@@ -2,9 +2,8 @@
 body{
     margin: 0;
     font-family: 'Roboto';
-    background-image: url("https://cdn1.savepice.ru/uploads/2019/5/9/48f4f98e9c3e781c79b7bcef3b705b7a-full.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: rgb(238,174,202); 
+    background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
 body a{
     text-decoration: none;
