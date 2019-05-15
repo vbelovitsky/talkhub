@@ -153,10 +153,10 @@ body a:hover{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-  }
+}
 .card{
       margin-left: 2%;
-  }
+}
 .container-fluid{
       padding-left: 0 !important;
-  }
+}
