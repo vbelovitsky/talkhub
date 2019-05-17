@@ -41,9 +41,8 @@
             <span class="mif-menu fg-white"></span>
         </button>
     </div>
-
-    <div class="h-100 p-4">
-        <form method="POST" class="jumbotron login-registration-form mx-auto">
+</div>
+    <form method="POST" class="jumbotron login-registration-form mx-auto">
             <h5>Login</h5>
 
             {% csrf_token %}
@@ -84,8 +83,6 @@
                 <a href="{% url 'register' %}">Don't have an account?</a><br>
                 <a href="{% url 'password_reset' %}">Forgotten your password?</a>
             </small>
-        </form>
-    </div>
-</div>
+    </form>
 </body>
 </html>
