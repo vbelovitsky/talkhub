@@ -7,7 +7,7 @@
     {% include "main/base.html" %}
 </head>
 <body>
-<table class="table bg-light cell-border cell-hover" data-role="table">
+<table class="table bg-light row-border cell-hover" data-role="table">
     <thead>
     <tr>
         <th>Title</th>
@@ -22,7 +22,7 @@
         <td>{{ post.title }}</td>
         <td><a href="{% url 'profile' id=post.author.id %}">{{ post.author }}</a></td>
         <td>{{ post.likes.count }}</td>
-        <td>{{ post.date }}</td>
+        <td>{{ post.created }}</td>
     </tr>
     {% endfor %}
     </tbody>
