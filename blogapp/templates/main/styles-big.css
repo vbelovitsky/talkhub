@@ -2,9 +2,7 @@
 body{
     margin: 0;
     font-family: 'Roboto';
-    background-image: url("https://cdn1.savepice.ru/uploads/2019/5/9/48f4f98e9c3e781c79b7bcef3b705b7a-full.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #e4e4e4!important;
 }
 body a{
     text-decoration: none;
@@ -154,12 +152,17 @@ body a:hover{
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
-.card{
-      margin-left: 2%;
-}
 .container-fluid{
       padding-left: 0 !important;
 }
 .white-space-chat{
     white-space: pre-wrap;
+}
+.card:first-of-type{
+    margin-top: 1rem;
+}
+.grid-box{
+    display: grid;
+    grid-template-columns:  33.3% 33.3% 33.3%;
+    grid-template-rows: 1fr 1fr 1fr;
 }

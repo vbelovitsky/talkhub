@@ -6,30 +6,31 @@
 
     {% include "main/base.html" %}
 </head>
-<body class="d-flex flex-column">
-    <table class="table" data-role="table">
-        <thead>
-        <tr>
-            <th >Title</th>
-            <th >Likes</th>
-            <th data-cls-column="bg-cyan fg-white text-center">Author</th>
-            <th data-cls-column="bg-orange fg-white text-center" >Date</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for post in posts %}
-        <tr>
-            <td>{{ post.title }}</td>
-            <td>{{ post.likes.count }}</td>
-            <td><a href="{% url 'profile' id=post.author.id %}">{{ post.author }}</a></td>
-            <td>2011/04/25</td>
-        </tr>
-        {% empty %}
-                <div class="alert alert-danger" role="alert">
-                    <strong>Sorry!</strong> No post found
-                </div>
-        {% endfor %}
-        </tbody>
-    </table>
+<body>
+<div class="container mx-auto grid-box">
+{% for post in posts %}
+    <div class="card">
+        <div class="card-header">
+            <div class="avatar">
+                <img data-role="gravatar" data-email="EMPTY">
+            </div>
+            <div class="name"><a href="{% url 'profile' id=post.author.id %}">{{ post.author }}</a></div>
+            <div class="date">{{ post.created}}</div>
+        </div>
+        <div class="card-content p-2">
+            <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
+        </div>
+        <div class="card-content fg-gray p-2">
+            <span><small>Likes: </small>{{ post.likes.count }}</span>
+            <span><small>Comments: </small>#</span>
+        </div>
+        <div class="card-footer">
+            <button class="flat-button mif-thumbs-up mif-2x ani-hover-bounce" id="like" value="{{ post.id }}"></button>
+            <button class="flat-button mif-tag mif-2x"></button>
+            <button class="flat-button mif-share mif-2x"></button>
+        </div>
+    </div>
+{% endfor %}
+</div>
 </body>
 </html>

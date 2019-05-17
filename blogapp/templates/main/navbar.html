@@ -1,37 +1,36 @@
-<ul class="h-menu mega">
-    <li><a href="#">TalkHub</a></li>
-    <li>
-        <a href="#" class="dropdown-toggle">Products</a>
-        <div class="mega-container p-2" data-role="dropdown">
-            <div class="row">
-                <div class="cell-md-6">
-                    <h2 class="text-light">Metro 4</h2>
-                    <p>
-                        Is an open source toolkit for developing with ...
-                    </p>
-                </div>
-                <div class="cell-md-6">
-                    <h4>Begin with Metro 4</h4>
-                    <ul class="unstyled-list pl-0">
-                        <li><a href="#">Getting started</a></li>
-                        <li><a href="#">Base CSS</a></li>
-                        <li><a href="#">Components</a></li>
-                        <li><a href="#">Utilities</a></li>
-                    </ul>
-                </div>
-            </div>
+<aside class="sidebar pos-absolute z-2"
+       data-role="sidebar"
+       data-toggle="#sidebar-toggle-3"
+       id="sb3"
+       data-shift=".shifted-content">
+    <div class="sidebar-header bg-red">
+        <div class="avatar">
+            <img data-role="gravatar" data-email="EMPTY">
         </div>
-    </li>
-    <li>
-        <a href="#" class="dropdown-toggle">Support</a>
-        <div class="mega-container" data-role="dropdown">
-            <ul class="h-menu">
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Forum</a></li>
-                <li><a href="#">Github</a></li>
-                <li><a href="#">Community</a></li>
-            </ul>
-        </div>
-    </li>
-    <li><a href="#">Cart</a></li>
+        <span class="title fg-white">TalkHub</span>
+        <span class="subtitle fg-white"> 2019 © TalkHub</span>
+    </div>
+    <ul class="sidebar-menu">
+    <li><a href="{% url 'main_page' %}"><span class="mif-home icon"></span>Home</a></li>
+      {% if request.user.id != None %} 
+      <li><a href="{% url 'profile' id=request.user.id %}"><span class="mif-user icon"></span>Profile</a></li>
+      {% endif %}
+      {% if request.user.is_authenticated %} 
+      <li><a href="{% url 'blogapp:post_create' %}"><span class="mif-add icon"></span>Create</a></li>
+      <li><a href="{% url 'edit_profile' %}"><span class="mif-cog icon"></span>Edit profile</a></li>
+      <li class="divider"></li>
+      <li><a href="{% url 'user_logout' %}"><span class="mif-exit icon"></span>Logout</a></li>
+      {% else %}
+      <li class="divider"></li>
+      <li><a href="{% url 'user_login' %}"><span class="mif-enter icon"></span>Login</a></li>
+      <li><a href="{% url 'register' %}"><span class="mif-user-plus icon"></span>Sign Up</a></li>
+      {% endif %}
 </ul>
+</aside>
+<div class="shifted-content h-100 p-ab">
+    <div class="app-bar pos-absolute bg-red z-1" data-role="appbar">
+        <button class="app-bar-item c-pointer" id="sidebar-toggle-3">
+            <span class="mif-menu fg-white"></span>
+        </button>
+    </div>
+</div>
