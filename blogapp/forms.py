@@ -6,12 +6,14 @@ from django.contrib.auth.models import User
 class PostCreateForm(forms.ModelForm):
     title = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Title', 'class': 'form-control mr-sm-2'}))
     body = forms.CharField(label='', widget=forms.Textarea(attrs={'placeholder': 'Body', 'class': 'form-control mr-sm-2'}))
+    public = forms.BooleanField(label='Make post private:', widget=forms.CheckboxInput(attrs={'class': 'form-control mr-sm-2'}))
 
     class Meta:
         model = Post
         fields = (
             'title',
             'body',
+            'public',
         )
 
 
