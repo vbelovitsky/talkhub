@@ -64,4 +64,14 @@ class Migration(migrations.Migration):
             name='user',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
         ),
+        migrations.AddField(
+            model_name='post',
+            name='public',
+            field=models.BooleanField(default=1)
+        ),
+        migrations.AddField(
+            model_name='post',
+            name='private_key',
+            field=models.CharField(default=None, max_length=32)
+        ),
     ]
