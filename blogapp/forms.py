@@ -45,32 +45,32 @@ class UserLoginForm(forms.Form):
 
 class UserRegistrationForm(forms.ModelForm):
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Username', 'data-icon': "<span class='mif-user-plus'>", 
+        attrs={'placeholder': 'Username', 'data-role': "materialinput", 'data-icon': "<span class='mif-user-plus'>", 
             'data-label': "User email", 'data-cls-line': "bg-cobalt", 'data-cls-label': "fg-cobalt",
             'data-cls-informer': "fg-lightCobalt", 'data-cls-icon': "fg-darkCobalt"
             }))
     first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'First name', 'data-icon': "<span class='mif-info'>", 
+        attrs={'placeholder': 'First name', 'data-role': "materialinput", 'data-icon': "<span class='mif-info'>", 
             'data-label': "User email", 'data-cls-line': "bg-cobalt", 'data-cls-label': "fg-cobalt",
             'data-cls-informer': "fg-lightCobalt", 'data-cls-icon': "fg-darkCobalt"
             }))
     last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Last name', 
+        attrs={'placeholder': 'Last name', 'data-role': "materialinput",
             'data-label': "User email", 'data-cls-line': "bg-cobalt", 'data-cls-label': "fg-cobalt",
             'data-cls-informer': "fg-lightCobalt"
             }))
     email = forms.EmailField(label='', widget=forms.EmailInput(
-        attrs={'placeholder': 'Enter your email', 'data-icon': "<span class='mif-envelop'>", 
+        attrs={'placeholder': 'Enter your email', 'data-role': "materialinput", 'data-icon': "<span class='mif-envelop'>", 
             'data-label': "User email", 'data-cls-line': "bg-cobalt", 'data-cls-label': "fg-cobalt",
             'data-cls-informer': "fg-lightCobalt", 'data-cls-icon': "fg-darkCobalt"
         }))
     password = forms.CharField(label='', widget=forms.PasswordInput(
-        attrs={'placeholder': 'Enter password here', 'data-icon': "<span class='mif-lock'>", 
+        attrs={'placeholder': 'Enter password here', 'data-role': "materialinput", 'data-icon': "<span class='mif-lock'>", 
             'data-label': "User email", 'data-cls-line': "bg-cobalt", 'data-cls-label': "fg-cobalt",
             'data-cls-informer': "fg-lightCobalt", 'data-cls-icon': "fg-darkCobalt"
             }))
     confirm_password = forms.CharField(label='', widget=forms.PasswordInput(
-        attrs={'placeholder': 'Confirm password',
+        attrs={'placeholder': 'Confirm password', 'data-role': "materialinput",
             'data-label': "User email", 'data-cls-line': "bg-cobalt", 'data-cls-label': "fg-cobalt",
             'data-cls-informer': "fg-lightCobalt"
             }))
