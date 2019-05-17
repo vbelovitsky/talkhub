@@ -7,48 +7,29 @@
     {% include "main/base.html" %}
 </head>
 <body class="d-flex flex-column">
-    {% if query %}
-        <div class="alert alert-success" role="alert">
-            <p>You are searching for: {{ query }}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a>
-        </div>
-    {% endif %}
-
-    {% if searchtag %}
-        <div class="alert alert-success" role="alert">
-            <p>You are searching for: {{ searchtag }}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a>
-        </div>
-    {% endif %}
-    <div class="main-body" id="mainbody">
-        <div class="container-fluid grid-container">
-            {% for post in posts %}
-            <div class="card bg-light mb-3">
-                <h5 class="card-header">Author: <a href="{% url 'profile' id=post.author.id %}" class="links text-dark">{{ post.author }}</a></h5>
-                <div class="card-body">
-                    <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text">
-                        {% for tag in post.tag.all %}
-                        <form action="{% url "main_page" %}" style="display: inline-block;"><button type="submit" value="{{ tag }}" name="searchtag" class="btn badge badge-success">{{ tag }}</button></form>
-                        {% endfor %}
-                    </p>
-                    <p class="card-text">
-                        <small>{{ post.likes.count }} Likes</small>
-                    </p>
-                    <p class="lead">
-                        <a class="btn btn-primary btn-lg" href="{{post.get_absolute_url}}" role="button">Learn more</a>
-                    </p>
-                </div>
-            </div>
-            {% empty %}
+    <table class="table" data-role="table">
+        <thead>
+        <tr>
+            <th >Title</th>
+            <th >Likes</th>
+            <th data-cls-column="bg-cyan fg-white text-center">Author</th>
+            <th data-cls-column="bg-orange fg-white text-center" >Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+        <tr>
+            <td>{{ post.title }}</td>
+            <td>{{ post.likes.count }}</td>
+            <td><a href="{% url 'profile' id=post.author.id %}">{{ post.author }}</a></td>
+            <td>2011/04/25</td>
+        </tr>
+        {% empty %}
                 <div class="alert alert-danger" role="alert">
                     <strong>Sorry!</strong> No post found
                 </div>
-            {% endfor %}
-        </div>
-        <div class="tag-section jumbotron">
-            {% include 'main/tag_section.html' %}
-        </div>
-    </div>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+        {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
