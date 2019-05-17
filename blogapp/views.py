@@ -171,7 +171,7 @@ def post_edit(request, id):
                 post.private = 1
                 key = ''.join([random.choice(string.ascii_lowercase + string.digits) for n in range(24)])
                 post.private_key = key
-            if request.POST.get('public') is None and post.private_key != 'public':
+            if request.POST.get('private') is None and post.private_key != 'public':
                 post.private = 0
                 post.private_key = 'public'
             post.save()
