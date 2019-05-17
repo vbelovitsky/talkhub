@@ -72,7 +72,7 @@ def proper_pagination(posts, index):
     return start_index, end_index
 
 
-def chat_page(request, id, private_key=None):
+def chat_page(request, id, private_key=''):
     post = get_object_or_404(Post, id=id, private_key=private_key)
     comments = Comment.objects.filter(post=post, reply=None).order_by('-timestap')
 
@@ -128,7 +128,8 @@ def post_create(request):
         form = PostCreateForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            if not post.is_public():
+            if request.POST.get('public_check'):
+                post.public = 0
                 key = ''.join([random.choice(string.ascii_lowercase + string.digits) for n in range(24)])
                 post.private_key = key
             post.author = request.user
