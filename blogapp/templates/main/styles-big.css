@@ -163,3 +163,8 @@ body a:hover{
 .white-space-chat{
     white-space: pre-wrap;
 }
+.grid-box{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
