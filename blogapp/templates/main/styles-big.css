@@ -154,14 +154,14 @@ body a:hover{
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
-.card{
-      margin-left: 2%;
-}
 .container-fluid{
       padding-left: 0 !important;
 }
 .white-space-chat{
     white-space: pre-wrap;
+}
+.card:first-of-type{
+    margin-top: 1rem;
 }
 .grid-box{
     display: grid;
