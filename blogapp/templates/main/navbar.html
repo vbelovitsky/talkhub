@@ -11,10 +11,10 @@
         <span class="subtitle fg-white"> 2018 © Sergey Pimenov</span>
     </div>
     <ul class="sidebar-menu">
-    <li><a>Home</a></li>
-    <li><a>Profile</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="{% url 'profile' id=request.user.id %}">Profile</a></li>
     <li class="divider"></li>
-    <li><a>Logout</a></li>
+    <li><a href="{% url 'user_logout' %}">Logout</a></li>
 </ul>
 </aside>
 <div class="shifted-content h-100 p-ab">
@@ -22,14 +22,5 @@
         <button class="app-bar-item c-pointer" id="sidebar-toggle-3">
             <span class="mif-menu fg-white"></span>
         </button>
-    </div>
-
-    <div class="h-100 p-4">
-        <p class="h1">What is Lorem Ipsum?</p>
-        <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-            ...
-        </p>
     </div>
 </div>
