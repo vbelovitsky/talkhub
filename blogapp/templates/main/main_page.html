@@ -18,7 +18,7 @@
             <div class="date">{{ post.created}}</div>
         </div>
         <div class="card-content p-2">
-            {{ post.title }}
+            <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
         </div>
         <div class="card-content fg-gray p-2">
             <span><small>Likes: </small>{{ post.likes.count }}</span>
