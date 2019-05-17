@@ -137,7 +137,7 @@ def post_create(request):
             post_tags = request.POST.getlist('tags')
             for post_tag in post_tags:
                 post.tag.add(post_tag)
-            return redirect('blogapp:post_recommend', id=post.id)
+            return redirect('blogapp:post_recommend', id=post.id, key=post.private_key)
     else:
         form = PostCreateForm()
 
@@ -185,8 +185,8 @@ def post_delete(request, id):
 
 
 @login_required()
-def post_recommend(request, id):
-    post = get_object_or_404(Post, id=id)
+def post_recommend(request, id, key):
+    post = get_object_or_404(Post, id=id, private_key=key)
     query = "site:stackoverflow.com " + post.title + " " + post.body
 
     recommend_array = []
@@ -195,7 +195,6 @@ def post_recommend(request, id):
 
     context = {
         'links': recommend_array,
-        'private_link': post.get_absolute_url()
     }
     return render(request, 'main/post_recommend.html', context)
 # endregion
