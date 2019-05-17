@@ -18,7 +18,7 @@ class Post(models.Model):
                                  related_name='tags',
                                  blank=True)
     public = models.BooleanField(default=1)
-    private_key = models.CharField(default=None, max_length=32)
+    private_key = models.CharField(max_length=32)
 
     def __str__(self):
         return self.title

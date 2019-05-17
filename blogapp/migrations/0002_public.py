@@ -21,6 +21,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='post',
             name='private_key',
-            field=models.CharField(default=None, max_length=32)
+            field=models.CharField(max_length=32)
         ),
     ]
