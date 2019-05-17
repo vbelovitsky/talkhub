@@ -6,30 +6,26 @@
 
     {% include "main/base.html" %}
 </head>
-<body class="d-flex flex-column">
-    <table class="table" data-role="table">
-        <thead>
-        <tr>
-            <th >Title</th>
-            <th >Likes</th>
-            <th data-cls-column="bg-cyan fg-white text-center">Author</th>
-            <th data-cls-column="bg-orange fg-white text-center" >Date</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for post in posts %}
-        <tr>
-            <td>{{ post.title }}</td>
-            <td>{{ post.likes.count }}</td>
-            <td><a href="{% url 'profile' id=post.author.id %}">{{ post.author }}</a></td>
-            <td>2011/04/25</td>
-        </tr>
-        {% empty %}
-                <div class="alert alert-danger" role="alert">
-                    <strong>Sorry!</strong> No post found
-                </div>
-        {% endfor %}
-        </tbody>
-    </table>
+<body>
+<table class="table" data-role="table">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th data-sortable="true">Author</th>
+        <th data-sortable="true" data-format="int">Likes</th>
+        <th data-sortable="true" data-format="date">Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for post in posts %}
+    <tr>
+        <td>{{ post.title }}</td>
+        <td><a href="{% url 'profile' id=post.author.id %}">{{ post.author }}</a></td>
+        <td>{{ post.likes.count }}</td>
+        <td>{{ post.date }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
 </body>
 </html>
