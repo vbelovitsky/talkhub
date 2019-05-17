@@ -22,6 +22,6 @@ urlpatterns = [
     url(r'(?P<id>\d+)/(?P<key>\d+)/$', views.chat_page, name='chat_page'),
     url(r'post_create/$', views.post_create, name='post_create'),
     url(r'refresh/(?P<id>\d+)/$', views.comment_refresh, name='comment_refresh'),
-    url(r'(?P<id>\d+)/(?P<key>\d+)/recommend/$', views.post_recommend, name='post_recommend'),
+    url(r'(?P<id>\d+)/(?P<key>[a-zA-Z0-9_]+)/recommend/$', views.post_recommend, name='post_recommend'),
     url(r'comment-delete/(?P<id>\d+)/(?P<comid>\d+)/$', views.comment_delete, name='comment_delete'),
 ]
