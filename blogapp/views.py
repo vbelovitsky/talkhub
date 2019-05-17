@@ -128,7 +128,7 @@ def post_create(request):
         form = PostCreateForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            if request.POST.get('public_check'):
+            if request.POST.get('public'):
                 post.public = 0
                 key = ''.join([random.choice(string.ascii_lowercase + string.digits) for n in range(24)])
                 post.private_key = key
