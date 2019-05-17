@@ -72,8 +72,8 @@ def proper_pagination(posts, index):
     return start_index, end_index
 
 
-def chat_page(request, id, private_key=''):
-    post = get_object_or_404(Post, id=id, private_key=private_key)
+def chat_page(request, id, key):
+    post = get_object_or_404(Post, id=id, private_key=key)
     comments = Comment.objects.filter(post=post, reply=None).order_by('-timestap')
 
     is_liked = False
