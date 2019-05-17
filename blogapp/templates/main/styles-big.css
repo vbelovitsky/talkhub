@@ -123,10 +123,10 @@ body a:hover{
     height: 48vh;
 }
 .login-registration-form{
-    width: 50%; 
-    margin-top: 25vh; 
-    padding-bottom: 4vh !important; 
-    padding-top: 4vh !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .iframe-no-rights{
     margin-bottom: 2vh;
