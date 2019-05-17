@@ -19,10 +19,9 @@ from blogapp import views
 urlpatterns = [
     url(r'(?P<id>\d+)/post_edit/$', views.post_edit, name='post_edit'),
     url(r'(?P<id>\d+)/post_delete/$', views.post_delete, name='post_delete'),
-    url(r'(?P<id>\d+)/$', views.chat_page, name='chat_page'),
+    url(r'(?P<id>\d+)/(?P<key>\d+)/$', views.chat_page, name='chat_page'),
     url(r'post_create/$', views.post_create, name='post_create'),
     url(r'refresh/(?P<id>\d+)/$', views.comment_refresh, name='comment_refresh'),
     url(r'(?P<id>\d+)/recommend/$', views.post_recommend, name='post_recommend'),
-    url(r'private/(?P<id>\d+)/(?P<key>\d+)/$', views.chat_page, name='private_chat_page'),
     url(r'comment-delete/(?P<id>\d+)/(?P<comid>\d+)/$', views.comment_delete, name='comment_delete'),
 ]

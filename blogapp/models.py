@@ -24,7 +24,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('blogapp:chat_page', args=[self.id])
+        return reverse('blogapp:chat_page', args=[self.id, self.private_key])
 
     def is_public(self):
         return bool(self.public)

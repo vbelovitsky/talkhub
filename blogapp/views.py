@@ -189,17 +189,13 @@ def post_recommend(request, id):
     post = get_object_or_404(Post, id=id)
     query = "site:stackoverflow.com " + post.title + " " + post.body
 
-    private_url = ''
-    if not post.is_public():
-        private_url = reverse('blogapp:private_chat_page', args=(post.id, post.private_key))
-
     recommend_array = []
     for url in search(query, tld="com", num=5, stop=5, pause=2):
         recommend_array.append(url)
 
     context = {
         'links': recommend_array,
-        'private_link': private_url
+        'private_link': post.get_absolute_url()
     }
     return render(request, 'main/post_recommend.html', context)
 # endregion
