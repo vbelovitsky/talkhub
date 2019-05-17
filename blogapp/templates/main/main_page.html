@@ -19,7 +19,7 @@
     <tbody>
     {% for post in posts %}
     <tr>
-        <td>{{ post.title }}</td>
+        <td><a href="{{post.get_absolute_url}}">{{ post.title }}</a></td>
         <td><a href="{% url 'profile' id=post.author.id %}">{{ post.author }}</a></td>
         <td>{{ post.likes.count }}</td>
         <td>{{ post.created }}</td>
