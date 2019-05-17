@@ -17,12 +17,17 @@ class Post(models.Model):
     tag = models.ManyToManyField(to='Tag',
                                  related_name='tags',
                                  blank=True)
+    public = models.BooleanField(default=1)
+    private_key = models.CharField(default=None)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse('blogapp:chat_page', args=[self.id])
+
+    def is_public(self):
+        return bool(self.public)
 
     class Meta:
         ordering = ['-created']

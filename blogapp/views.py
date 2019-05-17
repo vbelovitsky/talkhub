@@ -10,6 +10,7 @@ from .forms import *
 from django.template.loader import render_to_string
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from googlesearch import search
+import random, string
 
 
 def main_page(request):
@@ -71,8 +72,8 @@ def proper_pagination(posts, index):
     return start_index, end_index
 
 
-def chat_page(request, id):
-    post = get_object_or_404(Post, id=id)
+def chat_page(request, id, private_key=None):
+    post = get_object_or_404(Post, id=id, private_key=private_key)
     comments = Comment.objects.filter(post=post, reply=None).order_by('-timestap')
 
     is_liked = False
@@ -127,6 +128,9 @@ def post_create(request):
         form = PostCreateForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
+            if not post.is_public():
+                key = ''.join([random.choice(string.ascii_lowercase + string.digits) for n in range(24)])
+                post.private_key = key
             post.author = request.user
             post.save()
             post_tags = request.POST.getlist('tags')
@@ -184,11 +188,17 @@ def post_recommend(request, id):
     post = get_object_or_404(Post, id=id)
     query = "site:stackoverflow.com " + post.title + " " + post.body
 
+    private_url = ''
+    if not post.is_public():
+        private_url = reverse('blogapp:private_chat_page', args=(post.id, post.private_key))
+
     recommend_array = []
     for url in search(query, tld="com", num=5, stop=5, pause=2):
         recommend_array.append(url)
+
     context = {
-        'links': recommend_array
+        'links': recommend_array,
+        'private_link': private_url
     }
     return render(request, 'main/post_recommend.html', context)
 # endregion
@@ -235,6 +245,7 @@ def register(request):
             new_user = form.save(commit=False)
             new_user.set_password(form.cleaned_data['password'])
             new_user.save()
+            login(request, new_user)
             return redirect('main_page')
     else:
         form = UserRegistrationForm()
