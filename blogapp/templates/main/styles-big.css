@@ -130,6 +130,7 @@ body a:hover{
     transform: translate(-50%, -50%);
     padding: 2%;
     border-radius: 2%;
+    background-color: #FFD2AD;
 }
 .iframe-no-rights{
     margin-bottom: 2vh;
