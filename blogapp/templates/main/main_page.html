@@ -7,7 +7,8 @@
     {% include "main/base.html" %}
 </head>
 <body>
-{% for post in posts %}
+<div class="container-fluid">
+    {% for post in posts %}
     <div class="card">
         <div class="card-header">
             <div class="avatar">
@@ -24,11 +25,12 @@
             <span><small>Comments: </small>#</span>
         </div>
         <div class="card-footer">
-            <button class="flat-button mif-thumbs-up mif-2x"></button>
+            <button class="flat-button mif-thumbs-up mif-2x" id="like" value="{{ post.id }}"></button>
             <button class="flat-button mif-tag mif-2x"></button>
             <button class="flat-button mif-share mif-2x"></button>
         </div>
     </div>
 {% endfor %}
+</div>
 </body>
 </html>
