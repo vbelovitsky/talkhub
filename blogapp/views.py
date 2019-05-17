@@ -128,8 +128,8 @@ def post_create(request):
         form = PostCreateForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
-            if request.POST.get('public'):
-                post.public = 0
+            if request.POST.get('private'):
+                post.private = 1
                 key = ''.join([random.choice(string.ascii_lowercase + string.digits) for n in range(24)])
                 post.private_key = key
             post.author = request.user
@@ -167,12 +167,12 @@ def post_edit(request, id):
         form = PostEditForm(request.POST or None, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
-            if request.POST.get('public') and post.private_key == 'public':
-                post.public = 0
+            if request.POST.get('private') and post.private_key == 'public':
+                post.private = 1
                 key = ''.join([random.choice(string.ascii_lowercase + string.digits) for n in range(24)])
                 post.private_key = key
             if request.POST.get('public') is None and post.private_key != 'public':
-                post.public = 1
+                post.private = 0
                 post.private_key = 'public'
             post.save()
             return HttpResponseRedirect(post.get_absolute_url())

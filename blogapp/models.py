@@ -17,7 +17,7 @@ class Post(models.Model):
     tag = models.ManyToManyField(to='Tag',
                                  related_name='tags',
                                  blank=True)
-    public = models.BooleanField(default=1)
+    private = models.BooleanField(default=0)
     private_key = models.CharField(default='public', max_length=32)
 
     def __str__(self):
@@ -26,8 +26,8 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('blogapp:chat_page', args=[self.id, self.private_key])
 
-    def is_public(self):
-        return bool(self.public)
+    def is_private(self):
+        return bool(self.private)
 
     class Meta:
         ordering = ['-created']

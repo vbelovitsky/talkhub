@@ -4,23 +4,11 @@ from django.contrib.auth.models import User
 
 
 class PostCreateForm(forms.ModelForm):
-    title = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Title', 'class': 'form-control mr-sm-2'}))
-    body = forms.CharField(label='', widget=forms.Textarea(attrs={'placeholder': 'Body', 'class': 'form-control mr-sm-2'}))
-    public = forms.BooleanField(required=False, label='Make post private:', widget=forms.CheckboxInput(attrs={'class': 'form-control mr-sm-2'}))
-
-    class Meta:
-        model = Post
-        fields = (
-            'title',
-            'body',
-            'public'
-        )
-
-
-class PostEditForm(forms.ModelForm):
-    title = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Title', 'class': 'form-control mr-sm-2'}))
-    body = forms.CharField(label='', widget=forms.Textarea(attrs={'placeholder': 'Body', 'class': 'form-control mr-sm-2'}))
-    public = forms.BooleanField(required=False, label='Make post private:', widget=forms.CheckboxInput(
+    title = forms.CharField(label='', widget=forms.TextInput(
+        attrs={'placeholder': 'Title', 'class': 'form-control mr-sm-2'}))
+    body = forms.CharField(label='', widget=forms.Textarea(
+        attrs={'placeholder': 'Body', 'class': 'form-control mr-sm-2'}))
+    private = forms.BooleanField(required=False, label='Make post private:', widget=forms.CheckboxInput(
         attrs={'class': 'form-control mr-sm-2'}))
 
     class Meta:
@@ -28,22 +16,47 @@ class PostEditForm(forms.ModelForm):
         fields = (
             'title',
             'body',
-            'public'
+            'private'
+        )
+
+
+class PostEditForm(forms.ModelForm):
+    title = forms.CharField(label='', widget=forms.TextInput(
+        attrs={'placeholder': 'Title', 'class': 'form-control mr-sm-2'}))
+    body = forms.CharField(label='', widget=forms.Textarea(
+        attrs={'placeholder': 'Body', 'class': 'form-control mr-sm-2'}))
+    private = forms.BooleanField(required=False, label='Make post private:', widget=forms.CheckboxInput(
+        attrs={'class': 'form-control mr-sm-2'}))
+
+    class Meta:
+        model = Post
+        fields = (
+            'title',
+            'body',
+            'private'
         )
 
 
 class UserLoginForm(forms.Form):
-    username = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'form-control mr-sm-2'}))
-    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'form-control mr-sm-2'}))
+    username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
+        attrs={'placeholder': 'Username', 'class': 'form-control mr-sm-2'}))
+    password = forms.CharField(label='', widget=forms.PasswordInput(
+        attrs={'placeholder': 'Password', 'class': 'form-control mr-sm-2'}))
 
 
 class UserRegistrationForm(forms.ModelForm):
-    username = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'form-control mr-sm-2'}))
-    first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'First name', 'class': 'form-control mr-sm-2'}))
-    last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'Last name', 'class': 'form-control mr-sm-2'}))
-    email = forms.EmailField(label='', widget=forms.EmailInput(attrs={'placeholder': 'Email', 'class': 'form-control mr-sm-2'}))
-    password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Enter password here', 'class': 'form-control mr-sm-2'}))
-    confirm_password = forms.CharField(label='', widget=forms.PasswordInput(attrs={'placeholder': 'Confirm password', 'class': 'form-control mr-sm-2'}))
+    username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
+        attrs={'placeholder': 'Username', 'class': 'form-control mr-sm-2'}))
+    first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
+        attrs={'placeholder': 'First name', 'class': 'form-control mr-sm-2'}))
+    last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
+        attrs={'placeholder': 'Last name', 'class': 'form-control mr-sm-2'}))
+    email = forms.EmailField(label='', widget=forms.EmailInput(
+        attrs={'placeholder': 'Email', 'class': 'form-control mr-sm-2'}))
+    password = forms.CharField(label='', widget=forms.PasswordInput(
+        attrs={'placeholder': 'Enter password here', 'class': 'form-control mr-sm-2'}))
+    confirm_password = forms.CharField(label='', widget=forms.PasswordInput(
+        attrs={'placeholder': 'Confirm password', 'class': 'form-control mr-sm-2'}))
 
     class Meta:
         model = User
@@ -63,10 +76,14 @@ class UserRegistrationForm(forms.ModelForm):
 
 
 class UserEditForm(forms.ModelForm):
-    username = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'Username', 'class': 'form-control mr-sm-2'}))
-    first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'First name', 'class': 'form-control mr-sm-2'}))
-    last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(attrs={'placeholder': 'Last name', 'class': 'form-control mr-sm-2'}))
-    email = forms.EmailField(label='', widget=forms.EmailInput(attrs={'placeholder': 'Email', 'class': 'form-control mr-sm-2'}))
+    username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
+        attrs={'placeholder': 'Username', 'class': 'form-control mr-sm-2'}))
+    first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
+        attrs={'placeholder': 'First name', 'class': 'form-control mr-sm-2'}))
+    last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
+        attrs={'placeholder': 'Last name', 'class': 'form-control mr-sm-2'}))
+    email = forms.EmailField(label='', widget=forms.EmailInput(
+        attrs={'placeholder': 'Email', 'class': 'form-control mr-sm-2'}))
 
     class Meta:
         model = User
