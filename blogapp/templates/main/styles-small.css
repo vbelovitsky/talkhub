@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 body{
     margin: 0;
-    font-family: 'Roboto';
-    background-color: #e4e4e4!important;
+    font-family: 'Roboto+Slab';
+    background-image: url("https://cdn1.savepice.ru/uploads/2019/5/9/48f4f98e9c3e781c79b7bcef3b705b7a-full.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 body a{
     text-decoration: none;
