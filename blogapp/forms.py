@@ -13,6 +13,7 @@ class PostCreateForm(forms.ModelForm):
         fields = (
             'title',
             'body',
+            'public'
         )
 
 
@@ -27,6 +28,7 @@ class PostEditForm(forms.ModelForm):
         fields = (
             'title',
             'body',
+            'public'
         )
 
 

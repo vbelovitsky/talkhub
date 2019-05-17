@@ -166,7 +166,15 @@ def post_edit(request, id):
     if request.method == 'POST':
         form = PostEditForm(request.POST or None, instance=post)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            if request.POST.get('public') and post.private_key == 'public':
+                post.public = 0
+                key = ''.join([random.choice(string.ascii_lowercase + string.digits) for n in range(24)])
+                post.private_key = key
+            if request.POST.get('public') is None and post.private_key != 'public':
+                post.public = 1
+                post.private_key = 'public'
+            post.save()
             return HttpResponseRedirect(post.get_absolute_url())
     else:
         form = PostEditForm(instance=post)
