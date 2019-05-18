@@ -50,26 +50,18 @@ body a:hover{
     background-size: cover;
     transform: scale(1, -1) rotate(180deg);
 }
-.flex-box-column{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.display-3{
-    font-size: 5rem;
-}
-.chat_jumb{
-    width: 100%;
-    height: 100%;
-    max-width: 89.4vw;
-}
 .grid-box{
         display: grid;
         grid-template-columns: 2fr 1.5fr;
         justify-items: stretch;
         align-items: stretch;
 }
-
+.comment-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
 .mb-0{
     margin-right: 0.3vw;
 }
@@ -100,7 +92,7 @@ body a:hover{
 }
 
 .login-registration-form{
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
