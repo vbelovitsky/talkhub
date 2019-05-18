@@ -177,3 +177,6 @@ body a:hover{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.comments-input-form p{
+    margin-top: 0 !important;
+}
