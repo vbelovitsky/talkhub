@@ -281,14 +281,14 @@ def profile(request, id):
 def edit_profile(request):
     if request.method == 'POST':
         edit_form = UserEditForm(request.POST or None, instance=request.user)
-        profile_form = ProfileForm(request.POST or None, request.FILES or None, instance=request.user.user)
+        profile_form = ProfileForm(request.POST or None, request.FILES or None, instance=request.user.profile)
         if edit_form.is_valid() and profile_form.is_valid():
             edit_form.save()
             profile_form.save()
             return redirect('main_page')
     else:
         edit_form = UserEditForm(instance=request.user)
-        profile_form = ProfileForm(instance=request.user.user)
+        profile_form = ProfileForm(instance=request.user.profile)
     context = {
         'form': edit_form,
         'profile': profile_form
