@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Create</title>
-    {% include "main/base.html" %}
-</head>
-<body>
+{% extends "main/navbar.html" %}
+{% block content %}
 Maybe this links could help you to solve your problem:<br>
 {% for link in links %}
     <a href="{{ link }}">{{ link }}</a><br>
@@ -13,5 +7,4 @@ Maybe this links could help you to solve your problem:<br>
 Here your private post link:
 <a href="{{ private_link }}">{{ private_link }}</a><br>
 <a href="{% url 'main_page' %}"><button class="btn btn-outline-success">Continue in TalkHub</button></a>
-</body>
-</html>
+{% endblock %}
