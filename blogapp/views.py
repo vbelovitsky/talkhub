@@ -258,7 +258,7 @@ def register(request):
         'form': form
     }
     return render(request, 'registration/register.html', context)
-# endregion
+# endregion   
 
 
 # region Profile
@@ -282,7 +282,7 @@ def edit_profile(request):
         edit_form = UserEditForm(request.POST or None, instance=request.user)
         if edit_form.is_valid():
             edit_form.save()
-            return redirect('main_page')
+            return redirect('user_login')
     else:
         edit_form = UserEditForm(instance=request.user)
     context = {
