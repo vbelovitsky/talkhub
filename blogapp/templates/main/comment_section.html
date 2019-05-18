@@ -52,41 +52,31 @@
 
     {% endfor %}
 </div>
-
-<form method="POST" class="comment-form" action="">
-    {% csrf_token %}
-    {{ comment_form.as_p}}
-    {% if request.user.is_authenticated %}
-        <input type="submit" value="Submit" class="btn btn-outline-success">
-    {% else %}
-        <a href="{% url 'user_login' %}"><input type="button" value="Submit" class="btn btn-outline-success"></a>
-    {% endif %}
-</form>
-</div>
 <div>
-<div class="messages">
-{% for comment in comments %}
-    <div class="message right">
-        <div class="message-sender">{{ comment.user }}</div>
-        <div class="message-time">{{ comment.timestap }}</div>
-        <div class="message-item">
-            <img class="message-avatar">
-            <div class="message-text default">{{ comment.content }}</div>
+    <div class="comments bg-light">
+    {% for comment in comments %}
+        <div class="message right">
+            <div class="message-sender">{{ comment.user|capfirst }}</div>
+            <div class="message-time">{{ comment.timestap }}</div>
+            <div class="message-item">
+                <img class="message-avatar" src="https://cdn1.savepice.ru/uploads/2019/5/19/058cdfe21f8e4fd2ce85ce629b57916d-full.jpg">
+                <div class="message-text default">{{ comment.content }}</div>
+            </div>
         </div>
+    {% endfor %}
     </div>
-{% endfor %}
-</div>
-
-
-<div class="message-input">
-<div class="input">
-<input type="text" class="">
-<div class="button-group">
-<button class="button input-clear-button" tabindex="-1" type="button">
-<span class="default-icon-cross">
-</span></button>
-
-<button class="button input-custom-button js-chat-send-button" tabindex="-1" type="button">Send</button>
-
-</div></div></div>
+    <div class="message-input">
+        <form method="POST" class="comment-form" action="">
+            <div class="input comments-input-form">
+            {% csrf_token %}
+            {{ comment_form.as_p}}
+                <div class="button-group">
+                <button class="button input-clear-button" tabindex="-1" type="button">
+                    <span class="default-icon-cross"></span>
+                </button>
+                <input class="button input-custom-button js-chat-send-button" tabindex="-1" type="submit" value="Send">
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

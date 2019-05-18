@@ -50,29 +50,10 @@ body a:hover{
     background-size: cover;
     transform: scale(1, -1) rotate(180deg);
 }
-.comments{
-    margin-top: 2vh;
-    overflow-y: scroll;
-    height: 60vh;
-    width: 100%;
-    padding: 1%;
-    display: flex;
-    flex-direction: column-reverse;
-    background: white;
-    border: 1px solid black;
-    padding: 2vw;
-    margin-bottom: 2.5vh;
-    border-radius: 4px;
-}
 .flex-box-column{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-.jumbotron{
-    padding-bottom: 1vh !important;
-    padding-top: 1vh !important;
-    margin-bottom: 2vh;
 }
 .display-3{
     font-size: 5rem;
@@ -88,12 +69,7 @@ body a:hover{
         justify-items: stretch;
         align-items: stretch;
 }
-.comment-title{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-}
+
 .mb-0{
     margin-right: 0.3vw;
 }
@@ -176,4 +152,64 @@ body a:hover{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+.comments-input-form p{
+    margin-top: 0 !important;
+}
+.comments{
+    border: 1px #d9d9d9 solid;
+}
+.message{
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+.message-sender{
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2;
+    text-align: right;
+}
+.message-time{
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+    text-align: left;
+}
+.message-item{
+    width: 100%;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    margin: 8px 0;
+    -webkit-box-ordinal-group: 4;
+    -ms-flex-order: 3;
+    order: 3;
+}
+.message-avatar{
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2;
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    display: block;
+}
+.message-text{
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+    margin-left: 0;
+    margin-right: 8px;
 }
