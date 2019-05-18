@@ -37,7 +37,7 @@
       <li>
         <a onclick="$('#sort-tags').data('charms').toggle()">
             <span class="mif-filter icon"></span>
-            <div data-role="charms" data-position="right" id="sort-tags">Sort by tags</div>
+            <div data-role="charms" data-position="right" id="sort-tags">{% include 'main/tag_section.html' %}</div>
             Sort by tags
         </a>
       </li>
@@ -51,6 +51,11 @@
     </div>
 
     <div class="h-100 p-4">
+    {% if searchtag %} 
+        <div class="alert alert-success" role="alert"> 
+        <p>You are searching for: {{ searchtag }}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a> 
+        </div> 
+    {% endif %} 
         <div class="container mx-auto grid-box">
             {% for post in posts %}
                 {% if not post.is_private or request.user == post.author %}
