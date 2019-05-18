@@ -172,3 +172,8 @@ body a:hover{
 .w-10{
     width: 15% !important;
 }
+.overflow-hidden{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
