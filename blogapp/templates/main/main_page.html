@@ -60,7 +60,15 @@
                     </div>
                     <div class="card-content fg-gray p-2">
                         <span><small>Likes: </small>{{ post.likes.count }}</span>
-                        <span><small>Comments: </small>#</span>
+                        <span><small>Tags </small>
+                        {% for tag in post.tag.all %}
+                            <form action="{% url "main_page" %}" style="display: inline-block;">
+                                <button type="submit" value="{{ tag }}" name="searchtag" class="button info">
+                                    {{ tag }}
+                                </button>
+                            </form>
+                        {% endfor %}
+                        </span>
                     </div>
                     <div class="card-footer">
                     {% if post.tag.all != '' %}
@@ -70,11 +78,7 @@
                             <ul class="d-menu" data-role="dropdown">
                                 {% for tag in post.tag.all %} 
                                     <li>
-                                        <form action="{% url "main_page" %}" style="display: inline-block;">
-                                            <button type="submit" value="{{ tag }}" name="searchtag" class="button info">
-                                                {{ tag }}
-                                            </button>
-                                        </form>
+                                        
                                     </li>
                                 {% endfor %}
                             </ul>
