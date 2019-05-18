@@ -43,6 +43,7 @@ class UserLoginForm(forms.Form):
     password = forms.CharField(label='', widget=forms.PasswordInput(
         attrs={'placeholder': 'Password', 'class': 'form-control mr-sm-2'}))
 
+
 class UserRegistrationForm(forms.ModelForm):
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
         attrs={'placeholder': 'Username', 'data-role': "materialinput", 'data-icon': "<span class='mif-user-plus'>", 
