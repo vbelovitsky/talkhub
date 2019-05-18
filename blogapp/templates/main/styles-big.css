@@ -169,6 +169,6 @@ body a:hover{
     grid-template-columns:  33.3% 33.3% 33.3%;
     grid-template-rows: 1fr 1fr 1fr;
 }
-.chakra{
-    background-color: black;
+.w-10{
+    width: 10% !important;
 }
