@@ -103,7 +103,7 @@
                     </div>
                     <div class="card-content fg-gray p-2 text-center">
                         <span><small>Likes: </small>{{ post.likes.count }}</span>
-                        <span><small>Comments: </small>{{ post.comment.count }}</span>
+                        <span><small>Comments: </small>{{ post.comment_set.count }}</span>
                     </div>
                     <div class="card-footer px-1 py-1" style="justify-content: center;">
                             {% for tag in post.tag.all %} 
