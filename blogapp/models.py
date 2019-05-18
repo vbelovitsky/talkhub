@@ -58,3 +58,4 @@ class Profile(models.Model):
                                 on_delete=models.CASCADE)
     image = models.FileField(null=True, blank=True)
 
+

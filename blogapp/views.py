@@ -250,6 +250,7 @@ def register(request):
             new_user = form.save(commit=False)
             new_user.set_password(form.cleaned_data['password'])
             new_user.save()
+            Profile.objects.create(user=new_user)
             login(request, new_user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('main_page')
     else:
@@ -280,13 +281,17 @@ def profile(request, id):
 def edit_profile(request):
     if request.method == 'POST':
         edit_form = UserEditForm(request.POST or None, instance=request.user)
-        if edit_form.is_valid():
+        profile_form = ProfileForm(request.POST or None, request.FILES or None, instance=request.user.user)
+        if edit_form.is_valid() and profile_form.is_valid():
             edit_form.save()
+            profile_form.save()
             return redirect('main_page')
     else:
         edit_form = UserEditForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.user)
     context = {
-        'form': edit_form
+        'form': edit_form,
+        'profile': profile_form
     }
     return render(request, 'main/edit_profile.html', context)
 # endregion
