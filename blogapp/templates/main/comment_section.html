@@ -79,14 +79,15 @@
 
 
 <div class="message-input">
-<div class="input">
-<input type="text" class="">
-<div class="button-group">
-<button class="button input-clear-button" tabindex="-1" type="button">
-<span class="default-icon-cross">
-</span></button>
-
-<button class="button input-custom-button js-chat-send-button" tabindex="-1" type="button">Send</button>
-
-</div></div></div>
+    <div class="input">
+    {{ comment_form.as_p}}
+        <div class="button-group">
+        <button class="button input-clear-button" tabindex="-1" type="button">
+            <span class="default-icon-cross"></span>
+        </button>
+        <button class="button input-custom-button js-chat-send-button" tabindex="-1" type="submit" value="Submit">
+            Send
+        </button>
+        </div>
+    </div>
 </div>
