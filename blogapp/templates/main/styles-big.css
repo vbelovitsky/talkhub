@@ -228,3 +228,17 @@ body a:hover{
     margin-left: 0;
     margin-right: 8px;
 }
+.message-text::before {
+    left: 100%;
+    border-right-color: transparent;
+    border-left-color: #e4e4e4;
+    position: absolute;
+    right: 100%;
+    top: 14px;
+    border: 6px solid transparent;
+    border-right-color: #e4e4e4;
+    content: ' ';
+    height: 0;
+    width: 0;
+    pointer-events: none;
+}
