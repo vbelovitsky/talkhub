@@ -57,6 +57,7 @@
     {% csrf_token %}
     {{ comment_form.as_p}}
     {% if request.user.is_authenticated %}
+        <input type="submit" value="Submit" class="btn btn-outline-success">
     {% else %}
         <a href="{% url 'user_login' %}"><input type="button" value="Submit" class="btn btn-outline-success"></a>
     {% endif %}
@@ -69,9 +70,7 @@
         <button class="button input-clear-button" tabindex="-1" type="button">
             <span class="default-icon-cross"></span>
         </button>
-        <button class="button input-custom-button js-chat-send-button" tabindex="-1" type="submit" value="Submit">
-            Send
-        </button>
+        <input class="button input-custom-button js-chat-send-button" tabindex="-1" type="submit" value="Send">
         </div>
     </div>
 </div>
