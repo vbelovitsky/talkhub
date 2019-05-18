@@ -46,11 +46,11 @@
 </ul>
 </aside>
 <div class="shifted-content h-100 p-ab">
-    <div class="app-bar pos-absolute bg-red z-1" data-role="appbar">
+    <div class="app-bar pos-absolute bg-grayMouse z-1" data-role="appbar">
         <button class="app-bar-item c-pointer" id="sidebar-toggle-3">
             <span class="mif-menu fg-white"></span>
         </button>
-        <ul class="pagination mt-1 mr-1 z-1 success rounded pos-absolute pos-top-right"> 
+        <ul class="pagination mt-1 mr-1 z-1 primary rounded pos-absolute pos-top-right"> 
             {% if posts.has_previous %} 
             <li class="page-item"> 
             <a href="?page={{ posts.previous_page_number }}" class="page-link">&laquo;</a> 
@@ -103,6 +103,7 @@
                     </div>
                     <div class="card-content fg-gray p-2">
                         <span><small>Likes: </small>{{ post.likes.count }}</span>
+                        <span><small>Comments: </small>{{ post.comment.count }}</span>
                     </div>
                     <div class="card-footer px-1 py-1" style="justify-content: center;">
                             {% for tag in post.tag.all %} 
