@@ -60,6 +60,8 @@
                     </div>
                     <div class="card-content fg-gray p-2">
                         <span><small>Likes: </small>{{ post.likes.count }}</span>
+                    </div>
+                    <div class="card-content fg-gray p-2">
                         <span><small>Tags: </small>
                         {% for tag in post.tag.all %} 
                             <form action="{% url "main_page" %}" style="display: inline-block;">
