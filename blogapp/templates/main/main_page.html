@@ -50,6 +50,31 @@
         <button class="app-bar-item c-pointer" id="sidebar-toggle-3">
             <span class="mif-menu fg-white"></span>
         </button>
+        <ul class="pagination mt-1 mr-1 z-1 success rounded place-right"> 
+            {% if posts.has_previous %} 
+            <li class="page-item"> 
+            <a href="?page={{ posts.previous_page_number }}" class="page-link">&laquo;</a> 
+            </li> 
+            {% endif %} 
+
+            {% for p in page_range %} 
+            {% if posts.number == p %} 
+            <li class="page-item active"> 
+            <a href="?page={{ p }}" class="page-link">{{ p }}</a> 
+            </li> 
+            {% else %} 
+            <li class="page-item"> 
+            <a href="?page={{ p }}" class="page-link">{{ p }}</a> 
+            </li> 
+            {% endif %} 
+            {% endfor %} 
+
+            {% if posts.has_next %} 
+            <li class="page-item"> 
+            <a href="?page={{ posts.next_page_number }}" class="page-link">&raquo;</a> 
+            </li> 
+            {% endif %} 
+        </ul> 
     </div>
 
     <div class="h-100 p-4">
@@ -58,32 +83,6 @@
         <p>You are searching for: {{ searchtag }}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a> 
         </div> 
     {% endif %} 
-    <!-- Pagination -->
-    <ul class="pagination pos-fixed pos-top-right mt-1 mr-1 z-2 success rounded"> 
-        {% if posts.has_previous %} 
-        <li class="page-item"> 
-        <a href="?page={{ posts.previous_page_number }}" class="page-link">&laquo;</a> 
-        </li> 
-        {% endif %} 
-
-        {% for p in page_range %} 
-        {% if posts.number == p %} 
-        <li class="page-item active"> 
-        <a href="?page={{ p }}" class="page-link">{{ p }}</a> 
-        </li> 
-        {% else %} 
-        <li class="page-item"> 
-        <a href="?page={{ p }}" class="page-link">{{ p }}</a> 
-        </li> 
-        {% endif %} 
-        {% endfor %} 
-
-        {% if posts.has_next %} 
-        <li class="page-item"> 
-        <a href="?page={{ posts.next_page_number }}" class="page-link">&raquo;</a> 
-        </li> 
-        {% endif %} 
-    </ul> 
     <!-- Posts -->
         <div class="container mx-auto grid-box">
             {% for post in posts %}
