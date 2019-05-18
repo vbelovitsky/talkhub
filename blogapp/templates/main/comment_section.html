@@ -63,5 +63,23 @@
     {% endif %}
 </form>
 </div>
-<div data-role="chat" data-width="200" data-height="200">
-</div>
+<script> 
+var comments_js = [] 
+    {% for comment in comments %} 
+        var comment_js = { 
+            comment.id, 
+            {{request.user}}, 
+            null, 
+            EMPTY, 
+            right 
+        } 
+        comments_js.push(comment_js) 
+    {% endfor %} 
+</script> 
+<div 
+    data-role="chat" 
+    data-width="300" 
+    data-height="400" 
+    data-name="{{request.user}}" 
+    data-messages="comments_js"
+></div>
