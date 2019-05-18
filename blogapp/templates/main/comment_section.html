@@ -52,22 +52,11 @@
 
     {% endfor %}
 </div>
-
-<!-- <form method="POST" class="comment-form" action="">
-    {% csrf_token %}
-    {{ comment_form.as_p}}
-    {% if request.user.is_authenticated %}
-        <input type="submit" value="Submit" class="btn btn-outline-success">
-    {% else %}
-        <a href="{% url 'user_login' %}"><input type="button" value="Submit" class="btn btn-outline-success"></a>
-    {% endif %}
-</form>
-</div> -->
 <form method="POST" class="comment-form" action="">
 <div class="message-input">
     <div class="input">
     {% csrf_token %}
-    {{ comment_form.as_p}}
+    {{ comment_form.as_div}}
         <div class="button-group">
         <button class="button input-clear-button" tabindex="-1" type="button">
             <span class="default-icon-cross"></span>
