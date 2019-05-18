@@ -101,7 +101,7 @@
                     <div class="card-content fg-gray p-2">
                         <span><small>Likes: </small>{{ post.likes.count }}</span>
                     </div>
-                    <div class="card-footer" style="justify-content: center;">
+                    <div class="card-footer px-1 py-1" style="justify-content: center;">
                             {% for tag in post.tag.all %} 
                                 <form action="{% url "main_page" %}" style="display: inline-block;">
                                     <button type="submit" value="{{ tag }}" name="searchtag" class="button info mx-1">

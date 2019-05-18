@@ -177,6 +177,3 @@ body a:hover{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.card-footer{
-    padding: 0 !important;
-}
