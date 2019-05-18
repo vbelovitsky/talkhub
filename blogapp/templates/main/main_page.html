@@ -95,10 +95,10 @@
                         <div class="name"><a href="{% url 'profile' id=post.author.id %}">{{ post.author }}</a></div>
                         <div class="date">{{ post.created}}</div>
                     </div>
-                    <div class="card-content p-2">
+                    <div class="card-content p-2 overflow-hidden">
                         <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
                     </div>
-                    <div class="card-content fg-gray p-2 overflow-hidden">
+                    <div class="card-content fg-gray p-2">
                         <span><small>Likes: </small>{{ post.likes.count }}</span>
                     </div>
                     <div class="card-footer" style="justify-content: center;">
