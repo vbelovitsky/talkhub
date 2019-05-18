@@ -95,13 +95,13 @@
                         <div class="name"><a href="{% url 'profile' id=post.author.id %}">{{ post.author }}</a></div>
                         <div class="date">{{ post.created}}</div>
                     </div>
-                    <div class="card-content h3 overflow-hidden p-2">
+                    <div class="card-content h3 overflow-hidden p-2 text-center">
                         <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
                     </div>
-                    <div class="card-content p-2 overflow-hidden">
+                    <div class="card-content p-2 overflow-hidden text-center">
                         <a href="{{post.get_absolute_url}}">{{ post.body }}</a>
                     </div>
-                    <div class="card-content fg-gray p-2">
+                    <div class="card-content fg-gray p-2 text-center">
                         <span><small>Likes: </small>{{ post.likes.count }}</span>
                         <span><small>Comments: </small>{{ post.comment.count }}</span>
                     </div>
