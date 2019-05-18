@@ -63,23 +63,29 @@
     {% endif %}
 </form>
 </div>
-<script> 
-var comments_js = [] 
-    {% for comment in comments %} 
-        var comment_js = { 
-            comment.id, 
-            {{request.user}}, 
-            null, 
-            EMPTY, 
-            right 
-        } 
-        comments_js.push(comment_js) 
-    {% endfor %} 
-</script> 
-<div 
-    data-role="chat" 
-    data-width="300" 
-    data-height="400" 
-    data-name="{{request.user}}" 
-    data-messages="comments_js"
-></div>
+<div>
+<div class="messages">
+{% for comment in comments %}
+    <div class="message right">
+        <div class="message-sender">{{ comment.user }}</div>
+        <div class="message-time">{{ comment.timestap }}</div>
+        <div class="message-item">
+            <img class="message-avatar">
+            <div class="message-text default">{{ comment.content }}</div>
+        </div>
+    </div>
+</div>
+
+
+<div class="message-input">
+<div class="input">
+<input type="text" class="">
+<div class="button-group">
+<button class="button input-clear-button" tabindex="-1" type="button">
+<span class="default-icon-cross">
+</span></button>
+
+<button class="button input-custom-button js-chat-send-button" tabindex="-1" type="button">Send</button>
+
+</div></div></div>
+</div>
