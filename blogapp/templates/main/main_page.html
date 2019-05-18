@@ -34,7 +34,13 @@
       <li><a href="{% url 'user_login' %}"><span class="mif-enter icon"></span>Login</a></li>
       <li><a href="{% url 'register' %}"><span class="mif-user-plus icon"></span>Sign Up</a></li>
       {% endif %}
-      <li><a onclick="$('#top-charms').data('charms').toggle()"><span class="mif-filter icon"></span><div data-role="charms" data-position="right" id="top-charms">Sort by tags</div>Sort by tags</a></li>
+      <li>
+        <a onclick="$('#sort-tags').data('charms').toggle()">
+            <span class="mif-filter icon"></span>
+            <div data-role="charms" data-position="right" id="sort-tags">Sort by tags</div>
+            Sort by tags
+        </a>
+      </li>
 </ul>
 </aside>
 <div class="shifted-content h-100 p-ab">

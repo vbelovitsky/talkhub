@@ -10,3 +10,11 @@
         {% endfor %}
     </div>
 </div>
+<div class="items-list">
+    {% for tag in tags %}
+        <div class="item">
+            <input type="checkbox" name="tags" value="{{tag.id}}">
+            <button type="button" class="button info">{{ tag }}</button>
+        </div>
+    {% endfor %}
+</div>
