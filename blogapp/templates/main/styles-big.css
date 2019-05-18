@@ -50,29 +50,10 @@ body a:hover{
     background-size: cover;
     transform: scale(1, -1) rotate(180deg);
 }
-.comments{
-    margin-top: 2vh;
-    overflow-y: scroll;
-    height: 60vh;
-    width: 100%;
-    padding: 1%;
-    display: flex;
-    flex-direction: column-reverse;
-    background: white;
-    border: 1px solid black;
-    padding: 2vw;
-    margin-bottom: 2.5vh;
-    border-radius: 4px;
-}
 .flex-box-column{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-.jumbotron{
-    padding-bottom: 1vh !important;
-    padding-top: 1vh !important;
-    margin-bottom: 2vh;
 }
 .display-3{
     font-size: 5rem;
@@ -88,12 +69,7 @@ body a:hover{
         justify-items: stretch;
         align-items: stretch;
 }
-.comment-title{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-}
+
 .mb-0{
     margin-right: 0.3vw;
 }
@@ -179,4 +155,7 @@ body a:hover{
 }
 .comments-input-form p{
     margin-top: 0 !important;
+}
+.comments{
+    border: 1px #d9d9d9 solid;
 }

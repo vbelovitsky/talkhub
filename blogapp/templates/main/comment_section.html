@@ -52,17 +52,31 @@
 
     {% endfor %}
 </div>
-<form method="POST" class="comment-form" action="">
-<div class="message-input">
-    <div class="input comments-input-form">
-    {% csrf_token %}
-    {{ comment_form.as_p}}
-        <div class="button-group">
-        <button class="button input-clear-button" tabindex="-1" type="button">
-            <span class="default-icon-cross"></span>
-        </button>
-        <input class="button input-custom-button js-chat-send-button" tabindex="-1" type="submit" value="Send">
+<div>
+    <div class="comments">
+    {% for comment in comments %}
+        <div class="message right">
+            <div class="message-sender">{{ comment.user|capfirst }}</div>
+            <div class="message-time">{{ comment.timestap }}</div>
+            <div class="message-item">
+                <img class="message-avatar" src="EMPTY">
+                <div class="message-text default">{{ comment.content }}</div>
+            </div>
         </div>
+    {% endfor %}
+    </div>
+    <div class="message-input">
+        <form method="POST" class="comment-form" action="">
+            <div class="input comments-input-form">
+            {% csrf_token %}
+            {{ comment_form.as_p}}
+                <div class="button-group">
+                <button class="button input-clear-button" tabindex="-1" type="button">
+                    <span class="default-icon-cross"></span>
+                </button>
+                <input class="button input-custom-button js-chat-send-button" tabindex="-1" type="submit" value="Send">
+                </div>
+            </div>
+        </form>
     </div>
 </div>
-</form>
