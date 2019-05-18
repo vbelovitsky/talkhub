@@ -95,7 +95,7 @@
                         <div class="name"><a href="{% url 'profile' id=post.author.id %}">{{ post.author }}</a></div>
                         <div class="date">{{ post.created}}</div>
                     </div>
-                    <div class="card-content h3 overflow-hidden">
+                    <div class="card-content h3 overflow-hidden p-2">
                         <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
                     </div>
                     <div class="card-content p-2 overflow-hidden">
