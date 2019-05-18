@@ -62,7 +62,7 @@
                         <span><small>Likes: </small>{{ post.likes.count }}</span>
                     </div>
                     <div class="card-footer">
-                        <div class="container">
+                        <div>
                             {% for tag in post.tag.all %} 
                                 <form action="{% url "main_page" %}" style="display: inline-block;">
                                     <button type="submit" value="{{ tag }}" name="searchtag">
