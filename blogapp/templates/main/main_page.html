@@ -63,9 +63,13 @@
                         <span><small>Comments: </small>#</span>
                     </div>
                     <div class="card-footer">
-                        <button class="flat-button mif-thumbs-up mif-2x ani-hover-bounce" id="like" value="{{ post.id }}"></button>
-                        <button class="flat-button mif-tag mif-2x"></button>
-                        <button class="flat-button mif-share mif-2x"></button>
+                        {% for tag in post.tag.all %} 
+                            <form action="{% url "main_page" %}" style="display: inline-block;">
+                            <button type="submit" value="{{ tag }}" name="searchtag" class="button info">
+                                {{ tag }}
+                            </button>
+                            </form> 
+                        {% endfor %}
                     </div>
                 </div>
                 {% endif %}
