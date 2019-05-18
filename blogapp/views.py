@@ -250,8 +250,7 @@ def register(request):
             new_user = form.save(commit=False)
             new_user.set_password(form.cleaned_data['password'])
             new_user.save()
-            user = authenticate(username=new_user.username, password=new_user.password)
-            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            login(request, new_user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('main_page')
     else:
         form = UserRegistrationForm()
