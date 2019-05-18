@@ -64,7 +64,7 @@
                     <div class="card-footer" style="justify-content: center;">
                             {% for tag in post.tag.all %} 
                                 <form action="{% url "main_page" %}" style="display: inline-block;">
-                                    <button type="submit" value="{{ tag }}" name="searchtag" class="button info">
+                                    <button type="submit" value="{{ tag }}" name="searchtag" class="button info mx-1">
                                         {{ tag }}
                                     </button>
                                 </form> 
