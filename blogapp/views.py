@@ -259,7 +259,7 @@ def register(request):
         'form': form
     }
     return render(request, 'registration/register.html', context)
-# endregion
+# endregion   
 
 
 # region Profile

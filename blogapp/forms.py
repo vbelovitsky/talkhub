@@ -43,20 +43,37 @@ class UserLoginForm(forms.Form):
     password = forms.CharField(label='', widget=forms.PasswordInput(
         attrs={'placeholder': 'Password', 'class': 'form-control mr-sm-2'}))
 
-
 class UserRegistrationForm(forms.ModelForm):
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Username', 'class': 'form-control mr-sm-2'}))
+        attrs={'placeholder': 'Username', 'data-role': "materialinput", 'data-icon': "<span class='mif-user-plus'>", 
+            'data-label': "Username", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
+            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan"
+            }))
     first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'First name', 'class': 'form-control mr-sm-2'}))
+        attrs={'placeholder': 'First name', 'data-role': "materialinput", 'data-icon': "<span class='mif-info'>", 
+            'data-label': "First name", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
+            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan"
+            }))
     last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Last name', 'class': 'form-control mr-sm-2'}))
+        attrs={'placeholder': 'Last name', 'data-role': "materialinput",
+            'data-label': "Last name", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
+            'data-cls-informer': "fg-lightCyan"
+            }))
     email = forms.EmailField(label='', widget=forms.EmailInput(
-        attrs={'placeholder': 'Email', 'class': 'form-control mr-sm-2'}))
+        attrs={'placeholder': 'Enter your email', 'data-role': "materialinput", 'data-icon': "<span class='mif-envelop'>", 
+            'data-label': "User email", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
+            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan"
+        }))
     password = forms.CharField(label='', widget=forms.PasswordInput(
-        attrs={'placeholder': 'Enter password here', 'class': 'form-control mr-sm-2'}))
+        attrs={'placeholder': 'Enter password here', 'data-role': "materialinput", 'data-icon': "<span class='mif-lock'>", 
+            'data-label': "Enter password here", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
+            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan"
+            }))
     confirm_password = forms.CharField(label='', widget=forms.PasswordInput(
-        attrs={'placeholder': 'Confirm password', 'class': 'form-control mr-sm-2'}))
+        attrs={'placeholder': 'Confirm password', 'data-role': "materialinput",
+            'data-label': "Confirm password", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
+            'data-cls-informer': "fg-lightCyan"
+            }))
 
     class Meta:
         model = User
