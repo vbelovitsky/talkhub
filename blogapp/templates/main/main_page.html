@@ -37,7 +37,9 @@
       <li>
         <a onclick="$('#sort-tags').data('charms').toggle()">
             <span class="mif-filter icon"></span>
-            <div data-role="charms" data-position="right" id="sort-tags">{% include 'main/tag_section.html' %}</div>
+            <div data-role="charms" data-position="right" id="sort-tags" data-cls-charms="w-25 bg-light">
+                {% include 'main/tag_section.html' %}
+            </div>
             Sort by tags
         </a>
       </li>
