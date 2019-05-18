@@ -4,7 +4,7 @@
   Refresh
 </button>
 
-<div class="comments" data-role="chat">
+<div class="comments">
     {% if comments.count == 0%}
         <p class="text-dark">No Comment's<p>
     {% else %}
@@ -62,4 +62,31 @@
         <a href="{% url 'user_login' %}"><input type="button" value="Submit" class="btn btn-outline-success"></a>
     {% endif %}
 </form>
+</div>
+<div>
+<div class="messages">
+{% for comment in comments %}
+    <div class="message right">
+        <div class="message-sender">{{ comment.user }}</div>
+        <div class="message-time">{{ comment.timestap }}</div>
+        <div class="message-item">
+            <img class="message-avatar">
+            <div class="message-text default">{{ comment.content }}</div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+
+<div class="message-input">
+<div class="input">
+<input type="text" class="">
+<div class="button-group">
+<button class="button input-clear-button" tabindex="-1" type="button">
+<span class="default-icon-cross">
+</span></button>
+
+<button class="button input-custom-button js-chat-send-button" tabindex="-1" type="button">Send</button>
+
+</div></div></div>
 </div>

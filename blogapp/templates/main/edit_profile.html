@@ -6,12 +6,50 @@
     {% include "main/base.html" %}
 </head>
 <body id="body">
-<form action="." method="POST" enctype="multipart/form-data" style="margin: 10px">
-    {% csrf_token %}
-    {{ form.as_p }}
-    {{ profile.as_p }}
-    <p><a href="{% url 'password_reset' %}">Reset password</a></p>
-    <input type="submit" value="Complete" class="btn btn-outline-success">
-</form>
+<aside class="sidebar pos-absolute z-2"
+       data-role="sidebar"
+       data-toggle="#sidebar-toggle-3"
+       id="sb3"
+       data-shift=".shifted-content">
+    <div class="sidebar-header bg-grayMouse">
+        <div class="avatar">
+            <img data-role="gravatar" data-email="EMPTY">
+        </div>
+        <span class="title fg-white">{{ request.user }}</span>
+        <span class="subtitle fg-white"> 2019 © TalkHub</span>
+    </div>
+    <ul class="sidebar-menu">
+    <li><a href="{% url 'main_page' %}"><span class="mif-home icon"></span>Home</a></li>
+      {% if request.user.id != None %} 
+      <li><a href="{% url 'profile' id=request.user.id %}"><span class="mif-user icon"></span>Profile</a></li>
+      {% endif %}
+      {% if request.user.is_authenticated %} 
+      <li><a href="{% url 'blogapp:post_create' %}"><span class="mif-add icon"></span>Create</a></li>
+      <li><a href="{% url 'edit_profile' %}"><span class="mif-cog icon"></span>Edit profile</a></li>
+      <li class="divider"></li>
+      <li><a href="{% url 'user_logout' %}"><span class="mif-exit icon"></span>Logout</a></li>
+      {% else %}
+      <li class="divider"></li>
+      <li><a href="{% url 'user_login' %}"><span class="mif-enter icon"></span>Login</a></li>
+      <li><a href="{% url 'register' %}"><span class="mif-user-plus icon"></span>Sign Up</a></li>
+      {% endif %}
+</ul>
+</aside>
+<div class="shifted-content h-100 p-ab">
+    <div class="app-bar pos-absolute bg-grayMouse z-1" data-role="appbar">
+        <button class="app-bar-item c-pointer" id="sidebar-toggle-3">
+            <span class="mif-menu fg-white"></span>
+        </button>
+    </div>
+    <div class="h-100 p-4">
+        <form action="." method="POST" enctype="multipart/form-data" style="margin: 10px">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {{ profile.as_p }}
+            <p><a href="{% url 'password_reset' %}">Reset password</a></p>
+            <input type="submit" value="Complete" class="btn btn-outline-success">
+        </form>
+    </div>
+</div>
 </body>
 </html>

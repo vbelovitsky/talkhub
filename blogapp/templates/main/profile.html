@@ -6,31 +6,70 @@
     {% include "main/base.html" %}
 </head>
 <body>
-    <div class="card text-black bg-light profile-card">
-        <img src="http://st-zamok.ru/upload/content/medium/f605e8a8cff57e1fe865ac6ec6e364b1.jpg" class="card-img-top" alt="No Photo">
-        <div class="card-body">
-            <h5 class="card-title">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">@</span>
-                </div>
-                <input type="text" class="form-control" placeholder={{user.username}} readonly aria-label="Имя пользователя" aria-describedby="basic-addon1">
-            </div>
-            </h5>
-            <p class="card-text">
-                <div class="form-group row">
-                    <label for="url_profile" class="col-sm-2 col-form-label">URL:</label>
-                    <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext links text-dark" id="url_profile" value="https://talkhub.herokuapp.com/profile/{{user.id}}">
-                    </div>
-                </div>
-            </P>
-            <p class="card-text"> posts count = {{ posts_count }}</p>
+<aside class="sidebar pos-absolute z-2"
+       data-role="sidebar"
+       data-toggle="#sidebar-toggle-3"
+       id="sb3"
+       data-shift=".shifted-content">
+    <div class="sidebar-header bg-grayMouse">
+        <div class="avatar">
+            <img data-role="gravatar" data-email="EMPTY">
         </div>
-        <div class="card-body">
-            <a class="card-link links">Card link</a>
-            <a class="card-link links">Another link</a>
-        </div>
+        <span class="title fg-white">{{ request.user }}</span>
+        <span class="subtitle fg-white"> 2019 © TalkHub</span>
     </div>
+    <ul class="sidebar-menu">
+    <li><a href="{% url 'main_page' %}"><span class="mif-home icon"></span>Home</a></li>
+      {% if request.user.id != None %} 
+      <li><a href="{% url 'profile' id=request.user.id %}"><span class="mif-user icon"></span>Profile</a></li>
+      {% endif %}
+      {% if request.user.is_authenticated %} 
+      <li><a href="{% url 'blogapp:post_create' %}"><span class="mif-add icon"></span>Create</a></li>
+      <li><a href="{% url 'edit_profile' %}"><span class="mif-cog icon"></span>Edit profile</a></li>
+      <li class="divider"></li>
+      <li><a href="{% url 'user_logout' %}"><span class="mif-exit icon"></span>Logout</a></li>
+      {% else %}
+      <li class="divider"></li>
+      <li><a href="{% url 'user_login' %}"><span class="mif-enter icon"></span>Login</a></li>
+      <li><a href="{% url 'register' %}"><span class="mif-user-plus icon"></span>Sign Up</a></li>
+      {% endif %}
+</ul>
+</aside>
+<div class="shifted-content h-100 p-ab">
+    <div class="app-bar pos-absolute bg-grayMouse z-1" data-role="appbar">
+        <button class="app-bar-item c-pointer" id="sidebar-toggle-3">
+            <span class="mif-menu fg-white"></span>
+        </button>
+    </div>
+
+    <div class="h-100 p-4">
+        <div class="card text-black bg-light profile-card">
+            <img src="http://st-zamok.ru/upload/content/medium/f605e8a8cff57e1fe865ac6ec6e364b1.jpg" class="card-img-top" alt="No Photo">
+            <div class="card-body">
+                <h5 class="card-title">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder={{user.username}} readonly aria-label="Имя пользователя" aria-describedby="basic-addon1">
+                </div>
+                </h5>
+                <p class="card-text">
+                    <div class="form-group row">
+                        <label for="url_profile" class="col-sm-2 col-form-label">URL:</label>
+                        <div class="col-sm-10">
+                        <input type="text" readonly class="form-control-plaintext links text-dark" id="url_profile" value="https://talkhub.herokuapp.com/profile/{{user.id}}">
+                        </div>
+                    </div>
+                </P>
+                <p class="card-text"> posts count = {{ posts_count }}</p>
+            </div>
+            <div class="card-body">
+                <a class="card-link links">Card link</a>
+                <a class="card-link links">Another link</a>
+            </div>
+        </div>
+    </div> 
+</div>
 </body>
 </html>
