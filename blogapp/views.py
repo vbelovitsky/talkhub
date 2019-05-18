@@ -251,7 +251,7 @@ def register(request):
             new_user.set_password(form.cleaned_data['password'])
             new_user.save()
             login(request, new_user)
-            return redirect('main_page')
+            return redirect('user_login')
     else:
         form = UserRegistrationForm()
     context = {
