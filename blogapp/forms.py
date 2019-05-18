@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Comment
+from .models import Post, Comment, Profile
 from django.contrib.auth.models import User
 
 
@@ -123,3 +123,11 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = {'content'}
+
+
+class ProfileForm(forms.ModelForm):
+    image = forms.FileField(required=False, widget=forms.FileInput())
+
+    class Meta:
+        model = Profile
+        fields = {'image'}
