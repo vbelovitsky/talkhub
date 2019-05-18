@@ -63,21 +63,6 @@
     {% endif %}
 </form>
 </div>
-<div>
-<div class="messages">
-{% for comment in comments %}
-    <div class="message right">
-        <div class="message-sender">{{ comment.user }}</div>
-        <div class="message-time">{{ comment.timestap }}</div>
-        <div class="message-item">
-            <img class="message-avatar">
-            <div class="message-text default">{{ comment.content }}</div>
-        </div>
-    </div>
-{% endfor %}
-</div>
-
-
 <div class="message-input">
     <div class="input">
     {{ comment_form.as_p}}
