@@ -163,12 +163,18 @@ body a:hover{
     -ms-flex-order: 2;
     order: 2;
     text-align: right;
+    width: 50%;
+    font-weight: 600;
+    font-size: 12px;
 }
 .message-time{
     -webkit-box-ordinal-group: 2;
     -ms-flex-order: 1;
     order: 1;
     text-align: left;
+    width: 50%;
+    font-size: 12px;
+    opacity: 0.5;
 }
 .message-item{
     width: 100%;
