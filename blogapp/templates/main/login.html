@@ -45,8 +45,8 @@
     <form method="POST" class="login-registration-form bg-white">
             <h4 class="text-center">Login</h4>
 
-            {% if error != ' ' %}
-            <div class="remark danger" role="alert">
+            {% if error != '' %}
+            <div class="remark alert" role="alert">
                 {{ error }}
             </div>
             {% endif %}
