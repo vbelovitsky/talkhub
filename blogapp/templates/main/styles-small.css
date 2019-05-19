@@ -153,3 +153,99 @@ body a:hover{
 .comments-input-form p{
     margin-top: 0 !important;
 }
+.comments{
+    border: 1px #d9d9d9 solid;
+    padding: 8px;
+    border-bottom: 1px solid #dfdfdf;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.message{
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+.message-sender{
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2;
+    text-align: right;
+    width: 50%;
+    font-weight: 600;
+    font-size: 12px;
+}
+.message-time{
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+    text-align: left;
+    width: 50%;
+    opacity: 0.5;
+}
+.message-item{
+    width: 100%;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    margin: 8px 0;
+    -webkit-box-ordinal-group: 4;
+    -ms-flex-order: 3;
+    order: 3;
+}
+.message-avatar{
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    order: 2;
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    display: block;
+}
+.message-text{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 1px solid #e4e4e4;
+    margin-left: 8px;
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    font-size: 14px;
+    line-height: 1.2;
+    padding: 5px 10px;
+    width: 100%;
+    background-color: #e4e4e4;
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+    margin-left: 0;
+    margin-right: 8px;
+}
+.message-text::before {
+    left: 100%;
+    border-right-color: transparent;
+    border-left-color: #e4e4e4;
+    position: absolute;
+    right: 100%;
+    top: 14px;
+    border: 6px solid transparent;
+    border-left-color: #e4e4e4;
+    content: ' ';
+    height: 0;
+    width: 0;
+    pointer-events: none;
+}
