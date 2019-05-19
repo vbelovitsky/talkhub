@@ -42,9 +42,13 @@ class PostEditForm(forms.ModelForm):
 
 class UserLoginForm(forms.Form):
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Username', 'class': 'form-control mr-sm-2'}))
+        attrs={'placeholder': 'Username', 'data-role': "materialinput", 'data-icon': "<span class='mif-user-plus'>", 
+            'data-label': "Username", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
+            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'}))
     password = forms.CharField(label='', widget=forms.PasswordInput(
-        attrs={'placeholder': 'Password', 'class': 'form-control mr-sm-2'}))
+        attrs={'placeholder': 'Password', 'data-role': "materialinput", 'data-icon': "<span class='mif-lock'>", 
+            'data-label': "Enter password here", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
+            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'}))
 
 
 class UserRegistrationForm(forms.ModelForm):
