@@ -7,21 +7,26 @@
 </head>
 <body>
     <div class="jumbotron main-body">
-        <form method="POST" style="margin: 10px">
-            {% csrf_token %}
-            {{ postform.as_p }}
-            <input type="submit" value="Create" class="btn btn-outline-success">
+        <div class="row">
+            <div class="col">
+            <form method="POST" style="margin: 10px">
+                    {% csrf_token %}
+                    {{ postform.as_p }}
+                    <input type="submit" value="Create" class="btn btn-outline-success">
 
-            <div class="tag-section jumbotron">
-            {% include 'main/tag_section_create.html' %}
+                    
+                </form>
             </div>
-        </form>
-
-        <form class="tag-search-form" action="{% url 'blogapp:post_create' %}">
-            <input maxlength="25" placeholder="Search tag" id="qtag" style="margin-top: 1.5vh;">
-            <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: 1.5vh;">Search</button>
-        </form>
-
+            <div class="col">
+                <form class="tag-search-form" action="{% url 'blogapp:post_create' %}">
+                    <input maxlength="25" placeholder="Search tag" id="qtag" style="margin-top: 1.5vh;">
+                    <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: 1.5vh;">Search</button>
+                </form>
+                <div class="tag-section jumbotron">
+                    {% include 'main/tag_section_create.html' %}
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
