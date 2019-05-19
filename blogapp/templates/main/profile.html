@@ -5,7 +5,7 @@
             <div class="card image-header">
             {% if request.user.profile.image %}
                 <div class="card-header fg-white"
-                    style="background-image: url(http://lorempixel.com/1000/600/)">
+                    style="background-image: url({{ request.user.profile.image.url }})">
                 </div>
             {% else %}
                 <div class="card-header fg-white"
