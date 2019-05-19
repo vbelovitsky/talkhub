@@ -5,9 +5,7 @@ from django.contrib.auth.models import User
 
 class PostCreateForm(forms.ModelForm):
     title = forms.CharField(label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Title', 'data-role': "materialinput", 'data-icon': "<span class='mif-description'>", 
-            'data-label': "Enter title here", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
-            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'
+        attrs={'placeholder': 'Title', 'data-role': "input", 'data-prepend': "<span class='mif-description'>", 'autocomplete': 'off'
             }))
     body = forms.CharField(label='', widget=forms.Textarea(
         attrs={'placeholder': 'Body', 'data-role': "textarea"}))
@@ -30,9 +28,7 @@ class PostEditForm(forms.ModelForm):
             'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'
             }))
     body = forms.CharField(label='', widget=forms.Textarea(
-        attrs={'placeholder': 'Body', 'data-role': "materialinput", 'data-icon': "<span class='mif-description'>", 
-            'data-label': "Enter body here", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
-            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'
+        attrs={'placeholder': 'Body', 'data-role': "textarea", 'autocomplete': 'off'
             }))
     private = forms.BooleanField(required=False, label='Make post private:', widget=forms.CheckboxInput(
         attrs={'class': 'form-control mr-sm-2'}))
