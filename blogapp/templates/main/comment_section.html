@@ -1,12 +1,12 @@
 <div> 
-    <div class="comments bg-light"> 
+    <div class="comments bg-light" style="color: black!important;"> 
         {% for comment in comments %} 
             <div class="message right"> 
                 <div class="message-sender">{{ comment.user|capfirst }}</div> 
                     <div class="message-time"> 
                         {{ comment.timestap }} 
                         {% if request.user == comment.user or request.user.is_staff %} 
-                        <span class="mif-bin square mini button alert ml-1" type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" class="alert ml-1"></span> 
+                        <span class="mif-bin square mini btn btn-danger ml-1" type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" class="alert ml-1"></span> 
                         {% endif %} 
                     </div> 
                     <div class="message-item"> 
@@ -22,7 +22,7 @@
                 {% csrf_token %} 
                 {{ comment_form.as_p}} 
                     <div class="button-group"> 
-                        <button class="button input-clear-button" tabindex="-1" type="button"> 
+                        <button class="btn input-clear-button" tabindex="-1" type="button"> 
                             <span class="default-icon-cross"></span> 
                         </button> 
                         <input class="btn input-custom-button js-chat-send-button btn-success" tabindex="-1" type="submit" value="Send"> 
