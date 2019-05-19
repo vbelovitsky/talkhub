@@ -23,9 +23,7 @@ class PostCreateForm(forms.ModelForm):
 
 class PostEditForm(forms.ModelForm):
     title = forms.CharField(label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Title', 'data-role': "materialinput", 'data-icon': "<span class='mif-pencil'>", 
-            'data-label': "Enter title here", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
-            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'
+        attrs={'placeholder': 'Title', 'data-role': "input", 'data-prepend': "<span class='mif-description'>", 'autocomplete': 'off'
             }))
     body = forms.CharField(label='', widget=forms.Textarea(
         attrs={'placeholder': 'Body', 'data-role': "textarea", 'autocomplete': 'off'
