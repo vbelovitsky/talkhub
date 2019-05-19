@@ -2,12 +2,11 @@
     <form class="tag-search-form" action="{% url 'blogapp:post_create' %}">
                 <input maxlength="25" type="search" placeholder="Search tag" aria-label="Search" id="qtag" class="form-control mr-sm-2">
                 <button class="btn btn-primary" type="submit" style="width: 100%;">Search</button>
-
+        {% for tag in tags %}
         <div class="d-inline-flex">
-            {% for tag in tags %}
                 <input type="checkbox" name="tags" value="{{tag.id}}">
                 <button type="button" class="btn btn-info tag-btn">{{ tag }}</button>
-            {% endfor %}
         </div>
+        {% endfor %}
     </form>
 </div>
