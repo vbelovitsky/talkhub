@@ -18,8 +18,8 @@
             <p>You are searching for: {{ searchtag }}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a>
         </div>
     {% endif %}
-    <div class="main-body" id="mainbody">
-        <div class="container-fluid">
+    <div class="main-body">
+        <div class="container-fluid grid-box text-center">
             {% for post in posts %}
             <div class="card bg-light mb-3">
                 <div class="card-header">Author: <a href="{% url 'profile' id=post.author.id %}" class="links text-dark">{{ post.author }}</a></div>
