@@ -5,7 +5,7 @@
             <div class="message-sender">{{ comment.user|capfirst }}</div>
             <div class="message-time">{{ comment.timestap }}
                 {% if request.user == comment.user or request.user.is_staff %}
-                    <button  type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" class="image-button alert ml-1">
+                    <button  type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" class="tool-button alert ml-1">
                         <span class="mif-fire icon"></span>
                     </button>
                 {% endif %}
