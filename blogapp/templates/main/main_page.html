@@ -50,6 +50,10 @@
         <button class="app-bar-item c-pointer" id="sidebar-toggle-3">
             <span class="mif-menu fg-white"></span>
         </button>
+        <form class="row z-1 pos-absolute pos-top-center" action="{% url 'main_page' %}"> 
+            <input maxlength="25" type="search" placeholder="Search" aria-label="Search" name="q"> 
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchbtn">Search</button> 
+        </form> 
         <ul class="pagination mt-1 mr-1 z-1 primary rounded pos-absolute pos-top-right"> 
             {% if posts.has_previous %} 
             <li class="page-item"> 
