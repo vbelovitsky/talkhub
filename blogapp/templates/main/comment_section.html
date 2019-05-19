@@ -1,20 +1,28 @@
-<div class="flex-box-column">
-
-<button type="button" id="refresh-button" name="{% url 'blogapp:comment_refresh' id=post.id %}" class="btn btn-secondary" style="width: 100%;">
-  Refresh
-</button>
-
 <div>
     <div class="comments bg-light">
     {% for comment in comments %}
         <div class="message right">
             <div class="message-sender">{{ comment.user|capfirst }}</div>
-            <div class="message-time">{{ comment.timestap }}</div>
+            <div class="message-time">{{ comment.timestap }}
+                <button type="button" name="button" value="reply-form{{comment.id}}">
+                    <span class="mif-reply"></span>
+                </button>
+            </div>
             <div class="message-item">
                 <img class="message-avatar" src="https://cdn1.savepice.ru/uploads/2019/5/19/058cdfe21f8e4fd2ce85ce629b57916d-full.jpg">
                 <div class="message-text default">{{ comment.content }}</div>
             </div>
         </div>
+        {% for reply in comment.replies.all %}
+        <div class="message ml-2 right">
+            <div class="message-sender">{{ reply.user|capfirst }}</div>
+            <div class="message-time">{{ comment.timestap }}</div>
+            <div class="message-item">
+                <img class="message-avatar" src="https://cdn1.savepice.ru/uploads/2019/5/19/058cdfe21f8e4fd2ce85ce629b57916d-full.jpg">
+                <div class="message-text default">{{ reply.content }}</div>
+            </div>
+        </div>
+        {% endfor %}
     {% endfor %}
     </div>
     <div class="message-input">
