@@ -203,8 +203,10 @@ def post_recommend(request, id, key):
 
     context = {
         'links': recommend_array,
-        'private_link': post.get_absolute_url()
     }
+    if post.private:
+        context['private_link'] = post.get_absolute_url()
+
     return render(request, 'main/post_recommend.html', context)
 # endregion
 
