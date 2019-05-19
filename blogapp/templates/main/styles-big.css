@@ -156,22 +156,22 @@ body a:hover{
     text-overflow: ellipsis; 
     white-space: nowrap; 
 } 
-    .comments{ 
+.comments{ 
     border: 1px #d9d9d9 solid; 
     padding: 8px; 
     border-bottom: 1px solid #dfdfdf; 
     height: 100%; 
     overflow: hidden; 
     overflow-y: auto; 
-    } 
-    .message{ 
+} 
+.message{ 
     display: flex; 
     -webkit-box-orient: horizontal; 
     -webkit-box-direction: normal; 
     -ms-flex-flow: row wrap; 
     flex-flow: row wrap; 
-    } 
-    .message-sender{ 
+} 
+.message-sender{ 
     -webkit-box-ordinal-group: 3; 
     -ms-flex-order: 2; 
     order: 2; 
@@ -179,16 +179,16 @@ body a:hover{
     width: 50%; 
     font-weight: 600; 
     font-size: 12px; 
-    } 
-    .message-time{ 
+} 
+.message-time{ 
     -webkit-box-ordinal-group: 2; 
     -ms-flex-order: 1; 
     order: 1; 
     text-align: left; 
     width: 50%; 
     opacity: 0.5; 
-    } 
-    .message-item{ 
+} 
+.message-item{ 
     width: 100%; 
     -ms-flex-negative: 0; 
     flex-shrink: 0; 
@@ -203,8 +203,8 @@ body a:hover{
     -webkit-box-ordinal-group: 4; 
     -ms-flex-order: 3; 
     order: 3; 
-    } 
-    .message-avatar{ 
+} 
+.message-avatar{ 
     -webkit-box-ordinal-group: 3; 
     -ms-flex-order: 2; 
     order: 2; 
@@ -215,8 +215,8 @@ body a:hover{
     -ms-flex-negative: 0; 
     flex-shrink: 0; 
     display: block; 
-    } 
-    .message-text{ 
+} 
+.message-text{ 
     display: -webkit-box; 
     display: -ms-flexbox; 
     display: flex; 
@@ -237,8 +237,8 @@ body a:hover{
     order: 1; 
     margin-left: 0; 
     margin-right: 8px; 
-    } 
-    .message-text::before { 
+} 
+.message-text::before { 
     left: 100%; 
     border-right-color: transparent; 
     border-left-color: #e4e4e4; 
@@ -251,4 +251,4 @@ body a:hover{
     height: 0; 
     width: 0; 
     pointer-events: none; 
-    }
+}
