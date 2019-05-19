@@ -15,9 +15,10 @@
     <div class="sidebar-header bg-grayMouse">
         <div class="avatar">
             {% if request.user.profile.image %}
-                <img data-role="gravatar" data-email="EMPTY" src="{{ request.user.profile.image.url }}">
+                <img src="{{ request.user.profile.image.url }}" alt="">
+                <img data-role="gravatar" data-email="EMPTY" src="{{ request.user.profile.image.url }}" alt="">
             {% else %}
-                <img data-role="gravatar" data-email="EMPTY">
+                <img data-role="gravatar" data-email="EMPTY" alt="">
             {% endif %}
         </div>
         <span class="title fg-white">{{ request.user }}</span>
