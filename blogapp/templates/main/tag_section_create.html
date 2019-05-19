@@ -1,7 +1,6 @@
 <form class="tag-search-form" action="{% url 'blogapp:post_create' %}" style="margin-top: 1rem;"> 
-    <input maxlength="25" type="search" placeholder="Search tag"
-     data-role="input" data-search-button="true" aria-label="Search" id="qtag"
-     data-on-search-button-click="search_submit">
+    <input maxlength="25"  placeholder="Search tag" type="search"
+     data-role="input" id="qtag">
 
     <ul class="items-list">
     {% for tag in tags %}
@@ -11,24 +10,5 @@
     {% endfor %}
     </ul>
 
+    <button type="submit" hidden></button>
 </form>
-<script>
-function search_submit(val){
-        event.preventDefault();
-            qtag = $('#qtag').val();
-            $.ajax({
-                type: 'GET',
-                url: $(this).attr('action'),
-                data: {
-                    'qtag': qtag
-                },
-                dataType: 'json',
-                success: function (response) {
-                    $('.tag-section').html(response['form']);
-                },
-                error: function (rs) {
-                    console.log(rs.responseText);
-                },
-            });
-    }
-</script>
