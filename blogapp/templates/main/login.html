@@ -53,8 +53,6 @@
                 {{ error }}
             </div>
             
-            or
-
             <button class="image-button">
                 <span class="mif-github icon"></span>
                 <span class="caption">
@@ -75,6 +73,15 @@
             <a href="{% url 'social:begin' 'facebook' %}">
                 <button type="button" class="btn btn-info">Facebook</button>
             </a>
+
+            <button class="image-button">
+                <span class="mif-github icon"></span>
+                <span class="caption">
+                    <a href="{% url 'social:begin' 'facebook' %}">
+                    Facebook
+                    </a>
+                </span>
+            </button>
 
             <a href="{% url 'social:begin' 'yandex-oauth2' %}">
                 <button type="button" class="btn btn-warning">Яндекс</button>
