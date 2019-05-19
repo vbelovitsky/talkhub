@@ -107,8 +107,7 @@ class CommentForm(forms.ModelForm):
 
 
 class ProfileForm(forms.ModelForm):
-    image = forms.FileField(required=False, widget=forms.FileInput())
 
     class Meta:
         model = Profile
-        fields = {'image'}
+        exclude = ('user',)
