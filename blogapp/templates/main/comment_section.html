@@ -3,8 +3,7 @@
     {% for comment in comments %}
         <div class="message right">
             <div class="message-sender">{{ comment.user|capfirst }}</div>
-            <div class="message-time">
-                <p>{{ comment.timestap }}</p>
+            <div class="message-time">{{ comment.timestap }}
                 {% if request.user == comment.user or request.user.is_staff %}
                     <span class="mif-fire" type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" class="alert ml-1"></span>
                 {% endif %}
