@@ -1,20 +1,18 @@
 <form class="tag-search-form" action="{% url 'blogapp:post_create' %}"> 
-    <input maxlength="25" type="search" placeholder="Search tag" data-role="input" data-search-button="true" aria-label="Search" id="qtag"> 
-    <button class="button primary" type="submit" hidden>Search</button>
+    <input maxlength="25" type="search" placeholder="Search tag"
+     data-role="input" data-search-button="true" aria-label="Search" id="qtag"
+     data-on-search-button-click="search_submit"> 
+    <button class="button primary" type="submit" hidden id="tag-btn">Search</button>
 </form>
-
+<script>
+function search_submit(val){
+        document.getElementById("tag-btn").click()
+    }
+</script>
 <ul class="items-list">
     {% for tag in tags %}
         <li class="item">
-            <input type="checkbox" data-role="checkbox"  value="{{tag.id}}" name="tags" data-caption="{{tag}}" clsCheckbox="check_psevdo">
+            <input type="checkbox" data-role="checkbox"  value="{{tag.id}}" name="tags" data-caption="{{tag}}">
         </li> 
     {% endfor %}
 </ul>
-<script>
-var limit = 3;
-$('input.check_psevdo').on('change', function(evt) {
-   if($(this).siblings(':checked').length >= limit) {
-       this.checked = false;
-   }
-});
-</script>
