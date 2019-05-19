@@ -44,17 +44,12 @@
 </div>
     <form method="POST" class="login-registration-form bg-white">
             <h4 class="text-center">Login</h4>
-
-            {% csrf_token %}
-            {{ form.as_p }}
-
-            <input type="submit" value="Login" class="button success mx-auto">
-            <div class="alert alert-danger" role="alert">
+            <div class="remark danger" role="alert">
                 {{ error }}
             </div>
-            <br>
-            <h5 class="text-center">or</h5>
-            <br>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Login" class="button success mx-auto">
             <button class="image-button secondary">
                 <span class="mif-github icon"></span>
                 <span class="caption">
