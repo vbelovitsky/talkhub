@@ -48,11 +48,21 @@
             {% csrf_token %}
             {{ form.as_p }}
 
-            <input type="submit" value="Login" class="button success mx-auto" onclick="loginError({{ error }});">
+            <input type="submit" value="Login" class="button success mx-auto">
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+            
+            or
 
-            <a href="{% url 'social:begin' 'github' %}">
-                <button type="button" class="btn btn-secondary">Github</button>
-            </a>
+            <button class="image-button">
+                <span class="mif-github icon"></span>
+                <span class="caption">
+                    <a href="{% url 'social:begin' 'github' %}">
+                    Github
+                    </a>
+                </span>
+            </button>
 
             <a href="{% url 'social:begin' 'google-oauth2' %}">
                 <button type="button" name="button" class="btn btn-primary">Google</button>
@@ -81,10 +91,5 @@
                 <a href="{% url 'password_reset' %}">Forgotten your password?</a>
             </small>
     </form>
-<script>
-    function loginError(er){
-        Metro.notify.create(er, "Error", {});
-    }
-</script>
 </body>
 </html>
