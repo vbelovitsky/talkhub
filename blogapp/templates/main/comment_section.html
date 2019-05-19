@@ -4,8 +4,8 @@
         <div class="message right">
             <div class="message-sender">{{ comment.user|capfirst }}</div>
             <div class="message-time">{{ comment.timestap }}
-                {% if request.user == reply.user or request.user.is_staff %}
-                    <button type="button" id="reply-delete" name="{% url 'comment_delete' id=post.id comid=reply.id %}" class="button alert">
+                {% if request.user == comment.user or request.user.is_staff %}
+                    <button  type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" class="button alert">
                         <span class="mif-bin"></span>
                     </button>
                 {% endif %}
@@ -21,7 +21,13 @@
         {% for reply in comment.replies.all %}
         <div class="message ml-4 right">
             <div class="message-sender">{{ reply.user|capfirst }}</div>
-            <div class="message-time">{{ comment.timestap }}</div>
+            <div class="message-time">{{ comment.timestap }}
+                {% if request.user == reply.user or request.user.is_staff %}
+                    <button type="button" id="reply-delete" name="{% url 'comment_delete' id=post.id comid=reply.id %}" class="button alert">
+                        <span class="mif-bin"></span>
+                    </button>
+                {% endif %}
+            </div>
             <div class="message-item">
                 <img class="message-avatar" src="https://cdn1.savepice.ru/uploads/2019/5/19/058cdfe21f8e4fd2ce85ce629b57916d-full.jpg">
                 <div class="message-text default">{{ reply.content }}</div>
