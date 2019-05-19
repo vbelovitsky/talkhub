@@ -117,8 +117,9 @@ body a:hover{
     font-size: 2.5rem;
 }
 .login-registration-form{
-        padding: 2%;
-        border-radius: 2%;
+    padding: 2%;
+    border-radius: 2%;
+    flex-direction: column;
 }
 .chat-page-title{
     text-align: left; 
