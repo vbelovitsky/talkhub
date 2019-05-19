@@ -1,11 +1,15 @@
 {% extends "main/navbar.html" %}
 {% block content %}
-        <div class="login-registration-form">
-            <form method="POST">
-                {% csrf_token %}
-                {{ postform.as_p }}
-                <input type="submit" value="Create" class = "button success">
+        <div class="row login-registration-form">
+            <div class="cell order-2"> 
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ postform.as_p }}
+                    <input type="submit" value="Create" class = "button success">
+                </form>
+            </div>
+            <div class="cell order-1">
                 {% include 'main/tag_section_create.html' %}
-            </form>
+            </div>
         </div>
 {% endblock %}
