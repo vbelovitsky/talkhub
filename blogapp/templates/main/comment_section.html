@@ -5,7 +5,7 @@
             <div class="message-sender">{{ comment.user|capfirst }}</div>
             <div class="message-time">{{ comment.timestap }}
                 {% if request.user == comment.user or request.user.is_staff %}
-                    <button  type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" class="button alert">
+                    <button  type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" class="alert">
                         <span class="mif-fire"></span>
                     </button>
                 {% endif %}
@@ -23,7 +23,7 @@
             <div class="message-sender">{{ reply.user|capfirst }}</div>
             <div class="message-time">{{ comment.timestap }}
                 {% if request.user == reply.user or request.user.is_staff %}
-                    <button type="button" id="reply-delete" name="{% url 'comment_delete' id=post.id comid=reply.id %}" class="button alert">
+                    <button type="button" id="reply-delete" name="{% url 'comment_delete' id=post.id comid=reply.id %}" class="alert">
                         <span class="mif-fire"></span>
                     </button>
                 {% endif %}
