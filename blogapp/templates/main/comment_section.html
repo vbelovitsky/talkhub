@@ -19,7 +19,7 @@
             </div>
         </div>
         {% for reply in comment.replies.all %}
-        <div class="message ml-2 right">
+        <div class="message ml-4 right">
             <div class="message-sender">{{ reply.user|capfirst }}</div>
             <div class="message-time">{{ comment.timestap }}</div>
             <div class="message-item">
