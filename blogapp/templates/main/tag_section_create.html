@@ -1,7 +1,15 @@
 <ul class="items-list">
     {% for tag in tags %}
         <li class="item">
-            <input type="checkbox" data-role="checkbox"  value="{{tag.id}}" name="tags" data-caption="{{tag}}">
+            <input type="checkbox" data-role="checkbox"  value="{{tag.id}}" name="tags" data-caption="{{tag}}" class="check_psevdo">
         </li> 
     {% endfor %}
 </ul>
+<script>
+var limit = 3;
+$('input.check_psevdo').on('change', function(evt) {
+   if($(this).siblings(':checked').length >= limit) {
+       this.checked = false;
+   }
+});
+</script>
