@@ -149,6 +149,7 @@ body a:hover{
     height: 100%; 
     overflow: hidden; 
     overflow-y: auto; 
+    height: 48vh;
 } 
 .message{ 
     display: flex; 
