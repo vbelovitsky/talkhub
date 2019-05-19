@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>TalkHub</title>
+    {% load staticfiles %}
     {% include "main/base.html" %}
 </head>
 <body>
@@ -13,7 +14,11 @@
        data-shift=".shifted-content">
     <div class="sidebar-header bg-grayMouse">
         <div class="avatar">
-            <img data-role="gravatar" data-email="EMPTY" src="{{ request.user.profile.image.url }}">
+            {% if request.user.profile.image %}
+                <img data-role="gravatar" data-email="EMPTY" src="{{ request.user.profile.image.url }}">
+            {% else %}
+                <img data-role="gravatar" data-email="EMPTY" src="{{ request.user.profile.image.url }}">
+            {% endif %}
         </div>
         <span class="title fg-white">{{ request.user }}</span>
         <span class="subtitle fg-white"> 2019 © TalkHub</span>
