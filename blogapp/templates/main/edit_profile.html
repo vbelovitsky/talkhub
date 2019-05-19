@@ -9,7 +9,9 @@
 <form action="." method="POST" enctype="multipart/form-data" style="margin: 10px">
     {% csrf_token %}
     {{ form.as_p }}
-    {{ profile.as_p }}
+    {% if request.user.profile %}
+        {{ profile.as_p }}
+    {% endif %}
     <p><a href="{% url 'password_reset' %}">Reset password</a></p>
     <input type="submit" value="Complete" class="btn btn-outline-success">
 </form>
