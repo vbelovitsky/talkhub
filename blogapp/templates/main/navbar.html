@@ -17,7 +17,7 @@
             {% if request.user.profile.image %}
                 <img data-role="gravatar" data-email="EMPTY" src="{{ request.user.profile.image.url }}">
             {% else %}
-                <img data-role="gravatar" data-email="EMPTY" src="{{ request.user.profile.image.url }}">
+                <img data-role="gravatar" data-email="EMPTY">
             {% endif %}
         </div>
         <span class="title fg-white">{{ request.user }}</span>
