@@ -6,7 +6,7 @@
     {% include "main/base.html" %}
 </head>
 <body>
-<form method="POST" class="jumbotron login-registration-form mx-auto">
+<form method="POST" class="jumbotron middle-block mx-auto">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Register" class="btn btn-outline-success">
