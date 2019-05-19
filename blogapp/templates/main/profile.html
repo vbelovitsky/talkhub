@@ -9,12 +9,15 @@
                 </div>
             {% else %}
                 <div class="card-header fg-white"
-                    style="background-image: url(http://st-zamok.ru/upload/content/medium/f605e8a8cff57e1fe865ac6ec6e364b1.jpg">
+                    style="background-image: url(http://st-zamok.ru/upload/content/medium/f605e8a8cff57e1fe865ac6ec6e364b1.jpg);
+                    background-cover: cover; background-repeat: no-repeat;">
                 </div>
             {% endif %}
                 <div class="card-content p-2">
-                    <input input readonly type="text" data-role="input" data-prepend="Username: " id="url_profile" data-default-value="{{user.username}}">
-                    <input input readonly type="text" data-role="input" data-prepend="User link: " id="url_profile" data-default-value="https://talkhub.herokuapp.com/profile/{{user.id}}">
+                    <input input readonly type="text" data-role="input" data-prepend="Username: " id="url_profile" 
+                    data-default-value="{{user.username}}" class="mt-1" data-clear-button="false">
+                    <input input readonly type="text" data-role="input" data-prepend="User link: " id="url_profile" 
+                    data-default-value="https://talkhub.herokuapp.com/profile/{{user.id}}" class="mt-1" data-clear-button="false">
                 </div>
                 <div class="card-footer">
                     Posts count: {{ posts_count }}
