@@ -53,7 +53,7 @@
                 {{ error }}
             </div>
             
-            <button class="image-button">
+            <button class="image-button secondary">
                 <span class="mif-github icon"></span>
                 <span class="caption">
                     <a href="{% url 'social:begin' 'github' %}">
@@ -62,20 +62,21 @@
                 </span>
             </button>
 
-            <a href="{% url 'social:begin' 'google-oauth2' %}">
-                <button type="button" name="button" class="btn btn-primary">Google</button>
-            </a>
+            <button class="image-button primary">
+                <span class="mif-google-plus icon"></span>
+                <span class="caption">
+                    <a href="{% url 'social:begin' 'google-oauth2' %}">
+                    Google
+                    </a>
+                </span>
+            </button>
 
         {#    <a href="{% url 'social:begin' 'linkedin-oauth2' %}">#}
         {#        <button type="button" name="button" class="btn btn-primary">Linkedin</button>#}
         {#    </a>#}
 
-            <a href="{% url 'social:begin' 'facebook' %}">
-                <button type="button" class="btn btn-info">Facebook</button>
-            </a>
-
-            <button class="image-button">
-                <span class="mif-github icon"></span>
+            <button class="image-button info">
+                <span class="mif-facebook icon"></span>
                 <span class="caption">
                     <a href="{% url 'social:begin' 'facebook' %}">
                     Facebook
@@ -83,13 +84,23 @@
                 </span>
             </button>
 
-            <a href="{% url 'social:begin' 'yandex-oauth2' %}">
-                <button type="button" class="btn btn-warning">Яндекс</button>
-            </a>
+            <button class="image-button warning">
+                <span class="mif-keyboard icon"></span>
+                <span class="caption">
+                    <a href="{% url 'social:begin' 'yandex-oauth2' %}">
+                    Yandex
+                    </a>
+                </span>
+            </button>
 
-            <a href="{% url 'social:begin' 'vk-oauth2' %}">
-                <button type="button" class="btn btn-light">Вконтакте</button>
-            </a>
+            <button class="image-button light">
+                <span class="mif-vk icon"></span>
+                <span class="caption">
+                    <a href="{% url 'social:begin' 'vk-oauth2' %}">
+                    Вконтакте
+                    </a>
+                </span>
+            </button>
 
             <br>
 
