@@ -5,12 +5,11 @@ from django.contrib.auth.models import User
 
 class PostCreateForm(forms.ModelForm):
     title = forms.CharField(label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Title', 'data-role': "input", 'data-prepend': "<span class='mif-description'>", 'autocomplete': 'off'
-            }))
+        attrs={'placeholder': 'Title'}))
     body = forms.CharField(label='', widget=forms.Textarea(
-        attrs={'placeholder': 'Body', 'data-role': "textarea"}))
-    private = forms.BooleanField(required=False, label='', widget=forms.CheckboxInput(
-        attrs={'type':"checkbox", 'data-role':"checkbox", 'data-caption':'Make post private'}))
+        attrs={'placeholder': 'Body'}))
+    private = forms.BooleanField(required=False, label='Make post private: ', widget=forms.CheckboxInput(
+        ))
 
     class Meta:
         model = Post
@@ -23,13 +22,11 @@ class PostCreateForm(forms.ModelForm):
 
 class PostEditForm(forms.ModelForm):
     title = forms.CharField(label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Title', 'data-role': "input", 'data-prepend': "<span class='mif-description'>", 'autocomplete': 'off'
-            }))
+        attrs={'placeholder': 'Title'}))
     body = forms.CharField(label='', widget=forms.Textarea(
-        attrs={'placeholder': 'Body', 'data-role': "textarea", 'autocomplete': 'off'
-            }))
-    private = forms.BooleanField(required=False, label='', widget=forms.CheckboxInput(
-        attrs={'type':"checkbox", 'data-role':"checkbox", 'data-caption':'Make post private'}))
+        attrs={'placeholder': 'Body'}))
+    private = forms.BooleanField(required=False, label='Make post private: ', widget=forms.CheckboxInput(
+        ))
 
     class Meta:
         model = Post
@@ -42,46 +39,24 @@ class PostEditForm(forms.ModelForm):
 
 class UserLoginForm(forms.Form):
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Username', 'data-role': "materialinput", 'data-icon': "<span class='mif-user-plus'>", 
-            'data-label': "Username", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
-            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'}))
+        attrs={'placeholder': 'Username'}))
     password = forms.CharField(label='', widget=forms.PasswordInput(
-        attrs={'placeholder': 'Password', 'data-role': "materialinput", 'data-icon': "<span class='mif-lock'>", 
-            'data-label': "Enter password here", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
-            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'}))
+        attrs={'placeholder': 'Password'}))
 
 
 class UserRegistrationForm(forms.ModelForm):
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Username', 'data-role': "materialinput", 'data-icon': "<span class='mif-user-plus'>", 
-            'data-label': "Username", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
-            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'
-            }))
+        attrs={'placeholder': 'Username'}))
     first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'First name', 'data-role': "materialinput", 'data-icon': "<span class='mif-info'>", 
-            'data-label': "First name", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
-            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'
-            }))
+        attrs={'placeholder': 'First name'}))
     last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Last name', 'data-role': "materialinput",
-            'data-label': "Last name", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
-            'data-cls-informer': "fg-lightCyan", 'autocomplete': 'off'
-            }))
+        attrs={'placeholder': 'Last name'}))
     email = forms.EmailField(label='', widget=forms.EmailInput(
-        attrs={'placeholder': 'Enter your email', 'data-role': "materialinput", 'data-icon': "<span class='mif-envelop'>", 
-            'data-label': "User email", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
-            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'
-        }))
+        attrs={'placeholder': 'Enter your email'}))
     password = forms.CharField(label='', widget=forms.PasswordInput(
-        attrs={'placeholder': 'Enter password here', 'data-role': "materialinput", 'data-icon': "<span class='mif-lock'>", 
-            'data-label': "Enter password here", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
-            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'
-            }))
+        attrs={'placeholder': 'Enter password here'}))
     confirm_password = forms.CharField(label='', widget=forms.PasswordInput(
-        attrs={'placeholder': 'Confirm password', 'data-role': "materialinput",
-            'data-label': "Confirm password", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
-            'data-cls-informer': "fg-lightCyan", 'autocomplete': 'off'
-            }))
+        attrs={'placeholder': 'Confirm password'}))
 
     class Meta:
         model = User
@@ -102,25 +77,13 @@ class UserRegistrationForm(forms.ModelForm):
 
 class UserEditForm(forms.ModelForm):
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Username', 'data-role': "materialinput", 'data-icon': "<span class='mif-user'>", 
-            'data-label': "Enter username here", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
-            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'
-            }))
+        attrs={'placeholder': 'Username'}))
     first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'First name', 'data-role': "materialinput", 'data-icon': "<span class='mif-contacts-mail'>", 
-            'data-label': "Enter first name here", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
-            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'
-            }))
+        attrs={'placeholder': 'First name'}))
     last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Last name', 'data-role': "materialinput", 'data-icon': "<span class='mif-contacts-mail'>", 
-            'data-label': "Enter last name here", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
-            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'
-            }))
+        attrs={'placeholder': 'Last name'}))
     email = forms.EmailField(label='', widget=forms.EmailInput(
-        attrs={'placeholder': 'Email', 'data-role': "materialinput", 'data-icon': "<span class='mif-mail'>", 
-            'data-label': "Enter email here", 'data-cls-line': "bg-cyan", 'data-cls-label': "fg-cyan",
-            'data-cls-informer': "fg-lightCyan", 'data-cls-icon': "fg-darkCyan", 'autocomplete': 'off'
-            }))
+        attrs={'placeholder': 'Email'}))
 
     class Meta:
         model = User
