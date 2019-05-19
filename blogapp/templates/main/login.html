@@ -1,75 +1,54 @@
-{% extends "main/navbar.html" %}
-{% block content %}
-    <form method="POST" class="middle-block bg-white">
-            <h4 class="text-center">Login</h4>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    {% include "main/base.html" %}
+</head>
+<body>
+<form method="POST" class="jumbotron login-registration-form mx-auto">
+    <h5>Login</h5>
 
-            {% csrf_token %}
-            {{ form.as_p }}
+    {% csrf_token %}
+    {{ form.as_p }}
 
-            <input type="submit" value="Login" class="btn btn-outline-success mx-auto">
-            {% if error %}
-            <div class="alert alert-danger" role="alert">
-                {{ error }}
-            </div>
-            {% endif %}
+    <input type="submit" value="Login" class="btn btn-outline-success mx-auto">
+	{% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+	{% endif %}
 
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Login" class="button success mx-auto my-1">
-            <button class="image-button secondary my-1">
-                <span class="mif-github icon"></span>
-                <span class="caption">
-                    <a href="{% url 'social:begin' 'github' %}">
-                    Github
-                    </a>
-                </span>
-            </button>
+    <a href="{% url 'social:begin' 'github' %}">
+        <button type="button" class="btn btn-secondary">Github</button>
+    </a>
 
-            <button class="image-button primary my-1">
-                <span class="mif-google-plus icon"></span>
-                <span class="caption">
-                    <a href="{% url 'social:begin' 'google-oauth2' %}">
-                    Google
-                    </a>
-                </span>
-            </button>
+    <a href="{% url 'social:begin' 'google-oauth2' %}">
+        <button type="button" name="button" class="btn btn-primary">Google</button>
+    </a>
 
-        {#    <a href="{% url 'social:begin' 'linkedin-oauth2' %}">#}
-        {#        <button type="button" name="button" class="btn btn-primary">Linkedin</button>#}
-        {#    </a>#}
+{#    <a href="{% url 'social:begin' 'linkedin-oauth2' %}">#}
+{#        <button type="button" name="button" class="btn btn-primary">Linkedin</button>#}
+{#    </a>#}
 
-            <button class="image-button info my-1">
-                <span class="mif-facebook icon"></span>
-                <span class="caption">
-                    <a href="{% url 'social:begin' 'facebook' %}">
-                    Facebook
-                    </a>
-                </span>
-            </button>
+    <a href="{% url 'social:begin' 'facebook' %}">
+        <button type="button" class="btn btn-info">Facebook</button>
+    </a>
 
-            <button class="image-button warning my-1">
-                <span class="mif-keyboard icon"></span>
-                <span class="caption">
-                    <a href="{% url 'social:begin' 'yandex-oauth2' %}">
-                    Yandex
-                    </a>
-                </span>
-            </button>
+    <a href="{% url 'social:begin' 'yandex-oauth2' %}">
+        <button type="button" class="btn btn-warning">Яндекс</button>
+    </a>
 
-            <button class="image-button light my-1">
-                <span class="mif-vk icon"></span>
-                <span class="caption">
-                    <a href="{% url 'social:begin' 'vk-oauth2' %}">
-                    Вконтакте
-                    </a>
-                </span>
-            </button>
+    <a href="{% url 'social:begin' 'vk-oauth2' %}">
+        <button type="button" class="btn btn-light">Вконтакте</button>
+    </a>
 
-            <br>
+    <br>
 
-            <small>
-                <a href="{% url 'register' %}">Don't have an account?</a><br>
-                <a href="{% url 'password_reset' %}">Forgotten your password?</a>
-            </small>
-    </form>
-{% endblock %}
+    <small>
+        <a href="{% url 'register' %}">Don't have an account?</a><br>
+        <a href="{% url 'password_reset' %}">Forgotten your password?</a>
+    </small>
+</form>
+</body>
+</html>

@@ -1,12 +1,17 @@
-{% extends "main/navbar.html" %}
-{% block content %}
-    <div class="h-100 p-4">
-        <form action="." method="POST" enctype="multipart/form-data" style="margin: 10px">
-            {% csrf_token %}
-            {{ form.as_p }}
-            {{ profile.as_p }}
-            <p><a href="{% url 'password_reset' %}">Reset password</a></p>
-            <input type="submit" value="Complete" class="btn btn-outline-success">
-        </form>
-    </div>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    {% include "main/base.html" %}
+</head>
+<body id="body">
+<form action="." method="POST" enctype="multipart/form-data" style="margin: 10px">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ profile.as_p }}
+    <p><a href="{% url 'password_reset' %}">Reset password</a></p>
+    <input type="submit" value="Complete" class="btn btn-outline-success">
+</form>
+</body>
+</html>

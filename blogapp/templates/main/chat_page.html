@@ -1,60 +1,69 @@
-{% extends "main/navbar.html" %}
-{% block content %}
-<div class="jumbotron chat_jumb mx-auto">
-            <div class="chat-page-title">
-                <div style="chat-page-title-date">
-                    <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p>
-                    <p><small>{{ post.created }}</small></p>
-                </div>
-                <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{post.title}} | {{post.author}}</title>
+
+    {% include "main/base.html" %}
+</head>
+
+<body>
+    <div class="jumbotron chat_jumb mx-auto">
+        <div class="chat-page-title">
+            <div style="chat-page-title-date">
+                <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p>
+                <p><small>{{ post.created }}</small></p>
             </div>
-            <div class="grid-box">
-                <div class="flex-box-column" style="justify-content: flex-start;">
-                    {% if request.user.is_authenticated %}
-                    <div class="iframe_chat"><iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true"
-                            class="iframe-main" scrolling="auto" allow="microphone; camera"></iframe></div>
-                    {% else %}
-                        <div class="iframe-no-rights">
-                            <div class="card card-no-rights">
-                                <div class="card-header">
-                                    Access denied
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Sorry! You have no rights!</h5>
-                                    <p class="card-text">To use video chat, you need to sign up or sign in, if there is one</p>
-                                    <a href="{% url 'user_login' %}" class="btn btn-primary">Sign in</a>
-                                    <a href="{% url 'register' %}" class="btn btn-primary">Sign up</a>
-                                </div>
+            <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>
+        </div>
+        <div class="grid-box">
+            <div class="flex-box-column" style="justify-content: flex-start;">
+                {% if request.user.is_authenticated %}
+                <div class="iframe_chat"><iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true"
+                        class="iframe-main" scrolling="auto" allow="microphone; camera"></iframe></div>
+                {% else %}
+                    <div class="iframe-no-rights">
+                        <div class="card card-no-rights">
+                            <div class="card-header">
+                                Access denied
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Sorry! You have no rights!</h5>
+                                <p class="card-text">To use video chat, you need to sign up or sign in, if there is one</p>
+                                <a href="{% url 'user_login' %}" class="btn btn-primary">Sign in</a>
+                                <a href="{% url 'register' %}" class="btn btn-primary">Sign up</a>
                             </div>
                         </div>
-                    {% endif %}
-                    <div id="like-section">
-                        {% include 'main/like_section.html' %}
                     </div>
-                    <div>
-                        <p class="lead white-space-chat">{{ post.body }}</p>
-
-                        {% if request.user == post.author %}
-                        <p class="lead">
-                            <div id="edit-section">
-                                <a href="{% url 'blogapp:post_edit' id=post.id %}">
-                                    <button type="button" class="btn btn-outline-success">Edit</button>
-                                </a>
-                                <a href="{% url 'blogapp:post_delete' id=post.id %}" id="delete">
-                                    <button type="button" class="btn btn-danger">Delete</button>
-                                </a>
-                            </div>
-                        </p>
-                        {% endif %}
-                    </div>
-
+                {% endif %}
+                <div id="like-section">
+                    {% include 'main/like_section.html' %}
                 </div>
-                <div class="flex-box-column">
+                <div>
+                    <p class="lead">{{ post.body }}</p>
 
-                    <div class="main-comment-section">
-                        {% include 'main/comment_section.html' %}
-                    </div>
+                    {% if request.user == post.author %}
+                    <p class="lead">
+                        <div id="edit-section">
+                            <a href="{% url 'blogapp:post_edit' id=post.id %}">
+                                <button type="button" class="btn btn-outline-success">Edit</button>
+                            </a>
+                            <a href="{% url 'blogapp:post_delete' id=post.id %}" id="delete">
+                                <button type="button" class="btn btn-danger">Delete</button>
+                            </a>
+                        </div>
+                    </p>
+                    {% endif %}
+                </div>
+
+            </div>
+            <div class="flex-box-column">
+
+                <div class="main-comment-section">
+                    {% include 'main/comment_section.html' %}
                 </div>
             </div>
         </div>
-{% endblock %}
+    </div>
+</body>
+</html>

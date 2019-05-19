@@ -1,57 +1,250 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>TalkHub</title>
-    {% load staticfiles %}
-    {% include "main/base.html" %}
-</head>
-<body>
-<aside class="sidebar pos-absolute z-2"
-       data-role="sidebar"
-       data-toggle="#sidebar-toggle-3"
-       id="sb3"
-       data-shift=".shifted-content">
-    <div class="sidebar-header bg-grayMouse">
-        <div class="avatar">
-            {% if request.user.profile.image %}
-                <img src="{{ request.user.profile.image.url }}" alt="">
-                <img data-role="gravatar" data-email="EMPTY" src="{{ request.user.profile.image.url }}" alt="">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 2vh;" id="navigation">
+  <a class="navbar-brand" href="{% url 'main_page' %}"><big>TalkHub</big></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        {% if request.user.id != None %}
+        <a class="nav-link" href="{% url 'profile' id=request.user.id %}">Profile <span class="sr-only">(current)</span></a>
+        {% endif %}
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Menu
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+
+            {% if request.user.is_authenticated %}
+
+              <a class="dropdown-item" href={% url 'blogapp:post_create' %}>Create</a>
+              <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit profile</a>
+              <a class="dropdown-item" onclick="ToggleTheme()">Toggle theme</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" style="color: firebrick;" href="{% url 'user_logout' %}">Logout</a>
             {% else %}
-                <img data-role="gravatar" data-email="EMPTY" alt="">
+                <a class="dropdown-item" onclick="ToggleTheme()">Toggle theme</a>
+                <a class="dropdown-item" style="color: green;" href="{% url 'user_login' %}">Login</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" style="color: firebrick;" href="{% url 'register' %}">Sign Up</a>
+
             {% endif %}
-        </div>
-        <span class="title fg-white">{{ request.user }}</span>
-        <span class="subtitle fg-white"> 2019 © TalkHub</span>
-    </div>
-    <ul class="sidebar-menu">
-    <li><a href="{% url 'main_page' %}"><span class="mif-home icon"></span>Home</a></li>
-      {% if request.user.id != None %} 
-      <li><a href="{% url 'profile' id=request.user.id %}"><span class="mif-user icon"></span>Profile</a></li>
-      {% endif %}
-      {% if request.user.is_authenticated %} 
-      <li><a href="{% url 'blogapp:post_create' %}"><span class="mif-add icon"></span>Create</a></li>
-      <li><a href="{% url 'edit_profile' %}"><span class="mif-cog icon"></span>Edit profile</a></li>
-      <li class="divider"></li>
-      <li><a href="{% url 'user_logout' %}"><span class="mif-exit icon"></span>Logout</a></li>
-      {% else %}
-      <li class="divider"></li>
-      <li><a href="{% url 'user_login' %}"><span class="mif-enter icon"></span>Login</a></li>
-      <li><a href="{% url 'register' %}"><span class="mif-user-plus icon"></span>Sign Up</a></li>
-      {% endif %}
-</ul>
-</aside>
-<div class="shifted-content h-100 p-ab">
-    <div class="app-bar pos-absolute bg-grayMouse z-1" data-role="appbar">
-        <button class="app-bar-item c-pointer" id="sidebar-toggle-3">
-            <span class="mif-menu fg-white"></span>
-        </button>
-    </div>
+          </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#"><small>© TalkHub</small></a>
+      </li>
+    </ul>
+    <ul class="pagination navbar-nav mr-auto">
+            {% if posts.has_previous %}
+                <li class="page-item">
+                    <a href="?page={{ posts.previous_page_number }}" class="page-link">&laquo;</a>
+                </li>
+            {% endif %}
 
-    <div class="h-100 p-4">
-        {% block content %}
-        {% endblock %}
-    </div>
+            {% for p in page_range %}
+                {% if posts.number == p %}
+                    <li class="page-item active">
+                        <a href="?page={{ p }}" class="page-link">{{ p }}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a href="?page={{ p }}" class="page-link">{{ p }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
 
-</div>
-</body>
+            {% if posts.has_next %}
+                <li class="page-item">
+                    <a href="?page={{ posts.next_page_number }}" class="page-link">&raquo;</a>
+                </li>
+            {% endif %}
+    </ul>
+    <form class="form-inline my-2 my-lg-0" action="{% url 'main_page' %}">
+            <input maxlength="25" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchbtn">Search</button>
+    </form>
+  </div>
+</nav>
+<script>
+    function ToggleTheme() {
+      //Loading key 'Toggled'
+      var Toggled = localStorage.getItem('Toggled');
+
+      //Navigation button change
+      try {
+        searchbtn.classList.toggle('btn-outline-success')
+        searchbtn.classList.toggle('btn-outline-light')
+      }
+      catch(err){
+        console.log('--navigation button')
+        console.log(err)
+      }
+
+      //Navigation change
+      try {
+        navigation.classList.toggle('navbar-dark')
+        navigation.classList.toggle('bg-dark')
+        navigation.classList.toggle('navbar-light')
+        navigation.classList.toggle('bg-light')
+      }
+      catch(err){
+        console.log('--navigation')
+        console.log(err)
+      }
+
+      //All cards change
+      try{
+        var elements = document.body.getElementsByClassName("card")
+            for (var i = 0; i < elements.length; i++) {
+              var el = elements[i];
+                el.classList.toggle('bg-light')
+                el.classList.toggle('text-white')
+                el.classList.toggle('bg-dark')
+                el.classList.toggle('text-black')
+                el.classList.toggle('border')
+                el.classList.toggle('border-light')
+            }
+      }
+      catch(err){
+        console.log('--cards')
+        console.log(err)
+      }
+
+      //All tags change
+      try{
+        var elements = document.body.getElementsByClassName("badge")
+            for (var i = 0; i < elements.length; i++) {
+              var el = elements[i];
+                el.classList.toggle('badge-success')
+                el.classList.toggle('badge-light')
+            }
+      }
+      catch(err){
+        console.log('--tags')
+        console.log(err)
+      }
+
+      //All links change
+      try{
+        var elements = document.body.getElementsByClassName("links")
+            for (var i = 0; i < elements.length; i++) {
+              var el = elements[i];
+                el.classList.toggle('text-light')
+                el.classList.toggle('text-dark')
+            }
+      }
+      catch(err){
+        console.log('--links')
+        console.log(err)
+      }
+
+      //Tag-section or Chat-page change
+      try{
+        var el = document.body.getElementsByClassName("jumbotron")
+            el[0].classList.toggle('bg-dark')
+            el[0].classList.toggle('text-white')
+      }
+      catch(err){
+        console.log('--tags or chat-page')
+        console.log(err)
+      }
+
+      //Change value of key 'Toggled'
+      Toggled = Math.abs((Toggled - 1)%2);
+      //Set new value of key 'Toggled'
+      localStorage.setItem('Toggled', Toggled)
+    }
+    function ToggleThemeOnLoad(){
+        var Toggled = localStorage.getItem('Toggled');
+
+        if (Toggled == "1"){
+
+          //Navigation button change
+          try {
+            searchbtn.classList.toggle('btn-outline-success')
+            searchbtn.classList.toggle('btn-outline-light')
+          }
+          catch(err){
+            console.log('--navigation button')
+            console.log(err)
+          }
+
+          //Navigation change
+          try {
+            navigation.classList.toggle('navbar-dark')
+            navigation.classList.toggle('bg-dark')
+            navigation.classList.toggle('navbar-light')
+            navigation.classList.toggle('bg-light')
+          }
+          catch(err){
+            console.log('--navigation')
+            console.log(err)
+          }
+
+          //All cards change
+          try{
+            var elements = document.body.getElementsByClassName("card")
+                for (var i = 0; i < elements.length; i++) {
+                  var el = elements[i];
+                    el.classList.toggle('bg-light')
+                    el.classList.toggle('text-white')
+                    el.classList.toggle('bg-dark')
+                    el.classList.toggle('text-black')
+                }
+          }
+          catch(err){
+            console.log('--cards')
+            console.log(err)
+          }
+
+          //All tags change
+          try{
+            var elements = document.body.getElementsByClassName("badge")
+                for (var i = 0; i < elements.length; i++) {
+                  var el = elements[i];
+                    el.classList.toggle('badge-success')
+                    el.classList.toggle('badge-light')
+                }
+          }
+          catch(err){
+            console.log('--tags')
+            console.log(err)
+          }
+
+          //All links change
+          try{
+            var elements = document.body.getElementsByClassName("links")
+                for (var i = 0; i < elements.length; i++) {
+                  var el = elements[i];
+                    el.classList.toggle('text-light')
+                    el.classList.toggle('text-dark')
+                }
+          }
+          catch(err){
+            console.log('--links')
+            console.log(err)
+          }
+
+          //Tag-section or Chat-page change
+          try{
+
+            var el = document.body.getElementsByClassName("jumbotron")
+                el[0].classList.toggle('bg-dark')
+                el[0].classList.toggle('text-white')
+          }
+          catch(err){
+            console.log('--tags or chat-page')
+            console.log(err)
+          }
+        }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      ToggleThemeOnLoad()
+    }, false);
+</script>

@@ -1,33 +1,65 @@
-<div>
-    <div class="comments bg-light">
+<div class="flex-box-column">
+
+<button type="button" id="refresh-button" name="{% url 'blogapp:comment_refresh' id=post.id %}" class="btn btn-secondary" style="width: 100%;">
+  Refresh
+</button>
+
+<div class="comments">
+    {% if comments.count == 0%}
+        <p class="text-dark">No Comment's<p>
+    {% else %}
+    <p class="text-dark">{{ comments.count }} Comment {{ comments|pluralize }}<p>
+    {% endif %}
     {% for comment in comments %}
-        <div class="message right">
-            <div class="message-sender">{{ comment.user|capfirst }}</div>
-            <div class="message-time">
-                {{ comment.timestap }}
-                {% if request.user == comment.user or request.user.is_staff %}
-                    <span class="mif-bin square mini button alert ml-1" type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" class="alert ml-1"></span>
+    <div class="replied-comments container mt-2">
+        <div class="form-group row" id="reply-form{{comment.id}}" style="display: none">
+            <form method="POST" class="reply-form" action="">
+                {% csrf_token %}
+                <input type="hidden" name="comment_id" value="{{comment.id}}">
+                {{ comment_form.as_p }}
+            </form>
+        </div>
+    </div>
+    <div class="replied-comments container mt-2">
+        {% for reply in comment.replies.all %}
+        <blockquote class="blockquote">
+            <div class="comment-title">
+                <p class="mb-0 text-dark">{{ reply.content }}</p>
+                {% if request.user == reply.user or request.user.is_staff %}
+                    <button type="button" id="reply-delete" name="{% url 'comment_delete' id=post.id comid=reply.id %}" class="btn btn-danger btn-sm ml-1">del</button>
                 {% endif %}
             </div>
-            <div class="message-item">
-                <img class="message-avatar" src="https://cdn1.savepice.ru/uploads/2019/5/19/058cdfe21f8e4fd2ce85ce629b57916d-full.jpg">
-                <div class="message-text default">{{ comment.content }}</div>
-            </div>
+            <footer class="blockquote-footer">replied by <cite title="Source Title"><a href="{% url 'profile' id=reply.user.id %}">{{ reply.user|capfirst }}</a>, {{ comment.timestap }}</cite>
+            </footer>
+
+        </blockquote>
+        {% endfor %}
+    </div>
+    <blockquote class="blockquote">
+        <div class="comment-title">
+            <p class="mb-0 text-dark">{{ comment.content }}</p>
+            {% if request.user == comment.user or request.user.is_staff %}
+                <button type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" class="btn btn-danger btn-sm ml-1">del</button>
+            {% endif %}
         </div>
+        <footer class="blockquote-footer">by <cite title="Source Title"><a href="{% url 'profile' id=comment.user.id %}">{{ comment.user|capfirst }}</a>, {{ comment.timestap }}</cite>
+            <button type="button" name="button" value="reply-form{{comment.id}}"
+                    class="reply-btn btn btn-outline-dark btn-sm ml-1">
+            </button>
+        </footer>
+    </blockquote>
+
+
     {% endfor %}
-    </div>
-    <div class="message-input">
-        <form method="POST" class="comment-form" action="">
-            <div class="input comments-input-form">
-            {% csrf_token %}
-            {{ comment_form.as_p}}
-                <div class="button-group">
-                <button class="button input-clear-button" tabindex="-1" type="button">
-                    <span class="default-icon-cross"></span>
-                </button>
-                <input class="button input-custom-button js-chat-send-button success" tabindex="-1" type="submit" value="Send">
-                </div>
-            </div>
-        </form>
-    </div>
+</div>
+
+<form method="POST" class="comment-form" action="">
+    {% csrf_token %}
+    {{ comment_form.as_p}}
+    {% if request.user.is_authenticated %}
+        <input type="submit" value="Submit" class="btn btn-outline-success">
+    {% else %}
+        <a href="{% url 'user_login' %}"><input type="button" value="Submit" class="btn btn-outline-success"></a>
+    {% endif %}
+</form>
 </div>

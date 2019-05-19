@@ -3,129 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>TalkHub</title>
-    {% load staticfiles %}
+
     {% include "main/base.html" %}
 </head>
-<body>
-<aside class="sidebar pos-absolute z-3"
-       data-role="sidebar"
-       data-toggle="#sidebar-toggle-3"
-       id="sb3"
-       data-shift=".shifted-content">
-    <div class="sidebar-header bg-grayMouse">
-        <div class="avatar">
-            <img data-role="gravatar" data-email="EMPTY">
+<body class="d-flex flex-column">
+    {% if query %}
+        <div class="alert alert-success" role="alert">
+            <p>You are searching for: {{ query }}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a>
         </div>
-        <span class="title fg-white">{{ request.user }}</span>
-        <span class="subtitle fg-white"> 2019 © TalkHub</span>
-    </div>
-    <ul class="sidebar-menu">
-    <li><a href="{% url 'main_page' %}"><span class="mif-home icon"></span>Home</a></li>
-      {% if request.user.id != None %} 
-      <li><a href="{% url 'profile' id=request.user.id %}"><span class="mif-user icon"></span>Profile</a></li>
-      {% endif %}
-      {% if request.user.is_authenticated %} 
-      <li><a href="{% url 'blogapp:post_create' %}"><span class="mif-add icon"></span>Create</a></li>
-      <li><a href="{% url 'edit_profile' %}"><span class="mif-cog icon"></span>Edit profile</a></li>
-      <li class="divider"></li>
-      <li><a href="{% url 'user_logout' %}"><span class="mif-exit icon"></span>Logout</a></li>
-      {% else %}
-      <li class="divider"></li>
-      <li><a href="{% url 'user_login' %}"><span class="mif-enter icon"></span>Login</a></li>
-      <li><a href="{% url 'register' %}"><span class="mif-user-plus icon"></span>Sign Up</a></li>
-      {% endif %}
-      <li>
-        <a onclick="$('#sort-tags').data('charms').toggle()">
-            <span class="mif-filter icon"></span>
-            <div data-role="charms" data-position="right" id="sort-tags" data-cls-charms="w-10 bg-light">
-                {% include 'main/tag_section.html' %}
-            </div>
-            Sort by tags
-        </a>
-      </li>
-</ul>
-</aside>
-<div class="shifted-content h-100 p-ab">
-    <div class="app-bar pos-absolute bg-grayMouse z-1" data-role="appbar">
-        <button class="app-bar-item c-pointer" id="sidebar-toggle-3">
-            <span class="mif-menu fg-white"></span>
-        </button>
-        <form class="z-1 pos-absolute pos-top-center mt-2 d-flex" action="{% url 'main_page' %}">
-            <input maxlength="25" type="search" placeholder="Search" aria-label="Search" name="q"> 
-            <button class="button success" type="submit" id="searchbtn">Search</button> 
-        </form> 
-        <ul class="pagination mt-1 mr-1 z-1 primary rounded pos-absolute pos-top-right"> 
-            {% if posts.has_previous %} 
-            <li class="page-item"> 
-            <a href="?page={{ posts.previous_page_number }}" class="page-link">&laquo;</a> 
-            </li> 
-            {% endif %} 
+    {% endif %}
 
-            {% for p in page_range %} 
-            {% if posts.number == p %} 
-            <li class="page-item active"> 
-            <a href="?page={{ p }}" class="page-link">{{ p }}</a> 
-            </li> 
-            {% else %} 
-            <li class="page-item"> 
-            <a href="?page={{ p }}" class="page-link">{{ p }}</a> 
-            </li> 
-            {% endif %} 
-            {% endfor %} 
-
-            {% if posts.has_next %} 
-            <li class="page-item"> 
-            <a href="?page={{ posts.next_page_number }}" class="page-link">&raquo;</a> 
-            </li> 
-            {% endif %} 
-        </ul> 
-    </div>
-
-    <div class="h-100 p-4">
-    {% if searchtag %} 
-        <div class="alert alert-success" role="alert"> 
-        <p>You are searching for: {{ searchtag }}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a> 
-        </div> 
-    {% endif %} 
-    <!-- Posts -->
-        <div class="container mx-auto grid-box">
+    {% if searchtag %}
+        <div class="alert alert-success" role="alert">
+            <p>You are searching for: {{ searchtag }}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a>
+        </div>
+    {% endif %}
+    <div class="main-body" id="mainbody">
+        <div class="container-fluid">
             {% for post in posts %}
-                {% if not post.is_private or request.user == post.author %}
-                <div class="card">
-                    <div class="card-header">
-                        <div class="avatar">
-                            <img data-role="gravatar" data-email="EMPTY">
-                        </div>
-                        <div class="name"><a href="{% url 'profile' id=post.author.id %}">{{ post.author }}</a></div>
-                        <div class="date">{{ post.created}}</div>
-                    </div>
-                    <div class="card-content h3 overflow-hidden p-2 text-center">
-                        <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
-                    </div>
-                    <div class="card-content p-2 overflow-hidden text-center">
-                        <a href="{{post.get_absolute_url}}">{{ post.body }}</a>
-                    </div>
-                    <div class="card-content fg-gray p-2 text-center">
-                        <span><small>Likes: </small>{{ post.likes.count }}</span>
-                        <span><small>Comments: </small>{{ post.comment_set.count }}</span>
-                    </div>
-                    <div class="card-footer px-1 py-1" style="justify-content: center;">
-                            {% for tag in post.tag.all %} 
-                                <form action="{% url "main_page" %}" style="display: inline-block;">
-                                    <button type="submit" value="{{ tag }}" name="searchtag" class="button info mx-1">
-                                        {{ tag }}
-                                    </button>
-                                </form> 
-                            {% endfor %}
-                    </div>
+            <div class="card bg-light mb-3">
+                <div class="card-header">Author: <a href="{% url 'profile' id=post.author.id %}" class="links text-dark">{{ post.author }}</a></div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">
+                        {% for tag in post.tag.all %}
+                        <form action="{% url "main_page" %}" style="display: inline-block;"><button type="submit" value="{{ tag }}" name="searchtag" class="btn badge badge-success">{{ tag }}</button></form>
+                        {% endfor %}
+                    </p>
+                    <p class="card-text">
+                        <small>{{ post.likes.count }} Likes</small>
+                    </p>
+                    <p class="lead">
+                        <a class="btn btn-primary btn-lg" href="{{post.get_absolute_url}}" role="button">Learn more</a>
+                    </p>
                 </div>
-                {% endif %}
-            {% endfor %}
             </div>
+            {% empty %}
+                <div class="alert alert-danger" role="alert">
+                    <strong>Sorry!</strong> No post found
+                </div>
+            {% endfor %}
+        </div>
+        <div class="tag-section jumbotron">
+            {% include 'main/tag_section.html' %}
+        </div>
     </div>
-</div>
 </body>
-<script>
-    sb3.style.height = document.documentElement.scrollHeight + 'px'
-</script>
 </html>
