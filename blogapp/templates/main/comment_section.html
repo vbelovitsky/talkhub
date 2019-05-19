@@ -6,7 +6,7 @@
             <div class="message-time">{{ comment.timestap }}
                 {% if request.user == comment.user or request.user.is_staff %}
                     <button  type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" class="button alert">
-                        <span class="mif-bin"></span>
+                        <span class="mif-fire"></span>
                     </button>
                 {% endif %}
                 <button type="button" name="button" value="reply-form{{comment.id}}">
@@ -24,7 +24,7 @@
             <div class="message-time">{{ comment.timestap }}
                 {% if request.user == reply.user or request.user.is_staff %}
                     <button type="button" id="reply-delete" name="{% url 'comment_delete' id=post.id comid=reply.id %}" class="button alert">
-                        <span class="mif-bin"></span>
+                        <span class="mif-fire"></span>
                     </button>
                 {% endif %}
             </div>
