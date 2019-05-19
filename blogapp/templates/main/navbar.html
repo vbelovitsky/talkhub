@@ -130,6 +130,24 @@
         console.log(err)
       }
 
+      //All middle-blocks change
+      try{
+        var elements = document.body.getElementsByClassName("middle-block")
+            for (var i = 0; i < elements.length; i++) {
+              var el = elements[i];
+                el.classList.toggle('bg-light')
+                el.classList.toggle('text-white')
+                el.classList.toggle('bg-dark')
+                el.classList.toggle('text-black')
+                el.classList.toggle('border')
+                el.classList.toggle('border-light')
+            }
+      }
+      catch(err){
+        console.log('--tags')
+        console.log(err)
+      }
+
       //All links change
       try{
         var elements = document.body.getElementsByClassName("links")

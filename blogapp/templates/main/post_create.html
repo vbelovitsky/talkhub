@@ -7,8 +7,8 @@
 </head>
 <body>
 <div class="container middle-block">
-  <div class="row">
-    <form method="POST" style="margin: 10px">
+  <div class="bg-light">
+    <form method="POST" style="margin: 10px"class="row">
         <div class="col">
             {% csrf_token %}
             {{ postform.as_p }}
