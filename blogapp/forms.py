@@ -9,7 +9,7 @@ class PostCreateForm(forms.ModelForm):
             }))
     body = forms.CharField(label='', widget=forms.Textarea(
         attrs={'placeholder': 'Body', 'data-role': "textarea"}))
-    private = forms.BooleanField(required=False, label='Make post private:', widget=forms.CheckboxInput(
+    private = forms.BooleanField(required=False, label='', widget=forms.CheckboxInput(
         attrs={'type':"checkbox", 'data-role':"checkbox", 'data-caption':'Make post private'}))
 
     class Meta:
@@ -28,8 +28,8 @@ class PostEditForm(forms.ModelForm):
     body = forms.CharField(label='', widget=forms.Textarea(
         attrs={'placeholder': 'Body', 'data-role': "textarea", 'autocomplete': 'off'
             }))
-    private = forms.BooleanField(required=False, label='Make post private:', widget=forms.CheckboxInput(
-        attrs={'class': 'form-control mr-sm-2'}))
+    private = forms.BooleanField(required=False, label='', widget=forms.CheckboxInput(
+        attrs={'type':"checkbox", 'data-role':"checkbox", 'data-caption':'Make post private'}))
 
     class Meta:
         model = Post
