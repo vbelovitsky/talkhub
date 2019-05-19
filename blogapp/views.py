@@ -291,11 +291,10 @@ def edit_profile(request):
             return redirect('main_page')
     else:
         edit_form = UserEditForm(instance=request.user)
-        if request.user.profile is not None:
-            profile_form = ProfileForm(instance=request.user.profile)
-            context['profile'] = profile_form
+        profile_form = ProfileForm(instance=request.user.profile)
     context = {
         'form': edit_form,
+        'profile': profile_form
     }
     return render(request, 'main/edit_profile.html', context)
 # endregion
