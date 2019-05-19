@@ -1,6 +1,6 @@
 {% extends "main/navbar.html" %}
 {% block content %}
-        <div class="jumbotron main-body">
+        <div class="login-registration-form">
             <form method="POST" style="margin: 10px">
                 {% csrf_token %}
                 {{ postform.as_p }}
