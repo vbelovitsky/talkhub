@@ -7,8 +7,8 @@ class PostCreateForm(forms.ModelForm):
     title = forms.CharField(label='', widget=forms.TextInput(
         attrs={'placeholder': 'Title'}))
     body = forms.CharField(label='', widget=forms.Textarea(
-        attrs={'placeholder': 'Body', 'style': 'resize: none;'}))
-    private = forms.BooleanField(required=False, label='Make post private: ', widget=forms.CheckboxInput(
+        attrs={'placeholder': 'Body'}))
+    private = forms.BooleanField(required=False, label='Make post private', widget=forms.CheckboxInput(
         ))
 
     class Meta:

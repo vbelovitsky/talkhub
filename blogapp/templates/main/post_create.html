@@ -6,17 +6,15 @@
     {% include "main/base.html" %}
 </head>
 <body>
-<div class="container middle-block">
-    <form method="POST" style="margin: 10px" class="row bg-light p-2 py-4 rounded">
-        <div class="col">
+    <div class="jumbotron main-body">
+        <form method="POST" style="margin: 10px">
             {% csrf_token %}
             {{ postform.as_p }}
             <input type="submit" value="Create" class = "btn btn-outline-success">
-        </div>
-        <div class="col">
+            <div class="tag-section jumbotron">
             {% include 'main/tag_section_create.html' %}
-        </div>
-    </form>
-</div>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
