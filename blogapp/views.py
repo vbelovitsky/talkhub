@@ -281,6 +281,7 @@ def profile(request, id):
 
 @login_required
 def edit_profile(request):
+    context = {}
     if request.method == 'POST':
         edit_form = UserEditForm(request.POST or None, instance=request.user)
         profile_form = ProfileForm(request.POST or None, request.FILES or None, instance=request.user.profile)
@@ -290,10 +291,11 @@ def edit_profile(request):
             return redirect('main_page')
     else:
         edit_form = UserEditForm(instance=request.user)
-        profile_form = ProfileForm(instance=request.user.profile)
+        if request.user.profile:
+            profile_form = ProfileForm(instance=request.user.profile)
+            context['profile'] = profile_form
     context = {
         'form': edit_form,
-        'profile': profile_form
     }
     return render(request, 'main/edit_profile.html', context)
 # endregion
