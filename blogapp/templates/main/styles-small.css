@@ -116,7 +116,7 @@ body a:hover{
 .display-3{
     font-size: 2.5rem;
 }
-.login-registration-form{
+.middle-block{
     padding: 2%;
     border-radius: 2%;
     flex-direction: column;

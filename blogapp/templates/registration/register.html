@@ -1,6 +1,6 @@
 {% extends "main/navbar.html" %}
 {% block content %}
-<form method="POST" class="login-registration-form bg-white">
+<form method="POST" class="middle-block bg-white">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Register" class="btn btn-outline-success">
