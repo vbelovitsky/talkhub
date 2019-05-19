@@ -125,10 +125,12 @@ body a:hover{
     height: 48vh;
 }
 .login-registration-form{
-    width: 50%;
-    margin-top: 25vh;
-    padding-bottom: 4vh !important;
-    padding-top: 4vh !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2%;
+    border-radius: 2%;
 }
 .iframe-no-rights{
     margin-bottom: 2vh;
@@ -149,3 +151,8 @@ body a:hover{
     flex-direction: column;
     justify-content: space-between;
 }
+.overflow-hidden{ 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+} 
