@@ -18,7 +18,7 @@
             </div> 
     <div class="message-input"> 
         <form method="POST" class="comment-form" action=""> 
-            <div class="input comments-input-form"> 
+            <div class="input comments-input-form d-flex"> 
                 {% csrf_token %} 
                 {{ comment_form.as_p}} 
                     <div class="button-group"> 
