@@ -281,11 +281,10 @@ def profile(request, id):
 
 @login_required
 def edit_profile(request):
-    context = {}
     if request.method == 'POST':
         edit_form = UserEditForm(request.POST or None, instance=request.user)
-        profile_form = ProfileForm(request.POST or None, request.FILES or None, instance=request.user.profile)
-        if edit_form.is_valid() and profile_form.is_valid():
+        profile_form = ProfileForm(request.POST or None, files=request.FILES, instance=request.user.profile)
+        if edit_form.is_valid():
             edit_form.save()
             profile_form.save()
             return redirect('main_page')

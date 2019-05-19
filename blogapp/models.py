@@ -56,6 +56,9 @@ class Tag(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(to=User,
                                 on_delete=models.CASCADE)
-    image = models.FileField(null=True, blank=True)
+    country = models.CharField(max_length=32, blank=True)
+    contacts = models.CharField(max_length=64, blank=True)
+    image = models.ImageField(upload_to='images', blank=True)
+
 
 
