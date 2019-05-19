@@ -151,3 +151,8 @@ body a:hover{
     flex-direction: column;
     justify-content: space-between;
 }
+.overflow-hidden{ 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+} 
