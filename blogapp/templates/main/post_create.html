@@ -7,8 +7,7 @@
 </head>
 <body>
 <div class="container middle-block">
-  <div class="p-2">
-    <form method="POST" style="margin: 10px" class="row bg-light ">
+    <form method="POST" style="margin: 10px" class="row bg-light p-2 py-4 rounded">
         <div class="col">
             {% csrf_token %}
             {{ postform.as_p }}
@@ -18,7 +17,6 @@
             {% include 'main/tag_section_create.html' %}
         </div>
     </form>
-  </div>
 </div>
 </body>
 </html>
