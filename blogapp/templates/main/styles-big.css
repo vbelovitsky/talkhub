@@ -172,7 +172,7 @@ body a:hover{
     font-weight: 600;
     font-size: 12px;
 }
-.message-time{
+.message-time p{
     -webkit-box-ordinal-group: 2;
     -ms-flex-order: 1;
     order: 1;
@@ -180,6 +180,7 @@ body a:hover{
     width: 50%;
     font-size: 12px;
     opacity: 0.5;
+    margin-top: 0 !important;
 }
 .message-item{
     width: 100%;
