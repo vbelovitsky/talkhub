@@ -1,9 +1,9 @@
 <div  class="flex-box-column">
     <form class="tag-search-form" action="{% url 'blogapp:post_create' %}">
-                <input maxlength="25" type="search" placeholder="Search tag" aria-label="Search" id="qtag" class="form-control mr-sm-2" style="margin-top: 1.5vh;">
-                <button class="btn btn-primary" hidden type="submit" style="width: 100%;">Search</button>
+                <input maxlength="25" type="search" placeholder="Search tag" aria-label="Search" id="qtag" class="form-control mr-sm-2">
+                <button class="btn btn-primary" type="submit" style="width: 100%;">Search</button>
 
-        <div class="tag-category">
+        <div class="d-inline-flex">
             {% for tag in tags %}
                 <input type="checkbox" name="tags" value="{{tag.id}}">
                 <button type="button" class="btn btn-info tag-btn">{{ tag }}</button>
