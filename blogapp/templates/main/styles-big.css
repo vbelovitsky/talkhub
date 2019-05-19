@@ -50,26 +50,18 @@ body a:hover{
     background-size: cover;
     transform: scale(1, -1) rotate(180deg);
 }
-.flex-box-column{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.display-3{
-    font-size: 5rem;
-}
-.chat_jumb{
-    width: 100%;
-    height: 100%;
-    max-width: 89.4vw;
-}
 .grid-box{
         display: grid;
         grid-template-columns: 2fr 1.5fr;
         justify-items: stretch;
         align-items: stretch;
 }
-
+.comment-title{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
 .mb-0{
     margin-right: 0.3vw;
 }
@@ -100,7 +92,7 @@ body a:hover{
 }
 
 .login-registration-form{
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -207,9 +199,38 @@ body a:hover{
     display: block;
 }
 .message-text{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 1px solid #e4e4e4;
+    margin-left: 8px;
+    -webkit-box-ordinal-group: 3;
+    -ms-flex-order: 2;
+    font-size: 14px;
+    line-height: 1.2;
+    padding: 5px 10px;
+    width: 100%;
+    background-color: #e4e4e4;
     -webkit-box-ordinal-group: 2;
     -ms-flex-order: 1;
     order: 1;
     margin-left: 0;
     margin-right: 8px;
+}
+.message-text::before {
+    left: 100%;
+    border-right-color: transparent;
+    border-left-color: #e4e4e4;
+    position: absolute;
+    right: 100%;
+    top: 14px;
+    border: 6px solid transparent;
+    border-right-color: #e4e4e4;
+    content: ' ';
+    height: 0;
+    width: 0;
+    pointer-events: none;
 }
