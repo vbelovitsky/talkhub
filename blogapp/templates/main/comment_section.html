@@ -3,33 +3,17 @@
     {% for comment in comments %}
         <div class="message right">
             <div class="message-sender">{{ comment.user|capfirst }}</div>
-            <div class="message-time">{{ comment.timestap }}
-                <button type="button" name="button" value="reply-form{{comment.id}}">
-                    <span class="mif-reply"></span>
-                </button>
+            <div class="message-time">
+                {{ comment.timestap }}
+                {% if request.user == comment.user or request.user.is_staff %}
+                    <span class="mif-bin square mini button alert ml-1" type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" class="alert ml-1"></span>
+                {% endif %}
             </div>
             <div class="message-item">
                 <img class="message-avatar" src="https://cdn1.savepice.ru/uploads/2019/5/19/058cdfe21f8e4fd2ce85ce629b57916d-full.jpg">
                 <div class="message-text default">{{ comment.content }}</div>
             </div>
-            <div class="form-group row" id="reply-form{{comment.id}}" style="display: none">
-                <form method="POST" class="reply-form" action="">
-                    {% csrf_token %}
-                    <input type="hidden" name="comment_id" value="{{comment.id}}">
-                    {{ comment_form.as_p }}
-                </form>
-            </div>
         </div>
-        {% for reply in comment.replies.all %}
-        <div class="message ml-2 right">
-            <div class="message-sender">{{ reply.user|capfirst }}</div>
-            <div class="message-time">{{ comment.timestap }}</div>
-            <div class="message-item">
-                <img class="message-avatar" src="https://cdn1.savepice.ru/uploads/2019/5/19/058cdfe21f8e4fd2ce85ce629b57916d-full.jpg">
-                <div class="message-text default">{{ reply.content }}</div>
-            </div>
-        </div>
-        {% endfor %}
     {% endfor %}
     </div>
     <div class="message-input">
@@ -41,7 +25,7 @@
                 <button class="button input-clear-button" tabindex="-1" type="button">
                     <span class="default-icon-cross"></span>
                 </button>
-                <input class="button input-custom-button js-chat-send-button" tabindex="-1" type="submit" value="Send">
+                <input class="button input-custom-button js-chat-send-button success" tabindex="-1" type="submit" value="Send">
                 </div>
             </div>
         </form>

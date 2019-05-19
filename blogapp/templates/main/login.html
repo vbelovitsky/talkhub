@@ -1,7 +1,7 @@
 {% extends "main/navbar.html" %}
 {% block content %}
     <form method="POST" class="login-registration-form bg-white">
-            <h5>Login</h5>
+            <h4 class="text-center">Login</h4>
 
             {% csrf_token %}
             {{ form.as_p }}
@@ -13,29 +13,57 @@
             </div>
             {% endif %}
 
-            <a href="{% url 'social:begin' 'github' %}">
-                <button type="button" class="btn btn-secondary">Github</button>
-            </a>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Login" class="button success mx-auto my-1">
+            <button class="image-button secondary my-1">
+                <span class="mif-github icon"></span>
+                <span class="caption">
+                    <a href="{% url 'social:begin' 'github' %}">
+                    Github
+                    </a>
+                </span>
+            </button>
 
-            <a href="{% url 'social:begin' 'google-oauth2' %}">
-                <button type="button" name="button" class="btn btn-primary">Google</button>
-            </a>
+            <button class="image-button primary my-1">
+                <span class="mif-google-plus icon"></span>
+                <span class="caption">
+                    <a href="{% url 'social:begin' 'google-oauth2' %}">
+                    Google
+                    </a>
+                </span>
+            </button>
 
         {#    <a href="{% url 'social:begin' 'linkedin-oauth2' %}">#}
         {#        <button type="button" name="button" class="btn btn-primary">Linkedin</button>#}
         {#    </a>#}
 
-            <a href="{% url 'social:begin' 'facebook' %}">
-                <button type="button" class="btn btn-info">Facebook</button>
-            </a>
+            <button class="image-button info my-1">
+                <span class="mif-facebook icon"></span>
+                <span class="caption">
+                    <a href="{% url 'social:begin' 'facebook' %}">
+                    Facebook
+                    </a>
+                </span>
+            </button>
 
-            <a href="{% url 'social:begin' 'yandex-oauth2' %}">
-                <button type="button" class="btn btn-warning">Яндекс</button>
-            </a>
+            <button class="image-button warning my-1">
+                <span class="mif-keyboard icon"></span>
+                <span class="caption">
+                    <a href="{% url 'social:begin' 'yandex-oauth2' %}">
+                    Yandex
+                    </a>
+                </span>
+            </button>
 
-            <a href="{% url 'social:begin' 'vk-oauth2' %}">
-                <button type="button" class="btn btn-light">Вконтакте</button>
-            </a>
+            <button class="image-button light my-1">
+                <span class="mif-vk icon"></span>
+                <span class="caption">
+                    <a href="{% url 'social:begin' 'vk-oauth2' %}">
+                    Вконтакте
+                    </a>
+                </span>
+            </button>
 
             <br>
 

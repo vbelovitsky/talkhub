@@ -90,7 +90,6 @@ body a:hover{
     width: 100%;
     height: 48vh;
 }
-
 .login-registration-form{
     position: fixed;
     top: 50%;
@@ -98,25 +97,6 @@ body a:hover{
     transform: translate(-50%, -50%);
     padding: 2%;
     border-radius: 2%;
-}
-.iframe-no-rights{
-    margin-bottom: 2vh;
-    width: 100%;
-    height: 48vh;
-}
-.card-no-rights{
-    margin-right: 2vw;
-    height: 100%;
-}
-.profile-card{
-    max-width: 25vw;
-    margin-left: auto;
-    margin-right: auto;
-}
-.create-tags{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
 .grid-container {
     display: grid;
@@ -178,7 +158,6 @@ body a:hover{
     order: 1;
     text-align: left;
     width: 50%;
-    font-size: 12px;
     opacity: 0.5;
 }
 .message-item{

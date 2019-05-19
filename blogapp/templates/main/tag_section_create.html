@@ -1,12 +1,18 @@
-<div  class="flex-box-column">
-    <form class="tag-search-form" action="{% url 'blogapp:post_create' %}">
-                <input maxlength="25" type="search" placeholder="Search tag" aria-label="Search" id="qtag" class="form-control mr-sm-2" style="margin-top: 1.5vh;">
-                <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: 1.5vh;">Search</button>
-    </form>
-    <div class="tag-category">
-        {% for tag in tags %}
-            <input type="checkbox" name="tags" value="{{tag.id}}">
-            <button type="button" class="btn btn-info tag-btn">{{ tag }}</button>
-        {% endfor %}
-    </div>
-</div>
+<form class="tag-search-form" action="{% url 'blogapp:post_create' %}" style="margin-top: 1rem;"> 
+    <input maxlength="25" type="search" placeholder="Search tag"
+     data-role="input" data-search-button="true" aria-label="Search" id="qtag"
+     data-on-search-button-click="search_submit"> 
+    <button class="button primary" type="submit" hidden id="tag-btn">Search</button>
+</form>
+<script>
+function search_submit(val){
+        document.getElementById("tag-btn").click()
+    }
+</script>
+<ul class="items-list">
+    {% for tag in tags %}
+        <li class="item">
+            <input type="checkbox" data-role="checkbox"  value="{{tag.id}}" name="tags" data-caption="{{tag}}">
+        </li> 
+    {% endfor %}
+</ul>

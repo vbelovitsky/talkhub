@@ -1,13 +1,23 @@
 {% extends "main/navbar.html" %}
 {% block content %}
-        <div class="jumbotron main-body">
-            <form method="POST" style="margin: 10px">
-                {% csrf_token %}
-                {{ postform.as_p }}
-                <input type="submit" value="Create" class = "btn btn-outline-success">
-                <div class="tag-section jumbotron">
+        <div class="row login-registration-form">
+            <div class="cell order-2"> 
                 {% include 'main/tag_section_create.html' %}
-                </div>
-            </form>
+            </div>
+            <div class="cell order-1">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ postform.as_p }}
+                    <input type="submit" value="Create" class = "button success">
+                </form>
+            </div>
         </div>
+    <style>
+    .item{
+        padding-left: 0!important;
+    }
+    .items-list{
+        padding-left: 0!important;
+    }
+    </style>
 {% endblock %}
