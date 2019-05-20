@@ -281,23 +281,16 @@ def profile(request, id):
 
 @login_required
 def edit_profile(request):
-    profile_form = ''
     if request.method == 'POST':
         edit_form = UserEditForm(request.POST or None, instance=request.user)
-        try:
-            profile_form = ProfileForm(request.POST or None, files=request.FILES, instance=request.user.profile)
-        except BaseException:
-            profile_form = ''
+        profile_form = ProfileForm(request.POST or None, files=request.FILES, instance=request.user.profile)
         if edit_form.is_valid():
             edit_form.save()
             profile_form.save()
             return redirect('main_page')
     else:
         edit_form = UserEditForm(instance=request.user)
-        try:
-            profile_form = ProfileForm(instance=request.user.profile)
-        except BaseException:
-            profile_form = ''
+        profile_form = ProfileForm(instance=request.user.profile)
     context = {
         'form': edit_form,
         'profile': profile_form
@@ -348,3 +341,30 @@ def comment_refresh(request, id):
 def lending(request):
     context = {}
     return render(request, 'main/lending.html', context)
+
+
+def check(request):
+    if request.method == 'POST':
+        edit_form = UserEditForm(request.POST or None, instance=request.user)
+        profile_form = ProfileForm(request.POST or None, files=request.FILES, instance=request.user.profile)
+        if edit_form.is_valid():
+            edit_form.save()
+            profile_form.save()
+            return redirect('main_page')
+
+    try:
+        profile = request.user.profile
+    except BaseException:
+        Profile.objects.create(user=request.user)
+
+    if request.user.email =='' or request.user.first_name =='' or request.user.last_name =='' or request.user.username =='':
+        edit_form = UserEditForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+        context = {
+            'form': edit_form,
+            'profile': profile_form
+        }
+        return render(request, 'main/check.html', context)
+
+    return redirect('main_page')
+
