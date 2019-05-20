@@ -6,15 +6,12 @@
             {% csrf_token %}
             {{ form.as_p }}
 
-            <input type="submit" value="Login" class="btn btn-outline-success mx-auto">
             {% if error %}
             <div class="alert alert-danger" role="alert">
                 {{ error }}
             </div>
             {% endif %}
 
-            {% csrf_token %}
-            {{ form.as_p }}
             <input type="submit" value="Login" class="button success mx-auto my-1">
             <button class="image-button secondary my-1">
                 <span class="mif-github icon"></span>
