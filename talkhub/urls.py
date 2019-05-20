@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^like/$', views.like_post, name='like_post'),
     url(r'^comment-delete/(?P<id>\d+)/(?P<comid>\d+)/$', views.comment_delete, name='comment_delete'),
     url(r'^profile/(?P<id>\d+)/$', views.profile, name='profile'),
+    url(r'^lending/$', views.lending, name='lending'),
 
     path('password-reset/',
          auth_views.PasswordResetView.as_view(

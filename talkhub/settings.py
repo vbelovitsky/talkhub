@@ -127,9 +127,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATICFILES_DIRS = [
-#    os.path.join(BASE_DIR, 'static')
-# ]
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -170,12 +168,6 @@ YANDEX_APP_ID = SOCIAL_AUTH_YANDEX_OAUTH2_KEY
 YANDEX_API_SECRET = SOCIAL_AUTH_YANDEX_OAUTH2_SECRET
 YANDEX_OAUTH2_API_URL = 'https://api-yaru.yandex.ru/me/'
 
-# YANDEX_OAUTH2_CLIENT_KEY = '8ba891f2113345ffbf19a4c069bd42d2'
-# YANDEX_OAUTH2_CLIENT_SECRET = '00c164b261d14668b6d6dd58c0670a4e'
-# VK_APP_ID = '6971869'
-# VK_API_SECRET = 'Kn4bB7aJSm1Ac3SVimc5'
-# VK_APP_ID = '6971869'
-# VK_API_SECRET = 'Kn4bB7aJSm1Ac3SVimc5'
 
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.github.GithubOAuth2',
@@ -186,7 +178,7 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.yandex.YandexOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 ]
-#endregion
+# endregion
 
 import dj_database_url
 db_from_env = dj_database_url.config()
