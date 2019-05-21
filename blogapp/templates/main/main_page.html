@@ -7,6 +7,8 @@
     {% include "main/base.html" %}
 </head>
 <body class="d-flex flex-column">
+
+    <!-- SEARCH NOTIFY -->
     {% if query %}
         <div class="alert alert-success" role="alert">
             <p>You are searching for: {{ query }}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a>
@@ -18,10 +20,13 @@
             <p>You are searching for: {{ searchtag }}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a>
         </div>
     {% endif %}
-    <div class="main-body" id="mainbody">
-        <div class="container-fluid">
+    <!-- END OF SEARCH NOTIFY -->
+
+    <!-- MAIN -->
+    <div class="d-flex row justify-content-center mx-0">
+        <div class="col-lg-3 col-12 col-sm-8">
             {% for post in posts %}
-            <div class="card bg-light mb-3">
+            <div class="card bg-light mb-3 text-center">
                 <div class="card-header">Author: <a href="{% url 'profile' id=post.author.id %}" class="links text-dark">{{ post.author }}</a></div>
                 <div class="card-body">
                     <h4 class="card-title overflow-hidden">{{ post.title }}</h5>
@@ -45,9 +50,10 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="tag-section jumbotron">
+        <div class="col-lg-4 col-sm-4 col-12 bg-light mb-3">
             {% include 'main/tag_section.html' %}
         </div>
     </div>
+    <!-- END MAIN -->
 </body>
 </html>

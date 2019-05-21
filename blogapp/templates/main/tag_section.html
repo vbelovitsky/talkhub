@@ -1,13 +1,11 @@
-<div  class="flex-box-column">
-    <form class="tag-search-form" action="{% url 'main_page' %}">
-                <input maxlength="25" type="search" placeholder="Search tag" aria-label="Search" id="qtag" class="form-control mr-sm-2" style="margin-top: 1.5vh;">
-                <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: 1.5vh;">Search</button>
+<div  class="d-flex flex-column pb-1">
+    <form class="d-flex flex-column mb-1" action="{% url 'main_page' %}">
+                <input maxlength="25" type="search" placeholder="Search tag" aria-label="Search" id="qtag" class="form-control mr-sm-2 mt-xl-2">
+                <button class="btn btn-primary w-100 mt-xl-2" type="submit">Search</button>
     </form>
-    <div class="tag-category">
-        {% for tag in tags %}
-            <form action="{% url "main_page" %}">
-                <button type="submit" value="{{ tag }}" name="searchtag" class="btn btn-info tag-btn">{{ tag }}</button>
-            </form>
-        {% endfor %}
-    </div>
+    {% for tag in tags %}
+        <form action="{% url "main_page" %}" class="my-xl-1">
+            <button type="submit" value="{{ tag }}" name="searchtag" class="btn btn-info w-100">{{ tag }}</button>
+        </form>
+    {% endfor %}
 </div>

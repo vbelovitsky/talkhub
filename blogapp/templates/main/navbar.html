@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 2vh;" id="navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-xl-3 sticky-top invisible" id="navigation">
   <a class="navbar-brand" href="{% url 'main_page' %}"><big>TalkHub</big></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,12 +7,12 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
+        <a class="nav-link" href="{% url 'main_page' %}">Home</a>
+      </li>
+      <li class="nav-item">
         {% if request.user.id != None %}
         <a class="nav-link" href="{% url 'profile' id=request.user.id %}">Profile <span class="sr-only">(current)</span></a>
         {% endif %}
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -28,7 +28,6 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" style="color: firebrick;" href="{% url 'user_logout' %}">Logout</a>
             {% else %}
-                <a class="dropdown-item" onclick="ToggleTheme()">Toggle theme</a>
                 <a class="dropdown-item" style="color: green;" href="{% url 'user_login' %}">Login</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" style="color: firebrick;" href="{% url 'register' %}">Sign Up</a>
