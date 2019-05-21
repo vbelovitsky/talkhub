@@ -9,7 +9,7 @@ from django.http import HttpResponse, JsonResponse, HttpResponseRedirect, Http40
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from googlesearch import search
 from django.db.models import Q
-from blogapp.models import *
+from .models import *
 from .forms import *
 
 

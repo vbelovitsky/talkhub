@@ -42,7 +42,25 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blogapp',
     'social_django',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'height': 320,
+        'toolbar_Custom': [
+            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['CodeSnippet', 'Image', 'Flash', 'Table', 'HorizontalRule'],
+            ['TextColor', 'BGColor'],
+            ['Smiley', 'SpecialChar', 'Source']
+        ],
+        'extraPlugins': 'codesnippet'
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
