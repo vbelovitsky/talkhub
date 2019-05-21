@@ -25,7 +25,7 @@
                 <div class="card-header">Author: <a href="{% url 'profile' id=post.author.id %}" class="links text-dark">{{ post.author }}</a></div>
                 <div class="card-body">
                     <h5 class="card-title overflow-hidden">{{ post.title }}</h5>
-                    <h5 class="card-text overflow-hidden">{{ post.body }}</h5>
+                    <h5 class="card-text overflow-hidden">{{ post.body | safe }}</h5>
                     <p class="card-text">
                         {% for tag in post.tag.all %}
                         <form action="{% url "main_page" %}" style="display: inline-block;"><button type="submit" value="{{ tag }}" name="searchtag" class="btn badge badge-success">{{ tag }}</button></form>
