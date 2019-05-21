@@ -21,7 +21,7 @@
     <div class="main-body">
         <div class="container-fluid grid-box text-center">
             {% for post in posts %}
-            {% if not post.is_private or request.user.is_superuser %}
+            {% if not post.is_private or request.user.is_superuser or request.user == post.author %}
             <div class="card bg-light mb-3">
                 <div class="card-header">Author: <a href="{% url 'profile' id=post.author.id %}" class="links text-dark">{{ post.author }}</a></div>
                 <div class="card-body">
