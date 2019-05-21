@@ -84,7 +84,7 @@ def proper_pagination(posts, index):
 def chat_page(request, id, key):
     """chat (post) page view"""
     post = get_object_or_404(Post, id=id, private_key=key)
-    comments = Comment.objects.filter(post=post, reply=None).order_by('-timestap')
+    comments = Comment.objects.filter(post=post).order_by('-timestap')
 
     is_liked = False
     if post.likes.filter(id=request.user.id).exists():
@@ -94,12 +94,8 @@ def chat_page(request, id, key):
         comment_form = CommentForm(request.POST or None)
         if comment_form.is_valid():
             content = request.POST.get('content')
-            reply_id = request.POST.get('comment_id')
-            comment_qs = None
-            if reply_id:
-                comment_qs = Comment.objects.get(id=reply_id)
             comment = Comment.objects.create(
-                post=post, user=request.user, content=content, reply=comment_qs)
+                post=post, user=request.user, content=content)
             comment.save()
     else:
         comment_form = CommentForm()
@@ -360,7 +356,7 @@ def comment_delete(request, id, comid):
     comment.delete()
 
     post = Post.objects.get(id=id)
-    comments = Comment.objects.filter(post=post, reply=None).order_by('-timestap')
+    comments = Comment.objects.filter(post=post).order_by('-timestap')
     comment_form = CommentForm()
 
     context = {'post': post,
@@ -376,7 +372,7 @@ def comment_delete(request, id, comid):
 def comment_refresh(request, id):
     """comment refresh function"""
     post = get_object_or_404(Post, id=id)
-    comments = Comment.objects.filter(post=post, reply=None).order_by('-timestap')
+    comments = Comment.objects.filter(post=post).order_by('-timestap')
     comment_form = CommentForm()
 
     context = {'post': post,
