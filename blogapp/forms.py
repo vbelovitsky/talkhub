@@ -9,6 +9,7 @@ class PostCreateForm(forms.ModelForm):
         attrs={'placeholder': 'Title'}))
     private = forms.BooleanField(required=False, label='Make post private', widget=forms.CheckboxInput(
         ))
+    body = RichTextUploadingFormField()
 
     class Meta:
         model = Post
@@ -99,6 +100,7 @@ class CommentForm(forms.ModelForm):
     #                           label="",
     #                           widget=forms.TextInput(attrs={'placeholder': 'Comment here',
     #                                                         'id': 'textinput'}))
+    content = RichTextUploadingFormField()
 
     class Meta:
         model = Comment
