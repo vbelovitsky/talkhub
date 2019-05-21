@@ -61,6 +61,7 @@ CKEDITOR_CONFIGS = {
         'extraPlugins': 'codesnippet'
     },
 }
+CKEDITOR_IMAGE_BACKEND = "pillow"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
