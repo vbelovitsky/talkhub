@@ -335,4 +335,8 @@ def comment_refresh(request, id):
     if request.is_ajax():
         html = render_to_string('main/comment_section.html', context, request=request)
         return JsonResponse({'form': html})
+
+def lending(request): 
+    context = {} 
+    return render(request, 'main/lending.html', context)
 # endregion
