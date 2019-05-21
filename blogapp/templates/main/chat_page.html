@@ -40,7 +40,7 @@
                     {% include 'main/like_section.html' %}
                 </div>
                 <div>
-                    <p class="lead">{{ post.body }}</p>
+                    {{ post.body | safe }}
 
                     {% if request.user == post.author %}
                     <p class="lead">
