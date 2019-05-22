@@ -8,37 +8,32 @@
 </head>
 
 <body>
-    <div class="jumbotron chat_jumb mx-auto">
-        <div class="chat-page-title">
-            <div style="chat-page-title-date">
+    <div class="row">
+            <div class="col-xl-9">
                 <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p>
                 <p><small>{{ post.created }}</small></p>
+                <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>
             </div>
-            <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>
-        </div>
-        <div class="grid-box">
-            <div class="flex-box-column" style="justify-content: flex-start;">
-                {% if request.user.is_authenticated %}
-                <div class="iframe_chat"><iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true"
-                        class="iframe-main" scrolling="auto" allow="microphone; camera"></iframe></div>
-                {% else %}
-                    <div class="iframe-no-rights">
-                        <div class="card card-no-rights">
-                            <div class="card-header">
-                                Access denied
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">Sorry! You have no rights!</h5>
-                                <p class="card-text">To use video chat, you need to sign up or sign in, if there is one</p>
-                                <a href="{% url 'user_login' %}" class="btn btn-primary">Sign in</a>
-                                <a href="{% url 'register' %}" class="btn btn-primary">Sign up</a>
-                            </div>
+            {% if request.user.is_authenticated %}
+            <div class="col-xl-3"><iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true"
+                    class="" scrolling="auto" allow="microphone; camera"></iframe>
+            </div>
+            {% else %}
+            <div class="col-xl-3">
+                    <div class="card card-no-rights">
+                        <div class="card-header">
+                            Access denied
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Sorry! You have no rights!</h5>
+                            <p class="card-text">To use video chat, you need to sign up or sign in, if there is one</p>
+                            <a href="{% url 'user_login' %}" class="btn btn-primary">Sign in</a>
+                            <a href="{% url 'register' %}" class="btn btn-primary">Sign up</a>
                         </div>
                     </div>
-                {% endif %}
-                <div id="like-section">
-                    {% include 'main/like_section.html' %}
-                </div>
+            </div>
+            {% endif %}
+                {% include 'main/like_section.html' %}
                 <div>
                     {{ post.body | safe }}
 
