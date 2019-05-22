@@ -1,19 +1,27 @@
+"""views of the project"""
+import random
+import string
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, JsonResponse, HttpResponseRedirect, Http404
-from django.urls import reverse
-from blogapp.models import *
-from django.db.models import Q
-from .forms import *
 from django.template.loader import render_to_string
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect, Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from googlesearch import search
-import random, string
+from django.db.models import Q
+from .models import *
+from .forms import *
+
+
+# region Main
+def lending(request):
+    """lending view"""
+    context = {}
+    return render(request, 'main/lending.html', context)
 
 
 def main_page(request):
+    """main page view"""
     post_list = Post.objects.all()
     tags = Tag.objects.all()
 
@@ -64,6 +72,7 @@ def main_page(request):
 
 
 def proper_pagination(posts, index):
+    """pagination function"""
     start_index = 0
     end_index = 7
     if posts.number > index:
@@ -73,8 +82,9 @@ def proper_pagination(posts, index):
 
 
 def chat_page(request, id, key):
+    """chat (post) page view"""
     post = get_object_or_404(Post, id=id, private_key=key)
-    comments = Comment.objects.filter(post=post, reply=None).order_by('-timestap')
+    comments = Comment.objects.filter(post=post).order_by('-timestap')
 
     is_liked = False
     if post.likes.filter(id=request.user.id).exists():
@@ -84,11 +94,8 @@ def chat_page(request, id, key):
         comment_form = CommentForm(request.POST or None)
         if comment_form.is_valid():
             content = request.POST.get('content')
-            reply_id = request.POST.get('comment_id')
-            comment_qs = None
-            if reply_id:
-                comment_qs = Comment.objects.get(id=reply_id)
-            comment = Comment.objects.create(post=post, user=request.user, content=content, reply=comment_qs)
+            comment = Comment.objects.create(
+                post=post, user=request.user, content=content)
             comment.save()
     else:
         comment_form = CommentForm()
@@ -103,10 +110,13 @@ def chat_page(request, id, key):
         html = render_to_string('main/comment_section.html', context, request=request)
         return JsonResponse({'form': html})
     return render(request, 'main/chat_page.html', context)
+# endregion
 
 
+# region Post
 @login_required
 def like_post(request):
+    """like post function"""
     post = get_object_or_404(Post, id=request.POST.get('id'))
     if post.likes.filter(id=request.user.id).exists():
         post.likes.remove(request.user)
@@ -121,9 +131,9 @@ def like_post(request):
         return JsonResponse({'form': html})
 
 
-# region Post
 @login_required
 def post_create(request):
+    """post create view"""
     if request.method == "POST":
         form = PostCreateForm(request.POST)
         if form.is_valid():
@@ -160,6 +170,7 @@ def post_create(request):
 
 @login_required()
 def post_edit(request, id):
+    """post edit view"""
     post = get_object_or_404(Post, id=id)
     if request.user != post.author:
         raise Http404()
@@ -185,6 +196,7 @@ def post_edit(request, id):
 
 @login_required()
 def post_delete(request, id):
+    """post delete function"""
     post = get_object_or_404(Post, id=id)
     if request.user != post.author:
         raise Http404
@@ -194,6 +206,7 @@ def post_delete(request, id):
 
 @login_required()
 def post_recommend(request, id, key):
+    """post recommend view + search"""
     post = get_object_or_404(Post, id=id, private_key=key)
     query = "site:stackoverflow.com " + post.title + " " + post.body
 
@@ -213,6 +226,7 @@ def post_recommend(request, id, key):
 
 # region Authentication
 def user_login(request):
+    """user login view"""
     if request.method == "POST":
         form = UserLoginForm(request.POST)
         if form.is_valid():
@@ -241,11 +255,13 @@ def user_login(request):
 
 
 def user_logout(request):
+    """user logout view"""
     logout(request)
     return redirect('main_page')
 
 
 def register(request):
+    """user registration view"""
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST or None)
         if form.is_valid():
@@ -261,12 +277,41 @@ def register(request):
         'form': form
     }
     return render(request, 'registration/register.html', context)
+
+
+def check(request):
+    """view that checks data from third parties auth"""
+    if request.method == 'POST':
+        edit_form = UserEditForm(request.POST or None, instance=request.user)
+        profile_form = ProfileForm(request.POST or None, files=request.FILES, instance=request.user.profile)
+        if edit_form.is_valid():
+            edit_form.save()
+            profile_form.save()
+            return redirect('main_page')
+
+    try:
+        request.user.profile
+    except BaseException:
+        Profile.objects.create(user=request.user)
+
+    if request.user.email == '' or request.user.first_name == ''\
+            or request.user.last_name == '' or request.user.username == '':
+        edit_form = UserEditForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+        context = {
+            'form': edit_form,
+            'profile': profile_form
+        }
+        return render(request, 'main/check.html', context)
+
+    return redirect('main_page')
 # endregion   
 
 
 # region Profile
 @login_required
 def profile(request, id):
+    """user profile page view"""
     if User.objects.get(id=id) is not None:
         user = User.objects.get(id=id)
         posts_count = Post.objects.filter(author=user).count()
@@ -281,23 +326,17 @@ def profile(request, id):
 
 @login_required
 def edit_profile(request):
-    profile_form = ''
+    """user edit profile view"""
     if request.method == 'POST':
         edit_form = UserEditForm(request.POST or None, instance=request.user)
-        try:
-            profile_form = ProfileForm(request.POST or None, files=request.FILES, instance=request.user.profile)
-        except BaseException:
-            profile_form = ''
+        profile_form = ProfileForm(request.POST or None, files=request.FILES, instance=request.user.profile)
         if edit_form.is_valid():
             edit_form.save()
             profile_form.save()
             return redirect('main_page')
     else:
         edit_form = UserEditForm(instance=request.user)
-        try:
-            profile_form = ProfileForm(instance=request.user.profile)
-        except BaseException:
-            profile_form = ''
+        profile_form = ProfileForm(instance=request.user.profile)
     context = {
         'form': edit_form,
         'profile': profile_form
@@ -309,6 +348,7 @@ def edit_profile(request):
 # region Comment
 @login_required()
 def comment_delete(request, id, comid):
+    """comment delete function"""
     comment = get_object_or_404(Comment, id=comid)
     if request.user != comment.user and not request.user.is_staff:
         raise Http404
@@ -316,7 +356,7 @@ def comment_delete(request, id, comid):
     comment.delete()
 
     post = Post.objects.get(id=id)
-    comments = Comment.objects.filter(post=post, reply=None).order_by('-timestap')
+    comments = Comment.objects.filter(post=post).order_by('-timestap')
     comment_form = CommentForm()
 
     context = {'post': post,
@@ -330,8 +370,9 @@ def comment_delete(request, id, comid):
 
 
 def comment_refresh(request, id):
+    """comment refresh function"""
     post = get_object_or_404(Post, id=id)
-    comments = Comment.objects.filter(post=post, reply=None).order_by('-timestap')
+    comments = Comment.objects.filter(post=post).order_by('-timestap')
     comment_form = CommentForm()
 
     context = {'post': post,
@@ -345,6 +386,8 @@ def comment_refresh(request, id):
 # endregion
 
 
-def lending(request):
-    context = {}
-    return render(request, 'main/lending.html', context)
+
+
+
+
+

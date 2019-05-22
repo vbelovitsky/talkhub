@@ -9,7 +9,9 @@
 {{post.title}}|Edit
 <form method="POST">
     {% csrf_token %}
-    {{form.as_p}}
+    {{ form.title }}
+    {{ form.body | safe }}
+    {{ form.private }}
     <input type="submit" value="Update" class="btn btn-success">
 </form>
 </body>

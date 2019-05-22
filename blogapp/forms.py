@@ -1,15 +1,15 @@
 from django import forms
 from .models import Post, Comment, Profile
 from django.contrib.auth.models import User
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 class PostCreateForm(forms.ModelForm):
     title = forms.CharField(label='', widget=forms.TextInput(
         attrs={'placeholder': 'Title'}))
-    body = forms.CharField(label='', widget=forms.Textarea(
-        attrs={'placeholder': 'Body', 'style': 'resize: none;'}))
     private = forms.BooleanField(required=False, label='Make post private', widget=forms.CheckboxInput(
         ))
+    body = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model = Post
@@ -96,10 +96,11 @@ class UserEditForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-    content = forms.CharField(max_length=1000,
-                              label="",
-                              widget=forms.TextInput(attrs={'placeholder': 'Comment here',
-                                                            'id': 'textinput'}))
+    # content = forms.CharField(max_length=1000,
+    #                           label="",
+    #                           widget=forms.TextInput(attrs={'placeholder': 'Comment here',
+    #                                                         'id': 'textinput'}))
+    content = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
         model = Comment

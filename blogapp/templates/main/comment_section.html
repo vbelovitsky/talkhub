@@ -6,12 +6,12 @@
                     <div class="message-time"> 
                         {{ comment.timestap }} 
                         {% if request.user == comment.user or request.user.is_staff %} 
-                        <span class="mif-bin square mini btn btn-danger ml-1" type="button" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}" class="alert ml-1"></span> 
+                        <span class="mif-bin square mini btn btn-danger ml-1" id="comment-delete" name="{% url 'comment_delete' id=post.id comid=comment.id %}"></span>
                         {% endif %} 
                     </div> 
-                    <div class="message-item"> 
+                    <div class="message-item">
                         <img class="message-avatar" src="https://cdn1.savepice.ru/uploads/2019/5/19/058cdfe21f8e4fd2ce85ce629b57916d-full.jpg"> 
-                        <div class="message-text default">{{ comment.content }}</div> 
+                        <div class="message-text default">{{ comment.content | safe}}</div>
                     </div> 
                 </div> 
         {% endfor %} 
@@ -20,7 +20,7 @@
         <form method="POST" class="comment-form" action=""> 
             <div class="input comments-input-form d-flex"> 
                 {% csrf_token %} 
-                {{ comment_form.as_p}} 
+                {{ comment_form.content | safe }}
                     <div class="button-group"> 
                         <button class="btn input-clear-button" tabindex="-1" type="button"> 
                             <span class="default-icon-cross"></span> 

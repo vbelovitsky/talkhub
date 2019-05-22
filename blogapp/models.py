@@ -1,10 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Post(models.Model):
-    body = models.TextField()
+    body = RichTextUploadingField(blank=True, null=True)
     title = models.CharField(max_length=100)
     author = models.ForeignKey(to=User,
                                on_delete=models.SET_NULL,
@@ -38,8 +40,7 @@ class Comment(models.Model):
                              on_delete=models.CASCADE)
     user = models.ForeignKey(to=User,
                              on_delete=models.CASCADE)
-    reply = models.ForeignKey(to='Comment', null=True, related_name='replies', on_delete=models.SET_NULL)
-    content = models.TextField(max_length=1500)
+    content = RichTextUploadingField(blank=True, null=True)
     timestap = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
