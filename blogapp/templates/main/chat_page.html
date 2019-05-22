@@ -10,7 +10,7 @@
     <div class="containter bg-light">
         <div class="row mr-0 mx-xl-3 py-xl-2">
             <div class="col-xl-7">
-                <p>By <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}<h1 class="text-hide ml-xl-1" style="background-image: {{ request.user.profile.image.url }}">IMG</h1></a></p> 
+                <p>By <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}<h1 class="text-hide ml-xl-1" style="background-image: url({{ request.user.profile.image.url }})">IMG</h1></a></p> 
                 <p><small>{{ post.created }}</small></p> 
                 <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>  
                 <a href="{% url 'blogapp:post_edit' id=post.id %}"> 
