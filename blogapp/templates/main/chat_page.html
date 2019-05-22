@@ -14,12 +14,14 @@
                 <p><small>{{ post.created }}</small></p> 
                 <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>
                 {% if request.user == post.author %} 
+                <div>
                     <a href="{% url 'blogapp:post_edit' id=post.id %}"> 
                         <button type="button" class="btn btn-outline-success">Edit</button> 
                     </a> 
                     <a href="{% url 'blogapp:post_delete' id=post.id %}" id="delete"> 
                         <button type="button" class="btn btn-danger">Delete</button> 
                     </a>
+                </div>
                 {% endif %}
             </div>
             <div class="col-xl-4 col-lg-5 sticky-top">
