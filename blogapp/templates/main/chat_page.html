@@ -9,7 +9,7 @@
 <body>
     <div class="containter bg-light mx-xl-2">
         <div class="row mr-0 mx-xl-3 py-xl-2">
-            <div class="col-xl-7">
+            <div class="col-xl-7 min-vh-25">
                 <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p> 
                 <p><small>{{ post.created }}</small></p> 
                 <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>
