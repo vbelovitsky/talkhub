@@ -5,7 +5,7 @@
     </form>
     <div class="row">
     {% for tag in tags %}
-        <form action="{% url "main_page" %}" class="my-xl-1 col-lg-6">
+        <form action="{% url "main_page" %}" class="my-xl-1 col-lg-6 mx-xl-1">
             <button type="submit" value="{{ tag }}" name="searchtag" class="btn btn-info w-100">{{ tag }}</button>
         </form>
     {% endfor %}
