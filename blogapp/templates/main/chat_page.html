@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>{{post.title}} | {{post.author}}</title>
-
     {% include "main/base.html" %}
 </head>
 
 <body class="bg-light">
-    <div class="row mx-xl-2 my-xl-2 h-25">
+    <div class="row mx-xl-2 my-xl-2 h-25 bg-light">
             <div class="col-xl-7 justify-content-between">
                 <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p>
                 <p><small>{{ post.created }}</small></p>
