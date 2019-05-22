@@ -9,7 +9,7 @@
 
 <body>
     <div class="row bg-light mx-xl-2 my-xl-2">
-            <div class="col-xl-9">
+            <div class="col-xl-7">
                 <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p>
                 <p><small>{{ post.created }}</small></p>
                 <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>
@@ -24,11 +24,11 @@
                 {% include 'main/like_section.html' %}
             </div>
             {% if request.user.is_authenticated %}
-            <div class="col-xl-3"><iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true"
-                    class="" scrolling="auto" allow="microphone; camera"></iframe>
+            <div class="col-xl-5"><iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true"
+                    class="w-100 h-100" scrolling="auto" allow="microphone; camera"></iframe>
             </div>
             {% else %}
-            <div class="col-xl-3">
+            <div class="col-xl-5">
                     <div class="card card-no-rights">
                         <div class="card-header">
                             Access denied
