@@ -174,3 +174,6 @@ body a:hover{
     width: 0; 
     pointer-events: none; 
 }
+.min-vh-25{
+    min-height: 25vh!important;
+}
