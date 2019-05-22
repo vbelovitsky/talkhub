@@ -13,6 +13,15 @@
                 <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p>
                 <p><small>{{ post.created }}</small></p>
                 <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>
+                <div id="edit-section">
+                            <a href="{% url 'blogapp:post_edit' id=post.id %}">
+                                <button type="button" class="btn btn-outline-success">Edit</button>
+                            </a>
+                            <a href="{% url 'blogapp:post_delete' id=post.id %}" id="delete">
+                                <button type="button" class="btn btn-danger">Delete</button>
+                            </a>
+                </div>
+                {% include 'main/like_section.html' %}
             </div>
             {% if request.user.is_authenticated %}
             <div class="col-xl-3"><iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true"
@@ -33,20 +42,13 @@
                     </div>
             </div>
             {% endif %}
-                {% include 'main/like_section.html' %}
+    </div>      
                 <div>
                     {{ post.body | safe }}
 
                     {% if request.user == post.author %}
                     <p class="lead">
-                        <div id="edit-section">
-                            <a href="{% url 'blogapp:post_edit' id=post.id %}">
-                                <button type="button" class="btn btn-outline-success">Edit</button>
-                            </a>
-                            <a href="{% url 'blogapp:post_delete' id=post.id %}" id="delete">
-                                <button type="button" class="btn btn-danger">Delete</button>
-                            </a>
-                        </div>
+                        
                     </p>
                     {% endif %}
                 </div>
@@ -59,6 +61,5 @@
                 </div>
             </div>
         </div>
-    </div>
 </body>
 </html>
