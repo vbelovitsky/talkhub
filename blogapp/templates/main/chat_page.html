@@ -9,7 +9,7 @@
 <body>
     <div class="containter bg-light mx-xl-2">
         <div class="row mr-0 mx-xl-3 py-xl-2">
-            <div class="col-xl-7 min-vh-35">
+            <div class="col-xl-8 col-lg-7 min-vh-35">
                 <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p> 
                 <p><small>{{ post.created }}</small></p> 
                 <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>
@@ -22,7 +22,7 @@
                     </a>
                 {% endif %}
             </div>
-            <div class="col-xl-5 sticky-top">
+            <div class="col-xl-4 col-lg-5 sticky-top">
                 <iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true" 
                     class="w-100 h-100" scrolling="auto" allow="microphone; camera"></iframe> 
             </div> 
