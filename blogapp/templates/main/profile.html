@@ -27,8 +27,8 @@
             <p class="card-text"> Posts count: {{ posts_count }}</p>
         </div>
         <div class="card-body">
-            <a class="card-link links">Card link</a>
-            <a class="card-link links">Another link</a>
+            <a class="card-link links btn btn-secondary" href={% url 'main_page' %}>Home</a>
+            <a class="card-link links btn btn-secondary" href={% url 'blogapp:post_create' %}>Create new post</a>
         </div>
     </div>
 </body>
