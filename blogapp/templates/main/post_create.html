@@ -20,7 +20,7 @@
             <div class="col-xl-4 col-12">
                 <form class="tag-search-form" action="{% url 'blogapp:post_create' %}">
                     <input maxlength="25" placeholder="Search tag" id="qtag" class="form-control mr-sm-2">
-                    <button class="btn btn-primary w-100" hidden type="submit">Search</button>
+                    <button class="btn btn-primary w-100 my-2" type="submit">Search</button>
                 </form>
                 {% include 'main/tag_section_create.html' %}
             </div>
