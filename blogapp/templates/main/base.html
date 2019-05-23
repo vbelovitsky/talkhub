@@ -74,22 +74,6 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
             });
         });
 
-        $(document).on('submit', '.reply-form', function (event) {
-            event.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: $(this).attr('action'),
-                data: $(this).serialize(),
-                dataType: 'json',
-                success: function (response) {
-                    $('.main-comment-section').html(response['form']);
-                },
-                error: function (rs) {
-                    console.log(rs.responseText);
-                },
-            });
-        });
-
         $(document).on('click', '#comment-delete', function (event) {
             event.preventDefault();
             $.ajax({
@@ -97,41 +81,6 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
                 url: $(this).attr('name'),
                 data: {
                     'csrfmiddlewaretoken': '{{csrf_token}}'
-                },
-                dataType: 'json',
-                success: function (response) {
-                    $('.main-comment-section').html(response['form']);
-                },
-                error: function (rs) {
-                    console.log(rs.responseText)
-                },
-            });
-        });
-
-        $(document).on('click', '#reply-delete', function (event) {
-            event.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: $(this).attr('name'),
-                data: {
-                    'csrfmiddlewaretoken': '{{csrf_token}}'
-                },
-                dataType: 'json',
-                success: function (response) {
-                    $('.main-comment-section').html(response['form']);
-                },
-                error: function (rs, e) {
-                    console.log(rs.responseText)
-                },
-            });
-        });
-
-        $(document).on('click', '#refresh-button', function (event) {
-            event.preventDefault();
-            $.ajax({
-                type: 'GET',
-                url: $(this).attr('name'),
-                data: {
                 },
                 dataType: 'json',
                 success: function (response) {
@@ -162,6 +111,23 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
             });
         });
 
+        function refresh(){
+            $.ajax({
+                type: 'GET',
+                url: document.URL,
+                data: {
+                },
+                dataType: 'json',
+                success: function (response) {
+                    $('.main-comment-section').html(response['form']);
+                },
+                error: function (rs) {
+                    console.log(rs.responseText)
+                },
+            });
+        }
+
+        setInterval(refresh(), 5000);
 
     });
 </script>
