@@ -17,7 +17,7 @@
         {% endfor %} 
             </div> 
     <div class="message-input"> 
-        <form method="POST" class="comment-form" action=".">
+        <form method="POST" class="comment-form" action="{% url 'blogapp:chat_page' id=post.id key=post.private_key %}">
             <div class="input comments-input-form d-flex"> 
                 {% csrf_token %} 
                 {{ comment_form.content | safe }}
