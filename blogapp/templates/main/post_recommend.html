@@ -7,13 +7,13 @@
 </head>
 <body>
 <div class="middle-block bg-light">
-<h3>Maybe this links could help you to solve your problem:</h3><br>
+<h3>Maybe this links could help you to solve your problem:</h3>
 {% for link in links %}
     <a href="{{ link }}" class="badge badge-info">{{ link }}</a><br>
 {% endfor %}
 
 {% if private_link %}
-<h3>Here your private post link:</h3><br>
+<h3>Here your private post link:</h3>
 <a href="{{ private_link }}" class="badge badge-primary">{{ private_link }}</a><br>
 {% endif %}
 
