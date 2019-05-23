@@ -6,16 +6,18 @@
     {% include "main/base.html" %}
 </head>
 <body>
-Maybe this links could help you to solve your problem:<br>
+<div class="middle-block bg-light">
+<h3>Maybe this links could help you to solve your problem:</h3><br>
 {% for link in links %}
-    <a href="{{ link }}">{{ link }}</a><br>
+    <a href="{{ link }}" class="badge badge-info">{{ link }}</a><br>
 {% endfor %}
 
 {% if private_link %}
-Here your private post link:
-<a href="{{ private_link }}">{{ private_link }}</a><br>
+<h3>Here your private post link:</h3><br>
+<a href="{{ private_link }}" class="badge badge-primary">{{ private_link }}</a><br>
 {% endif %}
 
-<a href="{% url 'main_page' %}"><button class="btn btn-outline-success">Continue in TalkHub</button></a>
+<a href="{% url 'main_page' %}"><button class="btn btn-secondary">Continue in TalkHub</button></a>
+</div>
 </body>
 </html>
