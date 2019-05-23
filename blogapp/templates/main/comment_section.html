@@ -21,7 +21,7 @@
             <div class="input comments-input-form d-flex"> 
                 {% csrf_token %} 
                 {{ comment_form.content | safe }}
-                    <div class="button-group"  onclick="setTimeout(refresh_page, 1000)"> 
+                    <div class="button-group"  onclick="document.getElementById('refresh-button').click();"> 
                         <button class="btn input-clear-button" tabindex="-1" type="button"> 
                             <span class="default-icon-cross"></span> 
                         </button> 
@@ -32,8 +32,3 @@
     </div> 
 </div>
 <button type="button" id="refresh-button" name="{% url 'blogapp:comment_refresh' id=post.id %}" style="width: 1px; height: 1px;"></button> 
-<script>
-    refresh_page{
-        $("#refresh-button").click();
-    }
-</script>
