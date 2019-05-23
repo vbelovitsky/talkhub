@@ -11,12 +11,12 @@
 {% for link in links %}
     <a href="{{ link }}" class="badge badge-info">{{ link }}</a><br>
 {% endfor %}
-
+<br>
 {% if private_link %}
 <h3>Here your private post link:</h3>
 <a href="{{ private_link }}" class="badge badge-primary">{{ private_link }}</a><br>
 {% endif %}
-
+<br>
 <a href="{% url 'main_page' %}"><button class="btn btn-secondary">Continue in TalkHub</button></a>
 </div>
 </body>
