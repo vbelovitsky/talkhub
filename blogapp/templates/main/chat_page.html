@@ -20,15 +20,14 @@
                     </a> 
                     <a href="{% url 'blogapp:post_delete' id=post.id %}" id="delete"> 
                         <button type="button" class="btn btn-danger">Delete</button> 
-                    </a><br>
-
+                    </a>
                     <button type="button" id="links-btn" class="btn btn-primary">Helpful links</button>
                     <div hidden id="recommended-links">
                         {% for link in links %}
                             <a href="{{ link }}" class="badge badge-info">{{ link }}</a><br>
                         {% endfor %}
                     </div>
-                
+
                 </div>
                 {% endif %}
             </div>
