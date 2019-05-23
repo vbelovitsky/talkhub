@@ -19,7 +19,7 @@
         </div>
     {% endif %}
     <div class="d-flex row justify-content-center mx-0">
-        <div class="col-lg-3 col-12 col-sm-8">
+        <div class="col-lg-5 col-12 col-sm-8">
             {% for post in posts %}
             <div class="card bg-light mb-3 text-center rounded">
                 <div class="card-header">Author: <a href="{% url 'profile' id=post.author.id %}" class="links text-dark">{{ post.author }}</a></div>
@@ -45,7 +45,7 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="col-lg-4 col-sm-4 col-12 bg-light mb-3 border rounded">
+        <div class="col-lg-3 col-sm-4 col-12 bg-light mb-3 border rounded">
             {% include 'main/tag_section.html' %}
         </div>
     </div>
