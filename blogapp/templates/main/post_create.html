@@ -8,7 +8,7 @@
 <body>
     <div class="bg-light border p-xl-2">
         <div class="row">
-            <div class="col-xl-6 col-12">
+            <div class="col-xl-8 col-12">
             <form method="POST">
                     {% csrf_token %}
                     {{ postform.title }} <br>
@@ -17,7 +17,7 @@
                     <input type="submit" value="Create" class="btn btn-outline-success">
             </form>
             </div>
-            <div class="col-xl-6 col-12">
+            <div class="col-xl-4 col-12">
                 <form class="tag-search-form" action="{% url 'blogapp:post_create' %}">
                     <input maxlength="25" placeholder="Search tag" id="qtag" class="form-control mr-sm-2">
                     <button class="btn btn-primary w-100" hidden type="submit">Search</button>
