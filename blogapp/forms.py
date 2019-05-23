@@ -9,7 +9,7 @@ class PostCreateForm(forms.ModelForm):
         attrs={'placeholder': 'Title'}))
     private = forms.BooleanField(required=False, label='Make post private', widget=forms.CheckboxInput(
         ))
-    body = forms.CharField(widget=CKEditorUploadingWidget())
+    body = forms.CharField(widget=CKEditorUploadingWidget(attrs={'style': 'width: 100%'}))
 
     class Meta:
         model = Post
@@ -100,7 +100,7 @@ class CommentForm(forms.ModelForm):
     #                           label="",
     #                           widget=forms.TextInput(attrs={'placeholder': 'Comment here',
     #                                                         'id': 'textinput'}))
-    content = forms.CharField(widget=CKEditorUploadingWidget())
+    content = forms.CharField(widget=CKEditorUploadingWidget(attrs={'style': 'width: 100%'}))
 
     class Meta:
         model = Comment

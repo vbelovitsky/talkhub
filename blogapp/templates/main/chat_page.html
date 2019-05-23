@@ -36,7 +36,7 @@
             <div class="col-xl-8 col-lg-7 main-comment-section" >
                 {% include 'main/comment_section.html' %} 
             </div>
-            
+
             <div class="message-input">
             <form method="POST" class="comment-form" action="{% url 'blogapp:chat_page' id=post.id key=post.private_key %}">
                 <div class="input comments-input-form d-flex">
@@ -54,5 +54,26 @@
             <div class="w-100"></div>
         </div>
     </div>
+
+<script>
+    function refresh(){
+            $.ajax({
+                type: 'GET',
+                url: document.URL,
+                data: {
+                },
+                dataType: 'json',
+                success: function (response) {
+                    $('.main-comment-section').html(response['form']);
+                },
+                error: function (rs) {
+                    console.log(rs.responseText)
+                },
+            });
+        }
+
+        setInterval(refresh(), 5000);
+</script>
+
 </body>
 </html>
