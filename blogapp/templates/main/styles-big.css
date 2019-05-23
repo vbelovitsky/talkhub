@@ -2,9 +2,7 @@
 body{
     margin: 0;
     font-family: 'Roboto';
-    background-image: url("https://cdn1.savepice.ru/uploads/2019/5/9/48f4f98e9c3e781c79b7bcef3b705b7a-full.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #eee;
 }
 body a{
     text-decoration: none;
@@ -25,25 +23,6 @@ body a:hover{
     background-repeat: no-repeat;
     background-size: cover;
 }
-.flex-box{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 3vh;
-}
-.flex-box-likes{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-.iframe_chat{
-    margin-bottom: 2vh;
-    margin-right: 2vw;
-}
-.right-nav{
-    width: 100%;
-}
 .reply-btn{
     width: 1vw;
     height: 1vw;
@@ -51,24 +30,6 @@ body a:hover{
     background-repeat: no-repeat;
     background-size: cover;
     transform: scale(1, -1) rotate(180deg);
-}
-.flex-box-column{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.jumbotron{
-    padding-bottom: 1vh !important;
-    padding-top: 1vh !important;
-    margin-bottom: 2vh;
-}
-.display-3{
-    font-size: 5rem;
-}
-.chat_jumb{
-    width: 100%;
-    height: 100%;
-    max-width: 89.4vw;
 }
 .grid-box{
         display: grid;
@@ -83,34 +44,6 @@ body a:hover{
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-}
-.mb-0{
-    margin-right: 0.3vw;
-}
-.main-body{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-right: 1vw;
-}
-.tag-btn{
-    margin-top: 1.5vh;
-    text-align: center;
-    width: 100%;
-}
-.display-3{
-    font-size: 2.5rem;
-}
-.chat-page-title{
-    text-align: left;
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    align-items: center;
-}
-.iframe-main{
-    width: 100%;
-    height: 48vh;
 }
 .middle-block{
     position: fixed;
@@ -240,4 +173,7 @@ body a:hover{
     height: 0; 
     width: 0; 
     pointer-events: none; 
+}
+.min-vh-35{
+    min-height: 35vh!important;
 }

@@ -218,3 +218,6 @@ fabric.properties
 .idea/sonarlint
 
 # End of https://www.gitignore.io/api/django,pycharm
+.google-cookie
+talkhub/settings.py
+talkhub/settings.py

@@ -18,14 +18,13 @@
             <p>You are searching for: {{ searchtag }}</p><a class="btn-cancel" href="{% url 'main_page' %}"></a>
         </div>
     {% endif %}
-    <div class="main-body">
-        <div class="container-fluid grid-box text-center">
+    <div class="d-flex row justify-content-center mx-0">
+        <div class="col-lg-3 col-12 col-sm-8">
             {% for post in posts %}
-            {% if not post.is_private or request.user.is_superuser or request.user == post.author %}
-            <div class="card bg-light mb-3">
+            <div class="card bg-light mb-3 text-center rounded">
                 <div class="card-header">Author: <a href="{% url 'profile' id=post.author.id %}" class="links text-dark">{{ post.author }}</a></div>
                 <div class="card-body">
-                    <h5 class="card-title overflow-hidden">{{ post.title }}</h5>
+                    <h4 class="card-title overflow-hidden">{{ post.title }}</h5>
                     <h5 class="card-text overflow-hidden">{{ post.body | safe }}</h5>
                     <p class="card-text">
                         {% for tag in post.tag.all %}
@@ -40,15 +39,13 @@
                     </p>
                 </div>
             </div>
-                {% endif %}
             {% empty %}
                 <div class="alert alert-danger" role="alert">
                     <strong>Sorry!</strong> No post found
                 </div>
-
             {% endfor %}
         </div>
-        <div class="tag-section jumbotron">
+        <div class="col-lg-4 col-sm-4 col-12 bg-light mb-3 border rounded">
             {% include 'main/tag_section.html' %}
         </div>
     </div>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-bottom: 2vh;" id="navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-grayMouse" style="margin-bottom: 2vh;" id="navigation">
   <a class="navbar-brand" href="{% url 'main_page' %}"><big>TalkHub</big></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -26,11 +26,9 @@
 
               <a class="dropdown-item" href={% url 'blogapp:post_create' %}>Create</a>
               <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit profile</a>
-              <a class="dropdown-item" onclick="ToggleTheme()">Toggle theme</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" style="color: firebrick;" href="{% url 'user_logout' %}">Logout</a>
             {% else %}
-                <a class="dropdown-item" onclick="ToggleTheme()">Toggle theme</a>
                 <a class="dropdown-item" style="color: green;" href="{% url 'user_login' %}">Login</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" style="color: firebrick;" href="{% url 'register' %}">Sign Up</a>
@@ -69,202 +67,7 @@
     </ul>
     <form class="form-inline my-2 my-lg-0" action="{% url 'main_page' %}">
             <input maxlength="25" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchbtn">Search</button>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="searchbtn">Search</button>
     </form>
   </div>
 </nav>
-<script>
-    function ToggleTheme() {
-      //Loading key 'Toggled'
-      var Toggled = localStorage.getItem('Toggled');
-
-      //Navigation button change
-      try {
-        searchbtn.classList.toggle('btn-outline-success')
-        searchbtn.classList.toggle('btn-outline-light')
-      }
-      catch(err){
-        console.log('--navigation button')
-        console.log(err)
-      }
-
-      //Navigation change
-      try {
-        navigation.classList.toggle('navbar-dark')
-        navigation.classList.toggle('bg-dark')
-        navigation.classList.toggle('navbar-light')
-        navigation.classList.toggle('bg-light')
-      }
-      catch(err){
-        console.log('--navigation')
-        console.log(err)
-      }
-
-      //All cards change
-      try{
-        var elements = document.body.getElementsByClassName("card")
-            for (var i = 0; i < elements.length; i++) {
-              var el = elements[i];
-                el.classList.toggle('bg-light')
-                el.classList.toggle('text-white')
-                el.classList.toggle('bg-dark')
-                el.classList.toggle('text-black')
-                el.classList.toggle('border')
-                el.classList.toggle('border-light')
-            }
-      }
-      catch(err){
-        console.log('--cards')
-        console.log(err)
-      }
-
-      //All tags change
-      try{
-        var elements = document.body.getElementsByClassName("badge")
-            for (var i = 0; i < elements.length; i++) {
-              var el = elements[i];
-                el.classList.toggle('badge-success')
-                el.classList.toggle('badge-light')
-            }
-      }
-      catch(err){
-        console.log('--tags')
-        console.log(err)
-      }
-
-      //All middle-blocks change
-      try{
-        var elements = document.body.getElementsByClassName("row")
-            for (var i = 0; i < elements.length; i++) {
-              var el = elements[i];
-                el.classList.toggle('bg-light')
-                el.classList.toggle('text-white')
-                el.classList.toggle('bg-dark')
-                el.classList.toggle('text-black')
-                el.classList.toggle('border')
-                el.classList.toggle('border-light')
-            }
-      }
-      catch(err){
-        console.log('--tags')
-        console.log(err)
-      }
-
-      //All links change
-      try{
-        var elements = document.body.getElementsByClassName("links")
-            for (var i = 0; i < elements.length; i++) {
-              var el = elements[i];
-                el.classList.toggle('text-light')
-                el.classList.toggle('text-dark')
-            }
-      }
-      catch(err){
-        console.log('--links')
-        console.log(err)
-      }
-
-      //Tag-section or Chat-page change
-      try{
-        var el = document.body.getElementsByClassName("jumbotron")
-            el[0].classList.toggle('bg-dark')
-            el[0].classList.toggle('text-white')
-      }
-      catch(err){
-        console.log('--tags or chat-page')
-        console.log(err)
-      }
-
-      //Change value of key 'Toggled'
-      Toggled = Math.abs((Toggled - 1)%2);
-      //Set new value of key 'Toggled'
-      localStorage.setItem('Toggled', Toggled)
-    }
-    function ToggleThemeOnLoad(){
-        var Toggled = localStorage.getItem('Toggled');
-
-        if (Toggled == "1"){
-
-          //Navigation button change
-          try {
-            searchbtn.classList.toggle('btn-outline-success')
-            searchbtn.classList.toggle('btn-outline-light')
-          }
-          catch(err){
-            console.log('--navigation button')
-            console.log(err)
-          }
-
-          //Navigation change
-          try {
-            navigation.classList.toggle('navbar-dark')
-            navigation.classList.toggle('bg-dark')
-            navigation.classList.toggle('navbar-light')
-            navigation.classList.toggle('bg-light')
-          }
-          catch(err){
-            console.log('--navigation')
-            console.log(err)
-          }
-
-          //All cards change
-          try{
-            var elements = document.body.getElementsByClassName("card")
-                for (var i = 0; i < elements.length; i++) {
-                  var el = elements[i];
-                    el.classList.toggle('bg-light')
-                    el.classList.toggle('text-white')
-                    el.classList.toggle('bg-dark')
-                    el.classList.toggle('text-black')
-                }
-          }
-          catch(err){
-            console.log('--cards')
-            console.log(err)
-          }
-
-          //All tags change
-          try{
-            var elements = document.body.getElementsByClassName("badge")
-                for (var i = 0; i < elements.length; i++) {
-                  var el = elements[i];
-                    el.classList.toggle('badge-success')
-                    el.classList.toggle('badge-light')
-                }
-          }
-          catch(err){
-            console.log('--tags')
-            console.log(err)
-          }
-
-          //All links change
-          try{
-            var elements = document.body.getElementsByClassName("links")
-                for (var i = 0; i < elements.length; i++) {
-                  var el = elements[i];
-                    el.classList.toggle('text-light')
-                    el.classList.toggle('text-dark')
-                }
-          }
-          catch(err){
-            console.log('--links')
-            console.log(err)
-          }
-
-          //Tag-section or Chat-page change
-          try{
-
-            var el = document.body.getElementsByClassName("jumbotron")
-                el[0].classList.toggle('bg-dark')
-                el[0].classList.toggle('text-white')
-          }
-          catch(err){
-            console.log('--tags or chat-page')
-            console.log(err)
-          }
-        }
-    }
-    document.addEventListener('DOMContentLoaded', function() {
-      ToggleThemeOnLoad()
-    }, false);
-</script>
