@@ -25,9 +25,15 @@
                         <button class="btn input-clear-button" tabindex="-1" type="button"> 
                             <span class="default-icon-cross"></span> 
                         </button> 
-                        <input class="btn input-custom-button js-chat-send-button btn-success" tabindex="-1" type="submit" value="Send"> 
+                        <input class="btn input-custom-button js-chat-send-button btn-success" tabindex="-1" type="submit" value="Send" onclick="setTimeout(refresh_page, 1000)"> 
                     </div> 
             </div> 
         </form> 
     </div> 
 </div>
+<button type="button" id="refresh-button" name="{% url 'blogapp:comment_refresh' id=post.id %}" style="width: 1px; height: 1px;"></button> 
+<script>
+    refresh_page{
+        $("#refresh-button").click();
+    }
+</script>
