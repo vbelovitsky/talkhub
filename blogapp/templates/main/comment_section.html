@@ -21,7 +21,7 @@
             <div class="input comments-input-form d-flex"> 
                 {% csrf_token %} 
                 {{ comment_form.content | safe }}
-                    <div class="button-group "  onclick="setTimeout(refresh_page, 1000)"> 
+                    <div class="button-group"  onclick="setTimeout(refresh_page, 1000)"> 
                         <button class="btn input-clear-button" tabindex="-1" type="button"> 
                             <span class="default-icon-cross"></span> 
                         </button> 
