@@ -10,7 +10,11 @@
                         {% endif %} 
                     </div> 
                     <div class="message-item">
-                        <img class="message-avatar" src="https://cdn1.savepice.ru/uploads/2019/5/19/058cdfe21f8e4fd2ce85ce629b57916d-full.jpg"> 
+                        {% if comment.user.profile.image %}
+                            <img class="message-avatar" src="{{ comment.user.profile.image.url }}">
+                        {% else %}
+                            <img class="message-avatar" src="https://cdn1.savepice.ru/uploads/2019/5/19/058cdfe21f8e4fd2ce85ce629b57916d-full.jpg">
+                        {% endif %}
                         <div class="message-text default">{{ comment.content | safe}}</div>
                     </div> 
                 </div> 
