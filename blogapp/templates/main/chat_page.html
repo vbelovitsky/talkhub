@@ -22,7 +22,7 @@
                         <button type="button" class="btn btn-danger">Delete</button> 
                     </a>
                     <button type="button" id="links-btn" class="btn btn-primary">Helpful links</button>
-                    <div hidden id="recommended-links">
+                    <div id="recommended-links" style="display: none;">
                         {% for link in links %}
                             <a href="{{ link }}" class="badge badge-info">{{ link }}</a><br>
                         {% endfor %}
