@@ -8,6 +8,7 @@ from django.template.loader import render_to_string
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect, Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from googlesearch import search
+import bleach
 from django.db.models import Q
 from .models import *
 from .forms import *
@@ -37,7 +38,7 @@ def main_page(request):
     if tag:
         post_list = Post.objects.filter(tag__tag_name=tag)
 
-    paginator = Paginator(post_list, 9)
+    paginator = Paginator(post_list, 7)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
@@ -103,7 +104,8 @@ def chat_page(request, id, key):
     context = {'post': post,
                'is_liked': is_liked,
                'comments': comments,
-               'comment_form': comment_form
+               'comment_form': comment_form,
+               'links': recommend_links(post),
                }
 
     if request.is_ajax():
@@ -204,18 +206,27 @@ def post_delete(request, id):
     return redirect('main_page')
 
 
-@login_required()
-def post_recommend(request, id, key):
-    """post recommend view + search"""
-    post = get_object_or_404(Post, id=id, private_key=key)
-    query = "site:stackoverflow.com " + post.title + " " + post.body
+def recommend_links(post):
+    query = "site:stackoverflow.com " + post.title
+    try:
+        query += bleach.clean(post.body, tags=[], attributes={}, styles=[], strip=True)
+    except BaseException:
+        pass
 
     recommend_array = []
     for url in search(query, tld="com", num=5, stop=5, pause=2):
         recommend_array.append(url)
 
+    return recommend_array
+
+
+@login_required()
+def post_recommend(request, id, key):
+    """post recommend view + search"""
+    post = get_object_or_404(Post, id=id, private_key=key)
+
     context = {
-        'links': recommend_array,
+        'links': recommend_links(post),
     }
     if post.private:
         context['private_link'] = post.get_absolute_url()

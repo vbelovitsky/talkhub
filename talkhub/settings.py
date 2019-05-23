@@ -59,11 +59,11 @@ CKEDITOR_CONFIGS = {
             ['TextColor', 'BGColor'],
             ['Smiley', 'SpecialChar', 'Source']
         ],
-        'extraPlugins': 'codesnippet'
+        'extraPlugins': ','.join(['uploadimage', 'codesnippet', 'autolink'])
     },
 }
 CKEDITOR_IMAGE_BACKEND = "pillow"
-
+CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
