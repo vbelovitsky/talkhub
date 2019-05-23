@@ -6,27 +6,24 @@
     {% include "main/base.html" %}
 </head>
 <body>
-    <div class="jumbotron main-body">
+    <div class="bg-light border p-xl-1">
         <div class="row">
-            <div class="col">
-            <form method="POST" style="margin: 10px">
+            <div class="col-xl-6 col-12">
+            <form method="POST">
                     {% csrf_token %}
                     {{ postform.title }}
+                    <br>
                     {{ postform.body | safe }}
                     {{ postform.private }}
                     <input type="submit" value="Create" class="btn btn-outline-success">
-
-                    
-                </form>
+            </form>
             </div>
-            <div class="col">
+            <div class="col-xl-6 col-12">
                 <form class="tag-search-form" action="{% url 'blogapp:post_create' %}">
                     <input maxlength="25" placeholder="Search tag" id="qtag" class="form-control mr-sm-2">
-                    <button class="btn btn-primary" hidden type="submit" style="width: 100%;">Search</button>
+                    <button class="btn btn-primary w-100" hidden type="submit">Search</button>
                 </form>
-                <div class="tag-section jumbotron">
-                    {% include 'main/tag_section_create.html' %}
-                </div>
+                {% include 'main/tag_section_create.html' %}
             </div>
         </div>
     </div>
