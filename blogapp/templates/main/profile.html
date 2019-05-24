@@ -23,11 +23,7 @@
                     <input type="text" class="form-control" placeholder={{user.username}} readonly aria-label="Имя пользователя" aria-describedby="basic-addon1"> 
                 </div>
                 
-                {% if user.email != "" %}
                 <div>Email: {{user.email}}</div>
-                {% elif %}
-                <div>Email: No information</div>
-                {% endif %}
                 
                 {% if request.user.profile.contacts != "" %}
                 <div>Contacts: {{request.user.profile.contacts}}</div>
