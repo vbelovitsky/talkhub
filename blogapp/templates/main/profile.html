@@ -25,10 +25,10 @@
                 Email: {{user.email}}
             </p>
             <p class="card-text">
-                Contacts: {{user.profile.contacts}}
+                Contacts: {{request.user.profile.contacts}}
             </p>
             <p class="card-text">
-                County: {{user.profile.country}}
+                County: {{request.user.profile.country}}
             </p>
             <p class="card-text">
                 Posts count: {{ posts_count }}
