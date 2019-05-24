@@ -27,6 +27,9 @@
             <div class="card bg-light mb-3 text-center rounded">
                 <div class="card-header">Author: <a href="{% url 'profile' id=post.author.id %}" class="links text-dark">{{ post.author }}</a></div>
                 <div class="card-body">
+                    {% if post.is_private %}
+                        <span class="badge badge-danger">Private</span>
+                    {% endif %}
                     <h4 class="card-title overflow-hidden">{{ post.title }}</h4>
                     <h5 class="card-text overflow-hidden">{{ post.body | safe }}</h5>
                     <p class="card-text">
@@ -35,7 +38,10 @@
                         {% endfor %}
                     </p>
                     <p class="card-text">
-                        <small>{{ post.likes.count }} Likes</small>
+                        <small>{{ post.likes.count }} Likes / </small>
+                    </p>
+                    <p class="card-text">
+                        <small>{{ post.comments.count }} Comments</small>
                     </p>
                     <p class="lead">
                         <a class="btn btn-primary btn-lg" href="{{post.get_absolute_url}}" role="button">Learn more</a>
