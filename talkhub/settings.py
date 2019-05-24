@@ -23,7 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'wm=7wki2$see5%1jq4()=51e0=o)-0m511^-6%!n_xbq_556!r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
+FIXTURE_DIRS = [
+    'blogapp/fixtures',
+]
 
 ALLOWED_HOSTS = [
     'talkhub2.herokuapp.com',
