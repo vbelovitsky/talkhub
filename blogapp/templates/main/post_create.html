@@ -6,12 +6,12 @@
     {% include "main/base.html" %}
 </head>
 <body>
-    <div class="row bg-light border px-4 d-flex flex-column justify-content-end">
+    <div class="row bg-light border px-4 justify-content-end">
         <form class="tag-search-form my-2 col-4" action="{% url 'blogapp:post_create' %}">
             <input maxlength="25" placeholder="Search tag" id="qtag" class="form-control mr-sm-2">
             <button class="btn btn-primary mt-2" hidden type="submit">Search</button>
         </form>
-        <div clas="w-100"></div>
+        <div clas="w-100"><hr></div>
         <form method="POST" class="row">
 
             <div class="col-8">
