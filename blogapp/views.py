@@ -25,7 +25,7 @@ def main_page(request):
     """main page view"""
     post_list = Post.objects.all()
     tags = Tag.objects.all()
-    users = User.objects.annotate(num_posts=Count('post')).order_by('-num_posts')[:3]
+    users = User.objects.annotate(total_likes=Count('post__likes__count')).order_by('-total_likes')[:10]
 
     query = request.GET.get('q')
     if query:
