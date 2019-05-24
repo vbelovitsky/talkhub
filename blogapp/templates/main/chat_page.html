@@ -41,7 +41,9 @@
             </div>
             <div class="w-100"><hr></div>
             <div class="col-xl-8 col-lg-7 main-comment-section" >
+            {% if comments.count != 0%} 
                 {% include 'main/comment_section.html' %} 
+            {% endif %}
             </div>
 
             <div class="message-input">
