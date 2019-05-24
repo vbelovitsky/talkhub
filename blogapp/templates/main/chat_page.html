@@ -56,13 +56,13 @@
             </div>
 
             <div class="message-input">
-            <form method="POST" class="comment-form" action="{% url 'blogapp:chat_page' id=post.id key=post.private_key %}">
-                <div class="input comments-input-form d-flex flex-column">
-                    {% csrf_token %}
-                    {{ comment_form.content | safe }}
-                    <input class="btn input-custom-button js-chat-send-button btn-secondary w-100" tabindex="-1" type="submit" value="Send">
-                </div>
-            </form>
+                <form method="POST" class="comment-form" action="{% url 'blogapp:chat_page' id=post.id key=post.private_key %}">
+                    <div class="input comments-input-form d-flex flex-column">
+                        {% csrf_token %}
+                        {{ comment_form.content | safe }}
+                        <input class="btn input-custom-button js-chat-send-button btn-secondary w-100" tabindex="-1" type="submit" value="Send">
+                    </div>
+                </form>
             </div>
             <div class="w-100"></div>
         </div>
