@@ -7,30 +7,12 @@
     </tr>
   </thead>
   <tbody>
+    {% for user in users %}
     <tr>
       <th scope="row" class="table-main">1</th>
-      <td>Admin</td>
+      <td><a href="{% url 'profile' id=user.id %}">{{ user.username }}</a></td>
       <td>1000</td>
     </tr>
-    <tr>
-      <th scope="row" class="table-main">2</th>
-      <td>Alexander</td>
-      <td>900</td>
-    </tr>
-    <tr>
-      <th scope="row" class="table-main">3</th>
-      <td>Vladislav</td>
-      <td>500</td>
-    </tr>
-    <tr>
-      <th scope="row" class="table-main">4</th>
-      <td>Andre</td>
-      <td>450</td>
-    </tr>
-    <tr>
-      <th scope="row" class="table-main">5</th>
-      <td>Dudov</td>
-      <td>-1</td>
-    </tr>
+    {% endfor %}
   </tbody>
 </table>
