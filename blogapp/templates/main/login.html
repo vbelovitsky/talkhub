@@ -12,20 +12,17 @@
     {% csrf_token %}
     {{ form.as_p }}
 
-    <input type="submit" value="Login" class="btn btn-success mx-auto my-1">
-    <br>
+    <input type="submit" value="Login" class="btn btn-success mx-auto my-2">
     {% if error %}
-    <div class="alert alert-danger" role="alert">
+    <div class="alert alert-danger my-2" role="alert">
         {{ error }}
     </div>
-    <br>
 	{% endif %}
 
     <a href="{% url 'register' %}" class="text-white">Don't have an account?</a><br>
     <a href="{% url 'password_reset' %}" class="text-white badge badge-info border-radius-0">Forgotten your password?</a>
-    <br>
-    <div class="w-100"><hr></div>
-    <br>
+    
+    <div class="w-100 my-2"><hr></div>
 
     <div class="btn-group my-1" role="group" aria-label="GitHub_auth">
         <button type="button" class="btn btn-secondary">
