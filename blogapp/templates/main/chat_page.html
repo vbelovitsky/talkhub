@@ -40,26 +40,9 @@
                 {{ post.body | safe }} 
             </div>
             <div class="w-100"><hr></div>
-            <div class="col-xl-8 col-lg-7 pl-xl-0" >
-            {% if comments.count != 0%} 
-                {% include 'main/comment_section.html' %} 
-            {% else %}
-                <div class="w-100"> 
-                    <div class="comments bg-light" style="color: black!important;"> 
-                            <div class="message right"> 
-                                    <div class="message-sender">System</div> 
-                                    <div class="message-time"> 
-                                        {{ post.created }}
-                                    </div> 
-                                    <div class="message-item">
-                                        <img class="message-avatar" src="https://cdn1.savepice.ru/uploads/2019/5/19/058cdfe21f8e4fd2ce85ce629b57916d-full.jpg">
-                                        <div class="message-text default">Похоже, что тут еще нет комментариев.
-                                         Будь первым, кто оставит комментарий! Напиши его ниже и отправь,  нажав на кнопку 'Send'.</div>
-                                    </div> 
-                            </div> 
-                    </div>
-                </div>
-            {% endif %}
+
+            <div class="col-xl-8 col-lg-7 pl-xl-0 main-comment-section">
+                {% include 'main/comment_section.html' %}
             </div>
 
             <div class="message-input">
