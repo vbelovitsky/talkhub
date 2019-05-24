@@ -6,7 +6,7 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 class PostCreateForm(forms.ModelForm):
     title = forms.CharField(label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Title'}))
+        attrs={'placeholder': 'Title', 'class': 'form-control w-100'}))
     private = forms.BooleanField(required=False, label='Make post private', widget=forms.CheckboxInput(
         ))
     body = forms.CharField(widget=CKEditorUploadingWidget())
@@ -38,9 +38,9 @@ class PostEditForm(forms.ModelForm):
 
 class UserLoginForm(forms.Form):
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Username'}))
+        attrs={'placeholder': 'Username', 'class': 'form-control w-100'}))
     password = forms.CharField(label='', widget=forms.PasswordInput(
-        attrs={'placeholder': 'Password'}))
+        attrs={'placeholder': 'Password', 'class': 'form-control w-100'}))
 
 
 class UserRegistrationForm(forms.ModelForm):
