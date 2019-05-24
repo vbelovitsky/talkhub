@@ -19,14 +19,9 @@
     </div>
 	{% endif %}
 
-    <button class="image-button secondary my-1">
-                <span class="mif-github icon"></span>
-                <span class="caption">
-                    <a href="{% url 'social:begin' 'github' %}">
-                    Github
-                    </a>
-                </span>
-    </button>
+    <a href="{% url 'social:begin' 'github' %}">
+        <button type="button" class="btn btn-secondary">Github</button>
+    </a>
 
     <a href="{% url 'social:begin' 'google-oauth2' %}">
         <button type="button" name="button" class="btn btn-primary">Google</button>
