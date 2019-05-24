@@ -6,39 +6,26 @@
     {% include "main/base.html" %}
 </head>
 <body>
-    <div class="card middle-block">
-        {% if user.profile.image %}
-        <img src="{{ user.profile.image.url }}" alt="">
-        {% else %}
-        <img src="http://st-zamok.ru/upload/content/medium/f605e8a8cff57e1fe865ac6ec6e364b1.jpg" class="card-img-top" alt="No Photo">
-        {% endif %}
-        <div class="card-body">
-            <h5 class="card-title">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">@</span>
-                </div>
-                <input type="text" class="form-control" placeholder={{user.username}} readonly aria-label="Имя пользователя" aria-describedby="basic-addon1">
-            </div>
-            </h5>
-            <p class="card-text">
-                Email: {{user.email}}
-            </p>
-            <p class="card-text">
-                Contacts: {{request.user.profile.contacts}}
-            </p>
-            <p class="card-text">
-                County: {{request.user.profile.country}}
-            </p>
-            <p class="card-text">
-                Posts count: {{ posts_count }}
-            </p>
+    <div class="row justify-content-center border rounded">
+        <div class="col-lg-2 col-12">
+            {% if user.profile.image %} 
+                <img src="{{ user.profile.image.url }}" alt="User Image" class="profile-image"> 
+            {% else %} 
+                <img src="https://cdn1.savepice.ru/uploads/2019/5/19/058cdfe21f8e4fd2ce85ce629b57916d-full.jpg" alt="No Photo" class="profile-image"> 
+            {% endif %} 
         </div>
-        <div class="card-body">
-            <a class="card-link links btn btn-secondary" href={% url 'main_page' %}>Home</a>
-            {% if request.user == user %}
-            <a class="card-link links btn btn-secondary" href={% url 'blogapp:post_create' %}>Create new post</a>
-            {% endif %}
+        <div class="col-lg-4 col-12">
+            <div class="d-flex flex-column">
+                <div class="input-group mb-3"> 
+                    <div class="input-group-prepend"> 
+                    <span class="input-group-text" id="basic-addon1">@</span> 
+                    </div> 
+                    <input type="text" class="form-control" placeholder={{user.username}} readonly aria-label="Имя пользователя" aria-describedby="basic-addon1"> 
+                </div>
+                <div>Email: {{user.email}}</div>
+                <div>Contacts: {{request.user.profile.contacts}}</div>
+                <div>County: {{request.user.profile.country}}</div>
+            </div>
         </div>
     </div>
 </body>
