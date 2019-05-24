@@ -13,8 +13,10 @@
                 <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p> 
                 <p><small>{{ post.created }}</small></p> 
                 <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>
-                {% if request.user == post.author %} 
-                {% include 'main/like_section.html' %} 
+                <div class="like-section">
+                {% include 'main/like_section.html' %}
+                </div>
+                {% if request.user == post.author %}
                 <div>
                     <a href="{% url 'blogapp:post_edit' id=post.id %}"> 
                         <button type="button" class="btn btn-outline-success">Edit</button> 
