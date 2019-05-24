@@ -12,7 +12,7 @@
     {% csrf_token %}
     {{ form.as_p }}
 
-    <input type="submit" value="Login" class="btn btn-success mx-auto mt-2 w-100">
+    <input type="submit" value="Login" class="btn btn-success mx-auto my-2 w-100">
 
     {% if error %}
     <div class="alert alert-danger my-2" role="alert">
@@ -46,7 +46,7 @@
     </button>
 
     <br>
-    
+
     <div class="btn-group my-1" role="group" aria-label="Yandex_auth">
         <button type="button" class="btn btn-warning">
             <a href="{% url 'social:begin' 'yandex-oauth2' %}" class="text-white"><span class="mif-keyboard icon"></span></a>
