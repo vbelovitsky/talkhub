@@ -22,7 +22,10 @@
             </div>
             </h5>
             <p class="card-text">
-                    <input type="text" readonly id="url_profile" value="https://talkhub.herokuapp.com/profile/{{user.id}}">
+                    Email: {{request.user.contacts}}
+            </P>
+            <p class="card-text">
+                    County: {{request.user.county}}
             </P>
             <p class="card-text"> Posts count: {{ posts_count }}</p>
         </div>
