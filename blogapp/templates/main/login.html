@@ -14,16 +14,18 @@
 
     <input type="submit" value="Login" class="btn btn-success mx-auto my-1">
     <br>
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    <br>
+	{% endif %}
 
     <a href="{% url 'register' %}" class="text-white">Don't have an account?</a><br>
     <a href="{% url 'password_reset' %}" class="text-white badge badge-info border-radius-0">Forgotten your password?</a>
     <br>
-
-	{% if error %}
-    <div class="alert alert-danger" role="alert">
-        {{ error }}
-    </div>
-	{% endif %}
+    <div class="w-100"><hr></div>
+    <br>
 
     <div class="btn-group my-1" role="group" aria-label="GitHub_auth">
         <button type="button" class="btn btn-secondary">
