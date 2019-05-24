@@ -30,10 +30,8 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 <script type="text/javascript">
     $(document).ready(function (event) {
 
-        $('.reply-btn').click(function () {
-            var pk = "#" + $(this).attr('value');
-            $(pk).fadeToggle();
-            console.log(pk)
+        $('#links-btn').click(function () {
+            $('#recommended-links').fadeToggle();
         });
 
         $('#delete').click(function () {
