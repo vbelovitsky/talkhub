@@ -7,8 +7,8 @@
 </head>
 <body>
     <div class="card middle-block">
-        {% if request.user.profile.image %}
-        <img src="{{ request.user.profile.image.url }}" alt="">
+        {% if user.profile.image %}
+        <img src="{{ user.profile.image.url }}" alt="">
         {% else %}
         <img src="http://st-zamok.ru/upload/content/medium/f605e8a8cff57e1fe865ac6ec6e364b1.jpg" class="card-img-top" alt="No Photo">
         {% endif %}
@@ -22,13 +22,13 @@
             </div>
             </h5>
             <p class="card-text">
-                Email: {{request.user.email}}
+                Email: {{user.email}}
             </p>
             <p class="card-text">
-                Contacts: {{request.user.profile.contacts}}
+                Contacts: {{user.profile.contacts}}
             </p>
             <p class="card-text">
-                County: {{request.user.profile.country}}
+                County: {{user.profile.country}}
             </p>
             <p class="card-text">
                 Posts count: {{ posts_count }}
@@ -36,7 +36,9 @@
         </div>
         <div class="card-body">
             <a class="card-link links btn btn-secondary" href={% url 'main_page' %}>Home</a>
+            {% if request.user == user %}
             <a class="card-link links btn btn-secondary" href={% url 'blogapp:post_create' %}>Create new post</a>
+            {% endif %}
         </div>
     </div>
 </body>
