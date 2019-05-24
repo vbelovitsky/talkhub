@@ -6,19 +6,24 @@
     {% include "main/base.html" %}
 </head>
 <body>
-    <div class="fluid-container bg-light border px-4 d-flex flex-column">
-        <form class="tag-search-form my-2 float-right" action="{% url 'blogapp:post_create' %}">
+    <div class="row bg-light border px-4 d-flex flex-column justify-content-end">
+        <form class="tag-search-form my-2 col-4" action="{% url 'blogapp:post_create' %}">
             <input maxlength="25" placeholder="Search tag" id="qtag" class="form-control mr-sm-2">
-            <button class="btn btn-primary w-100 mt-2" hidden type="submit">Search</button>
+            <button class="btn btn-primary mt-2" hidden type="submit">Search</button>
         </form>
+        <div clas="w-100"></div>
+        <form method="POST" class="row">
 
-        <form method="POST">
-            {% csrf_token %}
-            <div class="my-2">{{ postform.title }}</div>
-            {{ postform.body | safe }}
-            <div class="my-2">{{ postform.private }} Private</div>
-            <input type="submit" value="Create" class="btn btn-outline-success my-2">
-            {% include 'main/tag_section_create.html' %}
+            <div class="col-8">
+                {% csrf_token %}
+                <div class="my-2">{{ postform.title }}</div>
+                {{ postform.body | safe }}
+                <div class="my-2">{{ postform.private }} Private</div>
+                <input type="submit" value="Create" class="btn btn-outline-success my-2">
+            </div>
+            <div class="col-4">
+                {% include 'main/tag_section_create.html' %}
+            </div>
         </form>
     </div>
 </body>
