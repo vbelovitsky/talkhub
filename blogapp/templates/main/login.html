@@ -12,14 +12,14 @@
     {% csrf_token %}
     {{ form.as_p }}
 
-    <input type="submit" value="Login" class="btn btn-success mx-auto">
+    <input type="submit" value="Login" class="btn btn-success mx-auto my-1">
 	{% if error %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
     </div>
 	{% endif %}
 
-    <div class="btn-group" role="group" aria-label="GitHub_auth">
+    <div class="btn-group my-1" role="group" aria-label="GitHub_auth">
         <button type="button" class="btn btn-secondary">
             <a href="{% url 'social:begin' 'github' %}" class="text-white"><span class="mif-github icon"></span></a>
         </button>
@@ -30,7 +30,7 @@
         </button>
     </div>
 
-    <div class="btn-group" role="group" aria-label="Google_auth">
+    <div class="btn-group my-1" role="group" aria-label="Google_auth">
         <button type="button" class="btn btn-primary">
             <a href="{% url 'social:begin' 'google-oauth2' %}" class="text-white"><span class="mif-google-plus icon"></span></a>
         </button>
@@ -45,7 +45,7 @@
 {#        <button type="button" name="button" class="btn btn-primary">Linkedin</button>#}
 {#    </a>#}
 
-    <div class="btn-group" role="group" aria-label="Facebook_auth">
+    <div class="btn-group my-1" role="group" aria-label="Facebook_auth">
         <button type="button" class="btn btn-info">
             <a href="{% url 'social:begin' 'facebook' %}" class="text-white"><span class="mif-facebook icon"></span></a>
         </button>
@@ -56,7 +56,7 @@
         </button>
     </div>
 
-    <div class="btn-group" role="group" aria-label="Yandex_auth">
+    <div class="btn-group my-1" role="group" aria-label="Yandex_auth">
         <button type="button" class="btn btn-warning">
             <a href="{% url 'social:begin' 'yandex-oauth2' %}" class="text-white"><span class="mif-keyboard icon"></span></a>
         </button>
@@ -67,7 +67,7 @@
         </button>
     </div>
 
-    <div class="btn-group" role="group" aria-label="VK_auth">
+    <div class="btn-group my-1" role="group" aria-label="VK_auth">
         <button type="button" class="btn btn-light">
             <a href="{% url 'social:begin' 'vk-oauth2' %}"><span class="mif-vk icon"></span></a>
         </button>
