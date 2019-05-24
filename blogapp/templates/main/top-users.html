@@ -9,7 +9,7 @@
   <tbody>
     {% for user in users %}
     <tr>
-      <th scope="row" class="table-main">{{ forloop.revcounter }}</th>
+      <th scope="row" class="table-main">{{ forloop.counter }}</th>
       <td><a href="{% url 'profile' id=user.id %}">{{ user.username }}</a></td>
       <td>user.posts.count</td>
     </tr>
