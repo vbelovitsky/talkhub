@@ -229,10 +229,12 @@ def recommend_links(post):
 def post_recommend(request, id, key):
     """post recommend view + search"""
     post = get_object_or_404(Post, id=id, private_key=key)
+    context = {}
+    try:
+        context['links'] = recommend_links(post)
+    except BaseException:
+        pass
 
-    context = {
-        'links': recommend_links(post),
-    }
     if post.private:
         context['private_link'] = post.get_absolute_url()
 
