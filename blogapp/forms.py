@@ -45,17 +45,17 @@ class UserLoginForm(forms.Form):
 
 class UserRegistrationForm(forms.ModelForm):
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Username'}))
+        attrs={'placeholder': 'Username', 'class': 'form-control w-100'}))
     first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'First name'}))
+        attrs={'placeholder': 'First name', 'class': 'form-control w-100'}))
     last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Last name'}))
+        attrs={'placeholder': 'Last name', 'class': 'form-control w-100'}))
     email = forms.EmailField(label='', widget=forms.EmailInput(
-        attrs={'placeholder': 'Enter your email'}))
+        attrs={'placeholder': 'Enter your email', 'class': 'form-control w-100'}))
     password = forms.CharField(label='', widget=forms.PasswordInput(
-        attrs={'placeholder': 'Enter password here'}))
+        attrs={'placeholder': 'Enter password here', 'class': 'form-control w-100'}))
     confirm_password = forms.CharField(label='', widget=forms.PasswordInput(
-        attrs={'placeholder': 'Confirm password'}))
+        attrs={'placeholder': 'Confirm password', 'class': 'form-control w-100'}))
 
     class Meta:
         model = User
