@@ -6,8 +6,8 @@
     {% include "main/base.html" %}
 </head>
 <body>
-<form method="POST" class="jumbotron middle-block mx-auto">
-    <h5>Login</h5>
+<form method="POST" class="middle-block mx-auto bg-grayblue text-white">
+    <h5 class="text-center">Login</h5>
 
     {% csrf_token %}
     {{ form.as_p }}
@@ -81,8 +81,8 @@
     <br>
 
     <small>
-        <a href="{% url 'register' %}">Don't have an account?</a><br>
-        <a href="{% url 'password_reset' %}">Forgotten your password?</a>
+        <a href="{% url 'register' %}" class="text-white">Don't have an account?</a><br>
+        <a href="{% url 'password_reset' %}" class="text-white">Forgotten your password?</a>
     </small>
 </form>
 </body>
