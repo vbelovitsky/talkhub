@@ -25,43 +25,28 @@
 
     <div class="w-100 my-2"><hr></div>
 
-    <div class="btn-group my-1" role="group" aria-label="GitHub_auth">
-        <button type="button" class="btn btn-secondary">
-            <a href="{% url 'social:begin' 'github' %}" class="text-white"><span class="mif-github icon"></span></a>
-        </button>
-        <button type="button" class="btn btn-secondary">
-            <a href="{% url 'social:begin' 'github' %}" class="text-white">
-                Github
-            </a>
-        </button>
-    </div>
+    <button type="button" class="btn btn-secondary">
+        <a href="{% url 'social:begin' 'github' %}" class="text-white"><span class="mif-github icon"></span></a>
+    </button>
 
-    <div class="btn-group my-1" role="group" aria-label="Google_auth">
-        <button type="button" class="btn btn-primary">
-            <a href="{% url 'social:begin' 'google-oauth2' %}" class="text-white"><span class="mif-google-plus icon"></span></a>
-        </button>
-        <button type="button" class="btn btn-primary">
-            <a href="{% url 'social:begin' 'google-oauth2' %}" class="text-white">
-                Google
-            </a>
-        </button>
-    </div>
-    <br>
+    <button type="button" class="btn btn-primary">
+        <a href="{% url 'social:begin' 'google-oauth2' %}" class="text-white"><span class="mif-google-plus icon"></span></a>
+    </button>
+
 {#    <a href="{% url 'social:begin' 'linkedin-oauth2' %}">#}
 {#        <button type="button" name="button" class="btn btn-primary">Linkedin</button>#}
 {#    </a>#}
 
-    <div class="btn-group my-1" role="group" aria-label="Facebook_auth">
-        <button type="button" class="btn btn-info">
-            <a href="{% url 'social:begin' 'facebook' %}" class="text-white"><span class="mif-facebook icon"></span></a>
-        </button>
-        <button type="button" class="btn btn-info">
-            <a href="{% url 'social:begin' 'facebook' %}" class="text-white">
-                Facebook
-            </a>
-        </button>
-    </div>
+    <button type="button" class="btn btn-info">
+        <a href="{% url 'social:begin' 'facebook' %}" class="text-white"><span class="mif-facebook icon"></span></a>
+    </button>
 
+    <button type="button" class="btn btn-light">
+        <a href="{% url 'social:begin' 'vk-oauth2' %}"><span class="mif-vk icon"></span></a>
+    </button>
+
+    <br>
+    
     <div class="btn-group my-1" role="group" aria-label="Yandex_auth">
         <button type="button" class="btn btn-warning">
             <a href="{% url 'social:begin' 'yandex-oauth2' %}" class="text-white"><span class="mif-keyboard icon"></span></a>
@@ -73,16 +58,6 @@
         </button>
     </div>
 
-    <div class="btn-group my-1" role="group" aria-label="VK_auth">
-        <button type="button" class="btn btn-light">
-            <a href="{% url 'social:begin' 'vk-oauth2' %}"><span class="mif-vk icon"></span></a>
-        </button>
-        <button type="button" class="btn btn-light">
-            <a href="{% url 'social:begin' 'vk-oauth2' %}">
-                Вконтакте
-            </a>
-        </button>
-    </div>
 </form>
 </body>
 </html>
