@@ -9,7 +9,7 @@ from django.http import HttpResponse, JsonResponse, HttpResponseRedirect, Http40
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from googlesearch import search
 import bleach
-from django.db.models import Q
+from django.db.models import Q, Count
 from .models import *
 from .forms import *
 
@@ -25,6 +25,7 @@ def main_page(request):
     """main page view"""
     post_list = Post.objects.all()
     tags = Tag.objects.all()
+    users = User.objects.annotate(num_posts=Count('post')).order_by('-num_posts')
 
     query = request.GET.get('q')
     if query:
@@ -63,7 +64,8 @@ def main_page(request):
                'page_range': page_range,
                'query': query,
                'tags': tags,
-               'searchtag': tag}
+               'searchtag': tag,
+               'users':users}
 
     if request.is_ajax():
         html = render_to_string('main/tag_section.html', context, request=request)
