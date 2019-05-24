@@ -6,7 +6,8 @@
     {% include 'main/base.html' %}
 </head>
 <body>
-{{post.title}}|Edit
+<div style="margin: 10px">
+Edit post
 <form method="POST">
     {% csrf_token %}
     {{ form.title }}<br>
@@ -14,5 +15,6 @@
     {{ form.private }} Private<br>
     <input type="submit" value="Update" class="btn btn-success">
 </form>
+</div>
 </body>
 </html>
