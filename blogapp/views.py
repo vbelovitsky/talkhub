@@ -23,7 +23,7 @@ def lending(request):
 
 def main_page(request):
     """main page view"""
-    post_list = Post.objects.all()
+    post_list = Post.objects.annotate(total_comments=Count('comment'))
     tags = Tag.objects.all()
     users = User.objects.annotate(total_likes=Count('post__likes')).order_by('-total_likes')[:30]
 

@@ -27,7 +27,7 @@
                 <div>County: {{request.user.profile.country}}</div>
                 <form action="{% url 'main_page' %}" >
                     <input hidden value="{{ user.id }}" name="searchuser">
-                    <button type="submit" class="btn btn-secondary">View user's posts</button>
+                    <button type="submit" class="btn btn-secondary">{{ user.username }}'s posts</button>
                 </form>
             </div>
         </div>

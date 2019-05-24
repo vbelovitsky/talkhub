@@ -38,10 +38,7 @@
                         {% endfor %}
                     </p>
                     <p class="card-text">
-                        <small>{{ post.likes.count }} Likes / </small>
-                    </p>
-                    <p class="card-text">
-                        <small>{{ post.comments.count }} Comments</small>
+                        <small>{{ post.likes.count }} Likes / {{ post.total_comments }} Comments</small>
                     </p>
                     <p class="lead">
                         <a class="btn btn-primary btn-lg" href="{{post.get_absolute_url}}" role="button">Learn more</a>
