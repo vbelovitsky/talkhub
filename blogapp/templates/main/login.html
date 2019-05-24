@@ -19,8 +19,10 @@
     </div>
 	{% endif %}
     <small>
+        <a href="{% url 'register' %}" class="text-white">Don't have an account?</a><br>
         <a href="{% url 'password_reset' %}" class="text-white badge badge-danger">Forgotten your password?</a>
     </small>
+    <br>
 
     <div class="btn-group my-1" role="group" aria-label="GitHub_auth">
         <button type="button" class="btn btn-secondary">
@@ -80,13 +82,6 @@
             </a>
         </button>
     </div>
-
-    <br>
-
-    <small>
-        <a href="{% url 'register' %}" class="text-white">Don't have an account?</a><br>
-        <a href="{% url 'password_reset' %}" class="text-white badge badge-danger">Forgotten your password?</a>
-    </small>
 </form>
 </body>
 </html>
