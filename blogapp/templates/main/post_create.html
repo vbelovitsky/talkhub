@@ -6,7 +6,7 @@
     {% include "main/base.html" %}
 </head>
 <body>
-    <div class="fluid-container">
+    <div class="fluid-container bg-light border px-4 d-flex flex-column">
         <form class="tag-search-form my-2 float-right" action="{% url 'blogapp:post_create' %}">
             <input maxlength="25" placeholder="Search tag" id="qtag" class="form-control mr-sm-2">
             <button class="btn btn-primary w-100 mt-2" hidden type="submit">Search</button>
