@@ -131,3 +131,6 @@ body a:hover{
     background-size: cover;
     background-repeat: no-repeat;
 }
+.border-radius-0{
+    border-radius: 0!important;
+}
