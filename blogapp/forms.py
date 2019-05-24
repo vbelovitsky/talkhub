@@ -76,13 +76,13 @@ class UserRegistrationForm(forms.ModelForm):
 
 class UserEditForm(forms.ModelForm):
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Username'}))
+        attrs={'placeholder': 'Username', 'class': 'form-control w-100'}))
     first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'First name'}))
+        attrs={'placeholder': 'First name', 'class': 'form-control w-100'}))
     last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Last name'}))
+        attrs={'placeholder': 'Last name', 'class': 'form-control w-100'}))
     email = forms.EmailField(label='', widget=forms.EmailInput(
-        attrs={'placeholder': 'Email'}))
+        attrs={'placeholder': 'Email', 'class': 'form-control w-100'}))
 
     class Meta:
         model = User
