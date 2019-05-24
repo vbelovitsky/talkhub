@@ -107,8 +107,11 @@ def chat_page(request, id, key):
                'is_liked': is_liked,
                'comments': comments,
                'comment_form': comment_form,
-               'links': recommend_links(post),
                }
+    try:
+        context['links'] = recommend_links(post)
+    except BaseException:
+        pass
 
     if request.is_ajax():
         html = render_to_string('main/comment_section.html', context, request=request)
