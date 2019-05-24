@@ -1,6 +1,6 @@
-from django.contrib.auth.models import User
 from django.test import TestCase
-from . import forms
+from .forms import *
+from .models import *
 from django.test import SimpleTestCase
 from django.urls import reverse
 
@@ -11,24 +11,26 @@ class LogInTest(TestCase):
             'username': 'testuser',
             'password': 'secret'}
         User.objects.create_user(**self.credentials)
+
     def test_login(self):
         # send login data
         response = self.client.post('/login/', self.credentials, follow=True)
         # should be logged in now
         self.assertTrue(response.context['user'].is_active)
 
+
 class FormsTest(TestCase):
 
     def PostCreateFormTest(self):
         form = forms.PostCreateForm(title='qwerty',
-                                 private=True,
-                                 body='')
+                                    private=True,
+                                    body='')
         self.assertTrue(form.is_valid())
 
     def PostEditFormTest(self):
         form = forms.PostCreateForm(title='qwerty',
-                                 private=True,
-                                 body='')
+                                    private=True,
+                                    body='')
         self.assertTrue(form.is_valid())
 
     def UserLoginFormTest(self):
@@ -61,6 +63,7 @@ class FormsTest(TestCase):
         form = forms.PostCreateForm()
         self.assertTrue(form.is_valid())
 
+
 class TestSignup(TestCase):
 
     def setUp(self):
@@ -75,6 +78,7 @@ class TestSignup(TestCase):
 
     def tearDown(self):
         self.driver.quit
+
 
 class HomePageTests(SimpleTestCase):
 
