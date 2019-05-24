@@ -48,7 +48,6 @@ body a:hover{
     border-bottom: 1px solid #dfdfdf; 
     height: 100%; 
     overflow: hidden; 
-    margin-left: 0!important;
 } 
 .message{ 
     display: flex; 
