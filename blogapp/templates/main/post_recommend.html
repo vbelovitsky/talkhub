@@ -10,6 +10,8 @@
 <h3>Maybe this links could help you to solve your problem:</h3>
 {% for link in links %}
     <a href="{{ link }}" class="badge badge-info">{{ link }}</a><br>
+{% empty %}
+    Sorry, no links found.
 {% endfor %}
 <br>
 {% if private_link %}

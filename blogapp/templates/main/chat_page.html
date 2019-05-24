@@ -13,7 +13,12 @@
                 <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p> 
                 <p><small>{{ post.created }}</small></p> 
                 <div><h1 class="display-3"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>
-                {% if request.user == post.author %} 
+
+                <div id="like-section">
+                {% include 'main/like_section.html' %}
+                </div>
+
+                {% if request.user == post.author %}
                 <div>
                     <a href="{% url 'blogapp:post_edit' id=post.id %}"> 
                         <button type="button" class="btn btn-outline-success">Edit</button> 
@@ -22,11 +27,6 @@
                         <button type="button" class="btn btn-danger">Delete</button> 
                     </a>
                     <button type="button" id="links-btn" class="btn btn-primary">Helpful links</button>
-                    <div id="recommended-links" style="display: none;">
-                        {% for link in links %}
-                            <a href="{{ link }}" class="badge badge-info">{{ link }}</a><br>
-                        {% endfor %}
-                    </div>
 
                 </div>
                 {% endif %}
@@ -35,35 +35,42 @@
                 <iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true" 
                     class="w-100 h-100" scrolling="auto" allow="microphone; camera"></iframe> 
             </div> 
+            <div class="w-100"></div>
+            <div class="col-xl-7">
+                <div id="recommended-links" style="display: none;">
+                        {% for link in links %}
+                            <a href="{{ link }}" class="badge badge-info">{{ link }}</a><br>
+                        {% empty %}
+                            Sorry, no links found<br>
+                        {% endfor %}
+                </div>
+            </div>
             <div class="w-100"><hr></div>
             <div class="col-xl-7 min-vh-35">
                 {{ post.body | safe }} 
             </div>
             <div class="w-100"><hr></div>
 
-            <div class="col-xl-8 col-lg-7 pl-xl-0 main-comment-section">
+            <div class="col-xl-8 col-lg-7 pl-lg-0 main-comment-section">
                 {% include 'main/comment_section.html' %}
             </div>
 
-            <div class="message-input">
-            <form method="POST" class="comment-form" action="{% url 'blogapp:chat_page' id=post.id key=post.private_key %}">
-                <div class="input comments-input-form d-flex">
-                    {% csrf_token %}
-                    {{ comment_form.content | safe }}
-                        <div class="button-group">
-                            <button class="btn input-clear-button" tabindex="-1" type="button">
-                                <span class="default-icon-cross"></span>
-                            </button>
-                            <input class="btn input-custom-button js-chat-send-button btn-success" tabindex="-1" type="submit" value="Send">
-                        </div>
-                </div>
-            </form>
+            <div class="message-input col-xl-8 col-lg-7 pl-lg-0">
+                <form method="POST" class="comment-form" action="{% url 'blogapp:chat_page' id=post.id key=post.private_key %}">
+                    <div class="input comments-input-form d-flex flex-column">
+                        {% csrf_token %}
+                        {{ comment_form.content | safe }}
+                        <input class="btn input-custom-button js-chat-send-button btn-secondary w-100" tabindex="-1" type="submit" value="Send">
+                    </div>
+                </form>
             </div>
             <div class="w-100"></div>
         </div>
     </div>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
     function refresh(){
             $.ajax({
                 type: 'GET',
@@ -80,7 +87,9 @@
             });
         }
 
-        setInterval(refresh(), 5000);
+        setInterval(refresh, 15000);
+    }, false);
+
 </script>
 
 </body>

@@ -25,7 +25,7 @@ def main_page(request):
     """main page view"""
     post_list = Post.objects.all()
     tags = Tag.objects.all()
-    users = User.objects.annotate(total_likes=Count('post__likes')).order_by('-total_likes')[:10]
+    users = User.objects.annotate(total_likes=Count('post__likes')).order_by('-total_likes')[:30]
 
     query = request.GET.get('q')
     if query:
@@ -107,8 +107,11 @@ def chat_page(request, id, key):
                'is_liked': is_liked,
                'comments': comments,
                'comment_form': comment_form,
-               'links': recommend_links(post),
                }
+    try:
+        context['links'] = recommend_links(post)
+    except BaseException:
+        pass
 
     if request.is_ajax():
         html = render_to_string('main/comment_section.html', context, request=request)
@@ -226,10 +229,12 @@ def recommend_links(post):
 def post_recommend(request, id, key):
     """post recommend view + search"""
     post = get_object_or_404(Post, id=id, private_key=key)
+    context = {}
+    try:
+        context['links'] = recommend_links(post)
+    except BaseException:
+        pass
 
-    context = {
-        'links': recommend_links(post),
-    }
     if post.private:
         context['private_link'] = post.get_absolute_url()
 
