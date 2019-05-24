@@ -59,7 +59,7 @@ CKEDITOR_CONFIGS = {
             ['TextColor', 'BGColor'],
             ['Smiley', 'SpecialChar', 'Source']
         ],
-        'extraPlugins': ','.join(['uploadimage', 'codesnippet', 'autolink'])
+        'extraPlugins': ','.join(['codesnippet', 'autolink'])
     },
 }
 CKEDITOR_IMAGE_BACKEND = "pillow"
