@@ -66,6 +66,8 @@
     </div>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
     function refresh(){
             $.ajax({
                 type: 'GET',
@@ -83,6 +85,8 @@
         }
 
         setInterval(refresh(), 5000);
+    }, false);
+
 </script>
 
 </body>
