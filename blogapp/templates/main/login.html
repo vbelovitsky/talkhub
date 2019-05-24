@@ -15,10 +15,8 @@
     <input type="submit" value="Login" class="btn btn-success mx-auto my-1">
     <br>
 
-    <small>
-        <a href="{% url 'register' %}" class="text-white">Don't have an account?</a><br>
-        <a href="{% url 'password_reset' %}" class="text-white badge badge-danger">Forgotten your password?</a>
-    </small>
+    <a href="{% url 'register' %}" class="text-white">Don't have an account?</a><br>
+    <a href="{% url 'password_reset' %}" class="text-white badge badge-info border-radius-0">Forgotten your password?</a>
     <br>
 
 	{% if error %}
@@ -48,7 +46,7 @@
             </a>
         </button>
     </div>
-
+    <br>
 {#    <a href="{% url 'social:begin' 'linkedin-oauth2' %}">#}
 {#        <button type="button" name="button" class="btn btn-primary">Linkedin</button>#}
 {#    </a>#}
