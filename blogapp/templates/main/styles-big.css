@@ -126,3 +126,8 @@ body a:hover{
 .min-vh-35{
     min-height: 35vh!important;
 }
+.profile-image{
+    background-color: dimgrey;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
