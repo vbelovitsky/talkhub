@@ -21,7 +21,7 @@
 
     <div class="btn-group" role="group" aria-label="GitHub_auth">
         <button type="button" class="btn btn-secondary">
-            <span class="mif-github icon"></span>
+            <a href="{% url 'social:begin' 'github' %}" class="text-white"><span class="mif-github icon"></span></a>
         </button>
         <button type="button" class="btn btn-secondary">
             <a href="{% url 'social:begin' 'github' %}" class="text-white">
@@ -32,7 +32,7 @@
 
     <div class="btn-group" role="group" aria-label="Google_auth">
         <button type="button" class="btn btn-primary">
-            <span class="mif-google-plus icon"></span>
+            <a href="{% url 'social:begin' 'google-oauth2' %}" class="text-white"><span class="mif-google-plus icon"></span></a>
         </button>
         <button type="button" class="btn btn-primary">
             <a href="{% url 'social:begin' 'google-oauth2' %}" class="text-white">
@@ -47,7 +47,7 @@
 
     <div class="btn-group" role="group" aria-label="Facebook_auth">
         <button type="button" class="btn btn-info">
-            <span class="mif-facebook icon"></span>
+            <a href="{% url 'social:begin' 'facebook' %}" class="text-white"><span class="mif-facebook icon"></span></a>
         </button>
         <button type="button" class="btn btn-info">
             <a href="{% url 'social:begin' 'facebook' %}" class="text-white">
@@ -57,19 +57,19 @@
     </div>
 
     <div class="btn-group" role="group" aria-label="Yandex_auth">
-        <button type="button" class="btn btn-alert">
-            <span class="mif-keyboard icon"></span>
+        <button type="button" class="btn btn-warning">
+            <a href="{% url 'social:begin' 'yandex-oauth2' %}" class="text-white"><span class="mif-keyboard icon"></span></a>
         </button>
-        <button type="button" class="btn btn-alert">
+        <button type="button" class="btn btn-warning">
             <a href="{% url 'social:begin' 'yandex-oauth2' %}" class="text-white">
                 Яндекс
             </a>
         </button>
     </div>
-    
+
     <div class="btn-group" role="group" aria-label="VK_auth">
         <button type="button" class="btn btn-light">
-            <span class="mif-vk icon"></span>
+            <a href="{% url 'social:begin' 'vk-oauth2' %}"><span class="mif-vk icon"></span></a>
         </button>
         <button type="button" class="btn btn-light">
             <a href="{% url 'social:begin' 'vk-oauth2' %}">
