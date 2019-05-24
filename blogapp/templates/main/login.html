@@ -18,6 +18,9 @@
         {{ error }}
     </div>
 	{% endif %}
+    <small>
+        <a href="{% url 'password_reset' %}" class="text-white badge badge-danger">Forgotten your password?</a>
+    </small>
 
     <div class="btn-group my-1" role="group" aria-label="GitHub_auth">
         <button type="button" class="btn btn-secondary">
