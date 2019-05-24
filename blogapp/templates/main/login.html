@@ -6,11 +6,14 @@
     {% include "main/base.html" %}
 </head>
 <body>
-<form method="POST" class="middle-block mx-auto bg-lightSteel text-white">
-    <h5 class="text-center">Login</h5>
+<form method="POST" class="middle-block mx-auto bg-lightSteel text-white text-center">
+    <h4>Login</h4>
 
     {% csrf_token %}
     {{ form.as_p }}
+
+    <input type="submit" value="Login" class="btn btn-success mx-auto my-1">
+    <br>
 
     <small>
         <a href="{% url 'register' %}" class="text-white">Don't have an account?</a><br>
@@ -18,8 +21,6 @@
     </small>
     <br>
 
-
-    <input type="submit" value="Login" class="btn btn-success mx-auto my-1">
 	{% if error %}
     <div class="alert alert-danger" role="alert">
         {{ error }}
