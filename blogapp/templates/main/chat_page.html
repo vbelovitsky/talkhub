@@ -55,7 +55,7 @@
                 {% include 'main/comment_section.html' %}
             </div>
 
-            <div class="message-input">
+            <div class="message-input col-xl-8 col-lg-7 pl-xl-">
                 <form method="POST" class="comment-form" action="{% url 'blogapp:chat_page' id=post.id key=post.private_key %}">
                     <div class="input comments-input-form d-flex flex-column">
                         {% csrf_token %}
