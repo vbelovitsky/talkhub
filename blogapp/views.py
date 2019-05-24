@@ -65,7 +65,7 @@ def main_page(request):
                'query': query,
                'tags': tags,
                'searchtag': tag,
-               'users':users}
+               'users': users}
 
     if request.is_ajax():
         html = render_to_string('main/tag_section.html', context, request=request)
