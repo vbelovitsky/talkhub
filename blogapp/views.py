@@ -39,6 +39,10 @@ def main_page(request):
     if tag:
         post_list = Post.objects.filter(tag__tag_name=tag)
 
+    user = request.GET.get('searchuser')
+    if user:
+        post_list = Post.objects.filter(author=user)
+
     paginator = Paginator(post_list, 7)
     page = request.GET.get('page')
     try:
