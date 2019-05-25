@@ -11,7 +11,7 @@ from googlesearch import search
 import bleach
 from django.db.models import Q, Count
 from .models import *
-from .forms import *
+from blogapp.forms import *
 
 
 # region Main
@@ -151,7 +151,8 @@ def post_create(request):
             post = form.save(commit=False)
             if request.POST.get('private'):
                 post.private = 1
-                key = ''.join([random.choice(string.ascii_lowercase + string.digits) for n in range(24)])
+                key = ''.join(
+                    [random.choice(string.ascii_lowercase + string.digits) for n in range(24)])
                 post.private_key = key
             post.author = request.user
             post.save()
@@ -305,7 +306,8 @@ def check(request):
     """view that checks data from third parties auth"""
     if request.method == 'POST':
         edit_form = UserEditForm(request.POST or None, instance=request.user)
-        profile_form = ProfileForm(request.POST or None, files=request.FILES, instance=request.user.profile)
+        profile_form = ProfileForm(
+            request.POST or None, files=request.FILES, instance=request.user.profile)
         if edit_form.is_valid():
             edit_form.save()
             profile_form.save()
@@ -351,7 +353,8 @@ def edit_profile(request):
     """user edit profile view"""
     if request.method == 'POST':
         edit_form = UserEditForm(request.POST or None, instance=request.user)
-        profile_form = ProfileForm(request.POST or None, files=request.FILES, instance=request.user.profile)
+        profile_form = ProfileForm(
+            request.POST or None, files=request.FILES, instance=request.user.profile)
         if edit_form.is_valid():
             edit_form.save()
             profile_form.save()

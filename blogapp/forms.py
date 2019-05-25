@@ -1,17 +1,21 @@
+"""forms.py"""
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from django.contrib.auth.models import User
 from django import forms
 from .models import Post, Comment, Profile
-from django.contrib.auth.models import User
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 class PostCreateForm(forms.ModelForm):
+    """post creation form"""
     title = forms.CharField(label='', widget=forms.TextInput(
         attrs={'placeholder': 'Title', 'class': 'form-control w-100'}))
-    private = forms.BooleanField(required=False, label='Make post private', widget=forms.CheckboxInput(
+    private = forms.BooleanField(
+        required=False, label='Make post private', widget=forms.CheckboxInput(
         ))
     body = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
+        """meta class"""
         model = Post
         fields = (
             'title',
@@ -21,13 +25,16 @@ class PostCreateForm(forms.ModelForm):
 
 
 class PostEditForm(forms.ModelForm):
+    """post editing form"""
     title = forms.CharField(label='', widget=forms.TextInput(
         attrs={'placeholder': 'Title', 'class': 'form-control w-100'}))
     body = forms.CharField(widget=CKEditorUploadingWidget())
-    private = forms.BooleanField(required=False, label='Make post private: ', widget=forms.CheckboxInput(
+    private = forms.BooleanField(
+        required=False, label='Make post private: ', widget=forms.CheckboxInput(
         ))
 
     class Meta:
+        """meta class"""
         model = Post
         fields = (
             'title',
@@ -37,6 +44,7 @@ class PostEditForm(forms.ModelForm):
 
 
 class UserLoginForm(forms.Form):
+    """login form"""
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
         attrs={'placeholder': 'Username', 'class': 'form-control w-100'}))
     password = forms.CharField(label='', widget=forms.PasswordInput(
@@ -44,6 +52,7 @@ class UserLoginForm(forms.Form):
 
 
 class UserRegistrationForm(forms.ModelForm):
+    """registration form"""
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
         attrs={'placeholder': 'Username', 'class': 'form-control w-100'}))
     first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
@@ -58,6 +67,7 @@ class UserRegistrationForm(forms.ModelForm):
         attrs={'placeholder': 'Confirm password', 'class': 'form-control w-100'}))
 
     class Meta:
+        """meta class"""
         model = User
         fields = (
             'username',
@@ -67,6 +77,7 @@ class UserRegistrationForm(forms.ModelForm):
         )
 
     def clean_confirm_password(self):
+        """check password"""
         password = self.cleaned_data.get('password')
         confirm_password = self.cleaned_data.get('confirm_password')
         if password != confirm_password:
@@ -75,6 +86,7 @@ class UserRegistrationForm(forms.ModelForm):
 
 
 class UserEditForm(forms.ModelForm):
+    """user edit form"""
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
         attrs={'placeholder': 'Username', 'class': 'form-control w-100'}))
     first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
@@ -85,6 +97,7 @@ class UserEditForm(forms.ModelForm):
         attrs={'placeholder': 'Email', 'class': 'form-control w-100'}))
 
     class Meta:
+        """meta class"""
         model = User
         fields = (
             'username',
@@ -95,19 +108,18 @@ class UserEditForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
-    # content = forms.CharField(max_length=1000,
-    #                           label="",
-    #                           widget=forms.TextInput(attrs={'placeholder': 'Comment here',
-    #                                                         'id': 'textinput'}))
+    """comment form"""
     content = forms.CharField(widget=CKEditorUploadingWidget())
 
     class Meta:
+        """meta class"""
         model = Comment
         fields = {'content'}
 
 
 class ProfileForm(forms.ModelForm):
-
+    """profile form"""
     class Meta:
+        """meta class"""
         model = Profile
         exclude = ('user',)

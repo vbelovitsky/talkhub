@@ -1,5 +1,6 @@
+"""admin.py"""
 from django.contrib import admin
-from blogapp.models import *
+from blogapp.models import Post, Comment, Tag, Profile
 
 
 admin.site.register(Post)
