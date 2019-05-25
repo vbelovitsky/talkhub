@@ -23,12 +23,18 @@
                     <input type="text" class="form-control" placeholder={{user.username}} readonly aria-label="Имя пользователя" aria-describedby="basic-addon1"> 
                 </div>
                 <div>Email: {{user.email}}</div>
-                <div>Contacts: {{request.user.profile.contacts}}</div>
-                <div>County: {{request.user.profile.country}}</div>
+                <div>County: {{user.profile.country}}</div>
+                <div>Contacts: {{user.profile.contacts}}</div>
                 <form action="{% url 'main_page' %}" >
                     <input hidden value="{{ user.id }}" name="searchuser">
                     <button type="submit" class="btn btn-secondary">{{ user.username }}'s posts</button>
-                </form>
+                </form><br>
+                {% if request.user == user %}
+                <a href="{% url 'user_delete' id=user.id %}" id="delete-user">
+                    <button type="button" class="btn btn-danger">Delete account</button>
+                </a>
+                {% endif %}
+
             </div>
         </div>
     </div>
