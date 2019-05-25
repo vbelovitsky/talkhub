@@ -369,7 +369,6 @@ def edit_profile(request):
 @login_required()
 def user_delete(request, id):
     """user delete function"""
-    logout(request)
     user = get_object_or_404(User, id=id)
     profile = Profile.objects.get(user=user)
     if request.user != user:
