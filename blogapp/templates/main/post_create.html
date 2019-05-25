@@ -7,6 +7,13 @@
 </head>
 <body>
     <div class="row bg-light border px-4 justify-content-end mr-0">
+    
+        <form class="tag-search-form my-2 col-lg-4 col-12 d-inline-flex" action="{% url 'blogapp:post_create' %}">
+            <input maxlength="25" placeholder="Search tag" id="qtag" class="form-control mr-sm-2 mr-1 mt-2">
+            <button class="btn btn-primary mt-2" type="submit">Search</button>
+        </form>
+
+        <div class="w-100"></div>
 
         <form method="POST" class="row col">
             <div class="col-lg-8 col-12">
@@ -17,10 +24,6 @@
                 <input type="submit" value="Create" class="btn btn-outline-success my-2">
             </div>
             <div class="col-lg-4 tag-section col-12">
-                <form class="tag-search-form my-2 d-inline-flex" action="{% url 'blogapp:post_create' %}">
-                    <input maxlength="25" placeholder="Search tag" id="qtag" class="form-control mr-sm-2 mr-1 mt-2">
-                    <button class="btn btn-primary mt-2" type="submit">Search</button>
-                </form>
                 {% include 'main/tag_section_create.html' %}
             </div>
         </form>
