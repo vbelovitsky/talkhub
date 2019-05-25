@@ -13,27 +13,6 @@ body a:hover{
     text-decoration: none;
     color: black;
 }
-.navigation{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    background: white;
-    height: 9vh;
-    padding: 1vmax;
-    margin-bottom: 2vh;
-    transition: 1.5s;
-}
-.navigation a{
-    transition: 0.7s;
-}
-.navigation a:hover{
-    transform: scale(1.2);
-}
-.logo-brand{
-    font-size: 2em;
-}
 .alert-success{
     display: flex;
     justify-content: space-between;
@@ -45,103 +24,100 @@ body a:hover{
     background-repeat: no-repeat;
     background-size: cover;
 }
-.flex-box{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 3vh;
-}
-.iframe_chat{
-    margin-bottom: 2vh;
-}
-.right-nav{
-    width: 100%;
-}
-.reply-btn{
-    width: 1vw;
-    height: 1vw;
-    background-image: url("https://image.flaticon.com/icons/png/128/37/37093.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    transform: scale(1, -1) rotate(180deg);
-}
-.comments{
-    margin-top: 2vh;
-    overflow-y: scroll;
-    height: 30vh;
-    width: 100%;
-    padding: 1%;
-    display: flex;
-    flex-direction: column-reverse;
-    background: white;
-    border: 1px solid black;
-    padding: 2vw;
-    margin-bottom: 2.5vh;
-    border-radius: 4px;
-}
-.flex-box-column{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-}
-.jumbotron{
-    padding-bottom: 1vh !important;
-    padding-top: 1vh !important;
-    margin-bottom: 2vh;
-}
-.display-3{
-    font-size: 5rem;
-}
-.chat_jumb{
-    width: 100%;
-    height: 100%;
-    padding-left: 6.8vw;
-    padding-right: 6.8vw;
-}
-.comment-title{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-}
-.mb-0{
-    margin-right: 0.3vw;
-}
-.tag-btn{
-    margin-top: 1.5vh;
-    text-align: center;
-    width: 100%;
-}
-.display-3{
-    font-size: 2.5rem;
-}
-.middle-block{
-
-}
-.chat-page-title{
-    text-align: left;
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
-    align-items: center;
-}
-.chat-page-title-date{
-    display: flex;
-    justify-content: space-around;
-}
-.flex-box-likes{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-.iframe-main{
-    width: 100%;
-    height: 39vh;
-}
 .overflow-hidden{ 
     overflow: hidden; 
     text-overflow: ellipsis; 
     white-space: nowrap; 
-    } 
+}
+.comments{ 
+    border: 1px #d9d9d9 solid; 
+    padding: 8px; 
+    border-bottom: 1px solid #dfdfdf; 
+    height: 100%; 
+    overflow: hidden; 
+} 
+.message{ 
+    display: flex; 
+    -webkit-box-orient: horizontal; 
+    -webkit-box-direction: normal; 
+    -ms-flex-flow: row wrap; 
+    flex-flow: row wrap; 
+} 
+.message-sender{ 
+    -webkit-box-ordinal-group: 3; 
+    -ms-flex-order: 2; 
+    order: 2; 
+    text-align: right; 
+    width: 50%; 
+    font-weight: 600; 
+    font-size: 12px; 
+} 
+.message-time{ 
+    -webkit-box-ordinal-group: 2; 
+    -ms-flex-order: 1; 
+    order: 1; 
+    text-align: left; 
+    width: 50%; 
+    opacity: 0.5; 
+} 
+.message-item{ 
+    width: 100%; 
+    -ms-flex-negative: 0; 
+    flex-shrink: 0; 
+    display: -webkit-box; 
+    display: -ms-flexbox; 
+    display: flex; 
+    -webkit-box-orient: horizontal; 
+    -webkit-box-direction: normal; 
+    -ms-flex-flow: row nowrap; 
+    flex-flow: row nowrap; 
+    margin: 8px 0; 
+    -webkit-box-ordinal-group: 4; 
+    -ms-flex-order: 3; 
+    order: 3; 
+} 
+.message-avatar{ 
+    -webkit-box-ordinal-group: 3; 
+    -ms-flex-order: 2; 
+    order: 2; 
+    overflow: hidden; 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    -ms-flex-negative: 0; 
+    flex-shrink: 0; 
+    display: block; 
+} 
+.message-text{ 
+    display: -webkit-box; 
+    display: -ms-flexbox; 
+    display: flex; 
+    -webkit-box-align: center; 
+    -ms-flex-align: center; 
+    align-items: center; 
+    border: 1px solid #e4e4e4; 
+    margin-left: 8px; 
+    -webkit-box-ordinal-group: 3; 
+    -ms-flex-order: 2; 
+    font-size: 14px; 
+    line-height: 1.2; 
+    padding: 5px 10px; 
+    width: 100%; 
+    background-color: #e4e4e4; 
+    -webkit-box-ordinal-group: 2; 
+    -ms-flex-order: 1; 
+    order: 1; 
+    margin-left: 0; 
+    margin-right: 8px; 
+} 
+.min-vh-35{
+    min-height: 35vh!important;
+}
+.profile-image{
+    background-color: dimgrey;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.border-radius-0{
+    border-radius: 0!important;
+}
