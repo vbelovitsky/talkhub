@@ -23,8 +23,8 @@
                     <input type="text" class="form-control" placeholder={{user.username}} readonly aria-label="Имя пользователя" aria-describedby="basic-addon1"> 
                 </div>
                 <div>Email: {{user.email}}</div>
-                <div>Contacts: {{request.user.profile.contacts}}</div>
-                <div>County: {{request.user.profile.country}}</div>
+                <div>Contacts: {{user.contacts}}</div>
+                <div>County: {{user.country}}</div>
                 <form action="{% url 'main_page' %}" >
                     <input hidden value="{{ user.id }}" name="searchuser">
                     <button type="submit" class="btn btn-secondary">{{ user.username }}'s posts</button>
