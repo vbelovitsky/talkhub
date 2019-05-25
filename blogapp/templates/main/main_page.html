@@ -19,10 +19,10 @@
         </div>
     {% endif %}
     <div class="row justify-content-center mx-0">
-        <div class="col-lg-3 col-12 col-sm-4 bg-light border rounded mb-3">
+        <div class="col-lg-3 col-12 col-md-5 col-sm-4 bg-light border rounded mb-3">
             {% include 'main/top-users.html' %}
         </div>
-        <div class="col-lg-4 col-12 col-sm-4">
+        <div class="col-lg-4 col-12 col-md-7 col-sm-4">
             {% for post in posts %}
             <div class="card bg-light mb-3 text-center rounded">
                 <div class="card-header">Author: <a href="{% url 'profile' id=post.author.id %}" class="links text-dark">{{ post.author }}</a></div>
@@ -51,7 +51,7 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="col-lg-2 col-sm-4 col-12 bg-light mb-3 border rounded tag-section">
+        <div class="col-lg-2 col-sm-4 col-md-12 col-12 bg-light mb-3 border rounded tag-section">
             {% include 'main/tag_section.html' %}
         </div>
     </div>
