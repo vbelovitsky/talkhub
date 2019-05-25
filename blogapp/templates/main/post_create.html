@@ -8,9 +8,9 @@
 <body>
     <div class="row bg-light border px-4 justify-content-end mr-0">
 
-        <form class="tag-search-form my-2 col-lg-4" action="{% url 'blogapp:post_create' %}">
-            <input maxlength="25" placeholder="Search tag" id="qtag" class="form-control mr-sm-2">
-            <button class="btn btn-primary mt-2" hidden type="submit">Search</button>
+        <form class="tag-search-form my-2 col-lg-4 d-inline-flex" action="{% url 'blogapp:post_create' %}">
+            <input maxlength="25" placeholder="Search tag" id="qtag" class="form-control mr-sm-2 mr-1">
+            <button class="btn btn-primary mt-2" type="submit">Search</button>
         </form>
 
         <div class="w-100"></div>
