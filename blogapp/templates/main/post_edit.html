@@ -12,8 +12,8 @@
         {% csrf_token %}
         {{ form.title }}<br>
         {{ form.body | safe }}<br>
-        {{ form.private }} Private<br>
-        <input type="submit" value="Update" class="btn btn-success w-100">
+        {{ form.private }} <strong>Private<strong>
+        <input type="submit" value="Update" class="btn btn-success w-100 mt-2">
     </form>
 </div>
 </body>
