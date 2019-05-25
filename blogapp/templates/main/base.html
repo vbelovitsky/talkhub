@@ -67,12 +67,12 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
                 dataType: 'json',
                 success: function (response) {
                     $('.main-comment-section').html(response['form']);
-                    $('.reply-btn').click(function () {
-                        var pk = "#" + $(this).attr('value');
-                        $(pk).fadeToggle();
-                        $('.textinputclass').val('');
-                    });
-                    $('.textinputclass').val('');
+
+                    for ( instance in CKEDITOR.instances ){
+                        CKEDITOR.instances[instance].updateElement();
+                    }
+                    CKEDITOR.instances[instance].setData('');
+
                 },
                 error: function (rs) {
                     console.log(rs.responseText);
