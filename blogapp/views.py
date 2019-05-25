@@ -364,6 +364,19 @@ def edit_profile(request):
         'profile': profile_form
     }
     return render(request, 'main/edit_profile.html', context)
+
+
+@login_required()
+def user_delete(request, id):
+    """user delete function"""
+    logout(request)
+    user = get_object_or_404(User, id=id)
+    profile = Profile.objects.get(user=user)
+    if request.user != user:
+        raise Http404
+    user.delete()
+    profile.delete()
+    return redirect('main_page')
 # endregion
 
 

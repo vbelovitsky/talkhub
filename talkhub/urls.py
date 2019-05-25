@@ -33,8 +33,10 @@ urlpatterns = [
     url(r'^like/$', views.like_post, name='like_post'),
     url(r'^comment-delete/(?P<id>\d+)/(?P<comid>\d+)/$', views.comment_delete, name='comment_delete'),
     url(r'^profile/(?P<id>\d+)/$', views.profile, name='profile'),
+    url(r'^profile/delete/(?P<id>\d+)/$', views.user_delete, name='user_delete'),
     url(r'^lending/$', views.lending, name='lending'),
     url(r'^check/$', views.check, name='check'),
+
 
     path('ckeditor/', include('ckeditor_uploader.urls')),
 
