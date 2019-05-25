@@ -27,7 +27,7 @@
                 <div>Contacts: {{user.profile.contacts}}</div>
             </div>
         </div>
-        <div class="col-lg-1 col-12 bg-light border rounded">
+        <div class="col-lg-2 col-12 bg-light border rounded">
             <div class="d-flex flex-column my-2">
                 <form action="{% url 'main_page' %}" class="mb-2">
                     <input hidden value="{{ user.id }}" name="searchuser">
@@ -35,10 +35,10 @@
                 </form>
                 {% if request.user == user %}
                     <a href="{% url 'user_delete' id=user.id %}" id="delete-user" class="mb-2">
-                        <button type="button" class="btn btn-danger">Delete account</button>
+                        <button type="button" class="btn btn-danger w-100">Delete account</button>
                     </a>
                     <a class="mb-2" href="{% url 'edit_profile' %}">
-                        <button type="button" class="btn btn-success">Edit profile</button>
+                        <button type="button" class="btn btn-success w-100">Edit profile</button>
                     </a>
                 {% endif %}
             </div>
