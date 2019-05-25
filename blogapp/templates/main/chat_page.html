@@ -18,18 +18,20 @@
                 {% include 'main/like_section.html' %}
                 </div>
 
-                {% if request.user == post.author %}
+
                 <div>
+                    {% if request.user == post.author %}
                     <a href="{% url 'blogapp:post_edit' id=post.id %}"> 
                         <button type="button" class="btn btn-outline-success">Edit</button> 
                     </a> 
                     <a href="{% url 'blogapp:post_delete' id=post.id %}" id="delete"> 
                         <button type="button" class="btn btn-danger">Delete</button> 
                     </a>
+                    {% endif %}
                     <button type="button" id="links-btn" class="btn btn-primary">Helpful links</button>
 
                 </div>
-                {% endif %}
+
             </div>
             <div class="col-xl-4 col-lg-5 sticky-top">
             {% if request.user.is_authenticated %} 
