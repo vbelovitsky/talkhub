@@ -14,7 +14,7 @@
                 <p><small>{{ post.created }}</small></p> 
                 <div><h1 class="display-5"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>
 
-                <div id="like-section">
+                <div id="like-section" class="d-flex">
                 {% include 'main/like_section.html' %}
                 </div>
 
