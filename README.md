@@ -22,6 +22,10 @@ Main features of the TalkHub:
 * [Python social auth](https://github.com/python-social-auth) for social authentification
 * [Ckeditor](https://ckeditor.com) for posting and commenting
 
+#### Used patterns
+
+* decorators for login and logout
+
 ---
 'Currently deployed on [Heroku](https://dashboard.heroku.com)'
 
