@@ -1,7 +1,7 @@
 <div  class="d-flex flex-column pb-1">
-    <form class="d-flex flex-column mb-1 tag-search-form" action="{% url 'main_page' %}">
+    <form class="d-flex justify-content-between mb-1 tag-search-form" action="{% url 'main_page' %}">
                 <input maxlength="25" type="search" placeholder="Search tag" aria-label="Search" id="qtag" class="form-control mr-sm-2 mt-2">
-                <button class="btn btn-primary w-100 mt-2" hidden type="submit">Search</button>
+                <button class="btn btn-secondary w-100 mt-2" type="submit">Search</button>
     </form>
     <div class="row">
     {% for tag in tags %}
