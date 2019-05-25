@@ -22,7 +22,7 @@ class PostCreateForm(forms.ModelForm):
 
 class PostEditForm(forms.ModelForm):
     title = forms.CharField(label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Title'}))
+        attrs={'placeholder': 'Title', 'class': 'form-control w-100'}))
     body = forms.CharField(widget=CKEditorUploadingWidget())
     private = forms.BooleanField(required=False, label='Make post private: ', widget=forms.CheckboxInput(
         ))
