@@ -6,7 +6,7 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 class PostCreateForm(forms.ModelForm):
     title = forms.CharField(label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Title'}))
+        attrs={'placeholder': 'Title', 'class': 'form-control w-100'}))
     private = forms.BooleanField(required=False, label='Make post private', widget=forms.CheckboxInput(
         ))
     body = forms.CharField(widget=CKEditorUploadingWidget())
@@ -38,24 +38,24 @@ class PostEditForm(forms.ModelForm):
 
 class UserLoginForm(forms.Form):
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Username'}))
+        attrs={'placeholder': 'Username', 'class': 'form-control w-100'}))
     password = forms.CharField(label='', widget=forms.PasswordInput(
-        attrs={'placeholder': 'Password'}))
+        attrs={'placeholder': 'Password', 'class': 'form-control w-100'}))
 
 
 class UserRegistrationForm(forms.ModelForm):
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Username'}))
+        attrs={'placeholder': 'Username', 'class': 'form-control w-100'}))
     first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'First name'}))
+        attrs={'placeholder': 'First name', 'class': 'form-control w-100'}))
     last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Last name'}))
+        attrs={'placeholder': 'Last name', 'class': 'form-control w-100'}))
     email = forms.EmailField(label='', widget=forms.EmailInput(
-        attrs={'placeholder': 'Enter your email'}))
+        attrs={'placeholder': 'Enter your email', 'class': 'form-control w-100'}))
     password = forms.CharField(label='', widget=forms.PasswordInput(
-        attrs={'placeholder': 'Enter password here'}))
+        attrs={'placeholder': 'Enter password here', 'class': 'form-control w-100'}))
     confirm_password = forms.CharField(label='', widget=forms.PasswordInput(
-        attrs={'placeholder': 'Confirm password'}))
+        attrs={'placeholder': 'Confirm password', 'class': 'form-control w-100'}))
 
     class Meta:
         model = User
@@ -76,13 +76,13 @@ class UserRegistrationForm(forms.ModelForm):
 
 class UserEditForm(forms.ModelForm):
     username = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Username'}))
+        attrs={'placeholder': 'Username', 'class': 'form-control w-100'}))
     first_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'First name'}))
+        attrs={'placeholder': 'First name', 'class': 'form-control w-100'}))
     last_name = forms.CharField(max_length=20, label='', widget=forms.TextInput(
-        attrs={'placeholder': 'Last name'}))
+        attrs={'placeholder': 'Last name', 'class': 'form-control w-100'}))
     email = forms.EmailField(label='', widget=forms.EmailInput(
-        attrs={'placeholder': 'Email'}))
+        attrs={'placeholder': 'Email', 'class': 'form-control w-100'}))
 
     class Meta:
         model = User

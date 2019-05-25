@@ -32,8 +32,19 @@
                 {% endif %}
             </div>
             <div class="col-xl-4 col-lg-5 sticky-top">
+            {% if request.user.is_authenticated %} 
                 <iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true" 
-                    class="w-100 h-100" scrolling="auto" allow="microphone; camera"></iframe> 
+                    class="w-100 h-100" scrolling="auto" allow="microphone; camera"></iframe>
+            {% else %} 
+                <div class="w-100 h-100">
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="alert-heading">Access denied!</h4>
+                        <p>Sorry, but for Video chat you need to Sing In or Sign Up.</p>
+                        <hr>
+                        <p class="mb-0"><a href="{% url 'user_login' %}" class="alert-link">Sign In</a> or <a href="{% url 'register' %}" class="alert-link">Sign Up</a></p>
+                    </div>
+                </div>
+            {% endif %}
             </div> 
             <div class="w-100"></div>
             <div class="col-xl-7">
@@ -60,7 +71,7 @@
                     <div class="input comments-input-form d-flex flex-column">
                         {% csrf_token %}
                         {{ comment_form.content | safe }}
-                        <input class="btn input-custom-button js-chat-send-button btn-secondary w-100" tabindex="-1" type="submit" value="Send">
+                        <input class="btn input-custom-button js-chat-send-button btn-secondary w-100 border-radius-0" tabindex="-1" type="submit" value="Send">
                     </div>
                 </form>
             </div>
