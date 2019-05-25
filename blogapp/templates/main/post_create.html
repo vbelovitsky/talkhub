@@ -15,9 +15,9 @@
 
         <div class="w-100"></div>
 
-        <form method="POST" class="row col px-lg-2 px-0">
+        <form method="POST" class="row col">
 
-            <div class="col-lg-8 col-12 px-lg-2 px-0">
+            <div class="col-lg-8 col-12 px-0 mr-lg-2">
                 {% csrf_token %}
                 <div class="my-2">{{ postform.title }}</div>
                 {{ postform.body | safe }}
