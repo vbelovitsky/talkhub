@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'social_django',
     'ckeditor',
     'ckeditor_uploader',
-    
+    'django_pygments'
 ]
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
