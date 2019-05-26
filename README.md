@@ -1,7 +1,7 @@
 # [TalkHub](https://talkhub.herokuapp.com)
 ---
 
-TalkHub is a unique portal were programmists can solve their problems using video chat
+TalkHub is a unique portal were programmers can solve their problems using video chat
 
 Main features of the TalkHub:
 
@@ -13,6 +13,7 @@ Main features of the TalkHub:
 * Tag system
 * Private posts
 * Generation of useful links based on post content
+* Private posts
 
 ## Technical characteristics
 ---
@@ -25,8 +26,25 @@ Main features of the TalkHub:
 #### Used patterns
 
 * decorators for login and logout
-
+* function-based backend
 ---
-'Currently deployed on [Heroku](https://dashboard.heroku.com)'
+
+## Concept of the project
+
+###### Problem
+* Beginner programmers have to spend a lot of time solving simple mistakes
+* Text solutions often could not provide full understanding of code principles
+* No forum with live communicating
+
+###### Solution
+* Live communication could help to understand code concepts
+* Experienced programmers now have the ability to share knowledge in real-life discussions
+---
+
+You can find used libraries in [requirements.txt](https://github.com/vbelovitsky/talkhub/blob/master/requirements.txt)
+
+Currently deployed on [Heroku](https://dashboard.heroku.com)
 
 [Waiting you on TalkHub!](https://talkhub.herokuapp.com)
+
+Version 1.0
