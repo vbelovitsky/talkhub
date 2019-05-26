@@ -227,6 +227,16 @@ def recommend_links(post):
     for url in search(query, tld="com", num=5, stop=5, pause=2):
         recommend_array.append(url)
 
+    if len(recommend_array) == 0:
+        query = "" + post.title
+        try:
+            query += bleach.clean(post.body, tags=[], attributes={}, styles=[], strip=True)
+        except BaseException:
+            pass
+        recommend_array = []
+        for url in search(query, tld="com", num=5, stop=5, pause=2):
+            recommend_array.append(url)
+        
     return recommend_array
 
 
