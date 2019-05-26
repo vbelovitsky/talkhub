@@ -34,7 +34,7 @@ Main features of the TalkHub:
 ###### Problem
 * Beginner programmers have to spend a lot of time solving simple mistakes
 * Text solutions often could not provide full understanding of code principles
-* No forum with live communicating
+* No forum with live communication
 
 ###### Solution
 * Live communication could help to understand code concepts
