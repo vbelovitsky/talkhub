@@ -19,7 +19,8 @@ Main features of the TalkHub:
 ---
 
 * [Django framework](https://www.djangoproject.com) for main backend
-* HTML, CSS, JS, jQuery for frontend
+* HTML, CSS, JS, jQuery, [Bootstrap](https://getbootstrap.com/docs/4.0/getting-started/introduction/) for frontend
+* [TokBox](https://tokbox.com) for video chat
 * [Python social auth](https://github.com/python-social-auth) for social authentification
 * [Ckeditor](https://ckeditor.com) for posting and commenting
 
