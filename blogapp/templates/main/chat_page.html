@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <title>{{post.title}} | {{post.author}}</title>
     {% include "main/base.html" %}
-    {% load pygmentify %}
 </head>
 
 <body>
     <div class="containter bg-light mx-xl-2">
         <div class="row mr-0 mx-xl-3 py-xl-2">
             <div class="col-xl-8 col-lg-7 min-vh-35">
-                <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p> 
-                <p><small>{{ post.created }}</small></p> 
+                <p>Author: <a href="{% url 'profile' id=post.author.id %}" class="links">{{ post.author }}</a></p>
+                <p><small>{{ post.created }}</small></p>
                 <div><h1 class="display-5"><a href="{{post.get_absolute_url}}" class="links text-dark">{{ post.title }}</a></h1></div>
 
                 <div id="like-section" class="d-flex">
@@ -22,11 +21,11 @@
 
                 <div>
                     {% if request.user == post.author %}
-                    <a href="{% url 'blogapp:post_edit' id=post.id %}"> 
-                        <button type="button" class="btn btn-outline-success">Edit</button> 
-                    </a> 
-                    <a href="{% url 'blogapp:post_delete' id=post.id %}" id="delete"> 
-                        <button type="button" class="btn btn-danger">Delete</button> 
+                    <a href="{% url 'blogapp:post_edit' id=post.id %}">
+                        <button type="button" class="btn btn-outline-success">Edit</button>
+                    </a>
+                    <a href="{% url 'blogapp:post_delete' id=post.id %}" id="delete">
+                        <button type="button" class="btn btn-danger">Delete</button>
                     </a>
                     {% endif %}
                     <button type="button" id="links-btn" class="btn btn-primary">Helpful links</button>
@@ -35,10 +34,10 @@
 
             </div>
             <div class="col-xl-4 col-lg-5 sticky-top">
-            {% if request.user.is_authenticated %} 
-                <iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true" 
+            {% if request.user.is_authenticated %}
+                <iframe src="https://tokbox.com/embed/embed/ot-embed.js?embedId=854a2eb9-6c55-434c-93b4-b51b66541b71&room={{ post.id }}&iframe=true"
                     class="w-100 h-100" scrolling="no" allow="microphone; camera"></iframe>
-            {% else %} 
+            {% else %}
                 <div class="w-100 h-100">
                     <div class="alert alert-danger" role="alert">
                         <h4 class="alert-heading">Access denied!</h4>
@@ -48,7 +47,7 @@
                     </div>
                 </div>
             {% endif %}
-            </div> 
+            </div>
             <div class="w-100"></div>
             <div class="col-xl-7">
                 <div id="recommended-links" style="display: none;">
@@ -61,9 +60,7 @@
             </div>
             <div class="w-100"><hr></div>
             <div class="col-xl-7 min-vh-35">
-                {% pygment %}
                 {{ post.body | safe }}
-                {% endpygment %}
             </div>
             <div class="w-100"><hr></div>
 
