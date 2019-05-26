@@ -13,7 +13,6 @@ Main features of the TalkHub:
 * Tag system
 * Private posts
 * Generation of useful links based on post content
-* Private posts
 
 ## Technical characteristics
 ---
