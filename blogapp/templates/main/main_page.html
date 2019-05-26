@@ -24,7 +24,7 @@
         </div>
         <div class="col-lg-4 col-12 col-md-7 col-sm-4">
             {% for post in posts %}
-            {% if request.user == post.author or request.user.is_superuser %}
+            {% if not post.is_private or request.user.is_superuser %}
             <div class="card bg-light mb-3 text-center rounded">
                 <div class="card-header">Author: <a href="{% url 'profile' id=post.author.id %}" class="links text-dark">{{ post.author }}</a></div>
                 <div class="card-body">
