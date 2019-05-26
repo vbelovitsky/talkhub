@@ -10,9 +10,9 @@
     <h4>Edit post</h4>
     <form method="POST" class="row justify-content-center">
         {% csrf_token %}
-        <div class="col-lg-3 col-12">
+        <div class="col-lg-4 col-12">
             <div class=>{{ form.title }}</div>
-            <div class="d-flex">{{ form.private }} <p class="ml-2">Private</p></div>
+            <div class="d-flex mt-2">{{ form.private }} <p class="ml-2">Private</p></div>
             <input type="submit" value="Update" class="btn btn-success w-100 mt-2 col">
         </div>
         <div class="col-lg-7 col-12">{{ form.body | safe }}</div>
